@@ -1,0 +1,18 @@
+{
+  "containerOverrides": [
+    {
+      "name": "container",
+      "command": [
+        "bash",
+        "-c",
+        "rails runner 'puts ENV.to_h'"
+      ],
+      "environment": [
+        {
+          "name": "HELLO",
+          "value": "world"
+        }
+      ]
+    }
+  ]
+}

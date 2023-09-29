@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+profile=mech-cool
+cluster=
+task=
+command=
+
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+  --profile)
+    shift
+    profile=$1
+    ;;
+  --cluster)
+    shift
+    cluster=$1
+    ;;
+  --task)
+    shift
+    task=$1
+    ;;
+  *)
+    command="$command \"$1\""
+    ;;
+  esac
+  shift
+done
+
+if [[ -z "$task" ]]; then
+  task=$(
+    aws ecs list-tasks \
+      --profile $profile \
+      --cluster $cluster \
+      --service-name web |
+      jq -r '.taskArns[0]'
+  )
+fi
+
+aws ecs execute-command \
+  --profile $profile \
+  --cluster $cluster \
+  --task $task \
+  --interactive \
+  --command "$(echo "$command" | sed 's/^[ \t]*//;s/[ \t]*$//')"

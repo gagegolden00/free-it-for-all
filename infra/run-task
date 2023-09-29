@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+profile=mech-cool
+cluster=
+task_definition=
+file=./run-task.json
+
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+  --profile)
+    shift
+    profile=$1
+    ;;
+  --cluster)
+    shift
+    cluster=$1
+    ;;
+  --task-definition)
+    shift
+    task_definition=$1
+    ;;
+  --file)
+    shift
+    file=$1
+    ;;
+  *)
+    command="$command $1"
+    ;;
+  esac
+  shift
+done
+
+taskDefinition=$(
+  aws ecs list-task-definitions \
+    --profile $profile \
+    $(
+      if [[ -n "$task_definition" ]]; then
+        echo --family-prefix $task_definition
+      fi
+    ) |
+    jq -r '.taskDefinitionArns[0]'
+)
+
+subnets=$(
+  aws ec2 describe-subnets \
+    --profile $profile \
+    --filters \
+    Name=tag:Name,Values=$cluster-public-* |
+    jq -r '.Subnets | map(.SubnetId) | join(",")'
+)
+
+securityGroups=$(
+  aws ec2 describe-security-groups \
+    --profile $profile \
+    --filters \
+    Name=group-name,Values=$cluster-ecs-cluster-service* |
+    jq -r '.SecurityGroups | map(.GroupId) | join(",")'
+)
+
+aws ecs run-task \
+  --profile $profile \
+  --cluster $cluster \
+  --task-definition $taskDefinition \
+  --overrides file://$file \
+  --launch-type FARGATE \
+  --network-configuration "awsvpcConfiguration={subnets=[$subnets],securityGroups=[$securityGroups],assignPublicIp=ENABLED}"
