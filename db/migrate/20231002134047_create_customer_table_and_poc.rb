@@ -1,4 +1,4 @@
-class CreateCustomerTable < ActiveRecord::Migration[7.0]
+class CreateCustomerTableAndPoc < ActiveRecord::Migration[7.0]
   def change
     create_table :point_of_contact do |t|
       t.string :name
@@ -23,5 +23,7 @@ class CreateCustomerTable < ActiveRecord::Migration[7.0]
 
       t.references :point_of_contact
     end
+
+
   end
 end
