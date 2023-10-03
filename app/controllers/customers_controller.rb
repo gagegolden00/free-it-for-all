@@ -17,13 +17,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  def customer_params
-    params.require(:customer).permit(
-      :name, :phone_number, :email, :address, :city, :state, :zipcode, :region_id,
-      point_of_contact_attributes: [:name, :phone_number, :email])
-  end
-
-
   def show;end
 
   def index
@@ -50,7 +43,13 @@ class CustomersController < ApplicationController
     end
   end
 
-
+  private
+  
+  def customer_params
+    params.require(:customer).permit(
+      :name, :phone_number, :email, :address, :city, :state, :zipcode, :region_id,
+      point_of_contact_attributes: [:name, :phone_number, :email])
+  end
 
   def set_customer_from_params
     @customer = Customer.find(params[:id])
