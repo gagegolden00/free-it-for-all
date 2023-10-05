@@ -1,4 +1,4 @@
-class ButtonComponentPreview < Lookbook::Preview
+class ButtonComponentPreview < ViewComponent::Preview
 
   def standard
     render(ButtonComponent.new())
