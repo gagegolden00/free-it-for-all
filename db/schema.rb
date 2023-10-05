@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_02_134047) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -57,4 +57,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_134047) do
 
   add_foreign_key "customers", "regions"
   add_foreign_key "point_of_contacts", "customers"
+
+  create_enum "roles", ["admin", "technician"]
+
+  create_table "users", force: :cascade do |t|
+    t.enum "role", default: "technician", null: false, enum_type: "roles"
+    t.string "name", null: false
+    t.string "home_phone"
+    t.string "work_phone"
+    t.string "carrier"
+    t.date "hire_date"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.timestamptz "reset_password_sent_at", precision: 6
+    t.timestamptz "remember_created_at", precision: 6
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "discarded_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
 end
