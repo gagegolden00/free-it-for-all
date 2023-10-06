@@ -1,3 +1,6 @@
 <h1>Home page</h1>
 
 <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "p-2 border border-black"%>
+
+
+<%= render(ButtonComponent.new(styling_scheme: :link, tag: :a, text: "Visit test page", destination: "/test_page", extra_classes: "hover:text-blue-600"))%>
