@@ -19,20 +19,14 @@
   <% end %>
 
   <div class="actions">
-    <%= render(ButtonComponent.new(styling_scheme: :primary, type: :submit, text: "Sign in")) %>
+    <%= render(ButtonComponent.new(styling_scheme: :primary, function_scheme: :submit, text: "Sign in")) %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
 
 
-<%= render(ButtonComponent.new(styling_scheme: :default,
-                               destination: "/test_page",
-                               size: :small,
-                               extra_classes: "bg-blue-500 border-blue-500 text-white hover:bg-white hover:text-blue-500",
-                               data: {controller: :a_stimulus_controller, something: :else, turbo_method: :delete}
-                               )
-) %>
+<%= render(ButtonComponent.new(styling_scheme: :default, destination: "/test_page")) %>
 
 <%= render(ButtonComponent.new(styling_scheme: :danger)) %>
 
