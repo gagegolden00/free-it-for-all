@@ -6,8 +6,8 @@ namespace :populate_database do
     User.create!(
       role: "admin",
       name: "admin user",
-      home_phone: "123-456-7890",
-      work_phone: "098-765-4321",
+      home_phone: "123-456-7899",
+      work_phone: "098-765-4322",
       carrier: "A cell carrier",
       hire_date: "10/10/2020",
       email: "admin@email.com",
@@ -18,8 +18,8 @@ namespace :populate_database do
     User.create!(
       role: "technician",
       name: "technician user",
-      home_phone: "123-456-7890",
-      work_phone: "098-765-4321",
+      home_phone: "123-456-7891",
+      work_phone: "098-765-4325",
       carrier: "A cell carrier",
       hire_date: "10/10/2020",
       email: "technician@email.com",
