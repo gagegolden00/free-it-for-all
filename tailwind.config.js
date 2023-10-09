@@ -6,5 +6,15 @@ module.exports = {
     './app/javascript/**/*.js',
     './app/components/**/*.html.erb',
     './app/components/**/*.rb'
-  ]
+  ],
+
+  theme: {
+    extend: {
+      colors: {
+
+
+
+      }
+    }
+  }
 }

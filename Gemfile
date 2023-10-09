@@ -72,7 +72,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-
+  gem "rails-dom-testing", "~> 2.2"
+  
 end
 gem "aws-sdk-rails", "~> 3.8"
 gem "aws-sdk-s3", "~> 1.134"

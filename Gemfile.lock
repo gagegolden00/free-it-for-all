@@ -369,6 +369,7 @@ DEPENDENCIES
   puma (~> 6.3, >= 6.3.1)
   pundit (~> 2.3, >= 2.3.1)
   rails (~> 7.0.8)
+  rails-dom-testing (~> 2.2)
   redis (~> 4.0)
   selenium-webdriver
   sidekiq (~> 7.1, >= 7.1.4)

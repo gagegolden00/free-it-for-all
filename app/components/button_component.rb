@@ -1,55 +1,37 @@
-# rubocop:disable Metrics/ParameterLists
 # frozen_string_literal: true
 
 # DOCUMENTED ARGS FOR CUSTOM BUTTON COMPONENT
-# KEY              | VALUE TYPE | OPTIONS
-# ------------------------------------------------
-# tag:             | symbol     | :a or :button
-# id:              | string     | specifies the id of the button
-# type:            | symbol     | :submit, :button, or :reset
-# destination:     | string     | this is the request destination for "button" tag it will automatically use a url and "a" tags will use href
-# text:            | string     | The text for the button
-# scheme:          | symbol     | A predefined styling for the button (creates a tailwind class)
-# extra_classes:   | string     | A way to add extra classes or override the classes provided by the scheme
-# size:            | symbol     | Pre-defined but can be overriden. Sizes avaliable = :xsmall, :small, :medium, :large, :xlarge
-# data:            | hash       | This follows the standard convention for defining data attributes using rails helpers/methods to not cause confusion
+# KEY              | VALUE TYPE  | OPTIONS
+# -------------------------------------------
+# styling_scheme:  | symbol      | Pre-defined in the StylingSchemes module
+# function_scheme: | symbol      | Pre-defined in the FunctionSchemes module
+# id:              | string      | Text to set the id of the element
+# href:            | string      | Text to specify the path if the elemet is a link
+# text:            | string      | Text to appear inside the button or link
+# extra_classes:   | string      | Extra classes that will override the default styling scheme
+# data:            | hash/symbols| Data attributes for javascript & stimulus
+# leading_visual:  | hash/symbols| Attributes for the class and style of the leading visual
 
-# DEFAULT VALUES
-# tag: :button
-# id: "your-id-here"
-# type: :submit
-# destination: nil
-# text: "Your text here"
-# method: :post
-# scheme: :default
-# size: :small
-# extra_classes: "some extra classes here"
-# data: {}
-
-## NEW DOCUMENTATION FOR NEW FUNCTIONS ABOVE REFERENCES INITIAL BRANCH 
-
-# This module just predefines schemes and other styles for consistancy.
-# Schemes can be overriden with the extra_classes attribute
 module SchemeDefinitions
   SIZES = {
-    xsmall: 'p-0.25',
-    small: 'p-1',
-    medium: 'p-2',
-    large: 'p-3',
-    xlarge: 'p-4'
+    xsmall: 'p-0.25 h-6 w-auto',
+    small: 'p-1 h-8 w-auto',
+    medium: 'p-2 h-10 w-auto',
+    large: 'p-3 h-12 w-auto',
+    xlarge: 'p-4 h-16 w-auto'
   }
 
   BUTTON_TYPES = {
     submit: 'submit',
     button: 'button',
-    reset: 'reset',
-    button_link: 'button_link',
+    reset: 'reset'
   }
-
   DISPLAYS = {
     none: 'none',
     block: 'block',
-    flex: 'flex'
+    flex: 'flex',
+    inline_flex: 'inline-flex',
+    flex_none: 'flex-none'
   }
 
   TAGS = {
@@ -70,16 +52,17 @@ module SchemeDefinitions
   STYLING_SCHEMES = {
     default: {
       text_color: 'text-slate-400',
-      bg_color: '',
+      bg_color: nil,
       border: 'border',
       border_color: 'border-slate-400',
       size: SIZES[:small],
-      display: '',
+      display: DISPLAYS[:inline_flex],
       align_content: 'items-center',
-      disabled: '',
+      text_align: 'text-center',
+      disabled: nil,
       shape: SHAPES[:rounded],
-      hover: 'hover:cursor-pointer',
-      extra_classes: ''
+      hover: 'hover:cursor-pointer hover:bg-slate-400 hover:text-white',
+      extra_classes: nil
     },
 
     primary: {
@@ -88,12 +71,13 @@ module SchemeDefinitions
       border: 'border',
       border_color: 'border-green-500',
       size: SIZES[:small],
-      display: '',
+      display: DISPLAYS[:inline_flex],
       align_content: 'items-center',
-      disabled: '',
+      text_align: 'text-center',
+      disabled: nil,
       shape: SHAPES[:rounded],
       hover: 'hover:bg-green-600 hover:border-green-600 hover:cursor-pointer',
-      extra_classes: ''
+      extra_classes: nil
     },
 
     secondary: {
@@ -102,12 +86,13 @@ module SchemeDefinitions
       border: 'border',
       border_color: 'border-gray-300',
       size: SIZES[:small],
-      display: '',
+      display: DISPLAYS[:inline_flex],
       align_content: 'items-center',
-      disabled: '',
+      text_align: 'text-center',
+      disabled: nil,
       shape: SHAPES[:rounded],
       hover: 'hover:bg-gray-300 hover:border-gray-400 hover:cursor-pointer',
-      extra_classes: ''
+      extra_classes: nil
     },
 
     danger: {
@@ -116,26 +101,28 @@ module SchemeDefinitions
       border: 'border',
       border_color: 'border-red-500',
       size: SIZES[:small],
-      display: '',
+      display: DISPLAYS[:inline_flex],
       align_content: 'items-center',
-      disabled: '',
+      text_align: 'text-center',
+      disabled: nil,
       shape: SHAPES[:rounded],
       hover: 'hover:bg-red-600 hover:border-red-600 hover:cursor-pointer',
-      extra_classes: ''
+      extra_classes: nil
     },
 
     link: {
-      text_color: '',
-      bg_color: '',
-      border: '',
-      border_color: '',
+      text_color: nil,
+      bg_color: nil,
+      border: nil,
+      border_color: nil,
       size: SIZES[:small],
-      display: '',
+      display: DISPLAYS[:inline_flex],
       align_content: 'items-center',
-      disabled: '',
-      shape: '',
+      text_align: 'text-center',
+      disabled: nil,
+      shape: nil,
       hover: 'hover:cursor-pointer',
-      extra_classes: ''
+      extra_classes: nil
     }
   }
 
@@ -157,61 +144,84 @@ end
 class ButtonComponent < ViewComponent::Base
   include SchemeDefinitions
 
-  # destination is maybe not a great name for the
   def initialize(
+    function_scheme: :submit_button,
     styling_scheme: :default,
-    function_scheme: :submit_button, # Provide a default symbol here
-    id: 'your-id-here',
-    destination: nil,
+    id: 'some-id-here',
+    href: '',
     text: 'Your text here',
     extra_classes: 'some extra classes here',
-    data: {}
+    data: {},
+    leading_visual: {class: "leading", style: "visual"},
+    trailing_visual: {}
   )
     super
-    @id = id
-    @text = text
-
-    @styling_scheme = STYLING_SCHEMES[styling_scheme] || STYLING_SCHEMES[:default]
-    @extra_classes = extra_classes
-    @class_composition = build_class_scheme
-
     @selected_function_scheme = FUNCTIONS[function_scheme] || FUNCTIONS[:submit_button]
-    build_function_scheme
-    @destination = destination
-    @destination_composition = build_destination
-
+    @styling_scheme = STYLING_SCHEMES[styling_scheme] || STYLING_SCHEMES[:default]
+    @id_text = id
+    @href = href
+    @text = text
+    @extra_classes = extra_classes
     @data = data
-    @data_attributes = build_data_attributes
-
+    @leading_visual = leading_visual
+    @trailing_visual = trailing_visual
+    build_element
   end
 
   private
 
-  def build_class_scheme
-    tailwind_class_array = @styling_scheme.values.reject(&:blank?).join(' ')
-    tailwind_class_array + ' ' + @extra_classes
+  def build_element
+    build_html_element_tag
+    build_html_element_id
+    build_html_element_attribute_type
+    build_html_element_href
+    build_html_element_style_scheme
+    build_html_element_data_attributes
+    build_html_element_leading_visual
+    #build_html_element_trailing_visual
   end
 
-  def build_function_scheme
+  def build_html_element_tag
+    return if @selected_function_scheme[:tag].nil?
     @tag = @selected_function_scheme[:tag]
-    @type = "type=#{@selected_function_scheme[:type]}"
-    if @selected_function_scheme[:method] == :post
-      @method = "formmethod=#{@selected_function_scheme[:method]}"
-    elseif @selected_function_scheme[:method] == :get
-      @method = "method=#{@selected_function_scheme[:method]}"
-    end
   end
 
-  def build_data_attributes
+  def build_html_element_id
+    return if @id_text.nil?
+    @id_attribute = "id=#{@id_text}"
+  end
+
+  def build_html_element_attribute_type
+    return if @selected_function_scheme[:type].nil?
+    @type_attribute = "type=#{@selected_function_scheme[:type]}"
+  end
+
+  def build_html_element_href
+    return if @selected_function_scheme[:tag] != 'a' || @href.nil?
+    @href = "href=#{@href}"
+  end
+
+  def build_html_element_style_scheme
+    tailwind_class_array = @styling_scheme.values.reject(&:blank?)
+    @class_composition = tailwind_class_array.join(' ') + ' ' + @extra_classes.to_s
+  end
+
+  def build_html_element_data_attributes
     return if @data.nil?
-    @data.map { |key, value| "data-#{key.to_s.gsub('_', '-')}=#{value.to_s.gsub('_', '-')}" }.join(' ')
+    @data_attributes = @data.map do |key, value|
+      "data-#{key.to_s.gsub('_', '-')}=#{value.to_s.gsub('_', '-')}"
+    end.join(' ')
   end
 
-  def build_destination
-    if @selected_function_scheme[:tag] == "a" && !@destination.nil?
-      "href=#{@destination}"
-    elsif @selected_function_scheme[:tag] == "button" && !@destination.nil?
-      "url=#{@destination}"
-    end
+  def build_html_element_leading_visual
+    return if @leading_visual.nil? || @leading_visual.empty?
+    @leading_visual_class_attribute_value = @leading_visual[:class] ? "#{@leading_visual[:class]}" : ""
+    @leading_visual_style_attribute_value = @leading_visual[:style] ? "#{@leading_visual[:style]}" + " margin-right: auto;": ""
+  end
+
+  def build_html_element_trailing_visual
+    return if @leading_visual.nil? || @leading_visual.empty?
+    @trailing_visual_class_attribute_value = @trailing_visual[:class] ? "#{@trailing_visual[:class]}": ""
+    @trailing_visual_style_attribute_value = @trailing_visual[:style] ? "#{@trailing_visual[:style]}" + " margin-left: auto;": ""
   end
 end
