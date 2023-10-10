@@ -18,6 +18,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "roles", ["admin", "technician"]
+
   create_table "customers", force: :cascade do |t|
     t.string "name", null: false
     t.string "phone_number"
@@ -55,11 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
     t.index ["discarded_at"], name: "index_regions_on_discarded_at"
   end
 
-  add_foreign_key "customers", "regions"
-  add_foreign_key "point_of_contacts", "customers"
-
-  create_enum "roles", ["admin", "technician"]
-
   create_table "users", force: :cascade do |t|
     t.enum "role", default: "technician", null: false, enum_type: "roles"
     t.string "name", null: false
@@ -79,4 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "customers", "regions"
+  add_foreign_key "point_of_contacts", "customers"
 end
