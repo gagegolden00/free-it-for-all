@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
   create_enum "roles", ["admin", "technician"]
 
   create_table "users", force: :cascade do |t|
-    t.enum "role", default: "technician", null: false, enum_type: "roles"
+    t.enum "role", null: false, enum_type: "roles"
     t.string "name", null: false
     t.string "home_phone"
     t.string "work_phone"
