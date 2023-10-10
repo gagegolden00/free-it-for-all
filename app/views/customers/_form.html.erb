@@ -1,0 +1,41 @@
+  <% if customer.errors.any? %>
+  <div style="color: red">
+    <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+    <ul>
+      <% customer.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div id="new-customer-form" class ="w-1/2 flex justify-center">
+  <%= form_with(model: customer) do |form| %>
+    <div class="border border-black flex flex-col">
+      <%= form.label :customer_name%>
+      <%= form.text_field :name, class: "border border-black"%>
+      <%= form.label :region%>
+      <%= form.collection_select :region_id, @regions, :id, :name, class: "border border-black" %>
+      <%= form.label :address%>
+      <%= form.text_field :address, class: "border border-black"%>
+      <%= form.label :city%>
+      <%= form.text_field :city, class: "border border-black"%>
+      <%= form.label :state%>
+      <%= form.select :state, options_for_select(us_states), class: "border border-black"%>
+      <%= form.label :zipcode%>
+      <%= form.text_field :zipcode, class: "border border-black"%>
+    </div>
+    <div class="border border-black flex flex-col">
+    <%= form.fields_for :point_of_contact, customer.build_point_of_contact do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "border border-black" %>
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number, class: "border border-black" %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "border border-black" %>
+    <% end %>
+    </div>
+    <div>
+      <%= form.submit%>
+    </div>
+  <% end %>
+</div>
