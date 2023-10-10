@@ -126,19 +126,23 @@ module SchemeDefinitions
     }
   }
 
-  FUNCTIONS = {
+  FUNCTION_SCHEMES = {
     submit_button: {
       tag: TAGS[:button],
-      type: BUTTON_TYPES[:submit],
-      method: METHODS[:post]
+      type: BUTTON_TYPES[:submit]
     },
 
     link: {
       tag: TAGS[:a],
-      type: BUTTON_TYPES[:button_link],
-      method: METHODS[:get]
+      type: BUTTON_TYPES[nil],
+    },
+
+    button: {
+      tag: TAGS[:button],
+      type: BUTTON_TYPES[:button]
     }
   }
+
 end
 
 class ButtonComponent < ViewComponent::Base
@@ -147,18 +151,19 @@ class ButtonComponent < ViewComponent::Base
   def initialize(
     function_scheme: :submit_button,
     styling_scheme: :default,
-    id: 'some-id-here',
+    id: '',
     href: '',
-    text: 'Your text here',
-    extra_classes: 'some extra classes here',
+    text: '',
+    extra_classes: '',
+    # sanatize data attributes?
     data: {},
-    leading_visual: {class: "leading", style: "visual"},
+    leading_visual: {},
     trailing_visual: {}
   )
     super
-    @selected_function_scheme = FUNCTIONS[function_scheme] || FUNCTIONS[:submit_button]
+    @function_scheme = FUNCTION_SCHEMES[function_scheme] || FUNCTION_SCHEMES[:submit_button]
     @styling_scheme = STYLING_SCHEMES[styling_scheme] || STYLING_SCHEMES[:default]
-    @id_text = id
+    @id = id
     @href = href
     @text = text
     @extra_classes = extra_classes
@@ -172,33 +177,21 @@ class ButtonComponent < ViewComponent::Base
 
   def build_element
     build_html_element_tag
-    build_html_element_id
-    build_html_element_attribute_type
-    build_html_element_href
+    build_html_element_type
     build_html_element_style_scheme
     build_html_element_data_attributes
     build_html_element_leading_visual
-    #build_html_element_trailing_visual
+    build_html_element_trailing_visual
   end
 
   def build_html_element_tag
-    return if @selected_function_scheme[:tag].nil?
-    @tag = @selected_function_scheme[:tag]
+    return if @function_scheme[:tag].nil?
+    @tag = @function_scheme[:tag]
   end
 
-  def build_html_element_id
-    return if @id_text.nil?
-    @id_attribute = "id=#{@id_text}"
-  end
-
-  def build_html_element_attribute_type
-    return if @selected_function_scheme[:type].nil?
-    @type_attribute = "type=#{@selected_function_scheme[:type]}"
-  end
-
-  def build_html_element_href
-    return if @selected_function_scheme[:tag] != 'a' || @href.nil?
-    @href = "href=#{@href}"
+  def build_html_element_type
+    return if @function_scheme[:type].nil?
+    @type = @function_scheme[:type]
   end
 
   def build_html_element_style_scheme
@@ -220,7 +213,7 @@ class ButtonComponent < ViewComponent::Base
   end
 
   def build_html_element_trailing_visual
-    return if @leading_visual.nil? || @leading_visual.empty?
+    return if @trailing_visual.nil? || @trailing_visual.empty?
     @trailing_visual_class_attribute_value = @trailing_visual[:class] ? "#{@trailing_visual[:class]}": ""
     @trailing_visual_style_attribute_value = @trailing_visual[:style] ? "#{@trailing_visual[:style]}" + " margin-left: auto;": ""
   end

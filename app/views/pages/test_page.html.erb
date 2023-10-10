@@ -10,15 +10,23 @@
   </ul>
   <div class="flex flex-col my-10 gap-10">
     <div><%= render(ButtonComponent.new(text: "hello world hello world hello world"))%></div>
-    <div><%= render(ButtonComponent.new(styling_scheme: :primary))%></div>
-    <div><%= render(ButtonComponent.new(styling_scheme: :secondary))%></div>
-    <div><%= render(ButtonComponent.new(styling_scheme: :danger))%></div>
-    <div><%= render(ButtonComponent.new(styling_scheme: :link))%></div>
+
+    <div><%= render(ButtonComponent.new(styling_scheme: :primary, extra_classes: 'w-40'))%></div>
+
+    <div><%= render(ButtonComponent.new(styling_scheme: :secondary, function_scheme: :button, id: "my-button", text: "button with id", data: {controller: :my_controller}))%></div>
+
+    <%= form_tag({ controller: 'pages', action: 'test_page' }, method: 'get') do %>
+      <%= label_tag :test_parameter, 'Test Parameter' %>
+      <%= hidden_field_tag :test_parameter, 'value passed' %>
+      <div><%= render(ButtonComponent.new(styling_scheme: :danger, function_scheme: :submit, text: "Submit a parameter")) %></div>
+    <% end %>
+    <div><%= render(ButtonComponent.new(styling_scheme: :danger, function_scheme: :submit))%></div>
+    <div><%= render(ButtonComponent.new(styling_scheme: :link, function_scheme: :link, text: :button_component_link))%></div>
   </div>
 </div>
 <div class="h-20 w-20">
   <i class="fa-light fa-atom-simple" style="color: #000000; height: 20px;"></i>
 </div>
 <div>
-<%= render(ButtonComponent.new(leading_visual: {class: "fa-light fa-atom-simple", style: "color: #000000;"}))%>
+  <%= render(ButtonComponent.new(leading_visual: {class: "fa-light fa-atom-simple", style: "color: #000000;"}))%>
 </div>
