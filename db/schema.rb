@@ -22,6 +22,43 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "roles", ["admin", "technician"]
 
+  create_table "customers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "phone_number"
+    t.string "email"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "zipcode"
+    t.bigint "region_id"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "discarded_at"
+    t.index ["discarded_at"], name: "index_customers_on_discarded_at"
+    t.index ["region_id"], name: "index_customers_on_region_id"
+  end
+
+  create_table "point_of_contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "phone_number"
+    t.string "email"
+    t.bigint "customer_id"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "discarded_at"
+    t.index ["customer_id"], name: "index_point_of_contacts_on_customer_id"
+    t.index ["discarded_at"], name: "index_point_of_contacts_on_discarded_at"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "name"
+    t.string "manager"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "discarded_at"
+    t.index ["discarded_at"], name: "index_regions_on_discarded_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.enum "role", null: false, enum_type: "roles"
     t.string "name", null: false
@@ -41,4 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "customers", "regions"
+  add_foreign_key "point_of_contacts", "customers"
 end
