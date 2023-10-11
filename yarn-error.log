@@ -1,22 +1,23 @@
-Arguments: 
+Arguments:
   /usr/bin/node /usr/share/yarn/bin/yarn.js install --check
 
-PATH: 
+PATH:
   /usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-Yarn version: 
+Yarn version:
   1.22.19
 
-Node version: 
+Node version:
   18.13.0
 
-Platform: 
+Platform:
   linux arm64
 
-Trace: 
+Trace:
+  Error: ENOENT: no such file or directory, lstat '/app/node_modules/@jridgewell/set-array/package.json'
   Error: EEXIST: file already exists, symlink '../../../../mini-svg-data-uri/cli.js' -> '/app/node_modules/@tailwindcss/forms/node_modules/.bin/mini-svg-data-uri'
 
-npm manifest: 
+npm manifest:
   {
     "name": "app",
     "private": "true",
@@ -41,8 +42,8 @@ npm manifest:
     }
   }
 
-yarn manifest: 
+yarn manifest:
   No manifest
 
-Lockfile: 
+Lockfile:
   No lockfile
