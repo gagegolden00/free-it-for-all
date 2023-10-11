@@ -13,7 +13,6 @@ class CustomersController < ApplicationController
       flash[:notice] = "Customer created"
       redirect_to @customer
     else
-      puts @customer.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -31,11 +30,9 @@ class CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
-      puts "UPDATED"
       flash[:notice] = "Customer updated"
       redirect_to @customer
     else
-      puts "DID NOT UPDATE"
       render :edit, status: :unprocessable_entity
     end
   end
