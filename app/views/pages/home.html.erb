@@ -1,5 +1,2 @@
 <h1>Home page</h1>
-  <% flash.each do |type, message| %>
-    <%= render AlertComponent.new(type, message) %>
-  <% end %>
 <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "p-2 border border-black"%>

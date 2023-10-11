@@ -4,9 +4,11 @@
 
 <div id="customers">
   <% @customers.each do |customer| %>
+  <div class="border my-2 p-4">
     <p>
-      <%= link_to "Show this customer", customer %>
+      <%= link_to customer.name , customer_path(customer) %>
     </p>
+    </div>
   <% end %>
 </div>
 
