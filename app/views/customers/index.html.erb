@@ -4,11 +4,12 @@
 
 <div id="customers">
   <% @customers.each do |customer| %>
-    <%= render customer %>
-    <p>
-      <%= link_to "Show this customer", customer %>
-    </p>
+    <div class="border p-2 m-2 bover:bg-slate-200 w-52">
+      <%= link_to customer.name, customer%>
+    </div>
   <% end %>
 </div>
-
+<div>
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+</div>
 <%= link_to "New customer", new_customer_path %>
