@@ -10,13 +10,14 @@ class CustomersController < ApplicationController
   def create
     @regions = Region.all
     @customer = Customer.new(customer_params)
-    if @customer.save!
+    if @customer.save
       flash[:notice] = "Customer created"
       redirect_to @customer
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
+
 
   def show;end
 
@@ -34,7 +35,8 @@ class CustomersController < ApplicationController
       flash[:notice] = "Customer updated"
       redirect_to @customer
     else
-      render :edit
+      flash[:alert] = "Update failed"
+      render :edit, status: :unprocessable_entity
     end
   end
 
