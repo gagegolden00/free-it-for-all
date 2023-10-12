@@ -69,10 +69,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.timestamptz "reset_password_sent_at"
-    t.timestamptz "remember_created_at"
-    t.timestamptz "created_at", null: false
-    t.timestamptz "updated_at", null: false
+    t.timestamptz "reset_password_sent_at", precision: 6
+    t.timestamptz "remember_created_at", precision: 6
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
     t.timestamptz "discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
