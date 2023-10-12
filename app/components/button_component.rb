@@ -134,7 +134,7 @@ module SchemeDefinitions
 
     link: {
       tag: TAGS[:a],
-      type: BUTTON_TYPES[nil],
+      type: BUTTON_TYPES[nil]
     },
 
     button: {
@@ -142,7 +142,6 @@ module SchemeDefinitions
       type: BUTTON_TYPES[:button]
     }
   }
-
 end
 
 class ButtonComponent < ViewComponent::Base
@@ -186,11 +185,13 @@ class ButtonComponent < ViewComponent::Base
 
   def build_html_element_tag
     return if @function_scheme[:tag].nil?
+
     @tag = @function_scheme[:tag]
   end
 
   def build_html_element_type
     return if @function_scheme[:type].nil?
+
     @type = @function_scheme[:type]
   end
 
@@ -205,6 +206,7 @@ class ButtonComponent < ViewComponent::Base
 
   def build_html_element_data_attributes
     return if @data.nil?
+
     @data_attributes = @data.map do |key, value|
       "data-#{key.to_s.gsub('_', '-')}=#{value.to_s.gsub('_', '-')}"
     end.join(' ')
@@ -212,13 +214,15 @@ class ButtonComponent < ViewComponent::Base
 
   def build_html_element_leading_visual
     return if @leading_visual.nil? || @leading_visual.empty?
-    @leading_visual_class_attribute_value = @leading_visual[:class] ? "#{@leading_visual[:class]}" : ""
-    @leading_visual_style_attribute_value = @leading_visual[:style] ? "#{@leading_visual[:style]}" + "padding-right: 5px;": ""
+
+    @leading_visual_class_attribute_value = @leading_visual[:class] ? "#{@leading_visual[:class]}" : ''
+    @leading_visual_style_attribute_value = @leading_visual[:style] ? "#{@leading_visual[:style]}" + 'padding-right: 5px;' : ''
   end
 
   def build_html_element_trailing_visual
     return if @trailing_visual.nil? || @trailing_visual.empty?
-    @trailing_visual_class_attribute_value = @trailing_visual[:class] ? "#{@trailing_visual[:class]}": ""
-    @trailing_visual_style_attribute_value = @trailing_visual[:style] ? "#{@trailing_visual[:style]}" + "padding-left: 5px;": ""
+
+    @trailing_visual_class_attribute_value = @trailing_visual[:class] ? "#{@trailing_visual[:class]}" : ''
+    @trailing_visual_style_attribute_value = @trailing_visual[:style] ? "#{@trailing_visual[:style]}" + 'padding-left: 5px;' : ''
   end
 end
