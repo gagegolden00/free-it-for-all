@@ -4,13 +4,14 @@
 # KEY              | VALUE TYPE  | OPTIONS
 # -------------------------------------------
 # styling_scheme:  | symbol      | Pre-defined in the StylingSchemes module
-# function_scheme: | symbol      | Pre-defined in the FunctionSchemes module
+# function_scheme: | symbol      | Pre-defined in the StylingSchemes module
 # id:              | string      | Text to set the id of the element
 # href:            | string      | Text to specify the path if the elemet is a link
 # text:            | string      | Text to appear inside the button or link
-# custom_cl:   | string      | Extra classes that will override the default styling scheme
+# custom_cl:       | string      | Extra classes that will override the default styling scheme
 # data:            | hash/symbols| Data attributes for javascript & stimulus
 # leading_visual:  | hash/symbols| Attributes for the class and style of the leading visual
+# trailing_visual: | hash/symbols| Attributes for the class and style of the trailing visual
 
 module SchemeDefinitions
   SIZES = {
