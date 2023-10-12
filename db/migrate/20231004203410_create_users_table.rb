@@ -1,9 +1,9 @@
 class CreateUsersTable < ActiveRecord::Migration[7.0]
   def change
-    create_enum :roles, %w[admin technician]
+    create_enum :role, %w[admin technician]
 
     create_table :users do |t|
-      t.enum :role, enum_type: 'roles', null: false
+      t.enum :role, enum_type: 'role', null: false
       t.string :name, null: false
       t.string :home_phone
       t.string :work_phone
