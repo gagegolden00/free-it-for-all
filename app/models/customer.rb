@@ -5,6 +5,8 @@ class Customer < ApplicationRecord
 
   before_discard :discard_necessary_associated_records
 
+  validates :name, presence: true
+
   private
 
   def discard_necessary_associated_records

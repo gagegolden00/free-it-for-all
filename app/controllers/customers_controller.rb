@@ -1,21 +1,22 @@
 class CustomersController < ApplicationController
   before_action :set_customer_from_params, only: [:show, :edit, :update, :destroy]
+  before_action :set_all_regions, only: [:edit, :update, :new, :create]
 
   def new
     @customer = Customer.new
-    @regions = Region.all
     @customer.build_point_of_contact
   end
 
   def create
-    @regions = Region.all
     @customer = Customer.new(customer_params)
     if @customer.save
+      flash[:notice] = "Customer created"
       redirect_to @customer
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
+
 
   def show;end
 
@@ -24,22 +25,22 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @regions = Region.all
     @customer.build_point_of_contact
   end
 
   def update
     if @customer.update(customer_params)
+      flash[:notice] = "Customer updated"
       redirect_to @customer
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     if @customer.discard
-      # redirect here
-      puts "CUSTOMER DISCARDED"
+      flash[:notice] = "Customer removed"
+      redirect_to customers_path
     end
   end
 
@@ -53,6 +54,10 @@ class CustomersController < ApplicationController
 
   def set_customer_from_params
     @customer = Customer.find(params[:id])
+  end
+
+  def set_all_regions
+    @regions = Region.all
   end
 
 end
