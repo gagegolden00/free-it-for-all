@@ -1,6 +1,5 @@
 class CreateCustomerTableAndPoc < ActiveRecord::Migration[7.0]
   def change
-
     create_table :regions do |t|
       t.string :name
       t.string :manager
@@ -20,7 +19,7 @@ class CreateCustomerTableAndPoc < ActiveRecord::Migration[7.0]
       t.timestamps
       t.timestamp :discarded_at
     end
-    
+
     create_table :point_of_contacts do |t|
       t.string :name
       t.string :phone_number

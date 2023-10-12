@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-  has_one :point_of_contact, :dependent => :destroy
+  has_one :point_of_contact, dependent: :destroy
   belongs_to :region
   accepts_nested_attributes_for :point_of_contact
 
@@ -10,7 +10,6 @@ class Customer < ApplicationRecord
   private
 
   def discard_necessary_associated_records
-    self.point_of_contact.discard if self.point_of_contact.present?
+    point_of_contact.discard if point_of_contact.present?
   end
-
 end

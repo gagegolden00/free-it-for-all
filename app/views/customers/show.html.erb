@@ -1,5 +1,4 @@
 <h1>Customer Show Page</h1>
-
 <p><%= @customer.name %></p>
 <p><%= @customer.email %></p>
 <p><%= @customer.phone_number %></p>
@@ -13,10 +12,8 @@
   <p><%= @customer.point_of_contact.phone_number %></p>
   <p><%= @customer.point_of_contact.email %></p>
 <% end %>
-
 <div>
   <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
   <%= link_to "Back to customers", customers_path %>
-
   <%= button_to "Destroy this customer", @customer, method: :delete %>
 </div>
