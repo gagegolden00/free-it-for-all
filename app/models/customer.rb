@@ -1,7 +1,12 @@
 class Customer < ApplicationRecord
   has_one :point_of_contact, :dependent => :destroy
-  belongs_to :region
+  has_many :customer_regions
+  has_many :regions, through: :customer_regions
+  has_many :customer_service_jobs, through: :customer_service_jobs
+
+
   accepts_nested_attributes_for :point_of_contact
+  accepts_nested_attributes_for :customer_regions
 
   before_discard :discard_necessary_associated_records
 
