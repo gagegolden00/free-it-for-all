@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
   def show;end
 
   def index
-    @customers = Customer.all
+    @pagy, @customers = pagy(Customer.all)
   end
 
   def edit
