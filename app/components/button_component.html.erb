@@ -10,7 +10,7 @@
   <% if !@href.blank? || @tag != "button" %>
     href="<%= @href %>"
   <% end %>
-  class="<%= @class_composition %>"
+  class="<%= @tailwind_class %>"
   <%= @data_attributes %>>
   <% if !@leading_visual.empty? %>
     <i class="<%= @leading_visual_class_attribute_value %>" style="<%= @leading_visual_style_attribute_value %>"></i>

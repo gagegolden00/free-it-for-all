@@ -11,59 +11,6 @@
     <li class="ml-16 my-1">link</li>
   </ul>
   <div class="flex flex-col my-10 gap-5">
-
-    <div>
-      <p>Button with extended text</p>
-      <%= render(ButtonComponent.new(text: "hello world hello world hello world"))%>
-    </div>
-
-    <div>
-      <p>Button with no text and custom class</p>
-      <%= render(ButtonComponent.new(styling_scheme: :primary, custom_class: "w-40 border-green-500 bg-green-500 hover:bg-green-600 hover:cursor-pointer rounded border p-4 h-8"))%>
-    </div>
-
-    <div>
-      <p>Stimulus button</p>
-      <%= render(ButtonComponent.new(styling_scheme: :secondary, function_scheme: :button, id: "my-button", text: "button with id", data: {controller: :my_controller}))%>
-    </div>
-
-
-    <%= form_tag({ controller: 'pages', action: 'test_page' }, method: 'get') do %>
-      <%= label_tag :test_parameter, 'Test Parameter' %>
-      <%= hidden_field_tag :test_parameter, 'value passed' %>
-      <div>
-        <p>Form submission button</p>
-        <%= render(ButtonComponent.new(styling_scheme: :danger, function_scheme: :submit, text: "Submit a form")) %>
-      </div>
-    <% end %>
-
-    <div>
-    <p>Button with no text</p>
-      <%= render(ButtonComponent.new(styling_scheme: :danger, function_scheme: :submit))%>
-    </div>
-
-    <div>
-      <p>"Link" button</p>
-      <%= render(ButtonComponent.new(styling_scheme: :link, function_scheme: :link, text: "link to home", href: "/home"))%>
-    </div>
-
-    <div>
-      <p>Only overridden styling. No default styling</p>
-      <%= render(ButtonComponent.new(leading_visual: {class: "fa-light fa-atom-simple", style: "color: #000000;"}, text: "Button with icon", custom_class: "border border-black text-black p-2 hover:bg-gray-200 rounded"))%>
-    </div>
-
-    <div>
-      <p>Default styling</p>
-      <%= render(ButtonComponent.new(trailing_visual: {class: "fa-light fa-atom-simple", style: "color: #000000;"}, text: "Button with icon", styling_scheme: :danger))%>
-    </div>
-
-    <h1>Rendering subclass buttons</h1>
-
-        <div>
-      <p>Default styling</p>
-      <%= render(ButtonComponent::Submit.new(custom_class: "border border-blue-400 p-5"))%>
-    </div>
-
-  </div>
 </div>
+
 

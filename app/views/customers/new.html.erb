@@ -7,6 +7,6 @@
   </div>
   <br>
   <div>
-    <%= link_to "Back to customers", customers_path %>
+    <%= link_to "Back to customers", customers_path, data: {controller: :stimulus_controller, turbo_method: :delete}%>
   </div>
 </div>
