@@ -3,4 +3,6 @@
 <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "p-2 border border-black"%>
 
 
-<%= render(ButtonComponent.new(styling_scheme: :link, function_scheme: :link, text: "Visit test page", href: "/test_page", extra_classes: "hover:text-blue-600 ml-10"))%>
+<%= render(ButtonComponent.new(styling_scheme: :link, function_scheme: :link, text: "Visit test page", href: "/test_page", custom_class: "hover:text-blue-600 ml-10"))%>
+
+<%= render(ButtonComponent::Submit.new)%>

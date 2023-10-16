@@ -12,157 +12,112 @@
 # data:            | hash/symbols| Data attributes for javascript & stimulus
 # leading_visual:  | hash/symbols| Attributes for the class and style of the leading visual
 # trailing_visual: | hash/symbols| Attributes for the class and style of the trailing visual
+# SIZES = {
+#   xsmall: 'p-0.25 h-6 w-auto',
+#   small: 'p-1 h-8 w-auto',
+#   medium: 'p-2 h-10 w-auto',
+#   large: 'p-3 h-12 w-auto',
+#   xlarge: 'p-4 h-16 w-auto'
+# }
 
-module SchemeDefinitions
-  SIZES = {
-    xsmall: 'p-0.25 h-6 w-auto',
-    small: 'p-1 h-8 w-auto',
-    medium: 'p-2 h-10 w-auto',
-    large: 'p-3 h-12 w-auto',
-    xlarge: 'p-4 h-16 w-auto'
-  }
+# module SchemeDefinitions
 
-  BUTTON_TYPES = {
-    submit: 'submit',
-    button: 'button',
-    reset: 'reset'
-  }
-  DISPLAYS = {
-    none: 'none',
-    block: 'block',
-    flex: 'flex',
-    inline_flex: 'inline-flex',
-    flex_none: 'flex-none'
-  }
+#   # Pre defined style_schemes
+#   STYLING_SCHEMES = {
+#     submit: {
+#       text_color: 'text-green-400',
+#       bg_color: nil,
+#       border: 'border',
+#       border_color: 'border-green-400',
+#       size: 'p-1 h-8 w-auto',
+#       display: "inline-flex",
+#       align_content: 'items-center',
+#       text_align: 'text-center',
+#       disabled: nil,
+#       shape: "rounded",
+#       hover: 'hover:cursor-pointer hover:bg-green-400 hover:text-white',
+#       custom_class: nil
+#     },
 
-  TAGS = {
-    a: 'a',
-    button: 'button'
-  }
+#     button: {
+#       text_color: 'text-slate-400',
+#       bg_color: nil,
+#       border: 'border',
+#       border_color: 'border-slate-400',
+#       size: 'p-1 h-8 w-auto',
+#       display: "inline-flex",
+#       align_content: 'items-center',
+#       text_align: 'text-center',
+#       disabled: nil,
+#       shape: "rounded",
+#       hover: 'hover:cursor-pointer hover:bg-slate-400 hover:text-white',
+#       custom_class: nil
+#     },
 
-  SHAPES = {
-    rounded: 'rounded'
-  }
+#     link: {
+#       text_color: nil,
+#       bg_color: nil,
+#       border: nil,
+#       border_color: nil,
+#       size: 'p-1 h-8 w-auto',
+#       display: 'inline-flex',
+#       align_content: 'items-center',
+#       text_align: 'text-center',
+#       disabled: nil,
+#       shape: nil,
+#       hover: 'hover:cursor-pointer',
+#       custom_class: nil
+#     }
+#   }
 
-  METHODS = {
-    get: 'get',
-    post: 'post'
-  }
+#   FUNCTION_SCHEMES = {
+#     submit: {
+#       tag: 'button',
+#       type: 'submit'
+#     },
+#     button: {
+#       tag: 'button',
+#       type: 'button'
+#     },
+#     link: {
+#       tag: 'a',
+#       type: nil
+#     }
+#   }
+# end
 
-  # Pre defined style_schemes
-  STYLING_SCHEMES = {
-    default: {
-      text_color: 'text-slate-400',
-      bg_color: nil,
-      border: 'border',
-      border_color: 'border-slate-400',
-      size: SIZES[:small],
-      display: DISPLAYS[:inline_flex],
-      align_content: 'items-center',
-      text_align: 'text-center',
-      disabled: nil,
-      shape: SHAPES[:rounded],
-      hover: 'hover:cursor-pointer hover:bg-slate-400 hover:text-white',
-      custom_class: nil
-    },
+class StylingScheme
+  def initialize
+  end
+end
 
-    primary: {
-      text_color: 'text-white',
-      bg_color: 'bg-green-500',
-      border: 'border',
-      border_color: 'border-green-500',
-      size: SIZES[:small],
-      display: DISPLAYS[:inline_flex],
-      align_content: 'items-center',
-      text_align: 'text-center',
-      disabled: nil,
-      shape: SHAPES[:rounded],
-      hover: 'hover:bg-green-600 hover:border-green-600 hover:cursor-pointer',
-      custom_class: nil
-    },
+class FunctionScheme
+  def initialize(tag:, type:)
+    tag = tag
+    type = type
+  end
 
-    secondary: {
-      text_color: 'text-gray-800',
-      bg_color: 'bg-gray-200',
-      border: 'border',
-      border_color: 'border-gray-300',
-      size: SIZES[:small],
-      display: DISPLAYS[:inline_flex],
-      align_content: 'items-center',
-      text_align: 'text-center',
-      disabled: nil,
-      shape: SHAPES[:rounded],
-      hover: 'hover:bg-gray-300 hover:border-gray-400 hover:cursor-pointer',
-      custom_class: nil
-    },
-
-    danger: {
-      text_color: 'text-white',
-      bg_color: 'bg-red-500',
-      border: 'border',
-      border_color: 'border-red-500',
-      size: SIZES[:small],
-      display: DISPLAYS[:inline_flex],
-      align_content: 'items-center',
-      text_align: 'text-center',
-      disabled: nil,
-      shape: SHAPES[:rounded],
-      hover: 'hover:bg-red-600 hover:border-red-600 hover:cursor-pointer',
-      custom_class: nil
-    },
-
-    link: {
-      text_color: nil,
-      bg_color: nil,
-      border: nil,
-      border_color: nil,
-      size: SIZES[:small],
-      display: DISPLAYS[:inline_flex],
-      align_content: 'items-center',
-      text_align: 'text-center',
-      disabled: nil,
-      shape: nil,
-      hover: 'hover:cursor-pointer',
-      custom_class: nil
-    }
-  }
-
-  FUNCTION_SCHEMES = {
-    submit_button: {
-      tag: TAGS[:button],
-      type: BUTTON_TYPES[:submit]
-    },
-
-    link: {
-      tag: TAGS[:a],
-      type: BUTTON_TYPES[nil]
-    },
-
-    button: {
-      tag: TAGS[:button],
-      type: BUTTON_TYPES[:button]
-    }
-  }
+  def create_function_scheme
+    
+  end
 end
 
 class ButtonComponent < ViewComponent::Base
-  include SchemeDefinitions
+
 
   def initialize(
-    function_scheme: :submit_button,
+    function_scheme: :button,
     styling_scheme: :default,
     id: '',
     href: '',
     text: '',
     custom_class: '',
-    # sanatize data attributes?
     data: {},
     leading_visual: {},
     trailing_visual: {}
   )
-    super
-    @function_scheme = FUNCTION_SCHEMES[function_scheme] || FUNCTION_SCHEMES[:submit_button]
-    @styling_scheme = STYLING_SCHEMES[styling_scheme] || STYLING_SCHEMES[:default]
+    @function_scheme = FUNCTION_SCHEMES[function_scheme] || FUNCTION_SCHEMES[:button]
+    @styling_scheme = STYLING_SCHEMES[styling_scheme] || STYLING_SCHEMES[:button]
     @id = id
     @href = href
     @text = text
@@ -227,3 +182,29 @@ class ButtonComponent < ViewComponent::Base
     @trailing_visual_style_attribute_value = @trailing_visual[:style] ? "#{@trailing_visual[:style]}" + 'padding-left: 5px;' : ''
   end
 end
+
+
+class ButtonComponent::Submit < ButtonComponent
+  def initialize(
+    function_scheme: :submit,
+    styling_scheme: :submit,
+    id: '',
+    href: '',
+    text: 'Submit',
+    custom_class: '',
+    data: {},
+    leading_visual: {},
+    trailing_visual: {}
+  )
+    super(function_scheme: function_scheme,
+          styling_scheme: styling_scheme,
+          id: id,
+          href: href,
+          text: text,
+          custom_class: custom_class,
+          data: data,
+          leading_visual: leading_visual,
+          trailing_visual: trailing_visual)
+  end
+end
+

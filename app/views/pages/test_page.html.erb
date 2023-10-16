@@ -57,6 +57,13 @@
       <%= render(ButtonComponent.new(trailing_visual: {class: "fa-light fa-atom-simple", style: "color: #000000;"}, text: "Button with icon", styling_scheme: :danger))%>
     </div>
 
+    <h1>Rendering subclass buttons</h1>
+
+        <div>
+      <p>Default styling</p>
+      <%= render(ButtonComponent::Submit.new(custom_class: "border border-blue-400 p-5"))%>
+    </div>
+
   </div>
 </div>
 
