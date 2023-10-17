@@ -19,7 +19,7 @@ end
 class ButtonComponent::Submit < ButtonComponent
   def initialize(
     id: '',
-    text: 'Hey im a button',
+    text: 'Submit',
     tailwind_class: 'text-green-400 border border-green-400 p-1 h-8 w-auto inline-flex items-center text-center rounded hover:cursor-pointer hover:bg-green-400 hover:text-white',
     data: {},
     leading_visual: {},
@@ -38,7 +38,14 @@ class ButtonComponent::Submit < ButtonComponent
 end
 
 class ButtonComponent::Button < ButtonComponent
-  def initialize(id: '', text: '', tailwind_class: '', data: {}, leading_visual: {}, trailing_visual: {})
+  def initialize(
+    id: '',
+    text: 'Button',
+    tailwind_class: 'text-blue-400 border border-blue-400 p-1 h-8 w-auto inline-flex items-center text-center rounded hover:cursor-pointer hover:bg-blue-400 hover:text-white',
+    data: {},
+    leading_visual: {},
+    trailing_visual: {}
+    )
     @id = id
     @text = text
     @tailwind_class = tailwind_class
@@ -52,7 +59,15 @@ class ButtonComponent::Button < ButtonComponent
 end
 
 class ButtonComponent::Link < ButtonComponent
-  def initialize(id: '', href: '', text: '', tailwind_class: '', data: {}, leading_visual: {}, trailing_visual: {})
+  def initialize(
+    id: '',
+    href: '',
+    text: 'Link to',
+    tailwind_class: 'hover:text-blue-600',
+    data: {},
+    leading_visual: {},
+    trailing_visual: {}
+    )
     @id = id
     @href = href
     @text = text
