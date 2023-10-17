@@ -1,10 +1,9 @@
 class PagesController < ApplicationController
-  def home
 
+  def home
   end
 
   def test_page
-
   end
   
 end

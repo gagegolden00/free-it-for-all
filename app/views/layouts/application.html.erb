@@ -6,12 +6,18 @@
     <script src="https://kit.fontawesome.com/a05781cea0.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-
   <body>
-    <%= yield %>
+    <header class="border-2 border-black h-20">
+      <p>Application layout Header</p>
+    </header>
+    <main>
+      <% flash.each do |type, msg|%>
+        <%= render AlertComponent.new(type, msg)%>
+      <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>
