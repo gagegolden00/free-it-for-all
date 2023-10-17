@@ -21,25 +21,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_132739) do
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "role", ["admin", "technician"]
-  create_enum "status", ["status1", "status2", "status3", "completed"]
-
-  create_table "customer_regions", force: :cascade do |t|
-    t.bigint "customer_id"
-    t.bigint "region_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_customer_regions_on_customer_id"
-    t.index ["region_id"], name: "index_customer_regions_on_region_id"
-  end
-
-  create_table "customer_service_jobs", force: :cascade do |t|
-    t.bigint "customer_id"
-    t.bigint "service_job_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_customer_service_jobs_on_customer_id"
-    t.index ["service_job_id"], name: "index_customer_service_jobs_on_service_job_id"
-  end
 
   create_table "customers", force: :cascade do |t|
     t.string "name", null: false
@@ -56,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_132739) do
   end
 
   create_table "point_of_contacts", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "phone_number"
     t.string "email"
     t.bigint "customer_id"
@@ -81,8 +62,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_132739) do
   end
 
   create_table "regions", force: :cascade do |t|
-    t.string "name"
-    t.string "manager"
+    t.string "name", null: false
+    t.string "manager", null: false
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
     t.timestamptz "discarded_at"
@@ -121,6 +102,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_132739) do
     t.string "home_phone"
     t.string "work_phone"
     t.string "carrier"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
     t.date "hire_date"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -134,27 +119,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_132739) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "work_sites", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "address", null: false
-    t.string "city"
-    t.string "state"
-    t.integer "zipcode"
-    t.string "email"
-    t.string "phone_number"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
-    t.timestamptz "discarded_at"
-  end
-
-  add_foreign_key "customer_regions", "customers"
-  add_foreign_key "customer_regions", "regions"
-  add_foreign_key "customer_service_jobs", "customers"
-  add_foreign_key "customer_service_jobs", "service_jobs"
-  add_foreign_key "point_of_contacts", "customers"
-  add_foreign_key "purchase_orders", "service_jobs"
-  add_foreign_key "service_jobs", "customers"
-  add_foreign_key "service_jobs", "regions"
-  add_foreign_key "service_jobs", "salesmen"
-  add_foreign_key "service_jobs", "work_sites"
 end
