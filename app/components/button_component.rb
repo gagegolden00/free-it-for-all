@@ -1,4 +1,11 @@
 class ButtonComponent < ViewComponent::Base
+
+  def build_attributes
+    build_html_element_data_attributes
+    build_html_element_leading_visual
+    build_html_element_trailing_visual
+  end
+
   def build_html_element_data_attributes
     @data_attributes = @data.map do |key, value|
       "data-#{key.to_s.gsub('_', '-')}=#{value.to_s.gsub('_', '-')}"
@@ -31,9 +38,7 @@ class ButtonComponent::Submit < ButtonComponent
     @data = data
     @leading_visual = leading_visual
     @trailing_visual = trailing_visual
-    build_html_element_data_attributes unless @data.nil? || @data.empty?
-    build_html_element_leading_visual unless @leading_visual.nil? || @leading_visual.empty?
-    build_html_element_trailing_visual unless @trailing_visual.nil? || @trailing_visual.empty?
+    build_attributes
   end
 end
 
@@ -52,9 +57,7 @@ class ButtonComponent::Button < ButtonComponent
     @data = data
     @leading_visual = leading_visual
     @trailing_visual = trailing_visual
-    build_html_element_data_attributes unless @data.nil? || @data.empty?
-    build_html_element_leading_visual unless @leading_visual.nil? || @leading_visual.empty?
-    build_html_element_trailing_visual unless @trailing_visual.nil? || @trailing_visual.empty?
+    build_attributes
   end
 end
 
@@ -75,9 +78,7 @@ class ButtonComponent::Link < ButtonComponent
     @data = data
     @leading_visual = leading_visual
     @trailing_visual = trailing_visual
-    build_html_element_data_attributes unless @data.nil? || @data.empty?
-    build_html_element_leading_visual unless @leading_visual.nil? || @leading_visual.empty?
-    build_html_element_trailing_visual unless @trailing_visual.nil? || @trailing_visual.empty?
+    build_attributes
   end
 end
 
