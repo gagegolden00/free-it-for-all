@@ -1,7 +1,4 @@
-<p style="color: green"><%= notice %></p>
 <h1>Customer Show Page</h1>
-<%= render @customer %>
-
 <p><%= @customer.name %></p>
 <p><%= @customer.email %></p>
 <p><%= @customer.phone_number %></p>
@@ -9,13 +6,14 @@
 <p><%= @customer.city %></p>
 <p><%= @customer.state %></p>
 <p><%= @customer.zipcode %></p>
-<p><%= @customer.point_of_contact.name %></p>
-<p><%= @customer.point_of_contact.phone_number %></p>
-<p><%= @customer.point_of_contact.email %></p>
-
+<% if @customer.point_of_contact%>
+  <h1>Point of contact</h1>
+  <p><%= @customer.point_of_contact.name %></p>
+  <p><%= @customer.point_of_contact.phone_number %></p>
+  <p><%= @customer.point_of_contact.email %></p>
+<% end %>
 <div>
   <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
   <%= link_to "Back to customers", customers_path %>
-
   <%= button_to "Destroy this customer", @customer, method: :delete %>
 </div>
