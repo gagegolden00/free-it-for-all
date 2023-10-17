@@ -3,6 +3,10 @@
     <div class="border border-black flex flex-col">
       <%= form.label :customer_name%>
       <%= form.text_field :name, class: "border border-black"%>
+      <%= form.label :phone_number%>
+      <%= form.text_field :phone_number, class: "border border-black"%>
+      <%= form.label :email%>
+      <%= form.email_field :email, class: "border border-black"%>
       <%= form.label :region%>
       <%= form.collection_select :region_id, @regions, :id, :name, class: "border border-black" %>
       <%= form.label :address%>
@@ -14,6 +18,7 @@
       <%= form.label :zipcode%>
       <%= form.text_field :zipcode, class: "border border-black"%>
     </div>
+    <p>Point of contact</p>
     <div class="border border-black flex flex-col">
       <%= form.fields_for :point_of_contact, customer.build_point_of_contact do |f| %>
         <%= f.label :name %>
