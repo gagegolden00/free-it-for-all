@@ -1,0 +1,20 @@
+<a
+  href="<%= @href %>"
+  class="<%= @tailwind_class %>"
+  <%= @data_attributes %>
+  <% if !@id.blank?%>
+    id="<%= @id %>"
+  <% end %>
+>
+
+  <% if !@leading_visual.empty? %>
+    <i class="<%= @leading_visual_class_attribute_value %>" style="<%= @leading_visual_style_attribute_value %>"></i>
+  <% end %>
+
+  <span><%= @text %></span>
+
+  <% if !@trailing_visual.empty? %>
+    <i class="<%= @trailing_visual_class_attribute_value %>" style="<%= @trailing_visual_style_attribute_value %>"></i>
+  <% end %>
+
+</a>
