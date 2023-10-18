@@ -1,4 +1,4 @@
-class CustomersController < ApplicationController
+class Admin::CustomersController < Admin::ApplicationController
   before_action :set_customer_from_params, only: %i[show edit update destroy]
   before_action :set_all_regions, only: %i[edit update new create]
 

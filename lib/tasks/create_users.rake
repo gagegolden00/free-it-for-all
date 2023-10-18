@@ -1,4 +1,4 @@
-namespace :populate_database do
+namespace :populate_db do
   desc 'Create user accounts'
   task create_users: :environment do
     # Create an admin user
@@ -42,7 +42,7 @@ namespace :populate_database do
         home_phone: Faker::PhoneNumber.phone_number,
         work_phone: Faker::PhoneNumber.phone_number,
         carrier: Faker::Name.name,
-        address: Faker::Address.street_name,
+        address: Faker::Address.street_address,
         city: Faker::Address.city,
         state: Faker::Address.state,
         zipcode: Faker::Address.zip_code.to_i,
@@ -61,7 +61,7 @@ namespace :populate_database do
         home_phone: Faker::PhoneNumber.phone_number,
         work_phone: Faker::PhoneNumber.phone_number,
         carrier: Faker::Name.name,
-        address: Faker::Address.street_name,
+        address: Faker::Address.street_address,
         city: Faker::Address.city,
         state: Faker::Address.state,
         zipcode: Faker::Address.zip_code.to_i,

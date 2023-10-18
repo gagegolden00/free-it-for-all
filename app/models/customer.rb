@@ -1,12 +1,19 @@
 class Customer < ApplicationRecord
-  has_one :point_of_contact, dependent: :destroy
-  belongs_to :region
+  has_one :point_of_contact, dependent: :destroy, required: false
+  belongs_to :region, required: false
+  has_many :service_jobs
+
+  validates :name, presence: true
+
   accepts_nested_attributes_for :point_of_contact
-  accepts_nested_attributes_for :customer_regions
 
   before_discard :discard_necessary_associated_records
 
-  validates :name, presence: true
+  scope :with_more_than_one_service_job, -> {
+    joins(:service_jobs)
+    .group('customers.id')
+    .having('count(service_jobs.id) > 1')
+}
 
   private
 

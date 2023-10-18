@@ -1,3 +1,3 @@
 class WorkSite < ApplicationRecord
-  belongs_to :service_job
+  has_many :service_jobs
 end

@@ -1,14 +1,7 @@
 class ServiceJob < ApplicationRecord
-  validates :job_number, null: false
-  validates :status, null: false
-
+  belongs_to :work_site, required: false
   belongs_to :customer
-  belongs_to :region
-  has_one :salesman
-  has_one :work_site
-  has_many :purchase_orders
-  has_many :users
-
-  # has_many :service_reports # This is for a later feature
-
+  accepts_nested_attributes_for :customer
+  accepts_nested_attributes_for :work_site
+  enum status: { pending: 'Pending', not_started: 'Not started', in_progress: 'In progress', on_hold: 'On hold', completed: 'Completed' }
 end
