@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "role", ["admin", "technician"]
+  create_enum "roles", ["admin", "technician"]
 
   create_table "customers", force: :cascade do |t|
     t.string "name", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
   end
 
   create_table "point_of_contacts", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.string "phone_number"
     t.string "email"
     t.bigint "customer_id"
@@ -51,8 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
   end
 
   create_table "regions", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "manager", null: false
+    t.string "name"
+    t.string "manager"
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
     t.timestamptz "discarded_at"
@@ -60,15 +60,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.enum "role", null: false, enum_type: "role"
+    t.enum "role", null: false, enum_type: "roles"
     t.string "name", null: false
     t.string "home_phone"
     t.string "work_phone"
     t.string "carrier"
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.string "zipcode"
     t.date "hire_date"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -82,4 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "customers", "regions"
+  add_foreign_key "point_of_contacts", "customers"
 end
