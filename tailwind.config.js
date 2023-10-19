@@ -9,6 +9,7 @@ module.exports = {
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js',
     './app/components/**/*.html.erb',
+    './app/components/**/*.rb',
     './node_modules/flowbite/**/*.js'
   ],
 
