@@ -11,15 +11,15 @@ Rails.application.routes.draw do
   # Root path (temporary root path)
   root "pages#home"
 
-  # Admin namespace, only accessible by mech cool administrators
-  namespace :admin, path: "mech_cool" do
+  # Admin namespace, only accessible by mech cool administrators via pundit policies
+  namespace :admin, path: '' do
     resources :customers
     resources :service_jobs
   end
 
   # Technician namespacem only accessable by mech cool technicians
-  namespace :technician, path: "mech_cool/technician" do
-
+  namespace :technician, path: '' do
+    
   end
 
 end

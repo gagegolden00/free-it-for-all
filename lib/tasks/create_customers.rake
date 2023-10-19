@@ -21,7 +21,7 @@ namespace :populate_db do
         address: Faker::Address.street_address,
         city: Faker::Address.city,
         state: Faker::Address.state,
-        zipcode: Faker::Address.zip,
+        zip_code: Faker::Address.zip,
         region_id: counter,
         point_of_contact_attributes: {
           name: name2,

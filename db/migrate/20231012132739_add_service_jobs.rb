@@ -6,7 +6,7 @@ class AddServiceJobs < ActiveRecord::Migration[7.0]
       t.string :address, null: false
       t.string :city
       t.string :state
-      t.integer :zipcode
+      t.integer :zip_code
       t.string :email
       t.string :phone_number
       t.timestamps
@@ -23,7 +23,7 @@ class AddServiceJobs < ActiveRecord::Migration[7.0]
       t.decimal :contract_amount
       t.string :work_type
       t.references :customer, foreign_key: true
-      t.belongs_to :work_site, foreign_key: true
+      t.belongs_to :work_site
       t.timestamps
       t.timestamp :discarded_at
     end

@@ -11,7 +11,7 @@ class CreateUsersTable < ActiveRecord::Migration[7.0]
       t.string :address
       t.string :city
       t.string :state
-      t.string :zipcode
+      t.string :zip_code
       t.date :hire_date
       t.string :email,              null: false, default: ''
       t.string :encrypted_password, null: false, default: ''

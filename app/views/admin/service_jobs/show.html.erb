@@ -1,0 +1,39 @@
+<section class="flex flex-col border-4 h-screen w-screen">
+  <h1>Service job show page</h1>
+  <ul class="w-1/2 mx-auto">
+    <li class="text-xl font-bold mt-6 mb-1"> Service job details </li>
+    <li><strong>Job Number:</strong> <%= @service_job.job_number %></li>
+    <li><strong>Status:</strong> <%= @service_job.status %></li>
+    <li><strong>Description:</strong> <%= @service_job.description %></li>
+    <li><strong>Contract Amount:</strong> <%= @service_job.contract_amount %></li>
+    <li><strong>Work Type:</strong> <%= @service_job.work_type %></li>
+
+    <li class="text-xl font-bold mt-6 mb-1"> Customer details </li>
+    <li><strong>Customer:</strong> <%= @service_job.customer.name %></li>
+    <li><strong>Customer Phone Number:</strong> <%= @service_job.customer.phone_number %></li>
+    <li><strong>Customer Email:</strong> <%= @service_job.customer.email %></li>
+    <li><strong>Customer Address:</strong> <%= @service_job.customer.address %></li>
+    <li><strong>Customer City:</strong> <%= @service_job.customer.city %></li>
+    <li><strong>Customer State:</strong> <%= @service_job.customer.state %></li>
+    <li><strong>Customer ZIP Code:</strong> <%= @service_job.customer.zip_code %></li>
+
+    <% if @service_job.customer.point_of_contact %>
+    <li class="text-xl font-bold mt-6 mb-1">Customer point of contact details</li>
+    <li><strong>Point of Contact Name:</strong> <%= @service_job.customer.point_of_contact.name %></li>
+    <li><strong>Point of Contact Phone Number:</strong> <%= @service_job.customer.point_of_contact.phone_number %></li>
+    <li><strong>Point of Contact Email:</strong> <%= @service_job.customer.point_of_contact.email %></li>
+    <% end %>
+
+    <% if @service_job.work_site%>
+    <li class="text-xl font-bold mt-6 mb-1"> Work site details </li>
+    <li><strong>Work Site Name:</strong> <%= @service_job.work_site.name %></li>
+    <li><strong>Work Site Address:</strong> <%= @service_job.work_site.address %></li>
+    <li><strong>Work Site City:</strong> <%= @service_job.work_site.city %></li>
+    <li><strong>Work Site State:</strong> <%= @service_job.work_site.state %></li>
+    <li><strong>Work Site ZIP Code:</strong> <%= @service_job.work_site.zip_code %></li>
+    <li><strong>Work Site Email:</strong> <%= @service_job.work_site.email %></li>
+    <li><strong>Work Site Phone Number:</strong> <%= @service_job.work_site.phone_number %></li>
+    <% end %>
+  </ul>
+</section>
+

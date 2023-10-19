@@ -11,7 +11,7 @@ namespace :populate_db do
       address: '123 asdf street',
       city: 'shreveport',
       state: 'Louisiana',
-      zipcode: 12_345,
+      zip_code: 12_345,
       hire_date: '10/10/2020',
       email: 'admin@email.com',
       password: 'asdfasdf'
@@ -27,7 +27,7 @@ namespace :populate_db do
       address: '456 fdsa street',
       city: 'shreveport',
       state: 'Louisiana',
-      zipcode: 54_344,
+      zip_code: 54_344,
       hire_date: '10/10/2020',
       email: 'technician@email.com',
       password: 'asdfasdf'
@@ -45,7 +45,7 @@ namespace :populate_db do
         address: Faker::Address.street_address,
         city: Faker::Address.city,
         state: Faker::Address.state,
-        zipcode: Faker::Address.zip_code.to_i,
+        zip_code: Faker::Address.zip_code.to_i,
         hire_date: Faker::Date.between(from: '2010-01-01', to: '2023-01-01'),
         email: "#{name.downcase.gsub(' ', '_').gsub('.', '')}@email.com",
         password: 'asdfasdf'
@@ -64,7 +64,7 @@ namespace :populate_db do
         address: Faker::Address.street_address,
         city: Faker::Address.city,
         state: Faker::Address.state,
-        zipcode: Faker::Address.zip_code.to_i,
+        zip_code: Faker::Address.zip_code.to_i,
         hire_date: Faker::Date.between(from: '2010-01-01', to: '2023-01-01'),
         email: "#{name.downcase.gsub(' ', '_').gsub('.', '')}@email.com",
         password: 'asdfasdf'

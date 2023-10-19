@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_132739) do
     t.string "address"
     t.string "city"
     t.string "state"
-    t.integer "zipcode"
+    t.integer "zip_code"
     t.bigint "region_id"
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
@@ -85,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_132739) do
     t.string "address"
     t.string "city"
     t.string "state"
-    t.string "zipcode"
+    t.string "zip_code"
     t.date "hire_date"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -105,7 +105,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_132739) do
     t.string "address", null: false
     t.string "city"
     t.string "state"
-    t.integer "zipcode"
+    t.integer "zip_code"
     t.string "email"
     t.string "phone_number"
     t.timestamptz "created_at", precision: 6, null: false

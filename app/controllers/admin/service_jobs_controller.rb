@@ -1,19 +1,32 @@
 
 class Admin::ServiceJobsController < Admin::ApplicationController
+  include StateListHelper
+  include StatusListHelper
+
   before_action :set_service_job_from_params, only: %i[show edit update delete]
 
   def new
+    @customers = Customer.all
     @service_job = ServiceJob.new
+    @service_job.build_customer
+    @service_job.customer.build_point_of_contact
+    @service_job.build_work_site
   end
 
   def create
-    service_job = ServiceJobCreateService.new(params)
-    if service_job.save?
-      redirect_to service_job
+    @customers = Customer.all
+    service_job_service = CreateServiceJobService.new(params: params)
+    @service_job = service_job_service.create
+
+    if @service_job.save
+      flash[:notice] = "Service job created"
+      redirect_to admin_service_job_path(@service_job)
     else
       render :new
     end
   end
+
+
 
   def index
     @pagy, @service_jobs = pagy(ServiceJob.all)
@@ -36,8 +49,9 @@ class Admin::ServiceJobsController < Admin::ApplicationController
   private
 
   def set_service_job_from_params
-    @service_job = service_job_params[:id]
+    @service_job = ServiceJob.find(params[:id])
   end
+
 end
 
 

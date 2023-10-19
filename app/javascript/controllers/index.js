@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import ChangeTextController from "./change_text_controller"
+application.register("change-text", ChangeTextController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ToggleHiddenController from "./toggle_hidden_controller"
+application.register("toggle-hidden", ToggleHiddenController)
