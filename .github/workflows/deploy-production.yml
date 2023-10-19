@@ -47,7 +47,7 @@ jobs:
           --cluster ${{ env.ECS_CLUSTER }} \
           --task-definition arn:aws:ecs:us-east-1:817156282370:task-definition/web-app-production-migrate:1 \
           --launch-type FARGATE \
-          --network-configuration '' \
+          --network-configuration 'awsvpcConfiguration={subnets=[subnet-001c55d0f38767d3a,subnet-0ff68e3632386e301],securityGroups=[sg-0cd4fbde69b9ce1a8],assignPublicIp=ENABLED}' \
           &> /dev/null
 
       - name: Update Amazon ECS services
