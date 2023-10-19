@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
     t.string "address"
     t.string "city"
     t.string "state"
-    t.integer "zipcode"
+    t.integer "zip_code"
     t.bigint "region_id"
     t.timestamptz "created_at", null: false
     t.timestamptz "updated_at", null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
     t.string "address"
     t.string "city"
     t.string "state"
-    t.string "zipcode"
+    t.string "zip_code"
     t.date "hire_date"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/up', to: 'up#index', as: :up
+
   if Rails.env.development?
     mount Lookbook::Engine, at: "/lookbook"
   end
@@ -9,4 +11,3 @@ Rails.application.routes.draw do
   
   root "pages#home"
 end
-

@@ -1,0 +1,56 @@
+name: Deploy Production
+
+on:
+  workflow_dispatch:
+
+env:
+  ECR_REPOSITORY: mech-cool/web-app-production
+  ECS_CLUSTER: web-app-production
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://app.mechcool.rubyshore.com
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@8c3f20df09ac63af7b3ae3d7c91f105f857d8497
+        with:
+          aws-region: us-east-1
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@2fc7aceee09e9e4a7105c0d060c656fad0b4f63d
+        with:
+          mask-password: true
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:release .
+          docker push --all-tags $ECR_REGISTRY/$ECR_REPOSITORY
+
+      - name: Run database migration
+        run: |
+          aws ecs run-task \
+          --cluster ${{ env.ECS_CLUSTER }} \
+          --task-definition arn:aws:ecs:us-east-1:817156282370:task-definition/web-app-production-migrate:1 \
+          --launch-type FARGATE \
+          --network-configuration '' \
+          &> /dev/null
+
+      - name: Update Amazon ECS services
+        run: |
+          aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service web --force-new-deployment &> /dev/null
+          aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service job --force-new-deployment &> /dev/null
