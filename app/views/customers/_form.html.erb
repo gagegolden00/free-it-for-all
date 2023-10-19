@@ -1,5 +1,5 @@
 <div id="new-customer-form" class ="w-1/2 flex justify-center">
-  <%= form_with(model: @customer) do |form| %>
+  <%= form_with(model: @customer, url: path, local: true) do |form| %>
     <div class="border border-black flex flex-col">
       <%= form.label :customer_name%>
       <%= form.text_field :name, class: "border border-black"%>
