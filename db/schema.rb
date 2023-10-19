@@ -31,8 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
     t.string "state"
     t.integer "zipcode"
     t.bigint "region_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_customers_on_discarded_at"
     t.index ["region_id"], name: "index_customers_on_region_id"
@@ -43,8 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
     t.string "phone_number"
     t.string "email"
     t.bigint "customer_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["customer_id"], name: "index_point_of_contacts_on_customer_id"
     t.index ["discarded_at"], name: "index_point_of_contacts_on_discarded_at"
@@ -53,8 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
   create_table "regions", force: :cascade do |t|
     t.string "name", null: false
     t.string "manager", null: false
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_regions_on_discarded_at"
   end
@@ -73,10 +73,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_203410) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.timestamptz "reset_password_sent_at", precision: 6
-    t.timestamptz "remember_created_at", precision: 6
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "reset_password_sent_at"
+    t.timestamptz "remember_created_at"
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
