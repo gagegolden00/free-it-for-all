@@ -45,7 +45,7 @@ jobs:
         run: |
           aws ecs run-task \
           --cluster ${{ env.ECS_CLUSTER }} \
-          --task-definition arn:aws:ecs:us-east-1:295009888401:task-definition/web-app-production-migrate:1 \
+          --task-definition arn:aws:ecs:us-east-1:375381314102:task-definition/web-app-production-migrate:1 \
           --launch-type FARGATE \
           --network-configuration 'awsvpcConfiguration={subnets=[subnet-001c55d0f38767d3a,subnet-0ff68e3632386e301],securityGroups=[sg-0cd4fbde69b9ce1a8],assignPublicIp=ENABLED}' \
           &> /dev/null
