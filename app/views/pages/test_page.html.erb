@@ -1,0 +1,20 @@
+
+
+<div class="mx-auto flex-col w-1/2 flex items-center">
+  <h1 class="">YAY!!!!! You made it to the test page with the custom button component</h1>
+  <ul class="ml-10 mt-10">
+    <li class="font-bold text-xl">Current styling schemes</li>
+    <li class="ml-16 my-1">Default</li>
+    <li class="ml-16">primary</li>
+    <li class="ml-16 my-1">secondary</li>
+    <li class="ml-16">danger</li>
+    <li class="ml-16 my-1">link</li>
+  </ul>
+  <div class="flex flex-col my-10 gap-5">
+</div>
+<div class="gap-4">
+<%= render(ButtonComponent::Submit.new)%>
+<%= render(ButtonComponent::Button.new)%>
+<%= render(ButtonComponent::Link.new)%>
+</div>
+
