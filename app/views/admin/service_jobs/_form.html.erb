@@ -1,10 +1,6 @@
 <section class="flex flex-col border-4">
   <%= form_with model: @service_job, url: admin_service_jobs_path, data: {turbo: false}, clsss: "flex-flex-col" do |service_job_field| %>
-    <!-- We should set the job number up to be auto generated hidden field,
-    maybe give them a settings option that will allow them to select
-    the current job number(last job created) so the next job will follow
-    in sequential order. There will be a unique constraint on this field and this will
-    allow them to re-sync if something happens -->
+
     <div class="flex flex-col justify-center mx-auto w-1/2 h-full border-2 border-red-600 gap-10">
 
       <div id="serviceJobFields" class="border border-green-600 flex flex-col">
@@ -29,21 +25,20 @@
         <fieldset id="customerSelect" class="">
           <%= service_job_field.label :select_customer %>
           <%= service_job_field.select :customer_id, options_for_select(@customers.map { |customer| [customer.name, customer.id] }) %>
-        </fieldset>
+          </fieldset>
 
         <div data-controller="toggle-hidden change-text">
           <button
-            data-action="click->toggle-hidden#toggle click->change-text#toggleNewServiceJobCustomerButtonText"
+            data-action="click->toggle-hidden#toggleVisibility click->change-text#toggleNewServiceJobCustomerButtonText"
             data-target-id="customerFields customerSelect"
             type="button"
             class="text-green-500 p-1 border border-green-500 hover:bg-gray-300 rounded">
               Add new customer
           </button>
         </div>
-
       </div>
 
-      <fieldset id="customerFields" class="border border-blue-600 flex flex-col hidden" disabled="true">
+      <fieldset id="customerFields" class="border border-blue-600 flex flex-col hidden">
         <!-- new customer -->
         <p class="text-2xl"> New Customer</p>
         <%= service_job_field.fields_for :customer do |customer_field|%>
@@ -87,12 +82,13 @@
 
       <div data-controller="toggle-hidden">
         <button
-          data-action="click->toggle-hidden#toggle"
+          data-action="click->toggle-hidden#toggleVisibilit"
           data-target-id="workSiteFields"
           type="button" class="text-green-500 p-1 border border-green-500 hover:bg-gray-300 rounded">
             Add new work site
         </button>
       </div>
+
       <fieldset id="workSiteFields" class="border border-green-600 flex flex-col hidden" disabled="true">
         <p class="text-2xl">Work site</p>
         <%= service_job_field.fields_for :work_site do |work_site_field| %>
@@ -118,9 +114,11 @@
           <%= work_site_field.telephone_field :phone_number, class: "border border-black" %>
         <% end %>
       </fieldset>
+
       <div>
         <%= service_job_field.submit "Create service job", class: "text-green-500 p-1 border border-green-500 hover:bg-gray-300 rounded hover:cursor-pointer"%>
       </div>
+
     </div>
 
   <% end %>
