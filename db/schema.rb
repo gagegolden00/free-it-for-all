@@ -115,5 +115,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_132739) do
   end
 
   add_foreign_key "service_jobs", "customers"
-  add_foreign_key "service_jobs", "work_sites"
 end
