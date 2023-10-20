@@ -21,6 +21,7 @@ class ButtonComponent < ViewComponent::Base
     @trailing_visual_class_attribute_value = @trailing_visual[:class] ? "#{@trailing_visual[:class]}" : ''
     @trailing_visual_style_attribute_value = @trailing_visual[:style] ? "#{@trailing_visual[:style]}" + 'padding-left: 5px;' : ''
   end
+
 end
 
 class ButtonComponent::Submit < ButtonComponent
@@ -81,5 +82,20 @@ class ButtonComponent::Link < ButtonComponent
     build_attributes
   end
 end
+
+class ButtonComponent::Delete < ButtonComponent
+  def initialize(
+    path: '',
+    object_id: '',
+    text: '',
+    tailwind_class: 'text-blue-400 border border-blue-400 p-1 h-8 w-auto inline-flex items-center text-center rounded hover:cursor-pointer hover:bg-blue-400 hover:text-white'
+  )
+  @path = path
+  @object_id = object_id
+  @text = text
+  @tailwind_class = tailwind_class
+  end
+end
+
 
 

@@ -37,18 +37,17 @@ The following diagram shows the architecture of our web application:
 
 1. Change directory into `infra` directory.
 2. Run `cdktf get` to get the necessary CDKTF provider packages.
-3. To see planned changes without applying, use `cdktf diff web-app-staging`.
-4. Run `cdktf deploy web-app-staging` to provision the resources.
+3. To see planned changes without applying, use `cdktf diff web-app-production`.
+4. Run `cdktf deploy web-app-production` to provision the resources.
 
 ## App Deployment
 
 ```
-aws ecr get-login-password --profile mech-cool | docker login --username AWS --password-stdin ############.dkr.ecr.us-east-1.amazonaws.com
-docker buildx build --platform=linux/amd64 --build-arg ENV=staging -t mech-cool/web-app-staging .
-docker tag mech-cool/web-app-staging:latest ############.dkr.ecr.us-east-1.amazonaws.com/mech-cool/web-app-staging:latest
-docker push ############.dkr.ecr.us-east-1.amazonaws.com/mech-cool/web-app-staging:latest
-aws ecs update-service --profile mech-cool --cluster web-app-staging --service web --force-new-deployment &> /dev/null
-aws ecs update-service --profile mech-cool --cluster web-app-staging --service job --force-new-deployment &> /dev/null
+aws ecr get-login-password --profile mech-cool | docker login --username AWS --password-stdin 375381314102.dkr.ecr.us-east-1.amazonaws.com
+docker build --platform=linux/amd64 --build-arg ENV=production -t 375381314102.dkr.ecr.us-east-1.amazonaws.com/mech-cool/web-app-production:manual -t 375381314102.dkr.ecr.us-east-1.amazonaws.com/mech-cool/web-app-production:release .
+docker push --all-tags 375381314102.dkr.ecr.us-east-1.amazonaws.com/mech-cool/web-app-production
+aws ecs update-service --profile mech-cool --cluster web-app-production --service web --force-new-deployment &> /dev/null
+aws ecs update-service --profile mech-cool --cluster web-app-production --service job --force-new-deployment &> /dev/null
 ```
 
 ## Continuous Deployment
@@ -73,35 +72,35 @@ Run a one-off task on ECS:
 (This spins up a new container and runs the command)
 
 ```sh
-./run-task --task-definition web-app-staging-web --cluster web-app-staging --file ./run-task.json
+./run-task --task-definition web-app-production-web --cluster web-app-production --file ./run-task.json
 ```
 
 Run a command on ECS:  
 (This runs the command on an existing container)
 
 ```sh
-./execute-command --cluster web-app-staging bash
+./execute-command --cluster web-app-production bash
 ```
 
-Run the staging assets container locally:  
+Run the production assets container locally:  
 (Useful for testing Dockerfile changes)
 
 ```sh
-docker buildx build --target assets --platform=linux/amd64 --build-arg ENV=staging -t mech-cool/web-app-staging-assets .
-docker run --rm -it --platform=linux/amd64 -e DOCKER_BUILD=true mech-cool/web-app-staging-assets:latest bash
+docker buildx build --target assets --platform=linux/amd64 --build-arg ENV=production -t mech-cool/web-app-production-assets .
+docker run --rm -it --platform=linux/amd64 -e DOCKER_BUILD=true mech-cool/web-app-production-assets:latest bash
 ```
 
-Run the staging app container locally:  
+Run the production app container locally:  
 (Useful for testing Dockerfile changes)
 
 ```sh
-docker run --rm -it --platform=linux/amd64 -e DOCKER_BUILD=true mech-cool/web-app-staging:latest bash
+docker run --rm -it --platform=linux/amd64 -e DOCKER_BUILD=true mech-cool/web-app-production:latest bash
 ```
 
 To remove troublesome state:  
 (Useful for when reality and state are out of sync)
 
 ```sh
-cd infra/cdktf.out/stacks/web-app-staging
+cd infra/cdktf.out/stacks/web-app-production
 terraform state rm '<id>'
 ```

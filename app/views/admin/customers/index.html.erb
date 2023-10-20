@@ -1,22 +1,8 @@
 <div class="bg-primary-600 dark:bg-primary-800 p-3 sm:p-4 shadow-md flex flex-row">
   <h1 class="text-lg sm:text-xl font-medium text-white">Customer Directory</h1>
-  <%= link_to "New customer", new_customer_path, class: "ml-auto text-gray-50" %>
+  <%= link_to "New customer", new_admin_customer_path, class: "ml-auto text-gray-50" %>
   <!--%= button_to "New Customer", new_customer_path, method: :delete, class: "inline-flex items-center justify-center w-full px-2 py-1 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-primary-600 hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%-->
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <form class="flex items-center m-2 sm:m-4">
     <label for="simple-search" class="sr-only">Search</label>
@@ -33,10 +19,9 @@
 <p style="color: green"><%= notice %></p>
 <div id="customers">
   <% @customers.each do |customer| %>
-
     <div class="border rounded m-2 sm:mx-4 p-3 text-sm flex flex-row flex-wrap justify-between space-x-3">
       <p class="w-44 font-semibold">
-        <%= link_to customer.name , customer_path(customer) %>
+        <%= link_to customer.name , admin_customer_path(customer) %>
       </p>
       <p class="text-left">100 Market St, Ratchet City, LA</p>
       <p class="w-8 text-right">7</p>

@@ -1,4 +1,4 @@
-class CustomersController < ApplicationController
+class Admin::CustomersController < Admin::ApplicationController
   layout 'application_full'
 
   before_action :set_customer_from_params, only: %i[show edit update destroy]
@@ -13,7 +13,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     if @customer.save
       flash[:notice] = 'Customer created'
-      redirect_to @customer
+      redirect_to admin_customer_path(@customer)
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class CustomersController < ApplicationController
   def update
     if @customer.update(customer_params)
       flash[:notice] = 'Customer updated'
-      redirect_to @customer
+      redirect_to admin_customer_path(@customer)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -42,14 +42,14 @@ class CustomersController < ApplicationController
     return unless @customer.discard
 
     flash[:notice] = 'Customer removed'
-    redirect_to customers_path
+    redirect_to admin_customers_path
   end
 
   private
 
   def customer_params
     params.require(:customer).permit(
-      :name, :phone_number, :email, :address, :city, :state, :zipcode, :region_id,
+      :name, :phone_number, :email, :address, :city, :state, :zip_code, :region_id,
       point_of_contact_attributes: %i[name phone_number email]
     )
   end
