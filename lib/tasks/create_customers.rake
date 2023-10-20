@@ -1,4 +1,4 @@
-namespace :populate_database do
+namespace :populate_db do
   desc 'create customers entries'
   task create_customers: :environment do
     counter = 1

@@ -1,7 +1,9 @@
 <button type="button"
+
   <% if !@id.blank?%>
     id="<%= @id %>"
   <% end %>
+
   class="<%= @tailwind_class %>"
   <%= @data_attributes %>
 >
@@ -17,3 +19,4 @@
   <% end %>
 
 </button>
+
