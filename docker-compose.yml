@@ -32,6 +32,17 @@ x-app: &app
     - /tmp/pids/
 
 services:
+  caddy:
+    <<: *service
+    image: caddy:2
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_config:/config
+      - caddy_data:/data
+
   postgres:
     <<: *service
     image: postgres:14
@@ -66,5 +77,7 @@ services:
     command: bash -c "bundle install && sidekiq"
 
 volumes:
+  caddy_config:
+  caddy_data:
   postgres:
   redis:

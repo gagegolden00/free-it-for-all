@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  # Lookbook development tool routing
+  get '/up', to: 'up#index', as: :up
+
   if Rails.env.development?
     mount Lookbook::Engine, at: "/lookbook"
   end
@@ -19,8 +20,11 @@ Rails.application.routes.draw do
 
   # Technician namespacem only accessable by mech cool technicians
   namespace :technician, path: '' do
-    
+
   end
 
 end
 
+  get "/home", to: "pages#home", as: "home"
+  get "/test_page", to: "pages#test_page", as: "test_page"
+end

@@ -186,7 +186,7 @@ export class EcsConstruct extends Construct {
       [
         {
           name: "container",
-          image: `${repo.repositoryUrl}:latest`,
+          image: `${repo.repositoryUrl}:release`,
           portMappings: [
             {
               containerPort: 3000,
@@ -248,7 +248,7 @@ export class EcsConstruct extends Construct {
       [
         {
           name: "container",
-          image: `${repo.repositoryUrl}:latest`,
+          image: `${repo.repositoryUrl}:release`,
           command: ["sidekiq"],
           environment: [
             { name: "RAILS_ENV", value: environment },
@@ -286,6 +286,38 @@ export class EcsConstruct extends Construct {
       },
     });
 
+    const migrateTaskDefinition = new EcsTaskDefinition(this, `${id}-ecs-migrate-task-definition`, {
+      family: `${id}-migrate`,
+      networkMode: "awsvpc",
+      cpu: "256",
+      memory: "512",
+      executionRoleArn: executionRole.arn,
+      taskRoleArn: taskRole.arn,
+      containerDefinitions: JSON.stringify(
+      [
+        {
+          name: "container",
+          image: `${repo.repositoryUrl}:release`,
+          command: ["rails", "db:migrate"],
+          environment: [
+            { name: "RAILS_ENV", value: environment },
+            { name: "DATABASE_URL", value: postgresUrl },
+            { name: "REDIS_URL", value: redisUrl },
+            { name: "RAILS_MASTER_KEY", value: railsMasterKey },
+            { name: "RAILS_LOG_TO_STDOUT", value: "true" },
+          ],
+          logConfiguration: {
+            logDriver: "awslogs",
+            options: {
+              "awslogs-group": logGroup.name,
+              "awslogs-region": region,
+              "awslogs-stream-prefix": "ecs-migrate",
+            },
+          },
+        },
+      ]),
+    });
+
     const taskAccessGroup = new IamGroup(this, `${id}-ecs-task-access`, {
       name: `${id}-ecs-task-access`,
     });
@@ -296,7 +328,7 @@ export class EcsConstruct extends Construct {
 
     const accountId = new DataAwsCallerIdentity(this, `${id}-caller-identity`, {}).accountId;
 
-    this.grantRunTaskPolicy(id, region, accountId, cluster, executionRole, taskRole, [webTaskDefinition, jobTaskDefinition], taskAccessGroup);
+    this.grantRunTaskPolicy(id, region, accountId, cluster, executionRole, taskRole, [webTaskDefinition, jobTaskDefinition, migrateTaskDefinition], taskAccessGroup);
     this.grantExecuteCommandPolicy(id, region, accountId, cluster, taskAccessGroup);
     this.grantUpdateServicePolicy(id, region, accountId, cluster, serviceAccessGroup);
   }
