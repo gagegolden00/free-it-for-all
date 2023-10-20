@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+<h1>service_jobs</h1>
+<div id="service_jobs">
+  <% @service_jobs.each do |service_job| %>
+    <div class="border my-2 p-4">
+      <p>
+        <%= link_to service_job.job_number , admin_service_job_path(service_job) %>
+      </p>
+    </div>
+  <% end %>
+</div>
+<div>
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+</div>
+<%= link_to "New service_job", new_admin_service_job_path %>

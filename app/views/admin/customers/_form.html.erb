@@ -1,0 +1,36 @@
+<div id="new-customer-form" class ="w-1/2 flex justify-center">
+  <%= form_with(model: @customer, url: path, local: true) do |form| %>
+    <div class="border border-black flex flex-col">
+      <%= form.label :customer_name%>
+      <%= form.text_field :name, class: "border border-black"%>
+      <%= form.label :phone_number%>
+      <%= form.text_field :phone_number, class: "border border-black"%>
+      <%= form.label :email%>
+      <%= form.email_field :email, class: "border border-black"%>
+      <%= form.label :region%>
+      <%= form.collection_select :region_id, @regions, :id, :name, class: "border border-black" %>
+      <%= form.label :address%>
+      <%= form.text_field :address, class: "border border-black"%>
+      <%= form.label :city%>
+      <%= form.text_field :city, class: "border border-black"%>
+      <%= form.label :state%>
+      <%= form.select :state, options_for_select(us_states), class: "border border-black"%>
+      <%= form.label :zip_code%>
+      <%= form.text_field :zip_code, class: "border border-black"%>
+    </div>
+    <p>Point of contact</p>
+    <div class="border border-black flex flex-col">
+      <%= form.fields_for :point_of_contact, customer.build_point_of_contact do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "border border-black" %>
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number, class: "border border-black" %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "border border-black" %>
+      <% end %>
+    </div>
+    <div>
+      <%= form.submit%>
+    </div>
+  <% end %>
+</div>

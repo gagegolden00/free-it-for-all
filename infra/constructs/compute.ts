@@ -71,7 +71,7 @@ export class LoadBalancerConstruct extends Construct {
         {
           httpHeader: {
             httpHeaderName: "X-Cloudfront-Key",
-            values: ["287c83f55e72d32b35bd372f32d6cda975b8"],
+            values: ["500d4249-558a-4d89-8070-dea9f7267aa2"],
           }
         },
       ],

@@ -1,0 +1,10 @@
+<h1>Editing customer</h1>
+<div>
+  <%= render AlertComponent::Errors.new(@customer)%>
+  <%= render "form", customer: @customer, path: admin_customer_path(@customer) %>
+</div>
+<br>
+<div>
+  <%= link_to "Back to customers", admin_customers_path %>
+</div>
+</div>

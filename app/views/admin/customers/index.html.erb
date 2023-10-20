@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+<h1>Customers</h1>
+<div id="customers">
+  <% @customers.each do |customer| %>
+    <div class="border my-2 p-4">
+      <p>
+        <%= link_to customer.name , admin_customer_path(customer) %>
+      </p>
+    </div>
+  <% end %>
+</div>
+<div>
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+</div>
+<%= link_to "New customer", new_admin_customer_path %>

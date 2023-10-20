@@ -43,7 +43,7 @@ export class CloudfrontConstruct extends Construct {
       comment: id,
       enabled: true,
       isIpv6Enabled: true,
-      aliases: [domainName, `www.${domainName}`],
+      aliases: [domainName],
       origin: [
         {
           domainName: loadBalancer.dnsName,
@@ -65,7 +65,7 @@ export class CloudfrontConstruct extends Construct {
             },
             {
               name: "X-Cloudfront-Key",
-              value: "287c83f55e72d32b35bd372f32d6cda975b8",
+              value: "500d4249-558a-4d89-8070-dea9f7267aa2",
             },
           ],
           originShield: {

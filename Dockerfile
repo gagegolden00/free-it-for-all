@@ -28,7 +28,7 @@ RUN bundle install --jobs `getconf _NPROCESSORS_ONLN` --retry 3
 
 COPY . .
 RUN if [ "${ENV}" != "development" ]; then \
-  rails assets:precompile; fi
+  SECRET_KEY_BASE=`rails secret` rails assets:precompile; fi
 
 CMD ["bash"]
 

@@ -1,0 +1,9 @@
+<form action="<%= @path %><%= @object_id if @object_id %>" method="post">
+
+  <input type="hidden" name="_method" value="delete">
+
+  <button class="<%= @tailwind_class %>">
+    <%= @text %>
+  </button>
+
+</form>

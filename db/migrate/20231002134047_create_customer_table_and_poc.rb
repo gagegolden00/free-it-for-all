@@ -15,7 +15,7 @@ class CreateCustomerTableAndPoc < ActiveRecord::Migration[7.0]
       t.string :address
       t.string :city
       t.string :state
-      t.integer :zipcode
+      t.integer :zip_code
       t.belongs_to :region
       t.timestamps
       t.timestamp :discarded_at
