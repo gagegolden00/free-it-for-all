@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-
+  
   has_one :point_of_contact, dependent: :destroy, required: false
   belongs_to :region, required: false
   has_many :service_jobs
@@ -13,8 +13,6 @@ class Customer < ApplicationRecord
   private
 
   def name_blank?(attributes)
-    result = attributes['name'].blank?
-    result
+    attributes['name'].blank?
   end
-
 end

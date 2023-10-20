@@ -15,5 +15,5 @@
 <div>
   <%= link_to "Edit this customer", edit_admin_customer_path(@customer) %> |
   <%= link_to "Back to customers", admin_customers_path %>
-  <%= button_to "Destroy this customer", @customer, method: :delete %>
+  <%= button_to "Destroy this customer", admin_customer_path(@customer), method: :delete %>
 </div>

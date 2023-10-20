@@ -11,7 +11,7 @@ class Admin::CustomersController < Admin::ApplicationController
     @customer = Customer.new(customer_params)
     if @customer.save
       flash[:notice] = 'Customer created'
-      redirect_to @customer
+      redirect_to admin_customer_path(@customer)
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class Admin::CustomersController < Admin::ApplicationController
   def update
     if @customer.update(customer_params)
       flash[:notice] = 'Customer updated'
-      redirect_to @customer
+      redirect_to admin_customer_path(@customer)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,7 +40,7 @@ class Admin::CustomersController < Admin::ApplicationController
     return unless @customer.discard
 
     flash[:notice] = 'Customer removed'
-    redirect_to customers_path
+    redirect_to admin_customers_path
   end
 
   private
