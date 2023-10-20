@@ -1,4 +1,6 @@
 class Admin::ServiceJobsController < Admin::ApplicationController
+  layout 'application_full'
+  
   include StateListHelper
   include StatusListHelper
 
