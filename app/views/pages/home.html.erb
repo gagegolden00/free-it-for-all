@@ -11,7 +11,7 @@
 <aside id="sidebar-user" class="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
   <div class="flex flex-col overflow-y-auto py-4 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-700 dark:border-gray-700 pt-5">
     <a href="/" class="flex text-center mx-auto mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-      <%= image_tag 'logo.png', class: "w-32 mr-2", alt: "Mech Cool" %>
+      <%= image_tag 'logo.png', class: "w-32 h-8 mr-2", alt: "Mech Cool" %>
     </a>
     <ul class="pt-5 space-y-2 border-gray-200 dark:border-gray-700">
     <li>
@@ -42,9 +42,9 @@
    
     <div class="text-center text-gray-500 dark:text-gray-400 mt-auto border-t border-gray-200 dark:border-gray-700 pt-4">
       <h3 class="text-lg font-bold tracking-tight text-gray-600 dark:text-gray-100">
-        <a href="#">Michael Gough</a>
+        <a href="#"><%= current_user.name %></a>
       </h3>
-      <p class="font-light text-primary-600 dark:text-primary-400 text-sm">name@company.com</p>
+      <p class="font-light text-primary-600 dark:text-primary-400 text-sm"><%= current_user.email %></p>
       <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center w-full py-2.5 px-5 my-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-primary-600 hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
     </div>
   </div>
