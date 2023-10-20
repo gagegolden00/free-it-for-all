@@ -1,0 +1,10 @@
+(tls_internal) {
+  tls internal {
+    on_demand
+  }
+}
+
+app.mechcool.test {
+  reverse_proxy * app:3000
+  import tls_internal
+}

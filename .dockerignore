@@ -24,3 +24,5 @@ node_modules/
 !/storage/.keep
 
 /infra
+
+/config/credentials/production.key

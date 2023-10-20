@@ -1,4 +1,4 @@
-module CustomersHelper
+module StateListHelper
   def us_states
     [
       'Alabama',

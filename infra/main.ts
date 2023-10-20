@@ -65,13 +65,12 @@ class WebAppStack extends TerraformStack {
 
 const organization = "mech-cool";
 const domainNames: { [key: string]: string } = {
-  staging: "staging.mech-cool.com",
-  production: "app.mech-cool.com",
+  production: "app.mechcool.rubyshore.com",
 };
 
 const app = new App();
 
-["staging", "production"].forEach((environment) => {
+["production"].forEach((environment) => {
   const stack = new WebAppStack(app, `web-app-${environment}`, {
     organization,
     environment,
