@@ -2,7 +2,7 @@ class Admin::ServiceJobsController < Admin::ApplicationController
   include StateListHelper
   include StatusListHelper
 
-  before_action :set_service_job_from_params, only: %i[show edit update delete]
+  before_action :set_service_job_from_params, only: %i[show edit update destroy]
   before_action :set_all_customers, only: %i[new create edit update]
 
   def new
@@ -44,9 +44,9 @@ class Admin::ServiceJobsController < Admin::ApplicationController
   end
 
   def destroy
-    return unless @service_job.discard?
+    return unless @service_job.discard
     flash[:notice] = "Service Job deleted"
-    redirect_to service_jobs_path
+    redirect_to admin_service_jobs_path
   end
 
   private

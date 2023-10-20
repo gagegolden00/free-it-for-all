@@ -23,8 +23,7 @@ Rails.application.routes.draw do
 
   end
 
-end
-
   get "/home", to: "pages#home", as: "home"
   get "/test_page", to: "pages#test_page", as: "test_page"
+
 end

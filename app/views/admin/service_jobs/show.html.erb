@@ -36,6 +36,7 @@
     <% end %>
   </ul>
   <%= link_to "Edit", edit_admin_service_job_path(@service_job)%>
+  <%= render(ButtonComponent::Delete.new(text: "Delete service job"))%>
 </section>
 
 
