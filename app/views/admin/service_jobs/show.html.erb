@@ -11,11 +11,11 @@
     <%= form.submit %>
   <% end %>
 
-  <div class="border border-black">
-    <% unless !@service_job.users.nil? %>
+  <div class="">
+    <% unless @active_users.empty? %>
     <h1>Assigned a tech<h1>
     <ul>
-      <% @service_job.users.each do |user| %>
+      <% @active_users.each do |user| %>
         <div class="border rounded flex items-center">
           <li class="border border-black">
             <%= user.name %>

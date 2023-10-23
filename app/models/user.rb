@@ -15,6 +15,9 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true
 
+  # This makes sure discarded users cant login
+  default_scope -> { kept }
+
   scope :only_admins, -> {
     where(role: 'admin')
   }
