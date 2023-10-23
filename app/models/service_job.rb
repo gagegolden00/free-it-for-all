@@ -3,6 +3,9 @@ class ServiceJob < ApplicationRecord
   belongs_to :work_site, required: false
   belongs_to :customer
 
+  has_many :user_service_jobs
+  has_many :users, through: :user_service_jobs
+
   validates :job_number, presence: true, uniqueness: true
 
   accepts_nested_attributes_for :customer, reject_if: :name_and_customer_id_blank?

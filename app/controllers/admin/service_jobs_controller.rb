@@ -1,6 +1,6 @@
 class Admin::ServiceJobsController < Admin::ApplicationController
   layout 'application_full'
-  
+
   include StateListHelper
   include StatusListHelper
 
@@ -28,6 +28,10 @@ class Admin::ServiceJobsController < Admin::ApplicationController
 
   def index
     @pagy, @service_jobs = pagy(ServiceJob.all)
+  end
+
+  def show
+    @technician_users = User.only_technicians
   end
 
   def edit

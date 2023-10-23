@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :admin, path: '' do
     resources :customers
     resources :service_jobs
+    resources :user_service_jobs, only: %i[create destroy]
   end
 
   # Technician namespacem only accessable by mech cool technicians
