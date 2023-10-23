@@ -4,7 +4,11 @@ class Admin::UserServiceJobsController < ApplicationController
     @existing_record = UserServiceJob.find_by(user_id: params[:user_id], service_job_id: params[:service_job_id])
     @user_service_job = UserServiceJob.new(user_service_job_params)
 
-    if @existing_record.present?
+    if @existing_record && !@existing_record.discarded?
+      flash[:notice] = "Technician is already assigned"
+      redirect_to admin_service_job_path(params[:service_job_id])
+
+    elsif @existing_record
       flash[:notice] = "Technician has been re-assigned"
       @existing_record.undiscard!
       redirect_to admin_service_job_path(params[:service_job_id])
@@ -31,7 +35,7 @@ class Admin::UserServiceJobsController < ApplicationController
   private
 
   def user_service_job_params
-    params.permit(:service_job_id, :user_id)
+    params.permit(:service_job_id, :user_id, :date, :start_time, :end_time)
   end
 
 end

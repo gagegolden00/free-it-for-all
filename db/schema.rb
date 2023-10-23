@@ -79,6 +79,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_21_205934) do
   create_table "user_service_jobs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "service_job_id", null: false
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
     t.timestamptz "discarded_at"

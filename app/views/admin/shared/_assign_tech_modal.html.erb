@@ -22,14 +22,25 @@
             </div>
             <!-- Modal body -->
 
-            <%= form_with(model: @user_service_job, url: admin_user_service_jobs_path, html: { class: "grid gap-4 mb-4 sm:grid-cols-2" }) do |form| %>
+            <%= form_with(model: @user_service_job, url: admin_user_service_jobs_path, html: { class: "gap-4 mb-4" }) do |form| %>
               <div>
-                <%= form.label :techs, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
                 <%= form.hidden_field :service_job_id, value: [params[:id]] %>
+
+                <%= form.label :techs, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
                 <%= form.select :user_id, options_for_select(@technician_users.map { |tech| [tech.name, tech.id] }), {}, { class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" } %>
+
+                <%= form.label :date, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+                <%= form.date_field :date, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+
+                <%= form.label :start_time, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+                <%= form.time_field :start_time, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+
+                <%= form.label :end_time, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+                <%= form.time_field :end_time, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+
               </div>
-              <div class="sm:col-span-2">
-                <%= form.submit "Submit", class: "text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" %>
+              <div class="mt-4 flex justify-end">
+                <%= form.submit "Assign", class: " text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" %>
               </div>
             <% end %>
 

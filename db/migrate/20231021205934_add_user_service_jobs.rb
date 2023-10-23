@@ -4,6 +4,9 @@ class AddUserServiceJobs < ActiveRecord::Migration[7.0]
     create_table :user_service_jobs do |t|
       t.references :user, null: false
       t.references :service_job, null: false
+      t.date :date
+      t.time :start_time
+      t.time :end_time
       t.timestamps
       t.timestamp :discarded_at
     end
