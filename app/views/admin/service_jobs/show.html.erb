@@ -1,19 +1,11 @@
 <section class="flex flex-col border-4 h-screen w-screen">
   <h1>Service job show page</h1>
 
-<!-- Create user / service job relationship
-  We can take this block and do what we need to with it
-  but for adding and removing entries this is working -->
-  <%= form_with(model: @user_service_job, url: admin_user_service_jobs_path) do |form|%>
-    <%= form.label :asign_a_tech%>
-    <%= form.hidden_field :service_job_id, value: [params[:id]]%>
-    <%= form.select :user_id, options_for_select(@technician_users.map { |tech| [tech.name, tech.id]}) %>
-    <%= form.submit %>
-  <% end %>
+  <%= render partial: "admin/shared/assign_tech_modal"%>
 
   <div class="">
     <% unless @active_users.empty? %>
-    <h1>Assigned a tech<h1>
+    <h1>Service job assigned to: <h1>
     <ul>
       <% @active_users.each do |user| %>
         <div class="border rounded flex items-center">
@@ -28,8 +20,6 @@
     </ul>
     <% end %>
   </div>
-<!----------------------------------------------------------->
-
 
   <ul class="w-1/2 mx-auto">
     <li class="text-xl font-bold mt-6 mb-1"> Service job details </li>
