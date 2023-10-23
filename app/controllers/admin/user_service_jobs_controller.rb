@@ -28,7 +28,7 @@ class Admin::UserServiceJobsController < ApplicationController
     @user_service_job = UserServiceJob.find_by(user_id: params[:user_id], service_job_id: params[:id])
     if @user_service_job.discard
       flash[:notice] = "Technician has been unassigned"
-      redirect_to admin_service_job_path(params[:id])
+      redirect_to admin_service_job_path(params[:service_job_id])
     end
   end
 
