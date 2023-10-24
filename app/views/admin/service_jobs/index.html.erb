@@ -20,7 +20,7 @@
 
 <div id="service_jobs">
   <% @service_jobs.each do |service_job| %>
-    <div class="border rounded m-2 sm:mx-4 p-3 text-sm flex flex-row flex-wrap justify-between space-x-3">
+    <div class="border rounded m-2 sm:mx-4 p-3 text-sm flex flex-row flex-wrap justify-between space-x-3 border-gray-300 dark:border-gray-500">
       <p class="w-44 font-semibold">
         <%= link_to service_job.job_number , admin_service_job_path(service_job) %>
       </p>
