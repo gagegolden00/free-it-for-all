@@ -1,2 +1,3 @@
 class ServiceReport < ApplicationRecord
+  
 end
