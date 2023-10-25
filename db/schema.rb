@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_24_114924) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_24_110143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -49,20 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_114924) do
     t.timestamptz "discarded_at"
     t.index ["customer_id"], name: "index_point_of_contacts_on_customer_id"
     t.index ["discarded_at"], name: "index_point_of_contacts_on_discarded_at"
-  end
-
-  create_table "purchase_orders", force: :cascade do |t|
-    t.string "purchase_order_number", null: false
-    t.string "vendor"
-    t.integer "cost"
-    t.text "notes"
-    t.text "internal_notes"
-    t.bigint "service_job_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
-    t.timestamptz "discarded_at"
-    t.index ["discarded_at"], name: "index_purchase_orders_on_discarded_at"
-    t.index ["service_job_id"], name: "index_purchase_orders_on_service_job_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -107,38 +93,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_114924) do
     t.index ["service_job_id"], name: "index_service_reports_on_service_job_id"
   end
 
-  create_table "time_logs", force: :cascade do |t|
-    t.integer "regular_minutes"
-    t.integer "overtime_minutes"
-    t.integer "double_time_minutes"
-    t.integer "mileage"
-    t.text "remarks"
-    t.bigint "time_sheet_id"
-    t.bigint "service_report_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
-    t.timestamptz "discarded_at"
-    t.index ["discarded_at"], name: "index_time_logs_on_discarded_at"
-    t.index ["service_report_id"], name: "index_time_logs_on_service_report_id"
-    t.index ["time_sheet_id"], name: "index_time_logs_on_time_sheet_id"
-  end
-
-  create_table "time_sheets", force: :cascade do |t|
-    t.timestamptz "start_date", null: false
-    t.timestamptz "end_date"
-    t.bigint "user_id"
-    t.integer "regular_minutes"
-    t.integer "overtime_minutes"
-    t.integer "double_time_minutes"
-    t.integer "mileage"
-    t.text "remarks"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
-    t.timestamptz "discarded_at"
-    t.index ["discarded_at"], name: "index_time_sheets_on_discarded_at"
-    t.index ["user_id"], name: "index_time_sheets_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.enum "role", null: false, enum_type: "role"
     t.string "name", null: false
@@ -177,10 +131,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_114924) do
     t.index ["discarded_at"], name: "index_work_sites_on_discarded_at"
   end
 
-  add_foreign_key "purchase_orders", "service_jobs"
   add_foreign_key "service_jobs", "customers"
   add_foreign_key "service_reports", "service_jobs"
-  add_foreign_key "time_logs", "service_reports"
-  add_foreign_key "time_logs", "time_sheets"
-  add_foreign_key "time_sheets", "users"
 end

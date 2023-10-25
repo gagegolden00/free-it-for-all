@@ -1,33 +1,51 @@
+<div class="border border-black">
+  <h1>Customer Details </h1>
+  <p>Customer Name: </p>
+  <p>Customer PO number: </p>
+  <p>Customer Address: </p>
+  <p>Customer City: </p>
+  <p>Customer State: </p>
+  <p>Customer Zip code: </p>
+</div>
+
 <%= form_with(model: @service_report) do |service_report_field| %>
   <%= servce_report_field.label :service_report_number %>
   <%= servce_report_field.text_field :service_report_number %>
+
   <%= servce_report_field.label :warranty %>
   <%= servce_report_field.check_box :warranty %>
+
   <%= servce_report_field.label :equipment_model %>
-  <%= servce_report_field.text_field %>
+  <%= servce_report_field.text_field :equipment_model %>
+
   <%= servce_report_field.label :equipment_serial %>
-  <%= servce_report_field.text_field %>
+  <%= servce_report_field.text_field :equipment_serial %>
+
   <%= servce_report_field.label :mischarge %>
-  <%= servce_report_field.text_field %>
+  <%= servce_report_field.text_field :mischarge%>
+
   <%= servce_report_field.label :total_charge %>
-  <%= servce_report_field.text_field %>
+  <%= servce_report_field.text_field :total_charge %>
 
     <%= servce_report_field.fields_for :time_log do |time_log_field| %>
       <%= time_log_field.label :regular_time %>
+      <%= servce_report_field.text_field :regular_time %>
+
       <%= time_log_field.label :overtime %>
+      <%= servce_report_field.text_field :overtime %>
+
       <%= time_log_field.label :double_time %>
+      <%= servce_report_field.text_field :double_time %>
+
       <%= time_log_field.label :travel_time %>
-
-    <% end %>
-
-    <%= servce_report_field.fields_for :purcahse_order do |purcahse_order_field| %>
-
+      <%= servce_report_field.text_field :travel_time %>
 
     <% end %>
 
   <%= servce_report_field.label :employee_signature %>
-  <%= servce_report_field. %>
+  <%= servce_report_field.text_field :employee_signature %>
+
   <%= servce_report_field.label :customer_signature %>
-  <%= servce_report_field. %>
-  
+  <%= servce_report_field.text_field :employee_signature %>
+
 <% end %>
