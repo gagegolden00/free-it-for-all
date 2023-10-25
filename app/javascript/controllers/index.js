@@ -7,6 +7,9 @@ import { application } from "./application"
 import ChangeTextController from "./change_text_controller"
 application.register("change-text", ChangeTextController)
 
+import DarkModeController from "./dark_mode_controller"
+application.register("dark-mode", DarkModeController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
