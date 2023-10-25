@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ['rootTag', 'sunSvg', 'moonSvg'];
+  static targets = ['rootTag'];
 
   connect() {
     console.log('Connected to dark mode controller');
@@ -19,39 +19,21 @@ export default class extends Controller {
   setDarkMode() {
     this.rootTagTarget.classList.remove('light');
     this.rootTagTarget.classList.add('dark');
-    this.moonSvgTarget.classList.add('hidden');
-    this.sunSvgTarget.classList.remove('hidden');
-    this.setLocalStorage('darkModeEnabled', 'true');
-    this.setLocalStorage('currentIcon', 'sunSvg'); 
+    localStorage.setItem('darkModeEnabled', 'true');
   }
 
   setLightMode() {
     this.rootTagTarget.classList.remove('dark');
     this.rootTagTarget.classList.add('light');
-    this.moonSvgTarget.classList.remove('hidden');
-    this.sunSvgTarget.classList.add('hidden');
-    this.removeLocalStorage('darkModeEnabled');
-    this.setLocalStorage('currentIcon', 'moonSvg'); 
+    localStorage.removeItem('darkModeEnabled');
   }
 
   applyDarkMode() {
-    const darkModeEnabled = this.getLocalStorage('darkModeEnabled');
+    const darkModeEnabled = localStorage.getItem('darkModeEnabled');
     if (darkModeEnabled === 'true') {
       this.setDarkMode();
     } else {
       this.setLightMode();
     }
-  }
-
-  setLocalStorage(key, value) {
-    localStorage.setItem(key, value);
-  }
-
-  removeLocalStorage(key) {
-    localStorage.removeItem(key);
-  }
-
-  getLocalStorage(key) {
-    return localStorage.getItem(key);
   }
 }
