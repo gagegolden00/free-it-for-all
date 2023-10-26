@@ -123,19 +123,10 @@
     </li>
     </ul>
 
-    <div class="text-center text-gray-500 dark:text-gray-400 mt-auto border-t border-gray-200 dark:border-gray-700 pt-4">
-      <h3 class="text-lg font-bold tracking-tight text-gray-600 dark:text-gray-100">
-        <a href="#"><%= current_user.name %></a>
-      </h3>
-      
-      <p class="font-light text-primary-600 dark:text-primary-400 text-sm"><%= current_user.email %></p>
-      
-      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center w-full py-2.5 px-5 my-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-primary-600 hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
-
       <!-- Darkmode button -->
-      <%= button_tag "#", type: 'button', data: { action: 'click->dark-mode#toggleDarkMode' }, class: "border border-gray-400 rounded p-2 h-6 w-6 items-center flex justify-center" do %>
+      <%= button_tag "#", type: 'button', data: { action: 'click->dark-mode#toggleDarkMode' }, class: "border-2 border-gray-200 hover:border-primary-600 hover:shadow-md rounded p-2 h-6 w-6 mx-auto mt-auto items-center flex justify-center text-gray-400 group" do %>
         <div class="dark:hidden">
-          <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-white dark:text-white group-hover:bg-primary-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
             <path d="M17.8 13.75a1 1 0 0 0-.859-.5A7.488 7.488 0 0 1 10.52 2a1 1 0 0 0 0-.969A1.035 1.035 0 0 0 9.687.5h-.113a9.5 9.5 0 1 0 8.222 14.247 1 1 0 0 0 .004-.997Z"/>
           </svg>
         </div>
@@ -147,6 +138,18 @@
         </div>
       <% end %>
       <!--------------------->
+
+    <div class="text-center text-gray-500 dark:text-gray-400 mt-4 border-t border-gray-200 dark:border-gray-400 pt-4">
+      
+      <h3 class="text-lg font-bold tracking-tight text-gray-600 dark:text-gray-100">
+        <a href="#"><%= current_user.name %></a>
+      </h3>
+      
+      <p class="font-light text-primary-600 dark:text-primary-400 text-sm"><%= current_user.email %></p>
+
+
+      
+      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center w-full py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-lg border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
 
     </div>
   </div>
