@@ -1,7 +1,8 @@
 <div id="new-customer-form" class ="m-2 sm:m-4">
   <%= form_with(model: @customer, url: path, local: true) do |form| %>
+  <p class="font-semibold text-lg mt-2">Customer Information</p>
     <div class="flex flex-col gap-2">
-      <%= form.label :customer_name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= form.label :name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
       <%= form.text_field :name, class: "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
       <%= form.label :phone_number, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
       <%= form.text_field :phone_number, class: "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
@@ -18,7 +19,7 @@
       <%= form.label :zip_code, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
       <%= form.text_field :zip_code, class: "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
     </div>
-    <p class="font-semibold text-lg mt-2">Point of contact</p>
+    <p class="font-semibold text-lg mt-2">POC Information</p>
     <div class="flex flex-col">
       <%= form.fields_for :point_of_contact, customer.build_point_of_contact do |f| %>
         <%= f.label :name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
