@@ -9,13 +9,13 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-  <body>
+  <body class="bg--white dark:bg-gray-900">
     <main>
       <% flash.each do |type, msg|%>
-        <%= render AlertComponent.new(type, msg)%>
+        <%= render AlertComponent.new(type, msg), class: "w-1/2"%>
       <% end %>
 
-<div class="bg-gray-50 dark:bg-gray-600">
+<div class="bg-gray-50 dark:bg-gray-900">
 <button data-drawer-target="sidebar-user" data-drawer-toggle="sidebar-user" aria-controls="sidebar-user" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 dark:text-gray-300 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
   <span class="sr-only">Open sidebar</span>
   <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +60,7 @@
 </div>
 
 <aside id="sidebar-user" class="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-  <div class="flex flex-col overflow-y-auto py-4 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-700 dark:border-gray-700 pt-5">
+  <div class="flex flex-col overflow-y-auto py-4 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-900 dark:border-gray-700 pt-5">
     <a href="/" class="flex text-center mx-auto mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
       <svg class="w-32 h-8 mr-2 text-black dark:text-white"  viewBox="0 0 366 82" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M92.7856 22.6127V0.463379H101.779L109.615 12.5331L117.45 0.463379H126.443V22.6127H118.697V10.6713L111.288 22.6127H107.95L100.532 10.6713V22.6127H92.7856Z" fill="currentColor"/>
@@ -124,15 +124,15 @@
     </ul>
 
       <!-- Darkmode button -->
-      <%= button_tag "#", type: 'button', data: { action: 'click->dark-mode#toggleDarkMode' }, class: "border-2 border-gray-200 hover:border-primary-600 hover:shadow-md rounded p-2 h-6 w-6 mx-auto mt-auto items-center flex justify-center text-gray-400 group" do %>
+      <%= button_tag "#", type: 'button', data: { action: 'click->dark-mode#toggleDarkMode' }, class: "border-2 border-gray-200 dark:border-gray-600 hover:border-primary-600 hover:shadow-md rounded p-2 h-6 w-6 mx-auto mt-auto items-center flex justify-center text-gray-400 group" do %>
         <div class="dark:hidden">
-          <svg class="w-5 h-5 text-gray-400 group-hover:text-white dark:text-white group-hover:bg-primary-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-white dark:text-gray-600 group-hover:bg-primary-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
             <path d="M17.8 13.75a1 1 0 0 0-.859-.5A7.488 7.488 0 0 1 10.52 2a1 1 0 0 0 0-.969A1.035 1.035 0 0 0 9.687.5h-.113a9.5 9.5 0 1 0 8.222 14.247 1 1 0 0 0 .004-.997Z"/>
           </svg>
         </div>
 
         <div class="hidden dark:block">
-          <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-5 h-5 text-gray-800 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-11a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1Zm0 12a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1ZM4.343 5.757a1 1 0 0 0 1.414-1.414L4.343 2.929a1 1 0 0 0-1.414 1.414l1.414 1.414Zm11.314 8.486a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM4 10a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1Zm15-1h-2a1 1 0 1 0 0 2h2a1 1 0 0 0 0-2ZM4.343 14.243l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0-1.414-1.414ZM14.95 6.05a1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 .707 1.707Z"/>
           </svg>
         </div>
@@ -155,7 +155,7 @@
   </div>
 </aside>
 
-<div class="ml-0 sm:ml-48 bg-white dark:bg-gray-800 h-full flex-none dark:text-white">
+<div class="ml-0 sm:ml-48 h-full flex-none dark:text-white">
 
       <%= yield %>
 
