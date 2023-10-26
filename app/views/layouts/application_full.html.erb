@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-  <body class="bg--white dark:bg-gray-800">
+  <body class="bg--white dark:bg-gray-800 ml-0 sm:ml-40">
     <main>
       <% flash.each do |type, msg|%>
         <%= render AlertComponent.new(type, msg)%>
