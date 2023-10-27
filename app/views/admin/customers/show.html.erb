@@ -1,19 +1,38 @@
-<h1>Customer Show Page</h1>
-<p><%= @customer.name %></p>
-<p><%= @customer.email %></p>
-<p><%= @customer.phone_number %></p>
-<p><%= @customer.address %></p>
-<p><%= @customer.city %></p>
-<p><%= @customer.state %></p>
-<p><%= @customer.zip_code %></p>
-<% if @customer.point_of_contact%>
-  <h1>Point of contact</h1>
-  <p><%= @customer.point_of_contact.name %></p>
-  <p><%= @customer.point_of_contact.phone_number %></p>
-  <p><%= @customer.point_of_contact.email %></p>
-<% end %>
-<div>
-  <%= link_to "Edit this customer", edit_admin_customer_path(@customer) %> |
-  <%= link_to "Back to customers", admin_customers_path %>
-  <%= button_to "Destroy this customer", admin_customer_path(@customer), method: :delete %>
+<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row flex-wrap items-center gap-2">
+  
+  <div class="flex flex-row">
+  <%= link_to "<", admin_customers_path, class: "text-lg sm:text-xl font-medium text-white" %>
+  <h1 class="text-lg sm:text-xl font-medium text-white"><%= @customer.name %></h1>
+  </div>
+  
+  <div class="flex flex-row gap-2 ml-auto">
+  <%= link_to "Edit Customer", edit_admin_customer_path(@customer), class: "text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
+  <%= button_to "Delete Customer", admin_customer_path(@customer), method: :delete, class: "text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
+  </div>
+
+</div>
+
+<div class="m-2 sm:m-4 border rounded-md p-2 sm:p-4 flex flex-wrap justify-between text-sm gap-4">
+  <div>
+    <h1 class="font-semibold">Customer</h1>
+    <p><%= @customer.name %></p>
+    <p><%= @customer.email %></p>
+    <p><%= @customer.phone_number %></p>
+  </div>
+
+  <div>
+    <h1 class="font-semibold">Address</h1>
+    <p><%= @customer.address %></p>
+    <p><%= @customer.city %></p>
+    <p><%= @customer.state %>, <%= @customer.zip_code %></p>
+  </div>
+
+  <div>  
+    <h1 class="font-semibold">Point of contact</h1>
+    <% if @customer.point_of_contact%>
+      <p><%= @customer.point_of_contact.name %></p>
+      <p><%= @customer.point_of_contact.phone_number %></p>
+      <p><%= @customer.point_of_contact.email %></p>
+    <% end %>
+  </div>
 </div>
