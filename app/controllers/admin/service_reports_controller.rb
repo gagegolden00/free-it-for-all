@@ -1,5 +1,5 @@
 class Admin::ServiceReportsController < ApplicationController
-  
+
   def new
     @service_report = ServiceReport.new
     @materials = Material.kept
