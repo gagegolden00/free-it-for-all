@@ -7,6 +7,7 @@ class CreateServiceReports < ActiveRecord::Migration[7.0]
       t.string :equipment_serial
       t.integer :mischarge
       t.integer :total_charge
+      t.text :description
       t.string :employee_signature
       t.string :customer_signature
       t.references :service_job, foreign_key: true

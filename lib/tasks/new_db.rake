@@ -1,6 +1,6 @@
 namespace :populate_db do
   desc 'Refresh the database, this will remove all data'
-  task clean_database: :environment do
+  task new_db: :environment do
 
     rails_commands = {
       db_drop: 'rails db:drop',

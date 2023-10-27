@@ -2,6 +2,7 @@ class ServiceJob < ApplicationRecord
 
   belongs_to :work_site, required: false
   belongs_to :customer
+  has_many :service_reports
 
   validates :job_number, presence: true, uniqueness: true
 
