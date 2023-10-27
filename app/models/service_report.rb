@@ -4,6 +4,8 @@ class ServiceReport < ApplicationRecord
 
   accepts_nested_attributes_for :service_report_materials
 
+  validates :service_job_id, presence: true
+
   private
 
   def quantity_blank?(attributes)
