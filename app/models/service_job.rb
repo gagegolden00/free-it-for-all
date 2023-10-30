@@ -4,6 +4,7 @@ class ServiceJob < ApplicationRecord
 
   belongs_to :work_site, required: false
   belongs_to :customer
+  has_many :service_reports
   has_many :user_service_jobs
   has_many :users, through: :user_service_jobs
 

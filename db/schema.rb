@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_024731) do
+=======
 ActiveRecord::Schema[7.0].define(version: 2023_10_21_205934) do
+>>>>>>> main
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -39,6 +43,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_21_205934) do
     t.index ["region_id"], name: "index_customers_on_region_id"
   end
 
+  create_table "materials", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "discarded_at"
+    t.index ["discarded_at"], name: "index_materials_on_discarded_at"
+  end
+
   create_table "point_of_contacts", force: :cascade do |t|
     t.string "name", null: false
     t.string "phone_number"
@@ -64,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_21_205934) do
     t.string "job_number", null: false
     t.enum "status", default: "Pending", null: false, enum_type: "status"
     t.text "description"
-    t.decimal "contract_amount"
+    t.integer "contract_amount"
     t.string "work_type"
     t.bigint "customer_id"
     t.bigint "work_site_id"
@@ -76,6 +89,36 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_21_205934) do
     t.index ["work_site_id"], name: "index_service_jobs_on_work_site_id"
   end
 
+  create_table "service_report_materials", force: :cascade do |t|
+    t.bigint "service_report_id", null: false
+    t.bigint "material_id", null: false
+    t.integer "quantity", null: false
+    t.integer "pre_tax_total"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "discarded_at"
+    t.index ["discarded_at"], name: "index_service_report_materials_on_discarded_at"
+    t.index ["material_id"], name: "index_service_report_materials_on_material_id"
+    t.index ["service_report_id", "material_id"], name: "unique_index_on_service_report_and_material", unique: true
+    t.index ["service_report_id"], name: "index_service_report_materials_on_service_report_id"
+  end
+
+  create_table "service_reports", force: :cascade do |t|
+    t.string "service_report_number", null: false
+    t.boolean "warranty"
+    t.string "equipment_model"
+    t.string "equipment_serial"
+    t.integer "mischarge"
+    t.integer "total_charge"
+    t.text "description"
+    t.string "employee_signature"
+    t.string "customer_signature"
+    t.bigint "service_job_id"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "discarded_at"
+    t.index ["discarded_at"], name: "index_service_reports_on_discarded_at"
+    t.index ["service_job_id"], name: "index_service_reports_on_service_job_id"
   create_table "user_service_jobs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "service_job_id", null: false
@@ -130,4 +173,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_21_205934) do
   end
 
   add_foreign_key "service_jobs", "customers"
+  add_foreign_key "service_report_materials", "materials"
+  add_foreign_key "service_report_materials", "service_reports"
+  add_foreign_key "service_reports", "service_jobs"
 end
