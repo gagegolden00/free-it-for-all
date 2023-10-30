@@ -1,4 +1,6 @@
 class Admin::CustomersController < Admin::ApplicationController
+  layout 'application_full'
+
   before_action :set_customer_from_params, only: %i[show edit update destroy]
   before_action :set_all_regions, only: %i[edit update new create]
 
@@ -20,7 +22,7 @@ class Admin::CustomersController < Admin::ApplicationController
   def show; end
 
   def index
-    @pagy, @customers = pagy(Customer.all)
+    @pagy, @customers = pagy(Customer.kept)
   end
 
   def edit
@@ -57,6 +59,6 @@ class Admin::CustomersController < Admin::ApplicationController
   end
 
   def set_all_regions
-    @regions = Region.all
+    @regions = Region.kept
   end
 end

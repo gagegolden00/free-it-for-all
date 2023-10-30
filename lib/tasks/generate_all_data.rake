@@ -5,7 +5,8 @@ namespace :populate_db do
       rakes = {
         create_users: 'rake populate_db:create_users',
         create_customers: 'rake populate_db:create_customers',
-        create_service_jobs: 'rake populate_db:create_service_jobs'
+        create_service_jobs: 'rake populate_db:create_service_jobs',
+        create_user_service_jobs: 'rake populate_db:create_user_service_jobs'
       }
 
       rakes.each do |key, value|

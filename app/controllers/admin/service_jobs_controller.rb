@@ -1,4 +1,6 @@
 class Admin::ServiceJobsController < Admin::ApplicationController
+  layout 'application_full'
+
   include StateListHelper
   include StatusListHelper
 
@@ -13,7 +15,7 @@ class Admin::ServiceJobsController < Admin::ApplicationController
   end
 
   def create
-    @customers = Customer.all
+    @customers = Customer.kept
     @service_job = ServiceJob.new(permitted_params)
     puts @service_job.inspect
     if @service_job.save
@@ -25,7 +27,12 @@ class Admin::ServiceJobsController < Admin::ApplicationController
   end
 
   def index
-    @pagy, @service_jobs = pagy(ServiceJob.all)
+    @pagy, @service_jobs = pagy(ServiceJob.kept)
+  end
+
+  def show
+    @technician_users = User.only_technicians
+    @active_users = @service_job.active_users
   end
 
   def edit
@@ -56,7 +63,7 @@ class Admin::ServiceJobsController < Admin::ApplicationController
   end
 
   def set_all_customers
-    @customers = Customer.all
+    @customers = Customer.kept
   end
 
   def permitted_params

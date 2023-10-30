@@ -1,5 +1,26 @@
 <section class="flex flex-col border-4 h-screen w-screen">
   <h1>Service job show page</h1>
+
+  <%= render partial: "admin/shared/assign_tech_modal"%>
+
+  <div class="">
+    <% unless @active_users.empty? %>
+    <h1>Service job assigned to: <h1>
+    <ul>
+      <% @active_users.each do |user| %>
+        <div class="border rounded flex items-center">
+          <li class="border border-black">
+            <%= user.name %>
+          </li>
+          <%= button_to admin_user_service_job_path(service_job_id: @service_job.id, user_id: user.id), method: :delete, class: "border border-black h-full" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!-- change color here --><style>svg{fill:#000000}</style><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+          <% end %>
+        </div>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+
   <ul class="w-1/2 mx-auto">
     <li class="text-xl font-bold mt-6 mb-1"> Service job details </li>
     <li><strong>Job Number:</strong> <%= @service_job.job_number %></li>
@@ -18,25 +39,24 @@
     <li><strong>Customer ZIP Code:</strong> <%= @service_job.customer.zip_code %></li>
 
     <% if @service_job.customer.point_of_contact %>
-    <li class="text-xl font-bold mt-6 mb-1">Customer point of contact details</li>
-    <li><strong>Point of Contact Name:</strong> <%= @service_job.customer.point_of_contact.name %></li>
-    <li><strong>Point of Contact Phone Number:</strong> <%= @service_job.customer.point_of_contact.phone_number %></li>
-    <li><strong>Point of Contact Email:</strong> <%= @service_job.customer.point_of_contact.email %></li>
+      <li class="text-xl font-bold mt-6 mb-1">Customer point of contact details</li>
+      <li><strong>Point of Contact Name:</strong> <%= @service_job.customer.point_of_contact.name %></li>
+      <li><strong>Point of Contact Phone Number:</strong> <%= @service_job.customer.point_of_contact.phone_number %></li>
+      <li><strong>Point of Contact Email:</strong> <%= @service_job.customer.point_of_contact.email %></li>
     <% end %>
 
     <% if @service_job.work_site%>
-    <li class="text-xl font-bold mt-6 mb-1"> Work site details </li>
-    <li><strong>Work Site Name:</strong> <%= @service_job.work_site.name %></li>
-    <li><strong>Work Site Address:</strong> <%= @service_job.work_site.address %></li>
-    <li><strong>Work Site City:</strong> <%= @service_job.work_site.city %></li>
-    <li><strong>Work Site State:</strong> <%= @service_job.work_site.state %></li>
-    <li><strong>Work Site ZIP Code:</strong> <%= @service_job.work_site.zip_code %></li>
-    <li><strong>Work Site Email:</strong> <%= @service_job.work_site.email %></li>
-    <li><strong>Work Site Phone Number:</strong> <%= @service_job.work_site.phone_number %></li>
+      <li class="text-xl font-bold mt-6 mb-1"> Work site details </li>
+      <li><strong>Work Site Name:</strong> <%= @service_job.work_site.name %></li>
+      <li><strong>Work Site Address:</strong> <%= @service_job.work_site.address %></li>
+      <li><strong>Work Site City:</strong> <%= @service_job.work_site.city %></li>
+      <li><strong>Work Site State:</strong> <%= @service_job.work_site.state %></li>
+      <li><strong>Work Site ZIP Code:</strong> <%= @service_job.work_site.zip_code %></li>
+      <li><strong>Work Site Email:</strong> <%= @service_job.work_site.email %></li>
+      <li><strong>Work Site Phone Number:</strong> <%= @service_job.work_site.phone_number %></li>
     <% end %>
   </ul>
   <%= link_to "Edit", edit_admin_service_job_path(@service_job)%>
-  <%= render(ButtonComponent::Delete.new(text: "Delete service job"))%>
 </section>
 
 
