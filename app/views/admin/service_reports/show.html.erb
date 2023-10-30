@@ -1,0 +1,84 @@
+<%= link_to "Edit report", edit_admin_service_job_service_report_path(@service_job, @service_report)%>
+<%= button_to "Delete Report", admin_service_job_service_report_path(@service_job, @service_report), method: :delete %>
+<div class="border-4">
+  <section id="first-section" class="border border-red-600 my-4">
+    <div>
+      <h1>Customer Details</h1>
+      <p>Customer Name: <%= @service_report.service_report_number %></p>
+
+    </div>
+    <div>
+      <h1></h1>
+      <p>Equipment Model: <%= @service_report.equipment_model %></p>
+      <p>Equipment Serial: <%= @service_report.equipment_serial %></p>
+      <p>Warranty: <%= @service_report.warranty %></p>
+    </div>
+  </section>
+
+  <section id="second-section" class="border border-blue-600 my-4">
+    <h1 class="w-full">Materials Used</h1>
+    <div class="flex flex-wrap mx-4">
+      <% @service_report_materials.each do |material| %>
+        <div class="px-4 mb-4">
+          <div class="border black p-4">
+            <p><strong>Material Name:</strong> <%= material.name %></p>
+            <p><strong>Material Price:</strong> <%= material.price %></p>
+            <p><strong>Material Quantity:</strong> <%= material.quantity %></p>
+            <p><strong>Material Pre Tax Total:</strong> <%= material.pre_tax_total %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section id="third-section" class="border border-green-400 my-4">
+    <div>
+      <p><strong>Work Description:</strong> <%= @service_report.description %></p>
+    </div>
+    <div id="individual-materials-list" class="">
+      <table border="1">
+        <tr>
+          <th>QTY</th>
+          <th>Description</th>
+          <th>Unit Price</th>
+          <th>Total Cost</th>
+        </tr>
+
+      </table>
+    </div>
+    <div class="">
+      <div>
+        <p><strong>Employee Signature:</strong> <%= @service_report.employee_signature %></p>
+      </div>
+      <div>
+        <p><strong>Customer Signature:</strong> <%= @service_report.customer_signature %></p>
+      </div>
+    </div>
+    <div class="border border-black w-full h-14 flex justify-around items-center">
+      <div class="border border-black">
+        <h2>Total Hours</h2>
+        <span>###</span>
+      </div>
+      <div class="border border-black">
+        <h2>Total Parts</h2>
+        <span>###</span>
+      </div>
+      <div class="border border-black">
+        <h2>Total Misc</h2>
+        <span>###</span>
+      </div>
+      <div class="border border-black">
+        <h2>Mileage/Shipping</h2>
+        <span>###</span>
+      </div>
+      <div class="border border-black">
+        <h2>Tax</h2>
+        <span>###</span>
+      </div>
+      <div class="border border-black">
+        <h2>Total</h2>
+        <span>###</span>
+      </div>
+    </div>
+  </section>
+</div>

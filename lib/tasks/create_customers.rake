@@ -11,7 +11,7 @@ namespace :populate_db do
       manager: Faker::Name.name
     )
 
-    100.times do
+    20.times do
       name1 = Faker::Name.name
       name2 = Faker::Name.name
       Customer.create!(
