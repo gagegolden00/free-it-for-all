@@ -20,7 +20,7 @@ class AddServiceJobs < ActiveRecord::Migration[7.0]
       t.string :job_number, null: false, unique: true
       t.enum :status, enum_type: 'status', null: false, default: 'Pending'
       t.text :description
-      t.decimal :contract_amount
+      t.integer :contract_amount
       t.string :work_type
       t.references :customer, foreign_key: true
       t.belongs_to :work_site
