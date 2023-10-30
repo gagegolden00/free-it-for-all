@@ -1,0 +1,3 @@
+class TimeLogsController < ApplicationController
+  
+end
