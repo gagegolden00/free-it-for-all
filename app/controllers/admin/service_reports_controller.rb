@@ -1,5 +1,5 @@
 class Admin::ServiceReportsController < ApplicationController
-  before_action :set_service_job, only: %i[new create show index edit update destroy]
+  before_action :set_service_job
   before_action :set_service_report, only: %i[show edit update destroy]
   before_action :set_materials, only: %i[new create edit update]
   before_action :set_existing_service_report_materials, only: %i[edit update]
@@ -70,7 +70,6 @@ class Admin::ServiceReportsController < ApplicationController
 
   def filter_params(params)
     params[:service_report_materials_attributes] = params[:service_report_materials_attributes].select do |_, service_report_material_object|
-      binding.pry
       quantity = service_report_material_object[:quantity].to_i
       if service_report_material_object[:id].present?
         true
