@@ -8,7 +8,8 @@ namespace :populate_db do
         create_service_jobs: 'rake populate_db:create_service_jobs',
         create_service_reports: 'rake populate_db:create_service_reports',
         create_materials: 'rake populate_db:create_materials',
-        create_service_report_materials: 'rake populate_db:create_service_report_materials'
+        create_service_report_materials: 'rake populate_db:create_service_report_materials',
+        create_user_service_jobs: 'rake populate_db:create_user_service_jobs'
       }
 
       rakes.each do |key, value|

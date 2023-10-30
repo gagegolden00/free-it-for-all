@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_10_26_024731) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_10_21_205934) do
+>>>>>>> main
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -115,6 +119,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_024731) do
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_service_reports_on_discarded_at"
     t.index ["service_job_id"], name: "index_service_reports_on_service_job_id"
+  create_table "user_service_jobs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "service_job_id", null: false
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "discarded_at"
+    t.index ["discarded_at"], name: "index_user_service_jobs_on_discarded_at"
+    t.index ["service_job_id"], name: "index_user_service_jobs_on_service_job_id"
+    t.index ["user_id", "service_job_id"], name: "index_user_service_jobs_on_user_id_and_service_job_id", unique: true
+    t.index ["user_id"], name: "index_user_service_jobs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -22,7 +22,7 @@ class Admin::CustomersController < Admin::ApplicationController
   def show; end
 
   def index
-    @pagy, @customers = pagy(Customer.all)
+    @pagy, @customers = pagy(Customer.kept)
   end
 
   def edit
@@ -59,6 +59,6 @@ class Admin::CustomersController < Admin::ApplicationController
   end
 
   def set_all_regions
-    @regions = Region.all
+    @regions = Region.kept
   end
 end
