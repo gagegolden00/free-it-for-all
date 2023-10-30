@@ -6,31 +6,31 @@ class ServiceReportPolicy < ApplicationPolicy
     @service_job = service_report
   end
 
-  def new
+  def new?
     user.admin?
   end
 
-  def create
+  def create?
     user.admin?
   end
 
-  def index
+  def index?
     user.admin?
   end
 
-  def show
+  def show?
     user.admin?
   end
 
-  def edit
+  def edit?
     user.admin?
   end
 
-  def update
+  def update?
     user.admin?
   end
 
-  def destroy
+  def destroy?
     user.admin?
   end
 

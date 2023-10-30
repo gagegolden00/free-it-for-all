@@ -6,6 +6,7 @@ class Admin::ServiceJobsController < Admin::ApplicationController
 
   before_action :set_service_job_from_params, only: %i[show edit update destroy]
   before_action :set_all_customers, only: %i[new create edit update]
+  before_action :authorize_access_in_service_jobs_controller, except: %i[index]
 
   def new
     @service_job = ServiceJob.new
@@ -27,7 +28,8 @@ class Admin::ServiceJobsController < Admin::ApplicationController
   end
 
   def index
-    @pagy, @service_jobs = pagy(ServiceJob.kept)
+    @pagy, @service_jobs = pagy(policy_scope(ServiceJob))
+    authorize @service_jobs
   end
 
   def show
@@ -47,7 +49,6 @@ class Admin::ServiceJobsController < Admin::ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
@@ -57,6 +58,10 @@ class Admin::ServiceJobsController < Admin::ApplicationController
   end
 
   private
+
+  def authorize_access_in_service_jobs_controller
+    authorize @service_job
+  end
 
   def set_service_job_from_params
     @service_job = ServiceJob.find(params[:id])
@@ -82,21 +87,9 @@ class Admin::ServiceJobsController < Admin::ApplicationController
         :city,
         :state,
         :zip_code,
-        { point_of_contact_attributes: %i[
-          name
-          phone_number
-          email]
-        }
+        { point_of_contact_attributes: %i[ name phone_number email] }
       ],
-      work_site_attributes: %i[
-        name
-        address
-        city
-        state
-        zip_code
-        email
-        phone_number
-      ]
+      work_site_attributes: %i[name address city state zip_code email phone_number]
     )
   end
 end

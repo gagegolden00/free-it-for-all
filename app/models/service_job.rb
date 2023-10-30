@@ -14,7 +14,6 @@ class ServiceJob < ApplicationRecord
 
   validates :job_number, presence: true, uniqueness: true
 
-
   def active_users
     user_service_jobs.where(discarded_at: nil).map(&:user)
   end

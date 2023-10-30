@@ -6,39 +6,51 @@ class ServiceJobPolicy < ApplicationPolicy
     @service_job = service_job
   end
 
-  def new
+  def new?
     user.admin?
   end
 
-  def create
+  def create?
     user.admin?
   end
 
-  def index
+  def index?
+    user.admin? || user.technician?
+  end
+
+  def show?
+    user.admin? || (
+      user.technician? &&
+      user.service_jobs.kept.include?(service_job) &&
+      !user.user_service_jobs.find_by(service_job: service_job).discarded?
+      )
+  end
+
+  def edit?
     user.admin?
   end
 
-  def show
+  def update?
     user.admin?
   end
 
-  def edit
-    user.admin?
-  end
-
-  def update
-    user.admin?
-  end
-
-  def destroy
+  def destroy?
     user.admin?
   end
 
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+    def initialize(user, scope)
+      @user  = user
+      @scope = scope
+    end
+
+    def resolve
+      if user.admin?
+        scope.kept
+      else
+        user.service_jobs.kept.joins(:user_service_jobs).where(user_service_jobs: {discarded_at: nil})
+      end
+    end
   end
-  
+
 end
