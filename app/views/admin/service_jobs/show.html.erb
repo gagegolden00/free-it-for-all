@@ -1,5 +1,9 @@
 <section class="flex flex-col border-4 h-screen w-screen">
   <h1>Service job show page</h1>
+  <div>
+    <%= link_to "new report", new_admin_service_job_service_report_path(service_job_id: @service_job) %><br />
+    <%= link_to "view reports", admin_service_job_service_reports_path(service_job_id: @service_job) %><br />
+  </div>
   <ul class="w-1/2 mx-auto">
     <li class="text-xl font-bold mt-6 mb-1"> Service job details </li>
     <li><strong>Job Number:</strong> <%= @service_job.job_number %></li>
