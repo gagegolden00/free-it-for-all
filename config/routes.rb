@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   root "pages#home"
 
   # Admin name space, only accessible by mech cool administrators via pundit policies
-  resources :customers
-  resources :service_jobs
-  resources :user_service_jobs, only: %i[create destroy]
+
+    resources :customers
+    resources :service_jobs do
+      resources :service_reports
+    end
+    resources :user_service_jobs, only: %i[create destroy]
 
 end

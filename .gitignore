@@ -39,3 +39,6 @@
 
 # Ignore docker override
 docker-compose.override.yml
+
+# personal notes
+notes.txt

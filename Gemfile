@@ -89,3 +89,5 @@ gem "sidekiq", "~> 7.1", ">= 7.1.4"
 gem "view_component", "~> 3.6"
 
 gem "faker", "~> 3.2"
+
+gem "pry", "~> 0.14.2"

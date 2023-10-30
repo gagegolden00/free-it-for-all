@@ -6,7 +6,7 @@ namespace :populate_db do
 
     def decide_params(random_counter, nil_counter)
       service_job_params = {
-        job_number: 'SER' + rand(10_000..99_999).to_s,
+        job_number: 'SER' + rand(10_000..999_999).to_s,
         status: ServiceJob.statuses.values.sample,
         description: Faker::Lorem.paragraph(sentence_count: rand(3..30)),
         contract_amount: rand(1.00..1_000_000.00),
@@ -79,11 +79,17 @@ namespace :populate_db do
     end
 
     # Tested 10,000 with no errors
-    100.times do
+    50.times do
       params = decide_params(@random_counter, @nil_counter)
-      ServiceJob.create!(params)
+      job_number = params[:job_number]
+
+      unless ServiceJob.exists?(job_number: job_number)
+        ServiceJob.create!(params)
+      end
+
       @random_counter = @random_counter >= 4 ? 1 : @random_counter + 1
       @nil_counter = @nil_counter >= 4 ? 1 : @nil_counter + 1
     end
+
   end
 end
