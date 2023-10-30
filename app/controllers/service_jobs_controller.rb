@@ -20,7 +20,7 @@ class ServiceJobsController < ApplicationController
     puts @service_job.inspect
     if @service_job.save
       flash[:notice] = 'Service job created'
-      redirect_to admin_service_job_path(@service_job)
+      redirect_to service_job_path(@service_job)
     else
       render :new
     end
@@ -43,7 +43,7 @@ class ServiceJobsController < ApplicationController
 
   def update
     if @service_job.update(permitted_params)
-      redirect_to admin_service_job_path(@service_job)
+      redirect_to service_job_path(@service_job)
     else
       render :edit
     end
@@ -53,7 +53,7 @@ class ServiceJobsController < ApplicationController
   def destroy
     return unless @service_job.discard
     flash[:notice] = "Service Job deleted"
-    redirect_to admin_service_jobs_path
+    redirect_to service_jobs_path
   end
 
   private

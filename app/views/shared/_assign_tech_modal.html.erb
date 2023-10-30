@@ -22,7 +22,7 @@
             </div>
             <!-- Modal body -->
 
-            <%= form_with(model: @user_service_job, url: admin_user_service_jobs_path, html: { class: "gap-4 mb-4" }) do |form| %>
+            <%= form_with(model: @user_service_job, url: user_service_jobs_path, html: { class: "gap-4 mb-4" }) do |form| %>
               <div>
                 <%= form.hidden_field :service_job_id, value: [params[:id]] %>
 

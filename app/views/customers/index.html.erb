@@ -1,6 +1,6 @@
 <div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
   <h1 class="text-lg sm:text-xl font-medium text-white">Customer Directory</h1>
-  <%= link_to "New Customer", new_admin_customer_path, class: "w-32 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
+  <%= link_to "New Customer", new_customer_path, class: "w-32 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
 </div>
 
 <form class="flex items-center m-2 sm:m-4">
@@ -22,7 +22,7 @@
   <% @customers.each do |customer| %>
     <div class="border rounded m-2 sm:mx-4 p-3 text-sm flex flex-row flex-wrap space-x-3 border-gray-300 dark:border-gray-500">
       <p class="w-44 font-semibold border-2 border-red-500">
-        <%= link_to customer.name , admin_customer_path(customer) %>
+        <%= link_to customer.name , customer_path(customer) %>
       </p>
       <p class="border-2 border-green-500 max-w-sm text-left"><%= customer.address %>, <%= customer.city %>, <%= customer.state %></p>
       <p class="w-8 ml-auto text-right border-2 border-blue-500">7</p>
@@ -35,15 +35,15 @@
     <div class="flex flex-row border rounded m-2 sm:mx-4 p-3 text-sm f border-gray-300 dark:border-gray-500">
       <div>
         <p class="font-semibold">
-          <%= link_to customer.name , admin_customer_path(customer) %>
+          <%= link_to customer.name , customer_path(customer) %>
         </p>
         <p class=""><%= customer.address %><br class="visible"> <%= customer.city %>, <%= customer.state %> <%= customer.zip_code %></p>
         <p class="mt-2">Completed Jobs: 7</p>
       </div>
       <div class="ml-auto">
-        <%= link_to "View" , admin_customer_path(customer), class: "rounded-md block w-16 text-center ml-2 text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
-        <%= link_to "Edit" , edit_admin_customer_path(customer), class: "rounded-md block w-16 mt-2 text-center ml-2 text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
-        
+        <%= link_to "View" , customer_path(customer), class: "rounded-md block w-16 text-center ml-2 text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+        <%= link_to "Edit" , edit_customer_path(customer), class: "rounded-md block w-16 mt-2 text-center ml-2 text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+
       </div>
     </div>
   <% end %>

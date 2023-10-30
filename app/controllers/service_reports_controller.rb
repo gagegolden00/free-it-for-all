@@ -1,4 +1,4 @@
-class Admin::ServiceReportsController < ApplicationController
+class ServiceReportsController < ApplicationController
   before_action :set_service_job
   before_action :set_service_report, only: %i[show edit update destroy]
   before_action :set_materials, only: %i[new create edit update]
@@ -13,7 +13,7 @@ class Admin::ServiceReportsController < ApplicationController
     @service_report = ServiceReport.create!(filtered_params)
     if @service_report.save
       flash[:notice] = "Service report created"
-      redirect_to admin_service_job_service_report_path(@service_job, @service_report)
+      redirect_to service_job_service_report_path(@service_job, @service_report)
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Admin::ServiceReportsController < ApplicationController
     filtered_params = filter_params(service_report_params)
     if @service_report.update(filtered_params)
       flash[:notice] = "Service report updated"
-      redirect_to admin_service_job_service_report_path(@service_job, @service_report)
+      redirect_to service_job_service_report_path(@service_job, @service_report)
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class Admin::ServiceReportsController < ApplicationController
   def destroy
     if @service_report.discard
       flash[:notice] = "Report deleted"
-      redirect_to admin_service_job_service_reports_path(@service_job)
+      redirect_to service_job_service_reports_path(@service_job)
     end
 
   end

@@ -1,11 +1,11 @@
 <section class="flex flex-col border-4 h-screen w-screen">
   <h1>Service job show page</h1>
   <div>
-    <%= link_to "new report", new_admin_service_job_service_report_path(service_job_id: @service_job) %><br />
-    <%= link_to "view reports", admin_service_job_service_reports_path(service_job_id: @service_job) %><br />
+    <%= link_to "new report", new_service_job_service_report_path(service_job_id: @service_job) %><br />
+    <%= link_to "view reports", service_job_service_reports_path(service_job_id: @service_job) %><br />
   </div>
 
-  <%= render partial: "admin/shared/assign_tech_modal"%>
+  <%= render partial: "shared/assign_tech_modal"%>
 
   <div class="">
     <% unless @active_users.empty? %>
@@ -16,7 +16,7 @@
           <li class="border border-black">
             <%= user.name %>
           </li>
-          <%= button_to admin_user_service_job_path(service_job_id: @service_job.id, user_id: user.id), method: :delete, class: "border border-black h-full" do %>
+          <%= button_to user_service_job_path(service_job_id: @service_job.id, user_id: user.id), method: :delete, class: "border border-black h-full" do %>
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!-- change color here --><style>svg{fill:#000000}</style><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
           <% end %>
         </div>
@@ -60,7 +60,7 @@
       <li><strong>Work Site Phone Number:</strong> <%= @service_job.work_site.phone_number %></li>
     <% end %>
   </ul>
-  <%= link_to "Edit", edit_admin_service_job_path(@service_job)%>
+  <%= link_to "Edit", edit_service_job_path(@service_job)%>
 </section>
 
 
