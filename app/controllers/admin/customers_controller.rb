@@ -25,9 +25,7 @@ class Admin::CustomersController < Admin::ApplicationController
     @pagy, @customers = pagy(Customer.kept)
   end
 
-  def edit
-    @customer.build_point_of_contact
-  end
+  def edit;end
 
   def update
     if @customer.update(customer_params)
