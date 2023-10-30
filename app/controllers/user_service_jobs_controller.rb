@@ -1,4 +1,4 @@
-class Admin::UserServiceJobsController < ApplicationController
+class UserServiceJobsController < ApplicationController
 
   def create
     @existing_record = UserServiceJob.find_by(user_id: params[:user_id], service_job_id: params[:service_job_id])

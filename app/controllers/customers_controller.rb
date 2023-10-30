@@ -1,4 +1,4 @@
-class Admin::CustomersController < Admin::ApplicationController
+class CustomersController < ApplicationController
   layout 'application_full'
 
   before_action :set_customer_from_params, only: %i[show edit update destroy]
