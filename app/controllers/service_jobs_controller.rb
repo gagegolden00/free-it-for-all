@@ -5,14 +5,15 @@ class ServiceJobsController < ApplicationController
   include StatusListHelper
 
   before_action :set_service_job_from_params, only: %i[show edit update destroy]
+  before_action :authorize_access_in_service_jobs_controller, only: %i[show edit update destroy]
   before_action :set_all_customers, only: %i[new create edit update]
-  before_action :authorize_access_in_service_jobs_controller, except: %i[index]
 
   def new
     @service_job = ServiceJob.new
     @service_job.build_customer
     @service_job.customer.build_point_of_contact
     @service_job.build_work_site
+    authorize @service_job
   end
 
   def create
