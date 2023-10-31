@@ -6,6 +6,7 @@ class ServiceReportsController < ApplicationController
 
   def new
     @service_report = ServiceReport.new
+    @service_report.build_time_log
   end
 
   def create
@@ -15,7 +16,7 @@ class ServiceReportsController < ApplicationController
       flash[:notice] = "Service report created"
       redirect_to service_job_service_report_path(@service_job, @service_report)
     else
-      render :new
+      
     end
   end
 
@@ -92,7 +93,8 @@ class ServiceReportsController < ApplicationController
       :customer_signature,
       :description,
       :service_job_id,
-      service_report_materials_attributes: %i[id material_id quantity _destroy]
+      service_report_materials_attributes: %i[id material_id quantity _destroy],
+      time_log_attributes: %i[regular_minutes overtime_minutes double_time_minutes mileage remarks]
     )
   end
 end

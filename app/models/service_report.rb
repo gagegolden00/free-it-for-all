@@ -1,14 +1,17 @@
 class ServiceReport < ApplicationRecord
   has_many :service_report_materials
   has_many :materials, through: :service_report_materials
+  has_one :time_log
 
   accepts_nested_attributes_for :service_report_materials
+  accepts_nested_attributes_for :time_log
 
   validates :service_job_id, presence: true
   # validates :service_report_number, presence: true
   validates :equipment_model, presence: true
   validates :equipment_serial, presence: true
   validates :description, presence: true
+  validates :time_log, presence: true
 
 
   scope :materials_used, ->(service_report) {
