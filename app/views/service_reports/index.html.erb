@@ -5,7 +5,7 @@
       <li>
         <strong>Report ID:</strong> <%= report.id %> <br />
         <strong>Report number:</strong> <%= report.service_report_number %> <br />
-        <%= link_to "View service report", admin_service_job_service_report_path(@service_job, id: report.id) %>
+        <%= link_to "View service report", service_job_service_report_path(@service_job, id: report.id) %>
       </li>
       <br />
     <% end %>
