@@ -5,6 +5,7 @@ class ServiceJobsController < ApplicationController
   include StatusListHelper
 
   before_action :set_service_job_from_params, only: %i[show edit update destroy]
+  before_action :authorize_access_in_service_jobs_controller, only: %i[show edit update destroy]
   before_action :set_all_customers, only: %i[new create edit update]
 
   def new
@@ -12,6 +13,7 @@ class ServiceJobsController < ApplicationController
     @service_job.build_customer
     @service_job.customer.build_point_of_contact
     @service_job.build_work_site
+    authorize @service_job
   end
 
   def create
@@ -27,7 +29,8 @@ class ServiceJobsController < ApplicationController
   end
 
   def index
-    @pagy, @service_jobs = pagy(ServiceJob.kept)
+    @pagy, @service_jobs = pagy(policy_scope(ServiceJob))
+    authorize @service_jobs
   end
 
   def show
@@ -47,7 +50,6 @@ class ServiceJobsController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
@@ -57,6 +59,10 @@ class ServiceJobsController < ApplicationController
   end
 
   private
+
+  def authorize_access_in_service_jobs_controller
+    authorize @service_job
+  end
 
   def set_service_job_from_params
     @service_job = ServiceJob.find(params[:id])
@@ -82,21 +88,9 @@ class ServiceJobsController < ApplicationController
         :city,
         :state,
         :zip_code,
-        { point_of_contact_attributes: %i[
-          name
-          phone_number
-          email]
-        }
+        { point_of_contact_attributes: %i[ name phone_number email] }
       ],
-      work_site_attributes: %i[
-        name
-        address
-        city
-        state
-        zip_code
-        email
-        phone_number
-      ]
+      work_site_attributes: %i[name address city state zip_code email phone_number]
     )
   end
 end
