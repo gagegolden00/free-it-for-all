@@ -3,11 +3,12 @@ class CustomersController < ApplicationController
 
   before_action :set_customer_from_params, only: %i[show edit update destroy]
   before_action :set_all_regions, only: %i[edit update new create]
-  before_action :authorize_access_in_customers_controller, except: %i[index]
+  before_action :authorize_access_in_customers_controller, only: %i[show edit update destroy]
 
   def new
     @customer = Customer.new
     @customer.build_point_of_contact
+    authorize @customer
   end
 
   def create
