@@ -1,24 +1,30 @@
 <%= link_to "Edit report", edit_service_job_service_report_path(@service_job, @service_report)%>
 <%= button_to "Delete Report", service_job_service_report_path(@service_job, @service_report), method: :delete %>
+
 <div class="border-4">
-  <section id="first-section" class="border border-red-600 my-4">
+  <h1><strong>Service Report:</strong> <%= @service_report.service_report_number %></h1>
+  <section id="first-section" class="border border-red-600 my-4 flex justify-between">
     <div>
-      <h1>Customer Details</h1>
-      <p>Customer Name: <%= @service_report.service_report_number %></p>
+      <p><strong>Customer Name:</strong> <%= @service_report.service_report_number %></p>
+      <p><strong>Phone Number:</strong> <%= @service_job.customer.phone_number %></p>
+      <p><strong>Email:</strong> <%= @service_job.customer.email %></p>
+      <p><strong>Address:</strong> <%= @service_job.customer.address %></p>
+      <p><strong>City:</strong> <%= @service_job.customer.city %></p>
+      <p><strong>State:</strong> <%= @service_job.customer.state %></p>
+      <p><strong>Zip Code:</strong> <%= @service_job.customer.zip_code %></p>
+      <p><strong>Region:</strong> <%= @service_job.customer.region.manager %></p>
     </div>
     <div>
-      <h1></h1>
-      <p>Equipment Model: <%= @service_report.equipment_model %></p>
-      <p>Equipment Serial: <%= @service_report.equipment_serial %></p>
-      <p>Warranty: <%= @service_report.warranty %></p>
+      <p><strong>Equipment Model:</strong> <%= @service_report.equipment_model %></p>
+      <p><strong>Equipment Serial:</strong> <%= @service_report.equipment_serial %></p>
+      <p><strong>Warranty:</strong> <%= @service_report.warranty %></p>
     </div>
     <div>
-      <h1 class="w-full">Time Log</h1>
-      <div class="flex flex-wrap mx-4">
-        <p><strong>Regular time:</strong> <%= @service_report.time_log.regular_minutes %></p>
-        <p><strong>Overtime :</strong> <%= @service_report.time_log.overtime_minutes  %></p>
-        <p><strong>Double time :</strong> <%= @service_report.time_log.double_time_minutes  %></p>
-        <p><strong>Mileage:</strong> <%= @service_report.time_log.mileage  %></p>
+      <div class="flex flex-col">
+        <p><strong>Regular time:</strong> <%= get_total_hours(time: @service_report.time_log&.regular_minutes) %>:<%= get_total_minutes(time: @service_report.time_log&.regular_minutes) %></p>
+        <p><strong>Overtime:</strong> <%= get_total_hours(time: @service_report.time_log&.overtime_minutes) %>:<%= get_total_minutes(time: @service_report.time_log&.overtime_minutes) %></p>
+        <p><strong>Double time:</strong> <%= get_total_hours(time: @service_report.time_log&.double_time_minutes) %>:<%= get_total_minutes(time: @service_report.time_log&.double_time_minutes) %></p>
+        <p><strong>Mileage:</strong> <%= @service_report.time_log&.mileage %></p>
       </div>
     </div>
   </section>
@@ -37,11 +43,11 @@
       <% end %>
     </div>
   </section>
-  <section id="third-section" class="border border-green-400 my-4">
+  <section id="third-section" class="border border-green-400 my-4 flex justify-between">
     <div>
       <p><strong>Work Description:</strong> <%= @service_report.description %></p>
     </div>
-    <div id="individual-materials-list" class="">
+    <div id="individual-materials-list" class="flex">
       <table border="1">
         <tr>
           <th>QTY</th>
@@ -49,40 +55,50 @@
           <th>Unit Price</th>
           <th>Total Cost</th>
         </tr>
+        <tr>
+          <td>1</td>
+          <td>Test Description</td>
+          <td>$10.00</td>
+          <td>$10.00</td>
+        </tr>
       </table>
     </div>
-    <div class="">
-      <div>
-        <p><strong>Employee Signature:</strong> <%= @service_report.employee_signature %></p>
+  </section>
+  <section id="fourth-section" class="border border-blue-500">
+    <div class="border border-black flex flex-col items-center">
+      <div class="flex flex-row justify-between w-full">
+        <div class="border border-black">
+          <h2>Total Hours</h2>
+          <span>###</span>
+        </div>
+        <div class="border border-black">
+          <h2>Total Parts</h2>
+          <span>###</span>
+        </div>
+        <div class="border border-black">
+          <h2>Total Misc</h2>
+          <span>###</span>
+        </div>
+        <div class="border border-black">
+          <h2>Mileage/Shipping</h2>
+          <span>###</span>
+        </div>
+        <div class="border border-black">
+          <h2>Tax</h2>
+          <span>###</span>
+        </div>
+        <div class="border border-black">
+          <h2>Total</h2>
+          <span>###</span>
+        </div>
       </div>
-      <div>
-        <p><strong>Customer Signature:</strong> <%= @service_report.customer_signature %></p>
-      </div>
-    </div>
-    <div class="border border-black w-full h-14 flex justify-around items-center">
-      <div class="border border-black">
-        <h2>Total Hours</h2>
-        <span>###</span>
-      </div>
-      <div class="border border-black">
-        <h2>Total Parts</h2>
-        <span>###</span>
-      </div>
-      <div class="border border-black">
-        <h2>Total Misc</h2>
-        <span>###</span>
-      </div>
-      <div class="border border-black">
-        <h2>Mileage/Shipping</h2>
-        <span>###</span>
-      </div>
-      <div class="border border-black">
-        <h2>Tax</h2>
-        <span>###</span>
-      </div>
-      <div class="border border-black">
-        <h2>Total</h2>
-        <span>###</span>
+      <div class="flex justify-around w-full my-10">
+        <div>
+          <p><strong>Employee Signature:</strong> <%= @service_report.employee_signature %></p>
+        </div>
+        <div>
+          <p><strong>Customer Signature:</strong> <%= @service_report.customer_signature %></p>
+        </div>
       </div>
     </div>
   </section>

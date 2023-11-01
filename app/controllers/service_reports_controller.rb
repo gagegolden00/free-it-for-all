@@ -1,4 +1,6 @@
 class ServiceReportsController < ApplicationController
+  include TimeLogHelper
+
   before_action :set_service_job
   before_action :set_service_report, only: %i[show edit update destroy]
   before_action :set_materials, only: %i[new create edit update]
@@ -32,6 +34,7 @@ class ServiceReportsController < ApplicationController
 
   def edit
     @service_report.service_report_materials.build
+    @service_report.build_time_log
   end
 
   def update
@@ -89,7 +92,7 @@ class ServiceReportsController < ApplicationController
       :double_time_hours_input,
       :double_time_minutes_input,
       service_report_materials_attributes: %i[id material_id quantity _destroy],
-      time_log_attributes: %i[regular_minutes overtime_minutes double_time_minutes mileage remarks]
+      time_log_attributes: %i[id regular_minutes overtime_minutes double_time_minutes mileage remarks]
     )
   end
 end

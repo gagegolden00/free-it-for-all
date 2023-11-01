@@ -1,4 +1,4 @@
-module TimeLogsHelper
+module TimeLogHelper
 
   def get_total_hours(time:)
     hours = time / 60
