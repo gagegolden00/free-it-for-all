@@ -5,7 +5,6 @@
     <div>
       <h1>Customer Details</h1>
       <p>Customer Name: <%= @service_report.service_report_number %></p>
-
     </div>
     <div>
       <h1></h1>
@@ -13,8 +12,16 @@
       <p>Equipment Serial: <%= @service_report.equipment_serial %></p>
       <p>Warranty: <%= @service_report.warranty %></p>
     </div>
+    <div>
+      <h1 class="w-full">Time Log</h1>
+      <div class="flex flex-wrap mx-4">
+        <p><strong>Regular time:</strong> <%= @service_report.time_log.regular_minutes %></p>
+        <p><strong>Overtime :</strong> <%= @service_report.time_log.overtime_minutes  %></p>
+        <p><strong>Double time :</strong> <%= @service_report.time_log.double_time_minutes  %></p>
+        <p><strong>Mileage:</strong> <%= @service_report.time_log.mileage  %></p>
+      </div>
+    </div>
   </section>
-
   <section id="second-section" class="border border-blue-600 my-4">
     <h1 class="w-full">Materials Used</h1>
     <div class="flex flex-wrap mx-4">
@@ -30,7 +37,6 @@
       <% end %>
     </div>
   </section>
-
   <section id="third-section" class="border border-green-400 my-4">
     <div>
       <p><strong>Work Description:</strong> <%= @service_report.description %></p>
@@ -43,7 +49,6 @@
           <th>Unit Price</th>
           <th>Total Cost</th>
         </tr>
-
       </table>
     </div>
     <div class="">

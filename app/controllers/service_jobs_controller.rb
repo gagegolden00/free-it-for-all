@@ -14,7 +14,6 @@ class ServiceJobsController < ApplicationController
     @service_job.build_customer
     @service_job.customer.build_point_of_contact
     @service_job.build_work_site
-    authorize @service_job
   end
 
   def create

@@ -1,8 +1,13 @@
 module TimeLogsHelper
 
-  def calculate_total_minutes(hours:, minutes:)
-    total_minutes = hours.to_i * 60 + minutes.to_i
-    total_minutes.to_s
+  def get_total_hours(time:)
+    hours = time / 60
+    hours
+  end
+
+  def get_total_minutes(time:)
+    minutes = time % 60
+    minutes
   end
 
 end

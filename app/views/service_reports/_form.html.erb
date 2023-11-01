@@ -27,31 +27,35 @@
 
               <div class="flex flex-col my-10 border">
                 <%= time_log_field.label :regular_time %>
+                <%= time_log_field.hidden_field :regular_minutes %>
                 <%= label_tag :hours, "Hours:" %>
-                <%= select_tag :reg_hours, options_for_select((0..24), selected: 0)%>
+                <%= number_field_tag 'service_report[regular_hours_input]', nil, min: 0, max: 24, maxlength: 2 %>
                 <%= label_tag :minutes, "Minutes:" %>
-                <%= select_tag :reg_minutes, options_for_select((0..59), selected: 0)%>
+                <%= number_field_tag 'service_report[regular_minutes_input]', nil, min: 0, max: 59, maxlength: 2 %>
               </div>
 
               <div class="flex flex-col my-10 border">
                 <%= time_log_field.label :overtime %>
+                <%= time_log_field.hidden_field :overtime_minutes %>
                 <%= label_tag :hours, "Hours:" %>
-                <%= select_tag :over_hours, options_for_select((0..24), selected: 0) %>
+                <%= number_field_tag 'service_report[overtime_hours_input]', nil, min: 0, max: 24, maxlength: 2 %>
                 <%= label_tag :minutes, "Minutes:" %>
-                <%= select_tag :over_minutes, options_for_select((0..59), selected: 0) %>
+                <%= number_field_tag 'service_report[overtime_minutes_input]', nil, min: 0, max: 59, maxlength: 2 %>
               </div>
 
               <div class="flex flex-col my-10 border">
                 <%= time_log_field.label :double_time %>
+                <%= time_log_field.hidden_field :double_time_minutes %>
                 <%= label_tag :hours, "Hours:" %>
-                <%= select_tag :double_hours, options_for_select((0..24), selected: 0) %>
+                <%= number_field_tag 'service_report[double_time_hours_input]', nil, min: 0, max: 24, maxlength: 2 %>
                 <%= label_tag :minutes, "Minutes:" %>
-                <%= select_tag :double_minutes, options_for_select((0..59), selected: 0) %>
+                <%= number_field_tag 'service_report[double_time_minutes_input]', nil, min: 0, max: 59, maxlength: 2 %>
               </div>
 
             </div>
             <%= time_log_field.label :mileage, "Mileage" %>
             <%= time_log_field.text_field :mileage %>
+
             <%= time_log_field.label :remarks, "Remarks" %>
             <%= time_log_field.text_area :remarks %>
           <% end %>

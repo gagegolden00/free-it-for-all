@@ -10,18 +10,20 @@ class ServiceReportsController < ApplicationController
   end
 
   def create
-    filtered_params = filter_params(service_report_params)
+    time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
+    filtered_params = ServiceReportFilterMaterialsParamsService.call(time_converted_params)
     @service_report = ServiceReport.create!(filtered_params)
     if @service_report.save
-      flash[:notice] = "Service report created"
+      flash[:notice] = 'Service report created'
       redirect_to service_job_service_report_path(@service_job, @service_report)
     else
-      
+      render :new
     end
   end
 
   def show
     @service_report_materials = ServiceReport.materials_used(@service_report)
+    @service_report_time_log = @service_report.time_log
   end
 
   def index
@@ -33,9 +35,10 @@ class ServiceReportsController < ApplicationController
   end
 
   def update
-    filtered_params = filter_params(service_report_params)
+    time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
+    filtered_params = ServiceReportFilterMaterialsParamsService.call(time_converted_params)
     if @service_report.update(filtered_params)
-      flash[:notice] = "Service report updated"
+      flash[:notice] = 'Service report updated'
       redirect_to service_job_service_report_path(@service_job, @service_report)
     else
       render :edit
@@ -43,11 +46,10 @@ class ServiceReportsController < ApplicationController
   end
 
   def destroy
-    if @service_report.discard
-      flash[:notice] = "Report deleted"
-      redirect_to service_job_service_reports_path(@service_job)
-    end
+    return unless @service_report.discard
 
+    flash[:notice] = 'Report deleted'
+    redirect_to service_job_service_reports_path(@service_job)
   end
 
   private
@@ -68,19 +70,6 @@ class ServiceReportsController < ApplicationController
     @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id) if @service_report
   end
 
-
-  def filter_params(params)
-    params[:service_report_materials_attributes] = params[:service_report_materials_attributes].select do |_, service_report_material_object|
-      quantity = service_report_material_object[:quantity].to_i
-      if service_report_material_object[:id].present?
-        true
-      else
-        quantity.positive?
-      end
-    end
-    params
-  end
-
   def service_report_params
     params.require(:service_report).permit(
       :service_report_number,
@@ -93,9 +82,14 @@ class ServiceReportsController < ApplicationController
       :customer_signature,
       :description,
       :service_job_id,
+      :regular_hours_input,
+      :regular_minutes_input,
+      :overtime_hours_input,
+      :overtime_minutes_input,
+      :double_time_hours_input,
+      :double_time_minutes_input,
       service_report_materials_attributes: %i[id material_id quantity _destroy],
       time_log_attributes: %i[regular_minutes overtime_minutes double_time_minutes mileage remarks]
     )
   end
 end
-
