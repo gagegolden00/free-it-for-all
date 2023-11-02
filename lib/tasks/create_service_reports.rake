@@ -2,7 +2,31 @@ namespace :populate_db do
   desc 'Create service reports for service jobs'
   task create_service_reports: :environment do
 
+    def random_minutes
+      max_minutes = 60 * 24
+
+      reg = max_minutes - rand(0..max_minutes)
+      minutes_left = max_minutes - reg
+
+      if minutes_left <= 0
+        over = 0
+        double = 0
+        return [reg, over, double]
+      end
+      over = minutes_left - rand(0..minutes_left)
+      final_minutes = over - minutes_left - over
+
+      if final_minutes <= 0
+        double = 0
+        return [reg, over, double]
+      end
+      double = final_minutes - rand(0..final_minutes)
+
+      [reg, over, double]
+    end
+
     100.times do
+      reg, double, over = random_minutes
       ServiceReport.create!(
         service_report_number: Faker::Alphanumeric.alpha(number: 10),
         warranty: Faker::Boolean.boolean,
@@ -15,14 +39,14 @@ namespace :populate_db do
         customer_signature: Faker::Name.name,
         service_job_id: rand(1..ServiceJob.count),
         time_log_attributes: {
-          regular_minutes: rand(1..50_000),
-          overtime_minutes: rand(1..50_000),
-          double_time_minutes: rand(1..50_000),
+          regular_minutes: reg,
+          overtime_minutes: double,
+          double_time_minutes: over,
           mileage: rand(1..100_000),
           remarks: Faker::Lorem.paragraph(sentence_count: rand(1..20))
         }
       )
-      
     end
+
   end
 end
