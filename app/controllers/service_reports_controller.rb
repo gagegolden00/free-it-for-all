@@ -25,7 +25,7 @@ class ServiceReportsController < ApplicationController
 
   def show
     @service_report_materials = ServiceReport.materials_used(@service_report)
-    @service_report_time_log = @service_report.time_log
+    @time_log = @service_report.time_log
   end
 
   def index
@@ -34,6 +34,7 @@ class ServiceReportsController < ApplicationController
 
   def edit
     @service_report.service_report_materials.build
+    @time_log = @service_report.time_log
     @service_report.build_time_log
   end
 
@@ -67,6 +68,7 @@ class ServiceReportsController < ApplicationController
 
   def set_materials
     @materials = Material.kept.includes(:service_report_materials)
+    @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id)
   end
 
   def set_existing_service_report_materials

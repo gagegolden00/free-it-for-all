@@ -21,10 +21,10 @@
     </div>
     <div>
       <div class="flex flex-col">
-        <p><strong>Regular time:</strong> <%= get_total_hours(time: @service_report.time_log&.regular_minutes) %>:<%= get_total_minutes(time: @service_report.time_log&.regular_minutes) %></p>
-        <p><strong>Overtime:</strong> <%= get_total_hours(time: @service_report.time_log&.overtime_minutes) %>:<%= get_total_minutes(time: @service_report.time_log&.overtime_minutes) %></p>
-        <p><strong>Double time:</strong> <%= get_total_hours(time: @service_report.time_log&.double_time_minutes) %>:<%= get_total_minutes(time: @service_report.time_log&.double_time_minutes) %></p>
-        <p><strong>Mileage:</strong> <%= @service_report.time_log&.mileage %></p>
+        <p><strong>Regular time:</strong> <%= get_total_hours(@time_log&.regular_minutes) %>:<%= get_total_minutes(@time_log&.regular_minutes) %></p>
+        <p><strong>Overtime:</strong> <%= get_total_hours(@time_log&.overtime_minutes) %>:<%= get_total_minutes(@time_log&.overtime_minutes) %></p>
+        <p><strong>Double time:</strong> <%= get_total_hours(@time_log&.double_time_minutes) %>:<%= get_total_minutes(@time_log&.double_time_minutes) %></p>
+        <p><strong>Mileage:</strong> <%= @time_log&.mileage %></p>
       </div>
     </div>
   </section>
