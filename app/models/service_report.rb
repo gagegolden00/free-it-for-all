@@ -1,6 +1,7 @@
 class ServiceReport < ApplicationRecord
   has_many :service_report_materials
   has_many :materials, through: :service_report_materials
+  has_many :purchase_orders
 
   accepts_nested_attributes_for :service_report_materials
 

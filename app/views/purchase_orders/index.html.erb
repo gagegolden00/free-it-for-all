@@ -1,0 +1,15 @@
+<div class="grid grid-cols-3 gap-4">
+  <% @purchase_orders.each do |purchase_order| %>
+    <div class="border border-gray-300 rounded-md p-4">
+      <p><strong>Purchase Order Number:</strong> <%= purchase_order.purchase_order_number %></p>
+      <p><strong>Quantity:</strong> <%= purchase_order.quantity %></p>
+      <p><strong>Description:</strong> <%= purchase_order.description %></p>
+      <p><strong>Price:</strong> <%= purchase_order.price %></p>
+      <p><strong>Total Price:</strong> <%= purchase_order.total_price %></p>
+      <p><strong>Service Report ID:</strong> <%= purchase_order.service_report_id %></p>
+      <p><%= link_to 'View purchase order', service_job_purchase_order_path(@service_job, purchase_order) %></p>
+    </div>
+  <% end %>
+</div>
+
+

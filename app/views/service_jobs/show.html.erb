@@ -1,8 +1,9 @@
 <section class="flex flex-col border-4 h-screen w-screen">
   <h1>Service job show page</h1>
   <div>
-    <%= link_to "new report", new_service_job_service_report_path(service_job_id: @service_job) %><br />
-    <%= link_to "view reports", service_job_service_reports_path(service_job_id: @service_job) %><br />
+    <%= link_to "new report", new_service_job_service_report_path(@service_job) %><br />
+    <%= link_to "view reports", service_job_service_reports_path(@service_job) %><br />
+    <%= link_to "view purchase orders", service_job_purchase_orders_path(@service_job) %><br />
   </div>
 
   <%= render partial: "shared/assign_tech_modal"%>
