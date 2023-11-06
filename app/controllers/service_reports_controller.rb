@@ -1,4 +1,6 @@
 class ServiceReportsController < ApplicationController
+  layout 'application_full'
+
   before_action :set_service_job
   before_action :set_service_report, only: %i[show edit update destroy]
   before_action :set_materials, only: %i[new create edit update]

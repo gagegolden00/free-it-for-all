@@ -1,67 +1,146 @@
-<section class="flex flex-col border-4 h-screen w-screen">
-  <h1>Service job show page</h1>
+<div class="bg-primary-600 dark:bg-red-800 p-2 sm:p-3 shadow-md flex flex-row flex-wrap items-center gap-2">
+  <div class="flex flex-row">
+    <%= link_to "<", service_jobs_path, class: "mr-2 text-lg sm:text-xl font-medium text-white" %>
+    <h1 class="text-lg sm:text-xl font-medium text-white"><%= @service_job.job_number %></h1>
+  </div>
+
+  <div class="flex flex-row flex-wrap gap-2 ml-auto">
+    <%= link_to "Job Details", service_job_path(@service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
+    <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
+  </div>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4 p-2 lg:p-4">
   <div>
-    <%= link_to "new report", new_service_job_service_report_path(service_job_id: @service_job) %><br />
-    <%= link_to "view reports", service_job_service_reports_path(service_job_id: @service_job) %><br />
+    <label class="text-gray-400 text-sm font-semibold">Customer</label>
+    <div class="text-gray-900 dark:text-gray-50"><%= @service_job.customer.name %></div>
   </div>
 
-  <%= render partial: "shared/assign_tech_modal"%>
-
-  <div class="">
-    <% unless @active_users.empty? %>
-    <h1>Service job assigned to: <h1>
-    <ul>
-      <% @active_users.each do |user| %>
-        <div class="border rounded flex items-center">
-          <li class="border border-black">
-            <%= user.name %>
-          </li>
-          <%= button_to user_service_job_path(service_job_id: @service_job.id, user_id: user.id), method: :delete, class: "border border-black h-full" do %>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!-- change color here --><style>svg{fill:#000000}</style><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
-          <% end %>
-        </div>
-      <% end %>
-    </ul>
+  <div>
+    <label class="text-gray-400 text-sm font-semibold">Site</label>
+    <% if @service_job.work_site %>
+      <div class="text-gray-900 dark:text-gray-50"><%= @service_job.work_site.name %></div>
+    <% else %>
+      <div class="text-gray-900 dark:text-gray-50">n/a</div>
     <% end %>
   </div>
 
-  <ul class="w-1/2 mx-auto">
-    <li class="text-xl font-bold mt-6 mb-1"> Service job details </li>
-    <li><strong>Job Number:</strong> <%= @service_job.job_number %></li>
-    <li><strong>Status:</strong> <%= @service_job.status %></li>
-    <li><strong>Description:</strong> <%= @service_job.description %></li>
-    <li><strong>Contract Amount:</strong> <%= @service_job.contract_amount %></li>
-    <li><strong>Work Type:</strong> <%= @service_job.work_type %></li>
+  <div>
+    <label class="text-gray-400 text-sm font-semibold">Customer PO</label>
+    <div class="text-gray-900 dark:text-gray-50">Customer PO</div>
+  </div>
 
-    <li class="text-xl font-bold mt-6 mb-1"> Customer details </li>
-    <li><strong>Customer:</strong> <%= @service_job.customer.name %></li>
-    <li><strong>Customer Phone Number:</strong> <%= @service_job.customer.phone_number %></li>
-    <li><strong>Customer Email:</strong> <%= @service_job.customer.email %></li>
-    <li><strong>Customer Address:</strong> <%= @service_job.customer.address %></li>
-    <li><strong>Customer City:</strong> <%= @service_job.customer.city %></li>
-    <li><strong>Customer State:</strong> <%= @service_job.customer.state %></li>
-    <li><strong>Customer ZIP Code:</strong> <%= @service_job.customer.zip_code %></li>
+  <div>
+    <label class="text-gray-400 text-sm font-semibold">Contract Amount</label>
+    <div class="text-gray-900 dark:text-gray-50"><%= @service_job.contract_amount %></div>
+  </div>
 
-    <% if @service_job.customer.point_of_contact %>
-      <li class="text-xl font-bold mt-6 mb-1">Customer point of contact details</li>
-      <li><strong>Point of Contact Name:</strong> <%= @service_job.customer.point_of_contact.name %></li>
-      <li><strong>Point of Contact Phone Number:</strong> <%= @service_job.customer.point_of_contact.phone_number %></li>
-      <li><strong>Point of Contact Email:</strong> <%= @service_job.customer.point_of_contact.email %></li>
-    <% end %>
+  <div>
+    <label class="text-gray-400 text-sm font-semibold">Job Type</label>
+    <div class="text-gray-900 dark:text-gray-50"><%= @service_job.work_type %></div>
+  </div>
 
-    <% if @service_job.work_site%>
-      <li class="text-xl font-bold mt-6 mb-1"> Work site details </li>
-      <li><strong>Work Site Name:</strong> <%= @service_job.work_site.name %></li>
-      <li><strong>Work Site Address:</strong> <%= @service_job.work_site.address %></li>
-      <li><strong>Work Site City:</strong> <%= @service_job.work_site.city %></li>
-      <li><strong>Work Site State:</strong> <%= @service_job.work_site.state %></li>
-      <li><strong>Work Site ZIP Code:</strong> <%= @service_job.work_site.zip_code %></li>
-      <li><strong>Work Site Email:</strong> <%= @service_job.work_site.email %></li>
-      <li><strong>Work Site Phone Number:</strong> <%= @service_job.work_site.phone_number %></li>
+  <div>
+    <label class="text-gray-400 text-sm font-semibold">Region</label>
+    <div class="text-gray-900 dark:text-gray-50">Region Name</div>
+  </div>
+</div>
+
+<div class="p-2 lg:p-4">
+  <label class="text-gray-400 text-sm font-semibold ">Description</label>
+  <div class="text-gray-900 dark:text-gray-50"><%= @service_job.description %></div>
+<div>
+
+<%= link_to "Edit Job", edit_service_job_path(@service_job), class: "inline-flex py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+
+<div class="border rounded-md md:w-1/2">
+  <% unless @active_users.empty? %>
+  <label class="text-gray-400 text-sm font-semibold px-2">Service job assigned to: </label>
+  <ul class="">
+    <% @active_users.each do |user| %>
+      <!--div class="border rounded flex flex-row"-->
+        <li class="flex flex-row bg-white dark:bg-gray-800 dark:text-white px-2">
+          <%= user.name %>
+        
+        <%= button_to user_service_job_path(service_job_id: @service_job.id, user_id: user.id), method: :delete, class: "ml-2" do %>
+          <svg class="text-red-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>
+        <% end %>
+
+        </li>
+      <!--/div-->
     <% end %>
   </ul>
-  <%= link_to "Edit", edit_service_job_path(@service_job)%>
-</section>
+  <% end %>
+</div>
 
+<%= render partial: "shared/assign_tech_modal"%>
 
+<!-- TODO remove below section once dev is compelete -->
 
+<div class="hidden">
+
+  <section class="flex flex-col border-4 h-screen w-screen">
+    <div>
+      <%= link_to "new report", new_service_job_service_report_path(service_job_id: @service_job) %><br />
+      <%= link_to "view reports", service_job_service_reports_path(service_job_id: @service_job) %><br />
+    </div>
+
+    <ul class="w-1/2 mx-auto">
+      <li class="text-xl font-bold mt-6 mb-1"> Service job details </li>
+      <li><strong>Job Number:</strong> <%= @service_job.job_number %></li>
+      <li><strong>Status:</strong> <%= @service_job.status %></li>
+      <li><strong>Description:</strong> <%= @service_job.description %></li>
+      <li><strong>Contract Amount:</strong> <%= @service_job.contract_amount %></li>
+      <li><strong>Work Type:</strong> <%= @service_job.work_type %></li>
+
+      <%= render partial: "shared/assign_tech_modal"%>
+
+      <div class="">
+        <% unless @active_users.empty? %>
+        <h1>Service job assigned to: <h1>
+        <ul>
+          <% @active_users.each do |user| %>
+            <div class="border rounded flex items-center">
+              <li class="border border-black">
+                <%= user.name %>
+              </li>
+              <%= button_to user_service_job_path(service_job_id: @service_job.id, user_id: user.id), method: :delete, class: "border border-black h-full" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!-- change color here --><!--style>svg{fill:#000000}</style--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>
+              <% end %>
+            </div>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+
+      <li class="text-xl font-bold mt-6 mb-1"> Customer details </li>
+      <li><strong>Customer:</strong> <%= @service_job.customer.name %></li>
+      <li><strong>Customer Phone Number:</strong> <%= @service_job.customer.phone_number %></li>
+      <li><strong>Customer Email:</strong> <%= @service_job.customer.email %></li>
+      <li><strong>Customer Address:</strong> <%= @service_job.customer.address %></li>
+      <li><strong>Customer City:</strong> <%= @service_job.customer.city %></li>
+      <li><strong>Customer State:</strong> <%= @service_job.customer.state %></li>
+      <li><strong>Customer ZIP Code:</strong> <%= @service_job.customer.zip_code %></li>
+
+      <% if @service_job.customer.point_of_contact %>
+        <li class="text-xl font-bold mt-6 mb-1">Customer point of contact details</li>
+        <li><strong>Point of Contact Name:</strong> <%= @service_job.customer.point_of_contact.name %></li>
+        <li><strong>Point of Contact Phone Number:</strong> <%= @service_job.customer.point_of_contact.phone_number %></li>
+        <li><strong>Point of Contact Email:</strong> <%= @service_job.customer.point_of_contact.email %></li>
+      <% end %>
+
+      <% if @service_job.work_site%>
+        <li class="text-xl font-bold mt-6 mb-1"> Work site details </li>
+        <li><strong>Work Site Name:</strong> <%= @service_job.work_site.name %></li>
+        <li><strong>Work Site Address:</strong> <%= @service_job.work_site.address %></li>
+        <li><strong>Work Site City:</strong> <%= @service_job.work_site.city %></li>
+        <li><strong>Work Site State:</strong> <%= @service_job.work_site.state %></li>
+        <li><strong>Work Site ZIP Code:</strong> <%= @service_job.work_site.zip_code %></li>
+        <li><strong>Work Site Email:</strong> <%= @service_job.work_site.email %></li>
+        <li><strong>Work Site Phone Number:</strong> <%= @service_job.work_site.phone_number %></li>
+      <% end %>
+    </ul>
+    <%= link_to "Edit", edit_service_job_path(@service_job)%>
+  </section>
+
+</div>
