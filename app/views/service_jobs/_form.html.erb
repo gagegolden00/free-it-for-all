@@ -1,30 +1,29 @@
-<section class="flex flex-col border-4">
+<section class="flex flex-col p-2 sm:p-4">
   <%= form_with model: @service_job, url: service_jobs_path, data: {turbo: false}, clsss: "flex-flex-col" do |service_job_field| %>
 
-    <div class="flex flex-col justify-center mx-auto w-1/2 h-full border-2 border-red-600 gap-10">
+    <div class="flex flex-col justify-center gap-10">
 
-      <div id="serviceJobFields" class="border border-green-600 flex flex-col">
-        <p class="text-2xl">Service job</p>
-        <%= service_job_field.label :job_number %>
-        <%= service_job_field.text_field :job_number, class: "border border-black" %>
+      <div id="serviceJobFields" class="flex flex-col gap-2">
+        <%= service_job_field.label :job_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= service_job_field.text_field :job_number, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
 
-        <%= service_job_field.label :status %>
-        <%= service_job_field.select :status, options_for_select(service_job_statuses), class: "border border-black" %>
+        <%= service_job_field.label :status, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= service_job_field.select :status, options_for_select(service_job_statuses), {}, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
 
-        <%= service_job_field.label :description %>
-        <%= service_job_field.text_area :description, class: "border border-black" %>
+        <%= service_job_field.label :description, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= service_job_field.text_area :description, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
 
-        <%= service_job_field.label :contract_amount %>
-        <%= service_job_field.number_field :contract_amount, class: "border border-black" %>
+        <%= service_job_field.label :contract_amount, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= service_job_field.number_field :contract_amount, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
 
-        <%= service_job_field.label :work_type %>
-        <%= service_job_field.text_field :work_type, class: "border border-black" %>
+        <%= service_job_field.label :work_type, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= service_job_field.text_field :work_type, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
 
         <!-- existing customer | Slim select would come in handy here but maybe
             there is something from flowbite? A searchable dropdown select? -->
         <fieldset id="customerSelect" class="flex flex-col mb-4">
           <%= service_job_field.label :select_customer %>
-          <%= service_job_field.select :customer_id, options_for_select(@customers.map { |customer| [customer.name, customer.id] }) %>
+          <%= service_job_field.select :customer_id, options_for_select(@customers.map { |customer| [customer.name, customer.id] }), {}, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         </fieldset>
 
         <div data-controller="toggle-hidden change-text" class="mt-2">
@@ -42,25 +41,25 @@
         <!-- new customer -->
         <p class="text-2xl"> New Customer</p>
         <%= service_job_field.fields_for :customer do |customer_field|%>
-          <%= customer_field.label :name %>
+          <%= customer_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= customer_field.text_field :name, class: "border border-black" %>
 
-          <%= customer_field.label :phone_number %>
+          <%= customer_field.label :phone_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= customer_field.telephone_field :phone_number, type: 'tel', class: "border border-black" %>
 
-          <%= customer_field.label :email %>
+          <%= customer_field.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= customer_field.email_field :email, class: "border border-black" %>
 
-          <%= customer_field.label :address%>
+          <%= customer_field.label :address, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= customer_field.text_field :address, class: "border border-black" %>
 
-          <%= customer_field.label :city %>
+          <%= customer_field.label :city , class: "block text-sm font-medium text-gray-900 dark:text-white"%>
           <%= customer_field.text_field :city, class: "border border-black" %>
 
-          <%= customer_field.label :state %>
+          <%= customer_field.label :state , class: "block text-sm font-medium text-gray-900 dark:text-white"%>
           <%= customer_field.select :state, options_for_select(us_states), class: "border border-black" %>
 
-          <%= customer_field.label :zip_code %>
+          <%= customer_field.label :zip_code , class: "block text-sm font-medium text-gray-900 dark:text-white"%>
           <%= customer_field.text_field :zip_code, autocomplete: 'postal-code', maxlength: "5", class: "border border-black" %>
 
           <div id="pointOfContactFields" class="border border-red-600 flex flex-col">
