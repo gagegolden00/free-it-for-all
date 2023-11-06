@@ -26,7 +26,3 @@ class ServiceReportTimeConverterService < ApplicationService
   end
   
 end
-
-
-
-
