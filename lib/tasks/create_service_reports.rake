@@ -27,8 +27,10 @@ namespace :populate_db do
 
     100.times do
       reg, double, over = random_minutes
+      service_job = ServiceJob.find(1..ServiceJob.count)
+
       ServiceReport.create!(
-        service_report_number: Faker::Alphanumeric.alpha(number: 10),
+        service_report_number: service_job.job_number + "-REPORT-#{service_job.service_reports.count + 1}",
         warranty: Faker::Boolean.boolean,
         equipment_model: Faker::Device.model_name,
         equipment_serial: Faker::Device.serial,
@@ -37,7 +39,7 @@ namespace :populate_db do
         description: Faker::Lorem.paragraph(sentence_count: rand(1..20)),
         employee_signature: Faker::Name.name,
         customer_signature: Faker::Name.name,
-        service_job_id: rand(1..ServiceJob.count),
+        service_job_id: service_job.id,
         time_log_attributes: {
           regular_minutes: reg,
           overtime_minutes: double,

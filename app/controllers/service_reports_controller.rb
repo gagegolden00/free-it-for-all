@@ -15,6 +15,7 @@ class ServiceReportsController < ApplicationController
     time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
     filtered_params = ServiceReportFilterMaterialsParamsService.call(time_converted_params)
     @service_report = ServiceReport.create!(filtered_params)
+    @purchase_order.purchase_order_number = @service_job.job_number + "-REPORT-#{@service_job.service_reports.count + 1}"
     if @service_report.save
       flash[:notice] = 'Service report created'
       redirect_to service_job_service_report_path(@service_job, @service_report)
