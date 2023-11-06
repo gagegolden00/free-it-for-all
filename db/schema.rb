@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_26_024731) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_30_204929) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -117,6 +117,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_024731) do
     t.index ["service_job_id"], name: "index_service_reports_on_service_job_id"
   end
 
+  create_table "time_logs", force: :cascade do |t|
+    t.integer "regular_minutes"
+    t.integer "overtime_minutes"
+    t.integer "double_time_minutes"
+    t.integer "mileage"
+    t.text "remarks"
+    t.bigint "service_report_id"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "discarded_at"
+    t.index ["service_report_id"], name: "index_time_logs_on_service_report_id"
+  end
+
   create_table "user_service_jobs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "service_job_id", null: false
@@ -174,4 +187,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_024731) do
   add_foreign_key "service_report_materials", "materials"
   add_foreign_key "service_report_materials", "service_reports"
   add_foreign_key "service_reports", "service_jobs"
+  add_foreign_key "time_logs", "service_reports"
 end
