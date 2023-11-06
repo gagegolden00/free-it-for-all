@@ -4,6 +4,11 @@
 </p>
 
 <p>
+  <strong>Service Report Number:</strong>
+  <%= @service_report.service_report_number %>
+</p>
+
+<p>
   <strong>Quantity:</strong>
   <%= @purchase_order.quantity %>
 </p>
@@ -33,7 +38,6 @@
   <%= @purchase_order.internal_notes %>
 </p>
 
-<p>
-  <strong>Service Report ID:</strong>
-  <%= @purchase_order.service_report_id %>
-</p>
+<%= link_to "Edit purchase order", edit_service_job_purchase_order_path(@service_job, @purchase_order) %>
+<%= button_to "Delete purchase order", service_job_purchase_order_path(@service_job, @purchase_order), method: :delete %>
+
