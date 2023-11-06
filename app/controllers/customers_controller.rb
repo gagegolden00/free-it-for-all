@@ -28,7 +28,11 @@ class CustomersController < ApplicationController
     authorize @customers
   end
 
-  def edit;end
+  def edit
+    if @customer.point_of_contact.nil?
+      @customer.build_point_of_contact
+    end
+  end
 
   def update
     if @customer.update(customer_params)
