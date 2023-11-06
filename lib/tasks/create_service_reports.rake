@@ -5,28 +5,28 @@ namespace :populate_db do
     def random_minutes
       max_minutes = 60 * 24
 
-      reg = max_minutes - rand(0..max_minutes)
-      minutes_left = max_minutes - reg
+      reg_time = max_minutes - rand(0..max_minutes)
+      minutes_left = max_minutes - reg_time
 
       if minutes_left <= 0
-        over = 0
-        double = 0
-        return [reg, over, double]
+        over_time = 0
+        double_time = 0
+        return [reg_time, over_time, double_time]
       end
-      over = minutes_left - rand(0..minutes_left)
-      final_minutes = over - minutes_left - over
+      over_time = minutes_left - rand(0..minutes_left)
+      final_minutes = over_time - minutes_left - over_time
 
       if final_minutes <= 0
         double = 0
-        return [reg, over, double]
+        return [reg_time, over_time, double_time]
       end
-      double = final_minutes - rand(0..final_minutes)
+      double_time = final_minutes - rand(0..final_minutes)
 
-      [reg, over, double]
+      [reg_time, over_time, double_time]
     end
 
     100.times do
-      reg, double, over = random_minutes
+      reg_time, double_time, over_time = random_minutes
       service_job = ServiceJob.find(1..ServiceJob.count)
 
       ServiceReport.create!(
@@ -41,9 +41,9 @@ namespace :populate_db do
         customer_signature: Faker::Name.name,
         service_job_id: service_job.id,
         time_log_attributes: {
-          regular_minutes: reg,
-          overtime_minutes: double,
-          double_time_minutes: over,
+          regular_minutes: reg_time,
+          overtime_minutes: double_time,
+          double_time_minutes: over_time,
           mileage: rand(1..100_000),
           remarks: Faker::Lorem.paragraph(sentence_count: rand(1..20))
         }

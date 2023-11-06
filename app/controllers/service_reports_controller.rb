@@ -4,7 +4,6 @@ class ServiceReportsController < ApplicationController
   before_action :set_service_job
   before_action :set_service_report, only: %i[show edit update destroy]
   before_action :set_materials, only: %i[new create edit update]
-  before_action :set_existing_service_report_materials, only: %i[edit update]
 
   def new
     @service_report = ServiceReport.new
@@ -13,9 +12,8 @@ class ServiceReportsController < ApplicationController
 
   def create
     time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
-    filtered_params = ServiceReportFilterMaterialsParamsService.call(time_converted_params)
+    filtered_params = filter_material_params(time_converted_params)
     @service_report = ServiceReport.create!(filtered_params)
-    @purchase_order.purchase_order_number = @service_job.job_number + "-REPORT-#{@service_job.service_reports.count + 1}"
     if @service_report.save
       flash[:notice] = 'Service report created'
       redirect_to service_job_service_report_path(@service_job, @service_report)
@@ -31,17 +29,20 @@ class ServiceReportsController < ApplicationController
 
   def index
     @service_reports = @service_job.service_reports.kept
+
   end
 
   def edit
     @service_report.service_report_materials.build
     @time_log = @service_report.time_log
     @service_report.build_time_log
+    @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id) if @service_report
   end
 
   def update
+    @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id) if @service_report
     time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
-    filtered_params = ServiceReportFilterMaterialsParamsService.call(time_converted_params)
+    filtered_params = filter_material_params(time_converted_params)
     if @service_report.update(filtered_params)
       flash[:notice] = 'Service report updated'
       redirect_to service_job_service_report_path(@service_job, @service_report)
@@ -69,11 +70,18 @@ class ServiceReportsController < ApplicationController
 
   def set_materials
     @materials = Material.kept.includes(:service_report_materials)
-    @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id)
   end
 
-  def set_existing_service_report_materials
-    @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id) if @service_report
+  def filter_material_params(params)
+    params[:service_report_materials_attributes] = params[:service_report_materials_attributes].select do |_, service_report_material_object|
+      quantity = service_report_material_object[:quantity].to_i
+      if service_report_material_object[:id].present?
+        true
+      else
+        quantity.positive?
+      end
+    end
+    params
   end
 
   def service_report_params

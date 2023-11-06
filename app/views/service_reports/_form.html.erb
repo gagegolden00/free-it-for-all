@@ -64,7 +64,7 @@
       <% @materials.each do |material| %>
         <div class="px-4 mb-4">
           <div class="border black p-4">
-            <% existing_material = @existing_materials_by_id[material.id] %>
+            <% existing_material = @existing_materials_by_id[material.id] if @existing_materials_by_id %>
             <%= service_report_field.fields_for :service_report_materials, existing_material || @service_report.service_report_materials.build do |service_report_material_field| %>
               <%= service_report_material_field.label material.name %>
               <%= service_report_material_field.label material.price %>
