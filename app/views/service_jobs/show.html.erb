@@ -1,11 +1,11 @@
-<div class="bg-primary-600 dark:bg-red-800 p-2 sm:p-3 shadow-md flex flex-row flex-wrap items-center gap-2">
+<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row flex-wrap items-center gap-2">
   <div class="flex flex-row">
     <%= link_to "<", service_jobs_path, class: "mr-2 text-lg sm:text-xl font-medium text-white" %>
     <h1 class="text-lg sm:text-xl font-medium text-white"><%= @service_job.job_number %></h1>
   </div>
 
   <div class="flex flex-row flex-wrap gap-2 ml-auto">
-    <%= link_to "Job Details", service_job_path(@service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
+    <%= link_to "Job Details", service_job_path(@service_job), class: "w-36 text-center text-gray-50 border-2 p-2 bg-white text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
     <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
   </div>
 </div>
@@ -53,7 +53,7 @@
 
 <%= link_to "Edit Job", edit_service_job_path(@service_job), class: "inline-flex py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
 
-<div class="border rounded-md md:w-1/2">
+<div class="border rounded-md md:w-1/2 border-gray-300 dark:border-gray-600">
   <% unless @active_users.empty? %>
   <label class="text-gray-400 text-sm font-semibold px-2">Service job assigned to: </label>
   <ul class="">

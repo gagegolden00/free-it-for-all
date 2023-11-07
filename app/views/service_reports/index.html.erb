@@ -1,4 +1,4 @@
-<div class="bg-primary-600 dark:bg-red-800 p-2 sm:p-3 shadow-md flex flex-row flex-wrap items-center gap-2">
+<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row flex-wrap items-center gap-2">
   <div class="flex flex-row">
     <%= link_to "<", service_jobs_path, class: "mr-2 text-lg sm:text-xl font-medium text-white" %>
     <h1 class="text-lg sm:text-xl font-medium text-white"><%= @service_job.job_number %></h1>
@@ -6,26 +6,43 @@
 
   <div class="flex flex-row flex-wrap gap-2 ml-auto">
     <%= link_to "Job Details", service_job_path(@service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
-    <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
+    <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "w-36 text-center text-gray-50 border-2 p-2 bg-white text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md over:text-primary-600" %>
   </div>
 </div>
 
 <div class="p-2 md:p-4">
 
-<%= link_to "New Report", new_service_job_service_report_path(service_job_id: @service_job), class: "inline-flex rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+  <div class="flex flex-row gap-2 w-full">
 
-<div class="mt-2 md:mt-4">
-  <h1>Service reports for Service Job number: <%= @service_job.job_number %></h1>
-  <ul>
-    <% @service_reports.each do |report| %>
-      <li>
-        <strong>Report ID:</strong> <%= report.id %> <br />
-        <strong>Report number:</strong> <%= report.service_report_number %> <br />
-        <%= link_to "View service report", service_job_service_report_path(@service_job, id: report.id) %>
-      </li>
-      <br />
-    <% end %>
-  </ul>
-</div>
+    <form class="flex items-center">
+      <label for="simple-search" class="sr-only">Search</label>
+      <div class="relative w-full">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+          </div>
+          <input type="text" id="simple-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search service reports" required="">
+      </div>
+    </form>
+
+    <%= link_to "New Report", new_service_job_service_report_path(service_job_id: @service_job), class: "ml-auto inline-flex rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+
+  </div>
+
+  <div class="mt-2 md:mt-4">
+    <!--h1>Service reports for Service Job number: <%= @service_job.job_number %></h1-->
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
+      <% @service_reports.each do |report| %>
+        <li class="flex flex-col w-full rounded-md border bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 p-2 md:p-4">
+          <!--strong>Report ID:</strong> <%= report.id %> <br /-->
+          <h2 class="font-semibold text-gray-500"> <%= report.service_report_number %> </h2>
+          <p>01/01/2023</p>
+          <p>$400.00</p>
+          <%= link_to "View service report", service_job_service_report_path(@service_job, id: report.id), class: "mt-10 underline" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
 </div>
