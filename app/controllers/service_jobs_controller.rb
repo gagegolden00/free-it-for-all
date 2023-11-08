@@ -29,7 +29,12 @@ class ServiceJobsController < ApplicationController
   end
 
   def index
-    @pagy, @service_jobs = pagy(policy_scope(ServiceJob))
+    if params[:service_job_search].present? && !params[:service_job_search].empty?
+      @service_jobs = policy_scope(ServiceJob).search_by_job_number(params[:service_job_search])
+    else
+      @service_jobs = policy_scope(ServiceJob)
+    end
+    @pagy, @service_jobs = pagy(@service_jobs)
     authorize @service_jobs
   end
 

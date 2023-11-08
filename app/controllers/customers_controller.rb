@@ -24,7 +24,12 @@ class CustomersController < ApplicationController
   def show; end
 
   def index
-    @pagy, @customers = pagy(Customer.kept)
+    if params[:customer_search].present? && !params[:customer_search].empty?
+      @customers = Customer.kept.search_by_customer_name_or_worksite_name(params[:customer_search])
+    else
+      @customers = Customer.kept
+    end
+    @pagy, @customers = pagy(@customers)
     authorize @customers
   end
 
