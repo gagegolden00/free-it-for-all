@@ -16,9 +16,9 @@ class ServiceJob < ApplicationRecord
   validates :job_number, presence: true, uniqueness: true
 
   pg_search_scope :search_by_job_number_or_customer_name,
-                  against: [:name],
+                  against: [:job_number],
                   associated_against: {
-                    work_sites: [:name]
+                    customer: [:name]
                   },
                   using: {
                     tsearch: { dictionary: 'english', prefix: true }

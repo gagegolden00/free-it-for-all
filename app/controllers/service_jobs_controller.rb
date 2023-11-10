@@ -19,7 +19,6 @@ class ServiceJobsController < ApplicationController
   def create
     @customers = Customer.kept
     @service_job = ServiceJob.new(permitted_params)
-    puts @service_job.inspect
     if @service_job.save
       flash[:notice] = 'Service job created'
       redirect_to service_job_path(@service_job)
@@ -29,12 +28,21 @@ class ServiceJobsController < ApplicationController
   end
 
   def index
-    if params[:service_job_search].present? && !params[:service_job_search].empty?
-      @service_jobs = policy_scope(ServiceJob).search_by_job_number(params[:service_job_search])
-    else
-      @service_jobs = policy_scope(ServiceJob)
-    end
-    @pagy, @service_jobs = pagy(@service_jobs)
+    service_job_search_scope = policy_scope(ServiceJob).search_by_job_number_or_customer_name(params[:service_job_search])
+
+    @pagy, @service_jobs = if search_present_and_not_empty_and_no_sort_by?
+                             pagy(service_job_search_scope.order(created_at: :asc))
+
+                           elsif search_present_and_not_empty? && sort_by_present_and_not_empty?
+                             pagy(service_job_search_scope.reorder(nil).order(get_collection_order))
+
+                           elsif no_search_and_sort_by_present_and_not_empty?
+                             pagy(policy_scope(ServiceJob).reorder(nil).order(get_collection_order))
+
+                           else
+                             pagy(policy_scope(ServiceJob).order(created_at: :asc))
+                           end
+
     authorize @service_jobs
   end
 
@@ -59,7 +67,8 @@ class ServiceJobsController < ApplicationController
 
   def destroy
     return unless @service_job.discard
-    flash[:notice] = "Service Job deleted"
+
+    flash[:notice] = 'Service Job deleted'
     redirect_to service_jobs_path
   end
 
@@ -93,9 +102,43 @@ class ServiceJobsController < ApplicationController
         :city,
         :state,
         :zip_code,
-        { point_of_contact_attributes: %i[ name phone_number email] }
+        { point_of_contact_attributes: %i[name phone_number email] }
       ],
       work_site_attributes: %i[name address city state zip_code email phone_number]
     )
+  end
+
+  def search_present_and_not_empty?
+    params[:service_job_search].present? && !params[:service_job_search].empty?
+  end
+
+  def sort_by_present_and_not_empty?
+    params[:sort_by].present? && !params[:sort_by].empty?
+  end
+
+  def no_search_and_sort_by_present_and_not_empty?
+    !search_present_and_not_empty? && sort_by_present_and_not_empty?
+  end
+
+  def search_present_and_not_empty_and_no_sort_by?
+    search_present_and_not_empty? && !sort_by_present_and_not_empty?
+  end
+
+  def get_collection_order
+    case params[:sort_by]
+
+    when 'job_number asc'
+      'job_number asc'
+    when 'job_number desc'
+      'job_number desc'
+    when 'created_at asc'
+      'created_at asc'
+    when 'created_at desc'
+      'created_at desc'
+    end
+  end
+
+  def service_job_index_params
+    params.permit(:sort_by)
   end
 end
