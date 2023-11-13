@@ -79,7 +79,7 @@ namespace :populate_db do
     end
 
     # Tested 10,000 with no errors
-    50.times do
+    200.times do
       params = decide_params(@random_counter, @nil_counter)
       job_number = params[:job_number]
 

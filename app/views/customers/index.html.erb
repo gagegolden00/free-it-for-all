@@ -2,7 +2,6 @@
   <h1 class="text-lg sm:text-xl font-medium text-white">Customer Directory</h1>
   <%= link_to "New Customer", new_customer_path, class: "w-36 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
 </div>
-
 <form class="flex items-center m-2 sm:m-4" action="<%= customers_path %>" method="get">
   <label for="simple-search" class="sr-only">Search</label>
   <div class="relative w-full">
@@ -11,13 +10,19 @@
         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
       </svg>
     </div>
-    <input type="text" id="simple-search" name="customer_search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search customer list" required="">
+    <input type="text" id="simple-search" name="customer_search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search customer list">
   </div>
+  <div class="mt-4">
+    <%= check_box_tag 'sort_by', 'name asc', checked: params[:sort_by] == 'name asc', class: 'sort-checkbox', data: { customer_search: params[:customer_search] || "", page: @pagy.page } %>
+    <%= label_tag 'sort_by_name_asc', 'Name asc', class: 'ml-2' %>
+    <%= check_box_tag 'sort_by', 'name desc', checked: params[:sort_by] == 'name desc', class: 'sort-checkbox', data: { customer_search: params[:customer_search] || "", page: @pagy.page } %>
+    <%= label_tag 'sort_by_name_desc', 'Name desc', class: 'ml-2' %>
+  </div>
+  <%= hidden_field_tag 'page', @pagy.page %>
+  <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Apply Filters</button>
 </form>
-
 <!-- TODO: something else with this -->
 <p style="color: green"><%= notice %></p>
-
 <div id="customers">
   <% @customers.each do |customer| %>
     <div class="flex flex-row border rounded m-2 sm:mx-4 p-3 text-sm bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500">
@@ -25,18 +30,18 @@
         <p class="font-semibold">
           <%= link_to customer.name , customer_path(customer) %>
         </p>
-        <p class=""><%= customer.address %><br class="visible"> <%= customer.city %>, <%= customer.state %> <%= customer.zip_code %></p>
-        <p class="mt-2">Completed Jobs: 7</p>
+        <p class=""><%= customer.address %><br class="visible">
+          <%= customer.city %>, <%= customer.state %> <%= customer.zip_code %></p>
+        <p class="mt-2">Completed jobs: <%= customer.service_jobs.where(status: "completed").count %></p>
+        <p class="mt-2">Active jobs: <%= customer.service_jobs.where.not(status: "completed").count %></p>
       </div>
       <div class="ml-auto">
         <%= link_to "View" , customer_path(customer), class: "rounded-md block w-16 text-center ml-2 text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
         <%= link_to "Edit" , edit_customer_path(customer), class: "rounded-md block w-16 mt-2 text-center ml-2 text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
-
       </div>
     </div>
   <% end %>
 </div>
-
 <div class="text-center">
   <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
 </div>

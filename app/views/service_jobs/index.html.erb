@@ -13,14 +13,14 @@
     <input type="text" id="simple-search" name="service_job_search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search service jobs by job number or customer name" value="<%= params[:service_job_search] unless params[:service_job_search].nil? || params[:service_job_search].empty? %>">
   </div>
   <div class="mt-4">
-    <%= check_box_tag 'sort_by', 'job_number asc' %>
-    <%= label_tag 'sort_by_job_number_asc', 'Job number asc', class: 'ml-2',  params: {sort_by: "job_number asc", service_job_search: params[:service_job_search] || "", page: @pagy.page} %>
-    <%= check_box_tag 'sort_by', 'job_number desc' %>
-    <%= label_tag 'sort_by_job_number_desc', 'Job number desc', class: 'ml-2',  params: {sort_by: "job_number desc", service_job_search: params[:service_job_search] || "", page: @pagy.page} %>
-    <%= check_box_tag 'sort_by', 'created_at asc' %>
-    <%= label_tag 'sort_by_created_at_asc', 'Newest', class: 'ml-2', params:  {sort_by: "created_at asc", service_job_search: params[:service_job_search] || "", page: @pagy.page}%>
-    <%= check_box_tag 'sort_by', 'created_at desc' %>
-    <%= label_tag 'sort_by_created_at_desc', 'Oldest', class: 'ml-2', params: {sort_by: "created_at desc", service_job_search: params[:service_job_search] || "", page: @pagy.page} %>
+    <%= check_box_tag 'sort_by', 'job_number asc', false, params: {sort_by: "job_number asc", service_job_search: params[:service_job_search] || "", page: @pagy.page} %>
+    <%= label_tag 'sort_by_job_number_asc', 'Job number asc', class: 'ml-2' %>
+    <%= check_box_tag 'sort_by', 'job_number desc', false, params: {sort_by: "job_number desc", service_job_search: params[:service_job_search] || "", page: @pagy.page} %>
+    <%= label_tag 'sort_by_job_number_desc', 'Job number desc', class: 'ml-2' %>
+    <%= check_box_tag 'sort_by', 'created_at asc', false, params: {sort_by: "created_at asc", service_job_search: params[:service_job_search] || "", page: @pagy.page} %>
+    <%= label_tag 'sort_by_created_at_asc', 'Newest', class: 'ml-2' %>
+    <%= check_box_tag 'sort_by', 'created_at desc', false, params: {sort_by: "created_at desc", service_job_search: params[:service_job_search] || "", page: @pagy.page} %>
+    <%= label_tag 'sort_by_created_at_desc', 'Oldest', class: 'ml-2' %>
   </div>
   <%= hidden_field_tag 'page', @pagy.page %>
   <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Apply Filters</button>

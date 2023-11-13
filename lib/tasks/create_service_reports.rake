@@ -25,7 +25,7 @@ namespace :populate_db do
       [reg_time, over_time, double_time]
     end
 
-    100.times do
+    1000.times do
       reg_time, double_time, over_time = random_minutes
       service_job = ServiceJob.find(1..ServiceJob.count)
 
