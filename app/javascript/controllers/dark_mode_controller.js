@@ -6,6 +6,7 @@ export default class extends Controller {
   connect() {
     console.log('Connected to dark mode controller');
     this.applyDarkMode();
+    this.applySlimSelectDarkModeWithRAF();
   }
 
   toggleDarkMode() {
@@ -45,15 +46,17 @@ export default class extends Controller {
     const elementsToAlter = [slimSelectContent, slimSelectMain];
     const darkModeEnabled = localStorage.getItem('darkModeEnabled') === 'true';
 
-    elementsToAlter.forEach(element => {
-      if (darkModeEnabled) {
-        element.classList.remove('light');
-        element.classList.add('dark');
-      } else {
-        element.classList.remove('dark');
-        element.classList.add('light');
-      }
-    });
+    if (slimSelectMain && slimSelectContent) {
+      elementsToAlter.forEach(element => {
+        if (darkModeEnabled) {
+          element.classList.remove('light');
+          element.classList.add('dark');
+        } else {
+          element.classList.remove('dark');
+          element.classList.add('light');
+        }
+      });
+    }
   }
 
   applySlimSelectDarkModeWithRAF() {
