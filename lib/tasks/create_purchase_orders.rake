@@ -8,6 +8,7 @@ namespace :populate_db do
       PurchaseOrder.create!(
         purchase_order_number: service_job.job_number + "-PO-#{service_job.service_reports.count + 1}",
         quantity: Faker::Number.between(from: 1, to: 100),
+        vendor: Faker::Name.name,
         description: Faker::Lorem.paragraph(sentence_count: rand(1..20)),
         price: Faker::Number.decimal(l_digits: 2),
         total_price: Faker::Number.decimal(l_digits: 2),

@@ -47,7 +47,7 @@ class PurchaseOrdersController < ApplicationController
   private
 
   def purchase_order_params
-    params.require(:purchase_order).permit(:purchase_order_number, :quantity, :description, :price, :total_price, :notes, :internal_notes, :service_report_id)
+    params.require(:purchase_order).permit(:purchase_order_number, :vendor, :quantity, :description, :price, :total_price, :notes, :internal_notes, :service_report_id)
   end
 
   def set_purchase_order_from_params

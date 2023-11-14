@@ -38,6 +38,6 @@
   <%= @purchase_order.internal_notes %>
 </p>
 
-<%= link_to "Edit purchase order", edit_service_job_purchase_order_path(@service_job, @purchase_order) %>
+<%= link_to "Edit purchase order", edit_service_job_purchase_order_path(@service_job, @purchase_order, service_report_id: @service_report) %>
 <%= button_to "Delete purchase order", service_job_purchase_order_path(@service_job, @purchase_order), method: :delete %>
 

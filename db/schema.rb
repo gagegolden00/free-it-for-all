@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2023_10_30_204929) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_11_02_185558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -64,8 +62,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_204929) do
 
   create_table "purchase_orders", force: :cascade do |t|
     t.string "purchase_order_number", null: false
-    t.integer "quantity"
+    t.string "vendor"
     t.text "description"
+    t.integer "quantity"
     t.integer "price"
     t.integer "total_price"
     t.text "notes"

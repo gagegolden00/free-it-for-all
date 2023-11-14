@@ -2,8 +2,9 @@ class CreatePurchaseOrders < ActiveRecord::Migration[7.0]
   def change
     create_table :purchase_orders do |t|
       t.string :purchase_order_number, null: false, unique: true
-      t.integer :quantity
+      t.string :vendor
       t.text :description
+      t.integer :quantity
       t.integer :price
       t.integer :total_price
       t.text :notes
