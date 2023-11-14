@@ -1,0 +1,43 @@
+<p>
+  <strong>Purchase Order Number:</strong>
+  <%= @purchase_order.purchase_order_number %>
+</p>
+
+<p>
+  <strong>Service Report Number:</strong>
+  <%= @service_report.service_report_number %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @purchase_order.quantity %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @purchase_order.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @purchase_order.price %>
+</p>
+
+<p>
+  <strong>Total Price:</strong>
+  <%= @purchase_order.total_price %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @purchase_order.notes %>
+</p>
+
+<p>
+  <strong>Internal Notes:</strong>
+  <%= @purchase_order.internal_notes %>
+</p>
+
+<%= link_to "Edit purchase order", edit_service_job_purchase_order_path(@service_job, @purchase_order, service_report_id: @service_report) %>
+<%= button_to "Delete purchase order", service_job_purchase_order_path(@service_job, @purchase_order), method: :delete %>
+

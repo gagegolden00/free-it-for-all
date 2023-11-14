@@ -6,7 +6,7 @@
   </div>
 
   <div class="flex flex-row gap-2 ml-auto">
-   <%= button_to "New Service Job", new_service_job_path, method: :delete, class: "invisible w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"%>
+    <%= button_to "Delete Job", service_job_path(@service_job), method: :delete, class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"%>
   </div>
 
 </div>

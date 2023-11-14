@@ -1,10 +1,11 @@
 <link rel="stylesheet" href="https://unpkg.com/slim-select@latest/dist/slimselect.css" />
 <link rel="stylesheet" href="/assets/slim_select_override.css">
-
-<section class="flex flex-col p-2 sm:p-4">
+<section class="flex flex-col p-2 sm:p-4 border m-2 md:m-4 lg:mx-auto rounded-md bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500 max-w-3xl">
   <%= form_with model: @service_job, url: service_jobs_path, data: {turbo: false}, clsss: "flex-flex-col" do |service_job_field| %>
     <div class="flex flex-col justify-center gap-6">
       <div id="serviceJobFields" class="flex flex-col gap-2">
+        <p class="font-semibold text-lg mt-1 mb-2">Job Information</p>
+
         <%= service_job_field.label :job_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.text_field :job_number, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :status, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
@@ -36,9 +37,10 @@
           </button>
         </div>
       </div>
-      <fieldset id="customerFields" class="flex flex-col hidden" disabled="true">
+
+      <fieldset id="customerFields" class="flex flex-col hidden gap-2" disabled="true">
         <!-- new customer -->
-        <p class="text-2xl"> New Customer</p>
+        <p class="font-semibold text-lg mt-1 mb-2">Customer Information</p>
         <%= service_job_field.fields_for :customer do |customer_field|%>
           <%= customer_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= customer_field.text_field :name, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
@@ -54,14 +56,17 @@
           <%= customer_field.select :state, options_for_select(us_states), {}, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
           <%= customer_field.label :zip_code , class: "block text-sm font-medium text-gray-900 dark:text-white"%>
           <%= customer_field.text_field :zip_code, autocomplete: 'postal-code', maxlength: "5", class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-          <div id="pointOfContactFields" class="flex flex-col">
-            <p class="text-2xl">New point of contact</p>
+
+          <div id="pointOfContactFields" class="flex flex-col gap-2">
+            <p class="font-semibold text-lg mt-1 mb-2">Point of Contact Information</p>
             <%= customer_field.fields_for :point_of_contact do |point_of_contact_field| %>
-              <%= point_of_contact_field.label :name %>
+              <%= point_of_contact_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
               <%= point_of_contact_field.text_field :name, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-              <%= point_of_contact_field.label :phone_number %>
+
+              <%= point_of_contact_field.label :phone_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
               <%= point_of_contact_field.telephone_field :phone_number, type: 'tel', class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-              <%= point_of_contact_field.label :email %>
+
+              <%= point_of_contact_field.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
               <%= point_of_contact_field.email_field :email, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
             <% end %>
           </div>
@@ -75,22 +80,29 @@
           Add new work site
         </button>
       </div>
-      <fieldset id="workSiteFields" class="flex flex-col hidden" disabled="true">
-        <p class="text-2xl">Work site</p>
+
+      <fieldset id="workSiteFields" class="flex flex-col hidden gap-2" disabled="true">
+        <p class="font-semibold text-lg mt-1 mb-2">Work Site Information</p>
         <%= service_job_field.fields_for :work_site do |work_site_field| %>
-          <%= work_site_field.label :name %>
+          <%= work_site_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= work_site_field.text_field :name, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-          <%= work_site_field.label :address %>
+
+          <%= work_site_field.label :address, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= work_site_field.text_field :address, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-          <%= work_site_field.label :city %>
+
+          <%= work_site_field.label :city, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= work_site_field.text_field :city, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-          <%= work_site_field.label :state %>
+
+          <%= work_site_field.label :state, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= work_site_field.select :state, options_for_select(us_states), {}, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-          <%= work_site_field.label :zip_code %>
+
+          <%= work_site_field.label :zip_code, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= work_site_field.text_field :zip_code, autocomplete: 'postal-code', maxlength: "5", class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"  %>
-          <%= work_site_field.label :email %>
+
+          <%= work_site_field.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= work_site_field.email_field :email, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-          <%= work_site_field.label :phone_number %>
+
+          <%= work_site_field.label :phone_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= work_site_field.telephone_field :phone_number, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <% end %>
       </fieldset>
