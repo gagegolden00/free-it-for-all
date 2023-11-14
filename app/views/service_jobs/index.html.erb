@@ -31,6 +31,10 @@
         </p>
 
         <p class="w-52">
+          <%= service_job.customer.region&.name %>
+        </p>
+
+        <p class="w-52">
           <% if service_job.work_site %>
             <%= service_job.work_site.name %>
           <% else %>
