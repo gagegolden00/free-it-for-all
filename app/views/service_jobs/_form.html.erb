@@ -21,10 +21,7 @@
         <fieldset id="customerSelect" class="flex flex-col mb-4">
           <%= service_job_field.label :select_customer, class: "block text-sm font-medium text-gray-900 dark:text-white mb-2" %>
           <%= service_job_field.select :customer_id,
-          options_for_select(@customers.map { |customer| [customer.name, customer.id] }),
-          {},
-          id: "selectElement",
-          data: { controller: "slim-select" } %>
+          options_for_select(@customers.map { |customer| [customer.name, customer.id] }), {}, id: "selectElement", data: { controller: "slim-select" } %>
         </fieldset>
 
 
