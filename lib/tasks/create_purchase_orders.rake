@@ -6,7 +6,7 @@ namespace :populate_db do
       service_report = ServiceReport.find(rand(1..ServiceReport.count))
       service_job = ServiceJob.find(service_report.service_job_id)
       PurchaseOrder.create!(
-        purchase_order_number: service_job.job_number + "-PO-#{service_job.service_reports.count + 1}",
+        purchase_order_number: service_job.job_number + "-PO-#{service_report.purchase_orders.count + 1}",
         quantity: Faker::Number.between(from: 1, to: 100),
         vendor: Faker::Name.name,
         description: Faker::Lorem.paragraph(sentence_count: rand(1..20)),
