@@ -18,18 +18,6 @@
 <!-- TODO: something else with this -->
 <p style="color: green"><%= notice %></p>
 
-<!--div id="customers">
-  <% @customers.each do |customer| %>
-    <div class="border rounded m-2 sm:mx-4 p-3 text-sm flex flex-row flex-wrap space-x-3 border-gray-300 dark:border-gray-500">
-      <p class="w-44 font-semibold border-2 border-red-500">
-        <%= link_to customer.name , customer_path(customer) %>
-      </p>
-      <p class="border-2 border-green-500 max-w-sm text-left"><%= customer.address %>, <%= customer.city %>, <%= customer.state %></p>
-      <p class="w-8 ml-auto text-right border-2 border-blue-500">7</p>
-    </div>
-  <% end %>
-</div-->
-
 <div id="customers">
   <% @customers.each do |customer| %>
     <div class="flex flex-row border rounded m-2 sm:mx-4 p-3 text-sm bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500">
