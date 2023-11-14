@@ -10,7 +10,9 @@
   </div>
 </div>
 
-
+<%= link_to "Edit report", edit_service_job_service_report_path(@service_job, @service_report)%>
+<%= button_to "Delete Report", service_job_service_report_path(@service_job, @service_report), method: :delete %>
+<%= link_to "New PO", new_service_job_purchase_order_path(@service_job, service_report_id: @service_report)%>
 
 <div class="p-2 md:p-4">
 

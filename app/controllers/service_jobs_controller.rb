@@ -19,7 +19,6 @@ class ServiceJobsController < ApplicationController
   def create
     @customers = Customer.kept
     @service_job = ServiceJob.new(permitted_params)
-    puts @service_job.inspect
     if @service_job.save
       flash[:notice] = 'Service job created'
       redirect_to service_job_path(@service_job)
