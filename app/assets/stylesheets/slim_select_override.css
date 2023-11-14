@@ -1,0 +1,112 @@
+/* slim select override */
+/* Light mode styles */
+.ss-main {
+  font-size: 1rem;
+  height: 42px;
+  background-color: #f9fafb;
+  border-radius: .5rem;
+  border-color: #d1d5db;
+  border-width: 1px;
+
+  .ss-single-selected {
+    height: 200px;
+    padding: 20px 24px;
+  }
+  .ss-content .ss-list {
+    padding: 5px 0;
+  }
+  .ss-content .ss-list .ss-option {
+    padding: 15px 24px;
+  }
+  .ss-single-selected .placeholder,
+  .ss-single-selected .placeholder * {
+    overflow: visible;
+  }
+
+  strong + sup {
+    margin-left: 1ch;
+    text-transform: uppercase;
+    font-size: 0.5em;
+    top: -0.9em;
+  }
+}
+/* Content container */
+.ss-content {
+  position: absolute; /* default position */
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  width: auto;
+  max-height: var(--ss-content-height);
+  box-sizing: border-box;
+  border: solid 1px var(--ss-border-color);
+  background-color: var(--ss-bg-color);
+  transition: transform var(--ss-animation-timing), opacity var(--ss-animation-timing);
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center top;
+  overflow: hidden;
+  z-index: 10000;
+
+}
+
+/* dark mode */
+.ss-main.dark {
+  font-size: .875rem;
+  line-height: 1.25rem;
+  height: 42px;
+  background-color: #374151;
+  border-radius: .5rem;
+  border-color: #4B5563;
+  border-width: 1px;
+  color: white;
+
+
+  .ss-single-selected {
+    height: 200px;
+    padding: 20px 24px;
+    background-color: #374151;
+  }
+  .ss-content.dark .ss-list {
+    padding: 5px 0;
+  }
+  .ss-content.dark .ss-list .ss-option {
+    padding: 15px 24px;
+  }
+  .ss-single-selected .placeholder,
+  .ss-single-selected .placeholder * {
+    overflow: visible;
+  }
+
+  strong + sup {
+    margin-left: 1ch;
+    text-transform: uppercase;
+    font-size: 0.5em;
+    top: -0.9em;
+  }
+}
+.ss-content.dark {
+  position: absolute;
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  width: auto;
+  max-height: var(--ss-content-height);
+  box-sizing: border-box;
+  border: solid 1px var(--ss-border-color);
+  background-color: red;
+  transition: transform var(--ss-animation-timing), opacity var(--ss-animation-timing);
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center top;
+  overflow: hidden;
+  z-index: 10000;
+}
+
+
+
+
+
+/*class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+
+
