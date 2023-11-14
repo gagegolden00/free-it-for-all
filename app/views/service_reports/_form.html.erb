@@ -1,146 +1,200 @@
-<div class="border-4">
-  <section id="first-section" class="border border-red-600 my-4">
-    <div>
-      <h1>Customer Details</h1>
-      <p>Customer Name:</p>
-      <p>Customer PO number:</p>
-      <p>Customer Address:</p>
-      <p>Customer City:</p>
-      <p>Customer State:</p>
-      <p>Customer Zip code:</p>
-    </div>
-    <div>
-      <h1>Materials Used</h1>
-      <%= form_with(model: @service_report, url: path, turbo: false) do |service_report_field| %>
+<div class="border-0">
+  <%= form_with(model: @service_report, url: path, turbo: false) do |service_report_field| %>
+
+    <section id="first-section" class="px-2 md:px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+
+      <div>
+        <p><strong>Customer Name:</strong> <%= @service_job.customer.name %></p>
+        <p><strong>Phone Number:</strong> <%= @service_job.customer.phone_number %></p>
+        <p><strong>Email:</strong> <%= @service_job.customer.email %></p>
+        <p><strong>Address:</strong> <%= @service_job.customer.address %></p>
+        <p><strong>City:</strong> <%= @service_job.customer.city %></p>
+        <p><strong>State:</strong> <%= @service_job.customer.state %></p>
+        <p><strong>Zip Code:</strong> <%= @service_job.customer.zip_code %></p>
+        <p><strong>Region:</strong> <%= @service_job.customer.region.manager %></p>
+      </div>
+
+      <div class="flex flex-col">
+        <!--h1>Materials Used</h1-->
         <!-- Hidden field with generated id number-->
+
         <%= service_report_field.hidden_field :service_job_id, value: params[:service_job_id] %>
         <%= service_report_field.hidden_field :service_report_number %>
-        <%= service_report_field.label :equipment_model %>
+
+        <%= service_report_field.label :equipment_model, class: "font-bold" %>
         <%= service_report_field.text_field :equipment_model %>
-        <%= service_report_field.label :equipment_serial %>
+
+        <%= service_report_field.label :equipment_serial, class: "font-bold mt-2"  %>
         <%= service_report_field.text_field :equipment_serial %>
-        <%= service_report_field.label :warranty %>
-        <%= service_report_field.check_box :warranty %>
-        <div class="flex flex-col">
-          <%= service_report_field.fields_for :time_log do |time_log_field| %>
-            <div data-controller="time-converter">
-              <div class="flex flex-col my-10 border">
-                <%= time_log_field.label :regular_time %>
-                <%= time_log_field.hidden_field :regular_minutes %>
-                <%= label_tag :hours, "Hours:" %>
-                <%= number_field_tag 'service_report[regular_hours_input]', nil, min: 0, max: 24, maxlength: 2, value: get_total_hours(@time_log&.regular_minutes) %>
-                <%= label_tag :minutes, "Minutes:" %>
-                <%= number_field_tag 'service_report[regular_minutes_input]', nil, min: 0, max: 59, maxlength: 2, value: get_total_minutes(@time_log&.regular_minutes) %>
+
+        <div class="mt-2">
+          <%= service_report_field.label :warranty, class: "font-bold mr-2"  %>
+          <%= service_report_field.check_box :warranty %>
+        </div>
+      </div>
+
+
+
+
+      <div class="flex flex-col border-2 rounded-md p-2 md:p-4 bg-white">
+        <%= service_report_field.fields_for :time_log do |time_log_field| %>
+          <div data-controller="time-converter">
+            <div class="flex flex-col">
+              <%= time_log_field.label :regular, class: "font-bold" %>
+              <%= time_log_field.hidden_field :regular_minutes %>
+
+              <!-- component -->
+              <div class="flex flex-row text-xs gap-2">
+                <div class="flex flex-col">
+                  <%= number_field_tag 'service_report[regular_hours_input]', nil, min: 0, max: 24, maxlength: 2, value: get_total_hours(@time_log&.regular_minutes) %>
+                  <%= label_tag :hours, "Hours:" %>
+                </div>
+
+                <div class="flex flex-col">
+                  <%= number_field_tag 'service_report[regular_minutes_input]', nil, min: 0, max: 59, maxlength: 2, value: get_total_minutes(@time_log&.regular_minutes) %>
+                  <%= label_tag :minutes, "Minutes:" %>
+                </div>
               </div>
-              <div class="flex flex-col my-10 border">
-                <%= time_log_field.label :overtime %>
-                <%= time_log_field.hidden_field :overtime_minutes %>
-                <%= label_tag :hours, "Hours:" %>
-                <%= number_field_tag 'service_report[overtime_hours_input]', nil, min: 0, max: 24, maxlength: 2, value: get_total_hours(@time_log&.overtime_minutes) %>
-                <%= label_tag :minutes, "Minutes:" %>
-                <%= number_field_tag 'service_report[overtime_minutes_input]', nil, min: 0, max: 59, maxlength: 2, value: get_total_minutes(@time_log&.overtime_minutes) %>
-              </div>
-              <div class="flex flex-col my-10 border">
-                <%= time_log_field.label :double_time %>
-                <%= time_log_field.hidden_field :double_time_minutes %>
-                <%= label_tag :hours, "Hours:" %>
-                <%= number_field_tag 'service_report[double_time_hours_input]', nil, min: 0, max: 24, maxlength: 2, value: get_total_hours(@time_log&.double_time_minutes) %>
-                <%= label_tag :minutes, "Minutes:" %>
-                <%= number_field_tag 'service_report[double_time_minutes_input]', nil, min: 0, max: 59, maxlength: 2, value: get_total_minutes(@time_log&.double_time_minutes) %>
-              </div>
+              <!-- /component -->
+
             </div>
-            <%= time_log_field.label :mileage, "Mileage" %>
-            <%= time_log_field.text_field :mileage %>
-            <%= time_log_field.label :remarks, "Remarks" %>
-            <%= time_log_field.text_area :remarks %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="second-section" class="border border-blue-600 my-4">
-    <h1 class="w-full">Materials list</h1>
-    <div class="flex flex-wrap mx-4">
-      <% @materials.each do |material| %>
-        <div class="px-4 mb-4">
-          <div class="border black p-4">
-            <% existing_material = @existing_materials_by_id[material.id] if @existing_materials_by_id %>
-            <%= service_report_field.fields_for :service_report_materials, existing_material || @service_report.service_report_materials.build do |service_report_material_field| %>
-              <%= service_report_material_field.label material.name %>
-              <%= service_report_material_field.label material.price %>
-              <%= service_report_material_field.hidden_field :material_id, value: material.id %>
-              <%= service_report_material_field.number_field :quantity, min: 0, class: "", value: existing_material&.quantity || 0 %>
-            <% end %>
+            <div class="flex flex-col">
+              <%= time_log_field.label :overtime, class: "font-bold" %>
+              <%= time_log_field.hidden_field :overtime_minutes %>
+
+              <!-- component -->
+              <div class="flex flex-row text-xs gap-2">
+                <div class="flex flex-col">
+                  <%= number_field_tag 'service_report[overtime_hours_input]', nil, min: 0, max: 24, maxlength: 2, value: get_total_hours(@time_log&.overtime_minutes) %>
+                  <%= label_tag :hours, "Hours:" %>
+                </div>
+                <div class="flex flex-col">
+                  <%= number_field_tag 'service_report[overtime_minutes_input]', nil, min: 0, max: 59, maxlength: 2, value: get_total_minutes(@time_log&.overtime_minutes) %>
+                  <%= label_tag :minutes, "Minutes:" %>
+                </div>
+              </div>
+              <!-- /component -->
+
+            </div>
+            <div class="flex flex-col">
+              <%= time_log_field.label :double_time, class: "font-bold" %>
+              <%= time_log_field.hidden_field :double_time_minutes %>
+
+              <!-- component -->
+              <div class="flex flex-row text-xs gap-2">
+                <div class="flex flex-col">
+                  <%= number_field_tag 'service_report[double_time_hours_input]', nil, min: 0, max: 24, maxlength: 2, value: get_total_hours(@time_log&.double_time_minutes), class: "tex-xs" %>
+                  <%= label_tag :hours, "Hours:" %>
+                </div>
+                <div class="flex flex-col">
+                  <%= number_field_tag 'service_report[double_time_minutes_input]', nil, min: 0, max: 59, maxlength: 2, value: get_total_minutes(@time_log&.double_time_minutes) %>
+                  <%= label_tag :minutes, "Minutes:" %>
+                </div>
+              </div>
+              <!-- /component -->
+
+            </div>
           </div>
+          <%= time_log_field.label :mileage, class: "font-bold" %>
+          <%= time_log_field.text_field :mileage, class: "w-60" %>
+          <%= time_log_field.label :remarks, class: "font-bold" %>
+          <%= time_log_field.text_area :remarks, class: "w-60" %>
+        <% end %>
+      </div>
+
+
+
+
+
+    </section>
+
+    <hr class="mx-2 md:mx-4 my-6 border-gray-200 dark:border-gray-700">
+
+    <section id="second-section" class="mx-2 md:mx-4">
+      <h1 class="w-full font-bold text-lg mb-4">Materials</h1>
+      <div class="flex flex-wrap gap-2">
+        <% @materials.each do |material| %>
+          <div class="">
+            <div class="border bg-white dark:bg-gray-800 p-2 text-sm rounded-md">
+              <% existing_material = @existing_materials_by_id[material.id] if @existing_materials_by_id %>
+              <%= service_report_field.fields_for :service_report_materials, existing_material || @service_report.service_report_materials.build do |service_report_material_field| %>
+                <%= service_report_material_field.label material.name, class: "font-bold" %><br />
+                <%= service_report_material_field.label material.price %>
+                <%= service_report_material_field.hidden_field :material_id, value: material.id %><br />
+                <%= service_report_material_field.number_field :quantity, min: 0, max: 10000, maxlength: 5, class: "", value: existing_material&.quantity || 0 %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+
+    <section id="third-section" class="border border-green-400 my-4">
+      <!-- these fields are not on the service report form but are attributes defined in the mock db -->
+      <!-- the real question is if we're doing all of the calculations or are they calculating and then inputting? -->
+      <%= service_report_field.label :mischarge, class: "hidden" %>
+      <%= service_report_field.text_field :mischarge, class: "hidden" %>
+      <%= service_report_field.label :total_charge, class: "hidden" %>
+      <%= service_report_field.text_field :total_charge, class: "hidden" %>
+      <!-- -->
+      <div>
+        <%= service_report_field.label :work_description %>
+        <%= service_report_field.text_area :description %>
+      </div>
+      <div id="individual materials list?" class="">
+        <table border="1">
+          <tr>
+            <th>QTY</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Total Cost</th>
+          </tr>
+          <tr>
+            <td>###</td>
+            <td>###</td>
+            <td>###</td>
+            <td>###</td>
+          </tr>
+        </table>
+      </div>
+      <div class="">
+        <div>
+          <%= service_report_field.label :employee_signature %>
+          <%= service_report_field.text_field :employee_signature %>
         </div>
-      <% end %>
-    </div>
-  </section>
-  <section id="third-section" class="border border-green-400 my-4">
-    <!-- these fields are not on the service report form but are attributes defined in the mock db -->
-    <!-- the real question is if we're doing all of the calculations or are they calculating and then inputting? -->
-    <%= service_report_field.label :mischarge, class: "hidden" %>
-    <%= service_report_field.text_field :mischarge, class: "hidden" %>
-    <%= service_report_field.label :total_charge, class: "hidden" %>
-    <%= service_report_field.text_field :total_charge, class: "hidden" %>
-    <!-- -->
-    <div>
-      <%= service_report_field.label :work_description %>
-      <%= service_report_field.text_area :description %>
-    </div>
-    <div id="individual materials list?" class="">
-      <table border="1">
-        <tr>
-          <th>QTY</th>
-          <th>Description</th>
-          <th>Unit Price</th>
-          <th>Total Cost</th>
-        </tr>
-        <tr>
-          <td>###</td>
-          <td>###</td>
-          <td>###</td>
-          <td>###</td>
-        </tr>
-      </table>
-    </div>
-    <div class="">
-      <div>
-        <%= service_report_field.label :employee_signature %>
-        <%= service_report_field.text_field :employee_signature %>
+        <div>
+          <%= service_report_field.label :customer_signature %>
+          <%= service_report_field.text_field :customer_signature %>
+        </div>
       </div>
-      <div>
-        <%= service_report_field.label :customer_signature %>
-        <%= service_report_field.text_field :customer_signature %>
+      <div class="border border-black w-full h-14 flex justify-around items-center">
+        <div class="border border-black">
+          <h2>Total Hours</h2>
+          <span>###</span>
+        </div>
+        <div class="border border-black">
+          <h2>Total Parts</h2>
+          <span>###</span>
+        </div>
+        <div class="border border-black">
+          <h2>Total Misc</h2>
+          <span>###</span>
+        </div>
+        <div class="border border-black">
+          <h2>Mileage/Shipping</h2>
+          <span>###</span>
+        </div>
+        <div class="border border-black">
+          <h2>Tax</h2>
+          <span>###</span>
+        </div>
+        <div class="border border-black">
+          <h2>Total</h2>
+          <span>###</span>
+        </div>
       </div>
-    </div>
-    <div class="border border-black w-full h-14 flex justify-around items-center">
-      <div class="border border-black">
-        <h2>Total Hours</h2>
-        <span>###</span>
-      </div>
-      <div class="border border-black">
-        <h2>Total Parts</h2>
-        <span>###</span>
-      </div>
-      <div class="border border-black">
-        <h2>Total Misc</h2>
-        <span>###</span>
-      </div>
-      <div class="border border-black">
-        <h2>Mileage/Shipping</h2>
-        <span>###</span>
-      </div>
-      <div class="border border-black">
-        <h2>Tax</h2>
-        <span>###</span>
-      </div>
-      <div class="border border-black">
-        <h2>Total</h2>
-        <span>###</span>
-      </div>
-    </div>
-    <%= service_report_field.submit %>
+      <%= service_report_field.submit %>
+
+    </section>
   <% end %>
-</section>
 </div>
