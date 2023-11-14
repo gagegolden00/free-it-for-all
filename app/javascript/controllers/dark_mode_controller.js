@@ -6,8 +6,6 @@ export default class extends Controller {
   connect() {
     console.log('Connected to dark mode controller');
     this.applyDarkMode();
-    this.applySlimSelectDarkMode();
-    this.addDarkModeChangeListener();
   }
 
   toggleDarkMode() {
@@ -22,14 +20,14 @@ export default class extends Controller {
     this.rootTagTarget.classList.remove('light');
     this.rootTagTarget.classList.add('dark');
     localStorage.setItem('darkModeEnabled', 'true');
-    this.applySlimSelectDarkMode();
+    this.applySlimSelectDarkModeWithRAF();
   }
 
   setLightMode() {
     this.rootTagTarget.classList.remove('dark');
     this.rootTagTarget.classList.add('light');
     localStorage.removeItem('darkModeEnabled');
-    this.applySlimSelectDarkMode();
+    this.applySlimSelectDarkModeWithRAF();
   }
 
   applyDarkMode() {
@@ -45,27 +43,22 @@ export default class extends Controller {
     const slimSelectMain = this.rootTagTarget.querySelector('.ss-main');
     const slimSelectContent = this.rootTagTarget.querySelector('.ss-content');
     const elementsToAlter = [slimSelectContent, slimSelectMain];
-
     const darkModeEnabled = localStorage.getItem('darkModeEnabled') === 'true';
 
     elementsToAlter.forEach(element => {
-      element.classList.remove('light', 'dark');
-      element.classList.add(darkModeEnabled ? 'dark' : 'light');
+      if (darkModeEnabled) {
+        element.classList.remove('light');
+        element.classList.add('dark');
+      } else {
+        element.classList.remove('dark');
+        element.classList.add('light');
+      }
     });
   }
 
-  toggleDarkModeButtonClick() {
-    const darkModeToggleBtn = document.getElementById('darkModeToggleBtn');
-    if (darkModeToggleBtn) {
-      darkModeToggleBtn.addEventListener('click', () => {
-        this.toggleDarkMode();
-      });
-    }
-  }
-
-  addDarkModeChangeListener() {
-    window.addEventListener('storage', () => {
-      this.applyDarkMode();
+  applySlimSelectDarkModeWithRAF() {
+    requestAnimationFrame(() => {
+      this.applySlimSelectDarkMode();
     });
   }
 }
