@@ -1,6 +1,6 @@
 <div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center">
   <h1 class="text-lg sm:text-xl font-medium text-white">Service Jobs</h1>
-  <%= link_to "New Job", new_service_job_path, class: "w-36 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
+  <%= link_to "New Job", new_service_job_path, class: "w-36 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 dark:hover:text-gray-800 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md", data: { turbo: false } %>
 </div>
 
 <form class="flex items-center m-2 sm:m-4">
@@ -20,7 +20,7 @@
 <div id="service_jobs">
   <% @service_jobs.each do |service_job| %>
     <div class="border rounded m-2 sm:mx-4 p-3 text-sm flex flex-row flex-wrap justify-between space-x-3 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500">
-      
+
       <div>
         <p class="w-52 font-semibold">
           <%= link_to service_job.job_number , service_job_path(service_job) %>
