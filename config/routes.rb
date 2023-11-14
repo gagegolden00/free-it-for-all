@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :customers
     resources :service_jobs do
       resources :service_reports
+      resources :purchase_orders
     end
     resources :user_service_jobs, only: %i[create destroy]
 

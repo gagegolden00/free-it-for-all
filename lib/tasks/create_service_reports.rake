@@ -27,7 +27,7 @@ namespace :populate_db do
 
     1000.times do
       reg_time, double_time, over_time = random_minutes
-      service_job = ServiceJob.find(1..ServiceJob.count)
+      service_job = ServiceJob.find(rand(1..ServiceJob.count))
 
       ServiceReport.create!(
         service_report_number: service_job.job_number + "-REPORT-#{service_job.service_reports.count + 1}",

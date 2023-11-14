@@ -1,7 +1,9 @@
 class ServiceReport < ApplicationRecord
   has_many :service_report_materials
   has_many :materials, through: :service_report_materials
+  has_many :purchase_orders
   has_one :time_log, dependent: :destroy
+  belongs_to :service_job
 
   accepts_nested_attributes_for :service_report_materials
   accepts_nested_attributes_for :time_log

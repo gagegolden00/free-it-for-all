@@ -1,5 +1,6 @@
 <%= link_to "Edit report", edit_service_job_service_report_path(@service_job, @service_report)%>
 <%= button_to "Delete Report", service_job_service_report_path(@service_job, @service_report), method: :delete %>
+<%= link_to "New PO", new_service_job_purchase_order_path(@service_job, service_report_id: @service_report)%>
 
 <div class="border-4">
   <h1><strong>Service Report:</strong> <%= @service_report.service_report_number %></h1>
