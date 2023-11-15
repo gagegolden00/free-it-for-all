@@ -34,10 +34,11 @@
       <p><strong>Warranty:</strong> <%= @service_report.warranty %></p>
     </div>
     <div class="w-40 border p-2 md:p-4 rounded-md border-gray-400 dark:border-gray-700 bg-white dark:bg-gray-800">
-      <p><strong>Regular:</strong> <%= get_total_hours(@time_log&.regular_minutes) %>:<%= get_total_minutes(@time_log&.regular_minutes) %></p>
-      <p><strong>Overtime:</strong> <%= get_total_hours(@time_log&.overtime_minutes) %>:<%= get_total_minutes(@time_log&.overtime_minutes) %></p>
-      <p><strong>Double:</strong> <%= get_total_hours(@time_log&.double_time_minutes) %>:<%= get_total_minutes(@time_log&.double_time_minutes) %></p>
-      <p><strong>Mileage:</strong> <%= @time_log&.mileage %></p>
+<p><strong>Regular:</strong> <%= get_total_hours(@time_log&.regular_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(@time_log&.regular_minutes) || 0) %></p>
+<p><strong>Overtime:</strong> <%= get_total_hours(@time_log&.overtime_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(@time_log&.overtime_minutes) || 0) %></p>
+<p><strong>Double:</strong> <%= get_total_hours(@time_log&.double_time_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(@time_log&.double_time_minutes) || 0) %></p>
+
+      <p><strong>Mileage:</strong> <%= @time_log&.mileage || "0"%></p>
     </div>
   </section>
   <hr class="w-full my-4 border-gray-200 dark:border-gray-700">
@@ -49,8 +50,8 @@
           <div class="border p-2 text-sm rounded-md bg-white dark:bg-gray-800">
             <p><strong>Name:</strong> <%= material.name %></p>
             <p><strong>Quantity:</strong> <%= material.quantity %></p>
-            <p><strong>Price:</strong> <%= material.price %></p>
-            <p><strong>Pre-Tax Total:</strong> <%= material.pre_tax_total %></p>
+            <p><strong>Price:</strong> <%= format_price(material.price) %></p>
+            <p><strong>Pre-Tax Total:</strong> <%= format_price(material.pre_tax_total) %></p>
           </div>
         </div>
       <% end %>
