@@ -26,7 +26,7 @@
       <p><strong>City:</strong> <%= @service_job.customer.city %></p>
       <p><strong>State:</strong> <%= @service_job.customer.state %></p>
       <p><strong>Zip Code:</strong> <%= @service_job.customer.zip_code %></p>
-      <p><strong>Region:</strong> <%= @service_job.customer.region.manager %></p>
+      <p><strong>Region:</strong> <%= @service_job.customer.region&.manager %></p>
     </div>
     <div class="">
       <p><strong>Equipment Model:</strong> <%= @service_report.equipment_model %></p>
