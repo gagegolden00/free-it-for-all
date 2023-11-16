@@ -17,21 +17,21 @@
       <div class="flex flex-col">
         <!--h1>Materials Used</h1-->
         <!-- Hidden field with generated id number-->
-        
+
         <%= service_report_field.hidden_field :service_job_id, value: params[:service_job_id] %>
         <%= service_report_field.hidden_field :service_report_number %>
-        
+
         <%= service_report_field.label :equipment_model, class: "font-bold" %>
         <%= service_report_field.text_field :equipment_model %>
-        
+
         <%= service_report_field.label :equipment_serial, class: "font-bold mt-2"  %>
         <%= service_report_field.text_field :equipment_serial %>
-        
+
         <div class="mt-2">
           <%= service_report_field.label :warranty, class: "font-bold mr-2"  %>
           <%= service_report_field.check_box :warranty %>
         </div>
-      </div>    
+      </div>
 
 
 
@@ -42,7 +42,7 @@
             <div class="flex flex-col">
               <%= time_log_field.label :regular, class: "font-bold" %>
               <%= time_log_field.hidden_field :regular_minutes %>
-              
+
               <!-- component -->
               <div class="flex flex-row text-xs gap-2">
                 <div class="flex flex-col">
@@ -52,7 +52,7 @@
 
                 <div class="flex flex-col">
                   <%= number_field_tag 'service_report[regular_minutes_input]', nil, min: 0, max: 59, maxlength: 2, value: get_total_minutes(@time_log&.regular_minutes) %>
-                  <%= label_tag :minutes, "Minutes:" %>                  
+                  <%= label_tag :minutes, "Minutes:" %>
                 </div>
               </div>
               <!-- /component -->
@@ -61,7 +61,7 @@
             <div class="flex flex-col">
               <%= time_log_field.label :overtime, class: "font-bold" %>
               <%= time_log_field.hidden_field :overtime_minutes %>
-              
+
               <!-- component -->
               <div class="flex flex-row text-xs gap-2">
                 <div class="flex flex-col">
@@ -79,7 +79,7 @@
             <div class="flex flex-col">
               <%= time_log_field.label :double_time, class: "font-bold" %>
               <%= time_log_field.hidden_field :double_time_minutes %>
-              
+
               <!-- component -->
               <div class="flex flex-row text-xs gap-2">
                 <div class="flex flex-col">
@@ -105,7 +105,7 @@
 
 
 
-      
+
     </section>
 
     <hr class="mx-2 md:mx-4 my-6 border-gray-200 dark:border-gray-700">

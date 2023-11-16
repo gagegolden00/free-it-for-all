@@ -31,13 +31,12 @@ class ServiceReportsController < ApplicationController
 
   def index
     @service_reports = @service_job.service_reports.kept
-
   end
 
   def edit
     @service_report.service_report_materials.build
     @time_log = @service_report.time_log
-    @service_report.build_time_log
+    @service_report.build_time_log unless @service_report.time_log
     @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id) if @service_report
   end
 

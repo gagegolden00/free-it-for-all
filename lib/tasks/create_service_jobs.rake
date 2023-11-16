@@ -6,7 +6,7 @@ namespace :populate_db do
 
     def decide_params(random_counter, nil_counter)
       service_job_params = {
-        job_number: 'SER' + rand(10_000..999_999).to_s,
+        job_number: 'SER-' + rand(10_000..999_999).to_s,
         status: ServiceJob.statuses.values.sample,
         description: Faker::Lorem.paragraph(sentence_count: rand(3..30)),
         contract_amount: rand(1.00..1_000_000.00),
@@ -79,17 +79,28 @@ namespace :populate_db do
     end
 
     # Tested 10,000 with no errors
-    50.times do
+    200.times do
       params = decide_params(@random_counter, @nil_counter)
       job_number = params[:job_number]
 
-      unless ServiceJob.exists?(job_number: job_number)
-        ServiceJob.create!(params)
-      end
+      ServiceJob.create!(params) unless ServiceJob.exists?(job_number:)
 
       @random_counter = @random_counter >= 4 ? 1 : @random_counter + 1
       @nil_counter = @nil_counter >= 4 ? 1 : @nil_counter + 1
     end
 
+    give_all_records_a_random_created_at
+  end
+
+  private
+
+  def give_all_records_a_random_created_at
+    start_date = DateTime.parse('2023-01-01 00:00:00')
+    end_date = DateTime.parse('2023-11-01 23:59:59')
+
+    ServiceJob.find_each do |service_job|
+      random_created_at = rand(start_date..end_date)
+      service_job.update(created_at: random_created_at)
+    end
   end
 end
