@@ -28,19 +28,18 @@ class ServiceJobsController < ApplicationController
   end
 
   def index
-    service_job_search_scope = policy_scope(ServiceJob).search_by_job_number_or_customer_name(params[:service_job_search])
-
+    service_job_search_scope = policy_scope(ServiceJob).search_by_job_number_or_customer_name(params[:service_job_search]).distinct
     @pagy, @service_jobs = if search_present_and_not_empty_and_no_sort_by?
-                             pagy(service_job_search_scope.order(created_at: :asc))
+                             pagy(service_job_search_scope.filter_by_status(get_status_filters).order(created_at: :asc))
 
                            elsif search_present_and_not_empty? && sort_by_present_and_not_empty?
-                             pagy(service_job_search_scope.reorder(nil).order(get_collection_order))
+                             pagy(service_job_search_scope.filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
 
                            elsif no_search_and_sort_by_present_and_not_empty?
-                             pagy(policy_scope(ServiceJob).reorder(nil).order(get_collection_order))
+                             pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
 
                            else
-                             pagy(policy_scope(ServiceJob).order(created_at: :asc))
+                             pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).order(created_at: :asc))
                            end
 
     authorize @service_jobs
@@ -124,7 +123,7 @@ class ServiceJobsController < ApplicationController
     search_present_and_not_empty? && !sort_by_present_and_not_empty?
   end
 
-  def get_collection_order
+  def get_sorting_order
     case params[:sort_by]
 
     when 'job_number asc'
@@ -135,6 +134,19 @@ class ServiceJobsController < ApplicationController
       'created_at asc'
     when 'created_at desc'
       'created_at desc'
+    end
+  end
+
+  def get_status_filters
+    if params[:filter_by] && !params[:filter_by].empty?
+    status_filters = []
+    status_filters << 'Open' if params[:filter_by].include?('Open')
+    status_filters << 'Assigned' if params[:filter_by].include?('Assigned')
+    status_filters << 'In progress' if params[:filter_by].include?('In Progress')
+    status_filters << 'On hold' if params[:filter_by].include?('On hold')
+    status_filters << 'Waiting on parts' if params[:filter_by].include?('Waiting on Parts')
+    status_filters << 'Completed' if params[:filter_by].include?('Completed')
+    status_filters
     end
   end
 

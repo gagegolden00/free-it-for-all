@@ -1,11 +1,13 @@
-module StatusListHelper 
-  def service_job_statuses
+module StatusListHelper
+  def self.service_job_statuses
     [
-      "Pending",
-      "Not started",
-      "In progress",
-      "On hold",
+      "Open",
+      "Assigned",
+      "In Progress",
+      "On Hold",
+      "Waiting on Parts",
       "Completed"
     ]
   end
 end
+

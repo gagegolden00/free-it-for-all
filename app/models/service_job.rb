@@ -1,6 +1,6 @@
 class ServiceJob < ApplicationRecord
-  enum status: { pending: 'Pending', not_started: 'Not started', in_progress: 'In progress', on_hold: 'On hold',
-                 completed: 'Completed' }
+  enum status: { open: 'Open', assigned: 'Assigned', in_progress: 'In progress', on_hold: 'On hold',
+               waiting_on_parts: 'Waiting on parts', completed: 'Completed' }
 
   belongs_to :work_site, required: false
   belongs_to :customer
@@ -24,6 +24,8 @@ class ServiceJob < ApplicationRecord
                   using: {
                     tsearch: { dictionary: 'english', prefix: true }
                   }
+
+  scope :filter_by_status, ->(statuses) { where(status: statuses) if statuses.present? }
 
   def active_users
     user_service_jobs.where(discarded_at: nil).map(&:user)

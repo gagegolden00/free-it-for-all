@@ -14,11 +14,11 @@ class AddServiceJobs < ActiveRecord::Migration[7.0]
     end
     add_index :work_sites, :discarded_at
 
-    create_enum :status, ['Pending', 'Not started', 'In progress', 'On hold', 'Completed']
+    create_enum :status, ['Open', 'Assigned', 'In progress', 'On hold', 'Waiting on parts', 'Completed']
 
     create_table :service_jobs do |t|
       t.string :job_number, null: false, unique: true
-      t.enum :status, enum_type: 'status', null: false, default: 'Pending'
+      t.enum :status, enum_type: 'status', null: false, default: 'Open'
       t.text :description
       t.integer :contract_amount
       t.string :work_type

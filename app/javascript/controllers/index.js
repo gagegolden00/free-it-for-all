@@ -10,6 +10,9 @@ application.register("change-text", ChangeTextController)
 import DarkModeController from "./dark_mode_controller"
 application.register("dark-mode", DarkModeController)
 
+import DropdownToggleController from "./dropdown_toggle_controller"
+application.register("dropdown-toggle", DropdownToggleController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
