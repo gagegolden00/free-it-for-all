@@ -1,8 +1,6 @@
 <div class="border-0">
   <%= form_with(model: @service_report, url: path, turbo: false) do |service_report_field| %>
-
     <section id="first-section" class="px-2 md:px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-
       <div>
         <p><strong>Customer Name:</strong> <%= @service_job.customer.name %></p>
         <p><strong>Phone Number:</strong> <%= @service_job.customer.phone_number %></p>
@@ -13,55 +11,42 @@
         <p><strong>Zip Code:</strong> <%= @service_job.customer.zip_code %></p>
         <p><strong>Region:</strong> <%= @service_job.customer.region.manager %></p>
       </div>
-
       <div class="flex flex-col">
         <!--h1>Materials Used</h1-->
         <!-- Hidden field with generated id number-->
-        
         <%= service_report_field.hidden_field :service_job_id, value: params[:service_job_id] %>
         <%= service_report_field.hidden_field :service_report_number %>
-        
         <%= service_report_field.label :equipment_model, class: "font-bold" %>
         <%= service_report_field.text_field :equipment_model %>
-        
         <%= service_report_field.label :equipment_serial, class: "font-bold mt-2"  %>
         <%= service_report_field.text_field :equipment_serial %>
-        
         <div class="mt-2">
           <%= service_report_field.label :warranty, class: "font-bold mr-2"  %>
           <%= service_report_field.check_box :warranty %>
         </div>
-      </div>    
-
-
-
-
+      </div>
       <div class="flex flex-col border-2 rounded-md p-2 md:p-4 bg-white">
         <%= service_report_field.fields_for :time_log do |time_log_field| %>
           <div data-controller="time-converter">
             <div class="flex flex-col">
               <%= time_log_field.label :regular, class: "font-bold" %>
               <%= time_log_field.hidden_field :regular_minutes %>
-              
               <!-- component -->
               <div class="flex flex-row text-xs gap-2">
                 <div class="flex flex-col">
                   <%= number_field_tag 'service_report[regular_hours_input]', nil, min: 0, max: 24, maxlength: 2, value: get_total_hours(@time_log&.regular_minutes) %>
                   <%= label_tag :hours, "Hours:" %>
                 </div>
-
                 <div class="flex flex-col">
                   <%= number_field_tag 'service_report[regular_minutes_input]', nil, min: 0, max: 59, maxlength: 2, value: get_total_minutes(@time_log&.regular_minutes) %>
-                  <%= label_tag :minutes, "Minutes:" %>                  
+                  <%= label_tag :minutes, "Minutes:" %>
                 </div>
               </div>
               <!-- /component -->
-
             </div>
             <div class="flex flex-col">
               <%= time_log_field.label :overtime, class: "font-bold" %>
               <%= time_log_field.hidden_field :overtime_minutes %>
-              
               <!-- component -->
               <div class="flex flex-row text-xs gap-2">
                 <div class="flex flex-col">
@@ -74,12 +59,10 @@
                 </div>
               </div>
               <!-- /component -->
-
             </div>
             <div class="flex flex-col">
               <%= time_log_field.label :double_time, class: "font-bold" %>
               <%= time_log_field.hidden_field :double_time_minutes %>
-              
               <!-- component -->
               <div class="flex flex-row text-xs gap-2">
                 <div class="flex flex-col">
@@ -92,7 +75,6 @@
                 </div>
               </div>
               <!-- /component -->
-
             </div>
           </div>
           <%= time_log_field.label :mileage, class: "font-bold" %>
@@ -101,15 +83,8 @@
           <%= time_log_field.text_area :remarks, class: "w-60" %>
         <% end %>
       </div>
-
-
-
-
-      
     </section>
-
     <hr class="mx-2 md:mx-4 my-6 border-gray-200 dark:border-gray-700">
-
     <section id="second-section" class="mx-2 md:mx-4">
       <h1 class="w-full font-bold text-lg mb-4">Materials</h1>
       <div class="flex flex-wrap gap-2">
@@ -128,7 +103,6 @@
         <% end %>
       </div>
     </section>
-
     <section id="third-section" class="border border-green-400 my-4">
       <!-- these fields are not on the service report form but are attributes defined in the mock db -->
       <!-- the real question is if we're doing all of the calculations or are they calculating and then inputting? -->
@@ -141,21 +115,30 @@
         <%= service_report_field.label :work_description %>
         <%= service_report_field.text_area :description %>
       </div>
-      <div id="individual materials list?" class="">
-        <table border="1">
-          <tr>
-            <th>QTY</th>
-            <th>Description</th>
-            <th>Unit Price</th>
-            <th>Total Cost</th>
-          </tr>
-          <tr>
-            <td>###</td>
-            <td>###</td>
-            <td>###</td>
-            <td>###</td>
-          </tr>
-        </table>
+      <div class="grid grid-cols-1 gap-4">
+        <div class="flex items-center">
+          <div class="w-1/5">QTY</div>
+          <div class="w-2/5">Description</div>
+          <div class="w-1/5">Unit Price</div>
+          <div class="w-1/5">Total Cost</div>
+        </div>
+        <% if @purchase_orders %>
+          <% @purchase_orders.each do |po| %>
+            <div class="flex items-center border-t">
+              <div class="w-1/5 pl-2"><%= po.quantity %></div>
+              <div class="w-2/5 relative">
+                <div class="truncate w-full" title="<%= po.description %>">
+                  <%= po.description %>
+                </div>
+                <div class="hidden group-hover:block absolute bg-white p-2 border rounded-md shadow-md">
+                  <%= po.description %>
+                </div>
+              </div>
+              <div class="w-1/5 pl-2"><%= format_price(po.price) %></div>
+              <div class="w-1/5 pl-2"><%= format_price(po.total_price) %></div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
       <div class="">
         <div>
@@ -194,7 +177,6 @@
         </div>
       </div>
       <%= service_report_field.submit %>
-
     </section>
   <% end %>
 </div>
