@@ -15,8 +15,8 @@
         <%= render AlertComponent.new(type, msg), class: "w-1/2"%>
       <% end %>
 
-<div>
-<button data-drawer-target="sidebar-user" data-drawer-toggle="sidebar-user" aria-controls="sidebar-user" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 dark:text-gray-300 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+<div class="print:hidden">
+<button data-drawer-target="sidebar-user" data-drawer-toggle="sidebar-user" aria-controls="sidebar-user" type="button" class="sidebar inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 dark:text-gray-300 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
   <span class="sr-only">Open sidebar</span>
   <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
     <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
@@ -27,7 +27,7 @@
 </button>
 </div>
 
-<aside id="sidebar-user" class="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+<aside id="sidebar-user" class="print:hidden print:static fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
   <div class="flex flex-col overflow-y-auto py-4 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-900 dark:border-gray-700 pt-5">
     <a href="/" class="flex text-center mx-auto mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
       <%= render 'shared/logo_svg' %>
@@ -76,13 +76,13 @@
       <!--------------------->
 
     <div class="text-center text-gray-500 dark:text-gray-400 mt-4 border-t border-gray-200 dark:border-gray-400 pt-4">
-      
+
       <h3 class="text-lg font-bold tracking-tight text-gray-600 dark:text-gray-100">
         <a href="#"><%= current_user.name %></a>
       </h3>
-      
+
       <p class="font-light text-primary-600 dark:text-primary-400 text-sm"><%= current_user.email %></p>
-      
+
       <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center w-full py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-lg border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
 
     </div>
