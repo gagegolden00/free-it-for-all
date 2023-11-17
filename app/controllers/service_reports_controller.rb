@@ -6,6 +6,7 @@ class ServiceReportsController < ApplicationController
   before_action :set_service_job
   before_action :set_service_report, only: %i[show edit update destroy]
   before_action :set_materials, only: %i[new create edit update]
+  before_action :set_purchase_orders, only: %i[edit update show]
 
   def new
     @service_report = ServiceReport.new
@@ -71,6 +72,10 @@ class ServiceReportsController < ApplicationController
 
   def set_materials
     @materials = Material.kept.includes(:service_report_materials)
+  end
+
+  def set_purchase_orders
+    @purchase_orders = @service_report.purchase_orders
   end
 
   def filter_material_params(params)

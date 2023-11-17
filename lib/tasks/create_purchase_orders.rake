@@ -11,7 +11,6 @@ namespace :populate_db do
         vendor: Faker::Name.name,
         description: Faker::Lorem.paragraph(sentence_count: rand(1..20)),
         price: Faker::Number.decimal(l_digits: 2),
-        total_price: Faker::Number.decimal(l_digits: 2),
         notes: Faker::Lorem.paragraph(sentence_count: rand(1..20)),
         internal_notes: Faker::Lorem.paragraph(sentence_count: rand(1..20)),
         service_report_id: service_report.id

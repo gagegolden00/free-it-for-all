@@ -38,7 +38,8 @@
 /node_modules
 
 # Ignore docker override
-docker-compose.override.yml
+/docker-compose.override.yml
 
 # personal notes
-notes.txt
+/notes.txt
+/yarn-error.log

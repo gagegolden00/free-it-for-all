@@ -32,7 +32,7 @@
 
   <div>
     <label class="text-gray-400 text-sm font-semibold">Contract Amount</label>
-    <div class="text-gray-900 dark:text-gray-50"><%= @service_job.contract_amount %></div>
+    <div class="text-gray-900 dark:text-gray-50"><%= format_price(@service_job.contract_amount) %></div>
   </div>
 
   <div>
@@ -90,7 +90,7 @@
       <li><strong>Job Number:</strong> <%= @service_job.job_number %></li>
       <li><strong>Status:</strong> <%= @service_job.status %></li>
       <li><strong>Description:</strong> <%= @service_job.description %></li>
-      <li><strong>Contract Amount:</strong> <%= @service_job.contract_amount %></li>
+      <li><strong>Contract Amount:</strong> <%= format_price(@service_job.contract_amount) %></li>
       <li><strong>Work Type:</strong> <%= @service_job.work_type %></li>
 
       <%= render partial: "shared/assign_tech_modal"%>
