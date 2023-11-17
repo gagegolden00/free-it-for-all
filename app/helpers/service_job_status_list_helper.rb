@@ -1,4 +1,4 @@
-module StatusListHelper
+module ServiceJobStatusListHelper
   def self.service_job_statuses
     [
       "Open",

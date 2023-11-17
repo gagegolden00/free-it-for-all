@@ -2,7 +2,7 @@ class ServiceJobsController < ApplicationController
   layout 'application_full'
 
   include StateListHelper
-  include StatusListHelper
+  include ServiceJobStatusListHelper
 
   before_action :set_service_job_from_params, only: %i[show edit update destroy]
   before_action :authorize_access_in_service_jobs_controller, only: %i[show edit update destroy]
@@ -27,23 +27,25 @@ class ServiceJobsController < ApplicationController
     end
   end
 
-  def index
-    service_job_search_scope = policy_scope(ServiceJob).search_by_job_number_or_customer_name(params[:service_job_search]).distinct
-    @pagy, @service_jobs = if search_present_and_not_empty_and_no_sort_by?
-                             pagy(service_job_search_scope.filter_by_status(get_status_filters).order(created_at: :asc))
 
-                           elsif search_present_and_not_empty? && sort_by_present_and_not_empty?
-                             pagy(service_job_search_scope.filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
+    def index
+      service_job_search_scope = policy_scope(ServiceJob).search_by_job_number_or_customer_name(params[:service_job_search]).distinct
+      @pagy, @service_jobs = if search_present_and_not_empty_and_no_sort_by?
+                               pagy(service_job_search_scope.filter_by_status(get_status_filters).order(created_at: :asc))
 
-                           elsif no_search_and_sort_by_present_and_not_empty?
-                             pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
+                             elsif search_present_and_not_empty? && sort_by_present_and_not_empty?
+                               pagy(service_job_search_scope.filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
 
-                           else
-                             pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).order(created_at: :asc))
-                           end
+                             elsif no_search_and_sort_by_present_and_not_empty?
+                               pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
 
-    authorize @service_jobs
-  end
+                             else
+                               pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).order(created_at: :asc))
+                             end
+
+      authorize @service_jobs
+    end
+
 
   def show
     @technician_users = User.only_technicians
@@ -138,16 +140,16 @@ class ServiceJobsController < ApplicationController
   end
 
   def get_status_filters
-    if params[:filter_by] && !params[:filter_by].empty?
+    return unless params[:filter_by] && !params[:filter_by].empty?
+
     status_filters = []
     status_filters << 'Open' if params[:filter_by].include?('Open')
     status_filters << 'Assigned' if params[:filter_by].include?('Assigned')
     status_filters << 'In progress' if params[:filter_by].include?('In Progress')
-    status_filters << 'On hold' if params[:filter_by].include?('On hold')
+    status_filters << 'On hold' if params[:filter_by].include?('On Hold')
     status_filters << 'Waiting on parts' if params[:filter_by].include?('Waiting on Parts')
     status_filters << 'Completed' if params[:filter_by].include?('Completed')
     status_filters
-    end
   end
 
   def service_job_index_params

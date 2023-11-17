@@ -12,30 +12,24 @@
     </div>
     <input type="text" id="simple-search" name="service_job_search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search service jobs by job number or customer name" value="<%= params[:service_job_search] unless params[:service_job_search].nil? || params[:service_job_search].empty? %>">
   </div>
-
-    <div>
-      <button type="submit" class="btn btn-primary border rounded h-9">Submit</button>
-    </div>
-
-<div class="relative w-full mt-4 sm:w-auto sm:ml-2 border rounded overflow-visible h-9 bg-white">
-  <div data-controller="dropdown-toggle" class="relative inline-block">
-    <button data-action="click->dropdown-toggle#toggle" class="btn btn-secondary dropdown-toggle" type="button">
-      Select Status
-    </button>
-    <div data-dropdown-toggle-target="options" class="hidden absolute bg-white border rounded mt-2">
-      <% StatusListHelper.service_job_statuses.each do |status| %>
-        <label class="block px-4 py-2 text-xs">
-          <input type="checkbox" name="filter_by[]" value="<%= status %>" class="mr-2">
-          <%= status %>
-        </label>
-      <% end %>
+  <div>
+    <button type="submit" class="btn btn-primary border rounded h-9">Submit</button>
+  </div>
+  <div class="relative w-full mt-4 sm:w-auto sm:ml-2 border rounded overflow-visible h-9 bg-white">
+    <div data-controller="dropdown-toggle" class="relative inline-block">
+      <button data-action="click->dropdown-toggle#toggle" class="btn btn-secondary dropdown-toggle" type="button">
+        Select Status
+      </button>
+      <div data-dropdown-toggle-target="options" class="hidden absolute bg-white border rounded mt-2">
+        <% ServiceJobStatusListHelper.service_job_statuses.each do |status| %>
+          <label class="block px-4 py-2 text-xs">
+            <input type="checkbox" name="filter_by[]" value="<%= status %>" class="mr-2">
+            <%= status %>
+          </label>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-
-
-
-
   <div class="relative w-full mt-4 sm:w-auto sm:ml-2">
     <%= select_tag 'sort_by',
       options_for_select(
@@ -51,7 +45,7 @@
       class: 'hover:cursor-pointer block w-full p-2 pl-2 pr-8 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
     %>
   </div>
-  <%= hidden_field_tag 'page', @pagy.page %>
+  <%= hidden_field_tag "page", @pagy.page %>
 </form>
 <p style="color: green"><%= notice %></p>
 <div id="service_jobs">

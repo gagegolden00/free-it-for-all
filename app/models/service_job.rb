@@ -1,6 +1,6 @@
 class ServiceJob < ApplicationRecord
   enum status: { open: 'Open', assigned: 'Assigned', in_progress: 'In progress', on_hold: 'On hold',
-               waiting_on_parts: 'Waiting on parts', completed: 'Completed' }
+                 waiting_on_parts: 'Waiting on parts', completed: 'Completed' }
 
   belongs_to :work_site, required: false
   belongs_to :customer
