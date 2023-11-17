@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_02_185558) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_17_151031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_02_185558) do
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "role", ["admin", "technician"]
-  create_enum "status", ["Pending", "Not started", "In progress", "On hold", "Completed"]
+  create_enum "service_job_status", ["Open", "Assigned", "Waiting on parts", "In progress", "On hold", "Completed"]
 
   create_table "customers", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_02_185558) do
     t.timestamptz "updated_at", precision: 6, null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_materials_on_discarded_at"
+  end
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
   create_table "point_of_contacts", force: :cascade do |t|
@@ -88,7 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_02_185558) do
 
   create_table "service_jobs", force: :cascade do |t|
     t.string "job_number", null: false
-    t.enum "status", default: "Pending", null: false, enum_type: "status"
+    t.enum "status", default: "Open", null: false, enum_type: "service_job_status"
     t.text "description"
     t.integer "contract_amount"
     t.string "work_type"

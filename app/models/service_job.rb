@@ -1,6 +1,6 @@
 class ServiceJob < ApplicationRecord
-
-  enum status: { pending: 'Pending', not_started: 'Not started', in_progress: 'In progress', on_hold: 'On hold', completed: 'Completed' }
+  enum status: { open: 'Open', assigned: 'Assigned', in_progress: 'In progress', on_hold: 'On hold',
+                 waiting_on_parts: 'Waiting on parts', completed: 'Completed' }
 
   belongs_to :work_site, required: false
   belongs_to :customer
@@ -16,6 +16,17 @@ class ServiceJob < ApplicationRecord
 
   validates :job_number, presence: true, uniqueness: true
 
+  pg_search_scope :search_by_job_number_or_customer_name,
+                  against: [:job_number],
+                  associated_against: {
+                    customer: [:name]
+                  },
+                  using: {
+                    tsearch: { dictionary: 'english', prefix: true }
+                  }
+
+  scope :filter_by_status, ->(statuses) { where(status: statuses) if statuses.present? }
+
   def active_users
     user_service_jobs.where(discarded_at: nil).map(&:user)
   end
@@ -23,13 +34,10 @@ class ServiceJob < ApplicationRecord
   private
 
   def name_and_customer_id_blank?(attributes)
-    result = attributes['name'].blank? && attributes['customer_id'].blank?
-    result
+    attributes['name'].blank? && attributes['customer_id'].blank?
   end
 
   def name_blank?(attributes)
-    result = attributes['name'].blank?
-    result
+    attributes['name'].blank?
   end
-
 end
