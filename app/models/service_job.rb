@@ -12,8 +12,6 @@ class ServiceJob < ApplicationRecord
   accepts_nested_attributes_for :customer, reject_if: :name_and_customer_id_blank?
   accepts_nested_attributes_for :work_site, reject_if: :name_blank?
 
-  before_discard -> { discard_necessary_associated_record(work_site) }
-
   validates :job_number, presence: true, uniqueness: true
 
   pg_search_scope :search_by_job_number_or_customer_name,

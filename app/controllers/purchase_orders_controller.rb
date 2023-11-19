@@ -38,7 +38,7 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def destroy
-    if @purchase_order.discard
+    return unless @purchase_order.discard
       flash[:notice] = "Purchase order successfully deleted"
       redirect_to service_job_purchase_orders_path(@service_job)
     end
