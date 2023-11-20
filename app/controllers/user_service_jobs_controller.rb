@@ -31,9 +31,8 @@ class UserServiceJobsController < ApplicationController
     authorize @user_service_job
 
     return unless @user_service_job.discard
-      flash[:notice] = "Technician has been unassigned"
-      redirect_to service_job_path(params[:service_job_id])
-    end
+    flash[:notice] = "Technician has been unassigned"
+    redirect_to service_job_path(params[:service_job_id])
   end
 
   private
