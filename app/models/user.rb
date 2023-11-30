@@ -51,11 +51,4 @@ class User < ApplicationRecord
                        .pluck(:id))
   }
 
-  scope :weekly_logs, ->(user, start_date, end_date) {
-    only_technicians
-      .joins(:service_reports, :time_logs)
-      .where(service_report: { created_at: start_date..end_date })
-  }
-
-
 end
