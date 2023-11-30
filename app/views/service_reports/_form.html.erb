@@ -15,7 +15,8 @@
         <!--h1>Materials Used</h1-->
         <!-- Hidden field with generated id number-->
         <%= service_report_field.hidden_field :service_job_id, value: params[:service_job_id] %>
-        <%= service_report_field.hidden_field :service_report_number %>
+        <%= service_report_field.hidden_field :user_id, value: service_report_field.object.user_id || current_user.id %>
+        <%= service_report_field.hidden_field :service_report_number, value: @service_job.job_number + "-REP-#{@service_job.service_reports.count + 1}" %>
         <%= service_report_field.label :equipment_model, class: "font-bold" %>
         <%= service_report_field.text_field :equipment_model %>
         <%= service_report_field.label :equipment_serial, class: "font-bold mt-2"  %>
@@ -28,6 +29,7 @@
       <div class="flex flex-col border-2 rounded-md p-2 md:p-4 bg-white">
         <%= service_report_field.fields_for :time_log do |time_log_field| %>
           <div data-controller="time-converter">
+            <%= time_log_field.hidden_field :user_id, value: time_log_field.object.user_id || current_user.id %>
             <div class="flex flex-col">
               <%= time_log_field.label :regular, class: "font-bold" %>
               <%= time_log_field.hidden_field :regular_minutes %>

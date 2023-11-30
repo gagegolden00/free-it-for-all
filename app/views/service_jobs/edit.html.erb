@@ -11,4 +11,4 @@
 
 </div>
 <%= render(AlertComponent::Errors.new(@service_job))%>
-<%= render partial: 'form' %>
+<%= render partial: 'form', locals: { path: service_job_path } %>

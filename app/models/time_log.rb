@@ -1,9 +1,9 @@
 class TimeLog < ApplicationRecord
   belongs_to :service_report
+  belongs_to :user
 
   validate :at_least_one_time_present
   validate :total_time_not_greater_than_one_day
-
 
   private
 

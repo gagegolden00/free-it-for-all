@@ -79,6 +79,7 @@ class ServiceReportsController < ApplicationController
   end
 
   def filter_material_params(params)
+    if params[:service_report_materials_attributes].present?
     params[:service_report_materials_attributes] = params[:service_report_materials_attributes].select do |_, service_report_material_object|
       quantity = service_report_material_object[:quantity].to_i
       if service_report_material_object[:id].present?
@@ -87,6 +88,7 @@ class ServiceReportsController < ApplicationController
         quantity.positive?
       end
     end
+  end
     params
   end
 
@@ -102,6 +104,7 @@ class ServiceReportsController < ApplicationController
       :customer_signature,
       :description,
       :service_job_id,
+      :user_id,
       :regular_hours_input,
       :regular_minutes_input,
       :overtime_hours_input,
@@ -109,7 +112,7 @@ class ServiceReportsController < ApplicationController
       :double_time_hours_input,
       :double_time_minutes_input,
       service_report_materials_attributes: %i[id material_id quantity _destroy],
-      time_log_attributes: %i[id regular_minutes overtime_minutes double_time_minutes mileage remarks]
+      time_log_attributes: %i[id user_id regular_minutes overtime_minutes double_time_minutes mileage remarks]
     )
   end
 end
