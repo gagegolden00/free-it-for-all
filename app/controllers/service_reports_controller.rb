@@ -55,8 +55,8 @@ class ServiceReportsController < ApplicationController
 
   def destroy
     return unless @service_report.discard
-
-    flash[:notice] = 'Report deleted'
+    
+    flash[:notice] = 'Service report deleted'
     redirect_to service_job_service_reports_path(@service_job)
   end
 

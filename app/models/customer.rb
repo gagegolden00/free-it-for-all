@@ -7,8 +7,6 @@ class Customer < ApplicationRecord
 
   accepts_nested_attributes_for :point_of_contact, reject_if: :name_blank?
 
-  before_discard -> { discard_necessary_associated_record(point_of_contact) }
-
   pg_search_scope :search_by_customer_name_or_worksite_name,
                   against: [:name],
                   using: {

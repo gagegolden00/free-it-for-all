@@ -42,7 +42,7 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer.build_point_of_contact if @customer.point_of_contact.nil?
+    @customer.point_of_contact.nil? ? @point_of_contact = @customer.build_point_of_contact : @point_of_contact = @customer.point_of_contact
   end
 
   def update
@@ -56,9 +56,8 @@ class CustomersController < ApplicationController
 
   def destroy
     return unless @customer.discard
-
-    flash[:notice] = 'Customer removed'
-    redirect_to customers_path
+      flash[:notice] = 'Customer removed'
+      redirect_to customers_path
   end
 
   private
