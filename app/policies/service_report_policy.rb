@@ -7,11 +7,11 @@ class ServiceReportPolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin?
+    user.admin? || user.technician?
   end
 
   def create?
-    user.admin?
+    user.admin? || user.technician?
   end
 
   def index?

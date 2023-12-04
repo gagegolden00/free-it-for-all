@@ -3,7 +3,8 @@ class TimeSheetsController < ApplicationController
   include TimeLogHelper
 
   def index
-    @user = current_user
+    authorize :time_sheet
+
 
     @time_frame = params[:time_frame]
 
@@ -29,7 +30,8 @@ class TimeSheetsController < ApplicationController
     @users_with_time_log_totals = User.all_with_time_log_totals_in_time_period(@start_date, @end_date).order(get_sorting_order)
     @users_with_no_time_log_totals = User.all_with_no_time_logs_in_time_period(@start_date, @end_date).order(get_sorting_order)
 
-    authorize :time_sheet
+
+
 
   end
 
