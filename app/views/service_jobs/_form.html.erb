@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://unpkg.com/slim-select@latest/dist/slimselect.css" />
 <link rel="stylesheet" href="/assets/slim_select_override.css">
 <section class="flex flex-col p-2 sm:p-4 border m-2 md:m-4 lg:mx-auto rounded-md bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500 max-w-3xl">
-  <%= form_with model: @service_job, url: service_jobs_path, data: {turbo: false}, clsss: "flex-flex-col" do |service_job_field| %>
+  <%= form_with model: @service_job, url: path, data: {turbo: false}, clsss: "flex-flex-col" do |service_job_field| %>
     <div class="flex flex-col justify-center gap-6">
       <div id="serviceJobFields" class="flex flex-col gap-2">
         <p class="font-semibold text-lg mt-1 mb-2">Job Information</p>
@@ -17,15 +17,11 @@
         <%= service_job_field.label :work_type, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.text_field :work_type, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
 
-
-
         <fieldset id="customerSelect" class="flex flex-col mb-4">
           <%= service_job_field.label :select_customer, class: "block text-sm font-medium text-gray-900 dark:text-white mb-2" %>
           <%= service_job_field.select :customer_id,
           options_for_select(@customers.map { |customer| [customer.name, customer.id] }), {}, id: "selectElement", data: { controller: "slim-select" } %>
         </fieldset>
-
-
 
         <div data-controller="toggle-hidden change-text" class="mt-2">
           <button
@@ -107,7 +103,7 @@
         <% end %>
       </fieldset>
       <div>
-        <%= service_job_field.submit "Create service job", class: "rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
+        <%= service_job_field.submit class: "rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
       </div>
     </div>
   <% end %>
