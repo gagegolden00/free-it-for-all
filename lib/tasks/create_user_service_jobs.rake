@@ -2,7 +2,7 @@ namespace :populate_db do
   desc 'Create user service jobs'
   task create_user_service_jobs: :environment do
 
-    until UserServiceJob.count == 200 do
+    until UserServiceJob.count == 150 do
       user_id = User.only_technicians.sample.id
       service_job_id = rand(1..ServiceJob.count)
 
