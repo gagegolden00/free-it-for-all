@@ -28,13 +28,11 @@ class UserServiceJobsController < ApplicationController
 
   def destroy
     @user_service_job = UserServiceJob.find_by(user_id: params[:user_id], service_job_id: params[:id])
-
     authorize @user_service_job
 
-    if @user_service_job.discard
-      flash[:notice] = "Technician has been unassigned"
-      redirect_to service_job_path(params[:service_job_id])
-    end
+    return unless @user_service_job.discard
+    flash[:notice] = "Technician has been unassigned"
+    redirect_to service_job_path(params[:service_job_id])
   end
 
   private
