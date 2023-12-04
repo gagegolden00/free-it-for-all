@@ -1,0 +1,91 @@
+<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center">
+  <h1 class="text-lg sm:text-xl font-medium text-white">Time sheet: <%= @user.name %> for <%= @start_date.strftime(" %B %d, %Y") if @start_date %> / <%= @end_date.strftime(" %B %d, %Y") if @end_date %></h1>
+  <%= link_to "New Job", new_service_job_path, class: "w-36 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 dark:hover:text-gray-800 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md", data: { turbo: false } %>
+</div>
+<section id="table-data" class="">
+  <!-- Header Row -->
+  <div class="mt-4 p-2 py-4 border hidden lg:visible lg:grid lg:grid-cols-10 items-center bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500 rounded my-3">
+
+  <div class="lg:col-span-1">
+    <strong>Date</strong>
+  </div>
+
+  <div class="lg:col-span-1">
+    <strong>Job</strong>
+  </div>
+
+  <div class="lg:col-span-1 lg:flex lg:justify-center lg:items-center">
+    <strong>Report</strong>
+  </div>
+
+  <div class="lg:col-span-1 lg:flex lg:justify-center lg:items-center">
+    <strong>Regular</strong>
+  </div>
+
+  <div class="lg:col-span-1 lg:flex lg:justify-center lg:items-center">
+    <strong>Overtime</strong>
+  </div>
+
+  <div class="lg:col-span-1 lg:flex lg:justify-center lg:items-center">
+    <strong>Double</strong>
+  </div>
+
+  <div class="lg:col-span-1 lg:flex lg:justify-center lg:items-center">
+    <strong>Mileage</strong>
+  </div>
+
+  <div class="lg:col-span-3">
+    <strong>Remarks</strong>
+  </div>
+
+  </div>
+
+  <!-- Time Logs -->
+  <% @time_logs.each do |time_log| %>
+  <div class="border p-2 lg:grid lg:grid-cols-10 items-center bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500 rounded my-3">
+
+    <div class="lg:col-span-1 mb-2 lg:w-24 lg:items-center flex justify-center">
+      <%= time_log.created_at.strftime(" %B %d, %Y") %>
+    </div>
+
+    <div class="lg:col-span-1 mb-2 lg:w-20 whitespace-wrap">
+      <strong class="lg:hidden">Job: </strong>
+      <%= time_log.service_report.service_job.job_number %>
+    </div>
+
+    <div class="lg:col-span-1 mb-2 lg:pl-3 lg:flex lg:justify-center lg:items-center">
+      <strong class="lg:hidden">Report: </strong>
+      <%= time_log.service_report.service_report_number.split("-")[2..4].join("-").downcase.capitalize %>
+    </div>
+
+    <div class="lg:col-span-1 mb-2 lg:flex lg:justify-center lg:items-center">
+      <strong class="lg:hidden">Regular: </strong>
+      <%= get_total_hours(time_log.regular_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(time_log.regular_minutes) || 0) %>
+    </div>
+
+    <div class="lg:col-span-1 mb-2 lg:flex lg:justify-center lg:items-center">
+      <strong class="lg:hidden">Overtime: </strong>
+      <%= get_total_hours(time_log.overtime_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(time_log.overtime_minutes) || 0) %>
+    </div>
+
+    <div class="lg:col-span-1 mb-2 lg:flex lg:justify-center lg:items-center">
+      <strong class="lg:hidden">Double: </strong>
+      <%= get_total_hours(time_log.double_time_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(time_log.double_time_minutes) || 0) %>
+    </div>
+
+    <div class="lg:col-span-1 mb-2 lg:flex lg:justify-center lg:items-center">
+      <strong class="lg:hidden">Mileage: </strong>
+      <%= time_log.mileage %>
+    </div>
+
+    <div class="lg:col-span-3 mb-2" title="<%= time_log.remarks %>">
+      <div class="truncate">
+        <strong class="lg:hidden">Remarks:</strong>
+        <%= time_log.remarks %>
+      </div>
+    </div>
+
+    </div>
+  <% end %>
+
+</section>

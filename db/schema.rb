@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_17_151031) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_25_115724) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -139,6 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_17_151031) do
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
     t.timestamptz "discarded_at"
+    t.bigint "user_id"
     t.index ["discarded_at"], name: "index_service_reports_on_discarded_at"
     t.index ["service_job_id"], name: "index_service_reports_on_service_job_id"
   end
@@ -153,6 +154,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_17_151031) do
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
     t.timestamptz "discarded_at"
+    t.bigint "user_id"
     t.index ["service_report_id"], name: "index_time_logs_on_service_report_id"
   end
 
@@ -214,5 +216,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_17_151031) do
   add_foreign_key "service_report_materials", "materials"
   add_foreign_key "service_report_materials", "service_reports"
   add_foreign_key "service_reports", "service_jobs"
+  add_foreign_key "service_reports", "users"
   add_foreign_key "time_logs", "service_reports"
+  add_foreign_key "time_logs", "users"
 end

@@ -19,5 +19,8 @@ application.register("hello", HelloController)
 import SlimSelectController from "./slim_select_controller"
 application.register("slim-select", SlimSelectController)
 
+import TimeSheetsController from "./time_sheets_controller"
+application.register("time-sheets", TimeSheetsController)
+
 import ToggleHiddenController from "./toggle_hidden_controller"
 application.register("toggle-hidden", ToggleHiddenController)

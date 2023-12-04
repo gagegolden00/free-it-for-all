@@ -6,11 +6,12 @@ namespace :populate_db do
         create_users: 'rake populate_db:create_users',
         create_customers: 'rake populate_db:create_customers',
         create_service_jobs: 'rake populate_db:create_service_jobs',
+        create_user_service_jobs: 'rake populate_db:create_user_service_jobs',
         create_service_reports: 'rake populate_db:create_service_reports',
         create_materials: 'rake populate_db:create_materials',
         create_service_report_materials: 'rake populate_db:create_service_report_materials',
-        create_user_service_jobs: 'rake populate_db:create_user_service_jobs',
-        create_purchase_orders: 'rake populate_db:create_purchase_orders'
+        create_purchase_orders: 'rake populate_db:create_purchase_orders',
+        update_time_log_time_stamps: 'rake populate_db:update_time_log_time_stamps',
       }
 
       rakes.each do |key, value|
