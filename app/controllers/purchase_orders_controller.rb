@@ -10,6 +10,7 @@ class PurchaseOrdersController < ApplicationController
   def create
     @purchase_order = PurchaseOrder.new(purchase_order_params)
     @purchase_order.purchase_order_number = @service_job.job_number + "-PO-#{@service_job.purchase_orders.count + 1}"
+    authorize @purchase_order
     if @purchase_order.save
       flash[:notice] = "Purchase order created"
       redirect_to service_job_purchase_orders_path(@service_job)
@@ -20,15 +21,18 @@ class PurchaseOrdersController < ApplicationController
 
   def show
     @service_report = ServiceReport.find(@purchase_order.service_report_id)
+    authorize @purchase_order
   end
 
   def index
-    @purchase_orders = @service_job.purchase_orders
+    @purchase_orders = policy_scope(@service_job.purchase_orders)
+    authorize @purchase_orders
   end
 
   def edit;end
 
   def update
+    authorize @purchase_order
     if @purchase_order.update(purchase_order_params)
       flash[:notice] = "Purchase order updated"
       redirect_to service_job_purchase_orders_path(@service_job)
@@ -38,6 +42,7 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def destroy
+    authorize @purchase_order
     if @purchase_order.discard
       flash[:notice] = "Purchase order successfully deleted"
       redirect_to service_job_purchase_orders_path(@service_job)

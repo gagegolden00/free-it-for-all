@@ -1,4 +1,5 @@
 class TimeSheetPolicy < ApplicationPolicy
+  attr_reader :user, :time_logs
 
   def initialize(user, time_logs)
     @user = user
@@ -8,16 +9,4 @@ class TimeSheetPolicy < ApplicationPolicy
   def index?
     user.admin?
   end
-
-  def show?
-    user.admin?
-  end
-
-  class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
-  end
-
 end

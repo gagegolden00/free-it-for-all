@@ -3,7 +3,7 @@ class ServiceReportPolicy < ApplicationPolicy
 
   def initialize(user, service_report)
     @user = user
-    @service_job = service_report
+    @service_report = service_report
   end
 
   def new?
@@ -15,11 +15,11 @@ class ServiceReportPolicy < ApplicationPolicy
   end
 
   def index?
-    user.admin?
+    user.admin? || user.technician?
   end
 
   def show?
-    user.admin?
+    user.admin? || user.technician?
   end
 
   def edit?
