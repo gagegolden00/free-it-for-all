@@ -80,15 +80,15 @@ class ServiceReportsController < ApplicationController
 
   def filter_material_params(params)
     if params[:service_report_materials_attributes].present?
-    params[:service_report_materials_attributes] = params[:service_report_materials_attributes].select do |_, service_report_material_object|
-      quantity = service_report_material_object[:quantity].to_i
-      if service_report_material_object[:id].present?
-        true
-      else
-        quantity.positive?
+      params[:service_report_materials_attributes] = params[:service_report_materials_attributes].select do |_, service_report_material_object|
+        quantity = service_report_material_object[:quantity].to_i
+        if service_report_material_object[:id].present?
+          true
+        else
+          quantity.positive?
+        end
       end
     end
-  end
     params
   end
 
