@@ -16,12 +16,9 @@
   <div class="flex flex-row flex-wrap gap-2 ml-auto">
     <%= link_to "Job Details", service_job_path(@service_job), class: "print:hidden w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
     <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "print:hidden w-36 text-center text-gray-50 border-2 p-2 bg-white text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
+<%= link_to "Toggle customer view", service_job_service_report_path(@service_job, @service_report, customer_view: params[:customer_view] == 'false' ? nil : false) %>
   </div>
 </div>
-
-<%= link_to "Edit report", edit_service_job_service_report_path(@service_job, @service_report), class: "print:hidden"%>
-<%= button_to "Delete Report", service_job_service_report_path(@service_job, @service_report), method: :delete, class: "print:hidden"%>
-<%= link_to "New PO", new_service_job_purchase_order_path(@service_job, service_report_id: @service_report), class: "print:hidden" %>
 
 <div class="p-2 md:p-4">
   <div class="flex flex-row mb-2 md:mb-4 items-center">
@@ -61,8 +58,8 @@
           <div class="border p-2 text-sm rounded-md bg-white dark:bg-gray-800">
             <p><strong>Name:</strong> <%= material.name %></p>
             <p><strong>Quantity:</strong> <%= material.quantity %></p>
-            <p><strong>Price:</strong> <%= format_price(material.price) %></p>
-            <p><strong>Pre-Tax Total:</strong> <%= format_price(material.pre_tax_total) %></p>
+            <p class="<%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><strong>Price:</strong> <%= format_price(material.price) %></p>
+            <p class="<%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><strong>Pre-Tax Total:</strong> <%= format_price(material.pre_tax_total) %></p>
           </div>
         </div>
       <% end %>
@@ -80,8 +77,8 @@
       <div class="flex items-center">
         <div class="w-1/5">QTY</div>
         <div class="w-2/5">Description</div>
-        <div class="w-1/5">Unit Price</div>
-        <div class="w-1/5">Total Cost</div>
+        <div class="w-1/5 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>">Unit Price</div>
+        <div class="w-1/5 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>">Total Cost</div>
       </div>
       <% if @purchase_orders %>
         <% @purchase_orders.each do |po| %>
@@ -95,8 +92,8 @@
                 <%= po.description %>
               </div>
             </div>
-            <div class="w-1/5 pl-2"><%= format_price(po.price) %></div>
-            <div class="w-1/5 pl-2"><%= format_price(po.total_price) %></div>
+            <div class="w-1/5 pl-2 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><%= format_price(po.price) %></div>
+            <div class="w-1/5 pl-2 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><%= format_price(po.total_price) %></div>
           </div>
         <% end %>
       <% end %>
