@@ -1,9 +1,9 @@
 class UserPolicy < ApplicationPolicy
-  
+  attr_reader :user, :record
 
-  def initialize(user, new_user)
+  def initialize(user, record)
     @user = user
-    @new_user = new_user
+    @record = record
   end
 
   def new?
@@ -11,7 +11,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin?
+    new?
   end
 
   def index?
@@ -19,18 +19,19 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin?
+    user.admin? || (user.technician? && record == user)
   end
 
   def edit?
-    user.admin?
+    user.admin? || (user.technician? && record == user)
   end
 
   def update?
-    user.admin?
+    edit?
   end
 
   def destroy?
     user.admin?
   end
+
 end

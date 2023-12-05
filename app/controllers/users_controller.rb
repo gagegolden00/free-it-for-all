@@ -7,10 +7,12 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def create
     @user = User.new(user_params)
+    authorize @user
     if @user.save
       flash[:notice] = "User created successfully"
       redirect_to service_jobs_path
@@ -23,13 +25,19 @@ class UsersController < ApplicationController
     else
       @users = User.all.order(get_collection_order)
     end
+    authorize @users
   end
 
-  def show;end
+  def show
+    authorize @user
+  end
 
-  def edit;end
+  def edit
+    authorize @user
+  end
 
   def update
+    authorize @user
     if @user.update(user_params)
       flash[:notice] = "User created updated"
       redirect_to service_jobs_path
@@ -37,6 +45,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize @user
     return unless @user.discard
     flash[:notice] = "User deleted successfully"
     redirect_to service_jobs_path

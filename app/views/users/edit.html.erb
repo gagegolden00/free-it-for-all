@@ -1,14 +1,13 @@
 <div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row flex-wrap items-center gap-2">
 
   <div class="flex flex-row">
-    <%= link_to "<", :back, class: "mr-2 text-lg sm:text-xl font-medium text-white" %>
+    <%= link_to "<", service_jobs_path, class: "mr-2 text-lg sm:text-xl font-medium text-white" %>
     <h1 class="text-lg sm:text-xl font-medium text-white">Edit user</h1>
   </div>
 
-  <div class="flex flex-row gap-2 ml-auto">
+  <div class="flex flex-row gap-2 ml-auto -m-5">
     <%= render partial: "delete_modal" %>
   </div>
 
 </div>
-
 <%= render partial: "form", locals: {path: user_path(@user)}%>
