@@ -30,6 +30,8 @@ class ServiceReportsController < ApplicationController
     @time_log = @service_report.time_log
   end
 
+  end
+
   def index
     @service_reports = @service_job.service_reports.kept
   end
@@ -42,20 +44,43 @@ class ServiceReportsController < ApplicationController
   end
 
   def update
+
+    Employee sig || customer sig will be nil
+
+
+
+
     @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id) if @service_report
     time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
     filtered_params = filter_material_params(time_converted_params)
+
     if @service_report.update(filtered_params)
       flash[:notice] = 'Service report updated'
       redirect_to service_job_service_report_path(@service_job, @service_report)
     else
       render :edit
     end
+
+    
+
+    Separate these two
+
+
+
+    return unless params[:employee_signature].present? || params[:customer_signature].present?
+    if @service_report.update(service_report_signature_params)
+      respond_to do |format|
+        format.html
+        format.turbo { render turbo_stream: turbo_stream.replace('dom_id', partial: 'partial', locals: { object: @service_report }) }
+    end
+
+
+
   end
 
   def destroy
     return unless @service_report.discard
-    
+
     flash[:notice] = 'Service report deleted'
     redirect_to service_job_service_reports_path(@service_job)
   end
@@ -100,8 +125,6 @@ class ServiceReportsController < ApplicationController
       :equipment_serial,
       :mischarge,
       :total_charge,
-      :employee_signature,
-      :customer_signature,
       :description,
       :service_job_id,
       :user_id,
@@ -114,5 +137,9 @@ class ServiceReportsController < ApplicationController
       service_report_materials_attributes: %i[id material_id quantity _destroy],
       time_log_attributes: %i[id user_id regular_minutes overtime_minutes double_time_minutes mileage remarks]
     )
+  end
+
+  def service_report_signature_params
+    params.require(:service_report).permit(:employee_signature, :customer_signature)
   end
 end

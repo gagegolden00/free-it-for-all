@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_25_115724) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_06_022511) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -133,8 +133,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_25_115724) do
     t.integer "mischarge"
     t.integer "total_charge"
     t.text "description"
-    t.string "employee_signature"
-    t.string "customer_signature"
+    t.text "employee_signature"
+    t.text "customer_signature"
     t.bigint "service_job_id"
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false

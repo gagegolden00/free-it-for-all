@@ -25,7 +25,7 @@ namespace :populate_db do
       [reg_time, over_time, double_time]
     end
 
-    88.times do
+    400.times do
       reg_time, double_time, over_time = random_minutes
 
       user_service_job = UserServiceJob.find(rand(1..UserServiceJob.count))
@@ -49,8 +49,8 @@ namespace :populate_db do
         mischarge: rand(1...1_000_000_000),
         total_charge: rand(1..1_000_000_000),
         description: Faker::Lorem.paragraph(sentence_count: rand(1..20)),
-        employee_signature: Faker::Name.name,
-        customer_signature: Faker::Name.name,
+        employee_signature: nil,
+        customer_signature: nil,
         service_job_id: service_job.id,
         user_id: assigned_user_id,
         time_log_attributes: {
