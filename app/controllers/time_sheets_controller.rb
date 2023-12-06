@@ -23,11 +23,10 @@ class TimeSheetsController < ApplicationController
     else
       set_current_week
     end
-
-    @users_with_time_log_totals = User.all_with_time_log_totals_in_time_period(@start_date,
-                                                                               @end_date).order(get_sorting_order)
-    @users_with_no_time_log_totals = User.all_with_no_time_logs_in_time_period(@start_date,
-                                                                               @end_date).order(get_sorting_order)
+    @users_with_time_log_totals = User.all_with_time_log_totals_in_time_period(@start_date, @end_date, get_sorting_order)
+    @users_with_time_log_totals.each do |user|
+      puts user.name
+    end
   end
 
   def show
@@ -60,15 +59,15 @@ class TimeSheetsController < ApplicationController
   end
 
   def set_current_week
-    set_week(Time.zone.now.beginning_of_week, Time.zone.now.end_of_week)
+    set_week(Time.zone.now.beginning_of_week.to_s(:db), Time.zone.now.end_of_week.to_s(:db))
   end
 
   def set_last_week
-    set_week(1.week.ago.beginning_of_week, 1.week.ago.end_of_week)
+    set_week(1.week.ago.beginning_of_week.to_s(:db), 1.week.ago.end_of_week.to_s(:db))
   end
 
   def set_custom_week
-    set_week(Time.zone.parse(params[:start_date]).beginning_of_day, Time.zone.parse(params[:end_date]).end_of_day)
+    set_week(Time.zone.parse(params[:start_date]).beginning_of_day.to_s(:db), Time.zone.parse(params[:end_date]).end_of_day.to_s(:db))
   end
 
   def set_week(start_date, end_date)
