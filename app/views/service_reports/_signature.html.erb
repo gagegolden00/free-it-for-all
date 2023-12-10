@@ -1,5 +1,5 @@
-<div>
-  <p class="text-white font-bold">
-    <%= @service_report.public_send(signature_type) %>
-  <p>
+<div class="h-40 w-96 overflow-y-scroll" data-controller="sig-pad">
+  <h1><%= signature_type %></h1>
+  <img src="<%= @service_report.public_send(signature_type) %>">
+</div>
 </div>

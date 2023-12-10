@@ -1,0 +1,30 @@
+<div class="">
+  <h1 class="underline font-bold text-xl">Customer signature</h1>
+  <div data-controller="sig-pad" class="w-full h-full">
+    <div class="w-full flex items-center justify-center my-4">
+      <%= button_tag "E-Sign",
+        type: "button",
+        class: "print:hidden whitespace-nowrap rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700",
+        data: { action: 'click->sig-pad#toggleCustomerSigPadVisibility', sig_pad_target: "eSignButton" }
+      %>
+    </div>
+    <div id="customer-sig-pad-container" class="w-96 h-40">
+      <canvas id="canvas" data-sig-pad-target="canvas" class="h-full w-full rounded bg-white"></canvas>
+      <div class="border flex items-center justify-between mt-4">
+        <%= button_tag "Clear signature",
+          type: "button",
+          data: { action: 'click->sig-pad#clearSignature' },
+          class: "print:hidden whitespace-nowrap rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        %>
+        <%= button_tag "Save signature",
+          type: "button",
+          data: { action: 'click->sig-pad#saveCustomerSignature' },
+          class: "print:hidden whitespace-nowrap rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        %>
+      </div>
+    </div>
+  </div>
+  <%= form_with(model: @service_report, url: service_job_service_report_path(@service_job, @service_report), id: "customer-signature-form") do |form|%>
+    <%= form.hidden_field :customer_signature, id: "customer-signature-field" %>
+  <% end %>
+</div>

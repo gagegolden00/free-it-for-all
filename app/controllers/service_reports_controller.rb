@@ -30,8 +30,6 @@ class ServiceReportsController < ApplicationController
     @time_log = @service_report.time_log
   end
 
-  end
-
   def index
     @service_reports = @service_job.service_reports.kept
   end
@@ -44,38 +42,28 @@ class ServiceReportsController < ApplicationController
   end
 
   def update
+    @service_report_materials = ServiceReport.materials_used(@service_report)
 
-    Employee sig || customer sig will be nil
-
-
-
-
-    @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id) if @service_report
-    time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
-    filtered_params = filter_material_params(time_converted_params)
-
-    if @service_report.update(filtered_params)
-      flash[:notice] = 'Service report updated'
-      redirect_to service_job_service_report_path(@service_job, @service_report)
-    else
-      render :edit
+    # this seems fragile/incomplete | check services and methods for error handling
+    unless params[:service_report][:employee_signature].present? || params[:service_report][:customer_signature].present?
+      @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id) if @service_report
+      time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
+      filtered_params = filter_material_params(time_converted_params)
+      if @service_report.update(filtered_params)
+        flash[:notice] = 'Service report updated'
+        redirect_to service_job_service_report_path(@service_job, @service_report)
+      else
+        render :edit
+      end
     end
 
-    
-
-    Separate these two
-
-
-
-    return unless params[:employee_signature].present? || params[:customer_signature].present?
-    if @service_report.update(service_report_signature_params)
-      respond_to do |format|
-        format.html
-        format.turbo { render turbo_stream: turbo_stream.replace('dom_id', partial: 'partial', locals: { object: @service_report }) }
+    if params[:service_report][:employee_signature].present? && !params[:service_report][:employee_signature].blank?
+      create_employee_signature
     end
 
-
-
+    if params[:service_report][:customer_signature].present? && !params[:service_report][:customer_signature].blank?
+      create_customer_signature
+    end
   end
 
   def destroy
@@ -105,15 +93,15 @@ class ServiceReportsController < ApplicationController
 
   def filter_material_params(params)
     if params[:service_report_materials_attributes].present?
-    params[:service_report_materials_attributes] = params[:service_report_materials_attributes].select do |_, service_report_material_object|
-      quantity = service_report_material_object[:quantity].to_i
-      if service_report_material_object[:id].present?
-        true
-      else
-        quantity.positive?
+      params[:service_report_materials_attributes] = params[:service_report_materials_attributes].select do |_, service_report_material_object|
+        quantity = service_report_material_object[:quantity].to_i
+        if service_report_material_object[:id].present?
+          true
+        else
+          quantity.positive?
+        end
       end
     end
-  end
     params
   end
 
@@ -141,5 +129,23 @@ class ServiceReportsController < ApplicationController
 
   def service_report_signature_params
     params.require(:service_report).permit(:employee_signature, :customer_signature)
+  end
+
+  def create_employee_signature
+    if @service_report.update(service_report_signature_params)
+      render :show
+    else
+      flash[:notice] = 'Signature failed'
+      redirect_to service_job_service_report_path(@service_job, @service_report)
+    end
+  end
+
+  def create_customer_signature
+    if @service_report.update(service_report_signature_params)
+      render :show
+    else
+      flash[:notice] = 'Signature failed'
+      redirect_to service_job_service_report_path(@service_job, @service_report)
+    end
   end
 end
