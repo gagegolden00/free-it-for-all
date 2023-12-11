@@ -54,17 +54,22 @@ class ServiceReportsController < ApplicationController
         redirect_to service_job_service_report_path(@service_job, @service_report)
       else
         render :edit
+        return  # Add this line to exit the method early
       end
     end
 
+    # handle signatures
     if params[:service_report][:employee_signature].present? && !params[:service_report][:employee_signature].blank?
       create_employee_signature
+      return  # Add this line to exit the method early
     end
 
     if params[:service_report][:customer_signature].present? && !params[:service_report][:customer_signature].blank?
       create_customer_signature
+      return  # Add this line to exit the method early
     end
   end
+
 
   def destroy
     return unless @service_report.discard
@@ -133,12 +138,17 @@ class ServiceReportsController < ApplicationController
 
   def create_employee_signature
     if @service_report.update(service_report_signature_params)
+      # respond_to do |format|
+      #   format.html
+      #   format.turbo_stream { render turbo_stream: turbo_stream.replace("signature-landing", partial: "signature", locals: { signature_type: "employee_signature" } ) }
+      # end
       render :show
     else
       flash[:notice] = 'Signature failed'
       redirect_to service_job_service_report_path(@service_job, @service_report)
     end
   end
+
 
   def create_customer_signature
     if @service_report.update(service_report_signature_params)
