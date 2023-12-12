@@ -14,15 +14,16 @@ class UserServiceJobsController < ApplicationController
       flash[:notice] = "Technician has been re-assigned"
       @existing_record.undiscard!
       redirect_to service_job_path(params[:service_job_id])
+      sms_notify_tech_has_been_assigned # Add user attributes to calls after twilio setup
 
     elsif @user_service_job.save
       flash[:notice] = "Technician has been assigned"
       redirect_to service_job_path(params[:service_job_id])
+      sms_notify_tech_has_been_assigned # Add user attributes to calls after twilio setup
 
     else
       flash[:notice] = "Technician could not be assigned"
       redirect_to service_job_path(params[:service_job_id])
-
     end
   end
 
@@ -40,5 +41,16 @@ class UserServiceJobsController < ApplicationController
   def user_service_job_params
     params.permit(:service_job_id, :user_id, :date, :start_time, :end_time)
   end
+
+  def sms_notify_tech_has_been_assigned
+    @user = User.find(params[:user_id])
+    @service_job = ServiceJob.find(params[:service_job_id])
+    
+    techs_number = '+18777804236'
+    message = "Tech has been assigned"
+    notification = SmsNotification.with(service_job: @service_job)
+    notification.deliver(techs_number)
+  end
+
 
 end
