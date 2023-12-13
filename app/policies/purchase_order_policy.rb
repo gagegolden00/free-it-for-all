@@ -6,19 +6,19 @@ class PurchaseOrderPolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin?
+    user.admin? || user.technician?
   end
 
   def create?
-    user.admin?
+    user.admin? || user.technician?
   end
 
   def index?
-    user.admin?
+    user.admin? || user.technician?
   end
 
   def show?
-    user.admin?
+    user.admin? || user.technician?
   end
 
   def edit?
@@ -34,9 +34,17 @@ class PurchaseOrderPolicy < ApplicationPolicy
   end
 
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
+
+    def resolve
+      if user.admin? || user.technician?
+        scope.all
+      end
+    end
+    
   end
 end
