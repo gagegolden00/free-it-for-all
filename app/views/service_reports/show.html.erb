@@ -1,146 +1,139 @@
 <div class=" print:!top-0 print:!left-0 print:!width-full print:!h-full print:!absolute">
-<div class=" bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row flex-wrap items-center gap-2">
-  <container>
-    <%= link_to 'Export', "#" , :onclick => 'window.print();return false;', class: "print:hidden"%>
-  </container>
-  <div class="flex flex-row print:w-full">
-    <%= link_to "<", service_jobs_path, class: "print:hidden mr-2 text-lg sm:text-xl font-medium text-white"%>
-
-    <div class="print:!block hidden">
-      <%= render 'shared/logo_svg' %>
+  <div class=" bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row flex-wrap items-center gap-2">
+    <container>
+      <%= link_to 'Export', "#" , :onclick => 'window.print();return false;', class: "print:hidden"%>
+    </container>
+    <div class="flex flex-row print:w-full">
+      <%= link_to "<", service_jobs_path, class: "print:hidden mr-2 text-lg sm:text-xl font-medium text-white"%>
+      <div class="print:!block hidden">
+        <%= render 'shared/logo_svg' %>
+      </div>
+      <div class="print:ml-auto ">
+        <h1 class="text-lg sm:text-xl font-medium text-white"><%= @service_job.job_number %></h1>
+      </div>
     </div>
-    <div class="print:ml-auto ">
-    <h1 class="text-lg sm:text-xl font-medium text-white"><%= @service_job.job_number %> - by : <%= @service_report_user.name %></h1>
+    <div class="flex flex-row flex-wrap gap-2 ml-auto">
+      <%= link_to "Job Details", service_job_path(@service_job), class: "print:hidden w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
+      <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "print:hidden w-36 text-center text-gray-50 border-2 p-2 bg-white text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
+      <%= link_to "Toggle customer view", service_job_service_report_path(@service_job, @service_report, customer_view: params[:customer_view] == 'false' ? nil : false) %>
     </div>
   </div>
-  <div class="flex flex-row flex-wrap gap-2 ml-auto">
-    <%= link_to "Job Details", service_job_path(@service_job), class: "print:hidden w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
-    <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "print:hidden w-36 text-center text-gray-50 border-2 p-2 bg-white text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
-  </div>
-</div>
-
-<%= link_to "New PO", new_service_job_purchase_order_path(@service_job, service_report_id: @service_report), class: "print:hidden" %>
-<%= link_to "POs", service_job_purchase_orders_path(@service_job) %>
-
-<div class="p-2 md:p-4">
-  <div class="flex flex-row mb-2 md:mb-4 items-center">
-    <h2 class="print:hidden font-bold text-gray-500 dark:text-700 text-xl"><%= @service_report.service_report_number %></h2>
-    <% if policy(@service_report).edit? %>
+  <div class="p-2 md:p-4">
+    <div class="flex flex-row mb-2 md:mb-4 items-center">
+      <h2 class="print:hidden font-bold text-gray-500 dark:text-700 text-xl"><%= @service_report.service_report_number %></h2>
       <%= link_to "Edit report", edit_service_job_service_report_path(@service_job, @service_report), class: "print:hidden ml-auto whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
-    <% end %>
-    <!-- <%= button_to "Delete Report", service_job_service_report_path(@service_job, @service_report), method: :delete %> -->
-  </div>
-  <section id="first-section" class="flex flex-row flex-wrap justify-between gap-2 md:gap-4">
-    <div>
-      <p><strong>Customer Name:</strong> <%= @service_job.customer.name %></p>
-      <p><strong>Phone Number:</strong> <%= @service_job.customer.phone_number %></p>
-      <p><strong>Email:</strong> <%= @service_job.customer.email %></p>
-      <p><strong>Address:</strong> <%= @service_job.customer.address %></p>
-      <p><strong>City:</strong> <%= @service_job.customer.city %></p>
-      <p><strong>State:</strong> <%= @service_job.customer.state %></p>
-      <p><strong>Zip Code:</strong> <%= @service_job.customer.zip_code %></p>
-      <p><strong>Region:</strong> <%= @service_job.customer.region&.manager %></p>
+      <!-- <%= button_to "Delete Report", service_job_service_report_path(@service_job, @service_report), method: :delete %> -->
     </div>
-    <div class="">
-      <p><strong>Equipment Model:</strong> <%= @service_report.equipment_model %></p>
-      <p><strong>Equipment Serial:</strong> <%= @service_report.equipment_serial %></p>
-      <p><strong>Warranty:</strong> <%= @service_report.warranty %></p>
-    </div>
-    <div class="w-40 border p-2 md:p-4 rounded-md border-gray-400 dark:border-gray-700 bg-white dark:bg-gray-800">
-      <p><strong>Regular:</strong> <%= get_total_hours(@time_log&.regular_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(@time_log&.regular_minutes) || 0) %></p>
-      <p><strong>Overtime:</strong> <%= get_total_hours(@time_log&.overtime_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(@time_log&.overtime_minutes) || 0) %></p>
-      <p><strong>Double:</strong> <%= get_total_hours(@time_log&.double_time_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(@time_log&.double_time_minutes) || 0) %></p>
-      <p><strong>Mileage:</strong> <%= @time_log&.mileage || "0"%></p>
-    </div>
-  </section>
-  <hr class="w-full my-4 border-gray-200 dark:border-gray-700">
-  <section id="second-section" class="">
-    <h2 class="w-full font-bold mb-2">Materials Used</h2>
-    <div class="flex flex-wrap gap-2">
-      <% @service_report_materials.each do |material| %>
-        <div class="">
-          <div class="border p-2 text-sm rounded-md bg-white dark:bg-gray-800">
-            <p><strong>Name:</strong> <%= material.name %></p>
-            <p><strong>Quantity:</strong> <%= material.quantity %></p>
-            <p><strong>Price:</strong> <%= format_price(material.price) %></p>
-            <p><strong>Pre-Tax Total:</strong> <%= format_price(material.pre_tax_total) %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </section>
-  <hr class="w-full my-4 border-gray-200 dark:border-gray-700">
-  <section id="third-section" class="grid grid-cols-1 md:grid-cols-2 justify-between gap-2 md:gap-4 items-start mb-4">
-    <div class="">
-      <h2 class="font-bold mb-2">Work Description</h2>
-      <div class="border-2 rounded-md bg-white dark:bg-gray-800 p-2 md:p-4">
-        <p><%= @service_report.description %></p>
+    <section id="first-section" class="flex flex-row flex-wrap justify-between gap-2 md:gap-4">
+      <div>
+        <p><strong>Customer Name:</strong> <%= @service_job.customer.name %></p>
+        <p><strong>Phone Number:</strong> <%= @service_job.customer.phone_number %></p>
+        <p><strong>Email:</strong> <%= @service_job.customer.email %></p>
+        <p><strong>Address:</strong> <%= @service_job.customer.address %></p>
+        <p><strong>City:</strong> <%= @service_job.customer.city %></p>
+        <p><strong>State:</strong> <%= @service_job.customer.state %></p>
+        <p><strong>Zip Code:</strong> <%= @service_job.customer.zip_code %></p>
+        <p><strong>Region:</strong> <%= @service_job.customer.region&.manager %></p>
       </div>
-    </div>
-    <div class="grid grid-cols-1 gap-4">
-      <div class="flex items-center">
-        <div class="w-1/5">QTY</div>
-        <div class="w-2/5">Description</div>
-        <div class="w-1/5">Unit Price</div>
-        <div class="w-1/5">Total Cost</div>
+      <div class="">
+        <p><strong>Equipment Model:</strong> <%= @service_report.equipment_model %></p>
+        <p><strong>Equipment Serial:</strong> <%= @service_report.equipment_serial %></p>
+        <p><strong>Warranty:</strong> <%= @service_report.warranty %></p>
       </div>
-      <% if @purchase_orders %>
-        <% @purchase_orders.each do |po| %>
-          <div class="flex items-center border-t">
-            <div class="w-1/5 pl-2"><%= po.quantity %></div>
-            <div class="w-2/5 relative">
-              <div class="truncate w-full" title="<%= po.description %>">
-                <%= po.description %>
-              </div>
-              <div class="hidden group-hover:block absolute bg-white p-2 border rounded-md shadow-md">
-                <%= po.description %>
-              </div>
+      <div class="w-40 border p-2 md:p-4 rounded-md border-gray-400 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <p><strong>Regular:</strong> <%= get_total_hours(@time_log&.regular_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(@time_log&.regular_minutes) || 0) %></p>
+        <p><strong>Overtime:</strong> <%= get_total_hours(@time_log&.overtime_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(@time_log&.overtime_minutes) || 0) %></p>
+        <p><strong>Double:</strong> <%= get_total_hours(@time_log&.double_time_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(@time_log&.double_time_minutes) || 0) %></p>
+        <p><strong>Mileage:</strong> <%= @time_log&.mileage || "0"%></p>
+      </div>
+    </section>
+    <hr class="w-full my-4 border-gray-200 dark:border-gray-700">
+    <section id="second-section" class="">
+      <h2 class="w-full font-bold mb-2">Materials Used</h2>
+      <div class="flex flex-wrap gap-2">
+        <% @service_report_materials.each do |material| %>
+          <div class="">
+            <div class="border p-2 text-sm rounded-md bg-white dark:bg-gray-800">
+              <p><strong>Name:</strong> <%= material.name %></p>
+              <p><strong>Quantity:</strong> <%= material.quantity %></p>
+              <p class="<%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><strong>Price:</strong> <%= format_price(material.price) %></p>
+              <p class="<%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><strong>Pre-Tax Total:</strong> <%= format_price(material.pre_tax_total) %></p>
             </div>
-            <div class="w-1/5 pl-2"><%= format_price(po.price) %></div>
-            <div class="w-1/5 pl-2"><%= format_price(po.total_price) %></div>
           </div>
         <% end %>
-      <% end %>
-    </div>
-  </section>
-  <section>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 justify-around text-center w-full bg-gray-200 py-2 gap-2">
-      <div>
-        <h2 class="font-bold">Total Hours</h2>
-        <span>###</span>
       </div>
-      <div>
-        <h2 class="font-bold">Total Parts</h2>
-        <span>###</span>
+    </section>
+    <hr class="w-full my-4 border-gray-200 dark:border-gray-700">
+    <section id="third-section" class="grid grid-cols-1 md:grid-cols-2 justify-between gap-2 md:gap-4 items-start mb-4">
+      <div class="">
+        <h2 class="font-bold mb-2">Work Description</h2>
+        <div class="border-2 rounded-md bg-white dark:bg-gray-800 p-2 md:p-4">
+          <p><%= @service_report.description %></p>
+        </div>
       </div>
-      <div>
-        <h2 class="font-bold">Total Misc</h2>
-        <span>###</span>
+      <div class="grid grid-cols-1 gap-4">
+        <div class="flex items-center">
+          <div class="w-1/5">QTY</div>
+          <div class="w-2/5">Description</div>
+          <div class="w-1/5 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>">Unit Price</div>
+          <div class="w-1/5 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>">Total Cost</div>
+        </div>
+        <% if @purchase_orders %>
+          <% @purchase_orders.each do |po| %>
+            <div class="flex items-center border-t">
+              <div class="w-1/5 pl-2"><%= po.quantity %></div>
+              <div class="w-2/5 relative">
+                <div class="truncate w-full" title="<%= po.description %>">
+                  <%= po.description %>
+                </div>
+                <div class="hidden group-hover:block absolute bg-white p-2 border rounded-md shadow-md">
+                  <%= po.description %>
+                </div>
+              </div>
+              <div class="w-1/5 pl-2 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><%= format_price(po.price) %></div>
+              <div class="w-1/5 pl-2 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><%= format_price(po.total_price) %></div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-      <div>
-        <h2 class="font-bold">Mileage/Shipping</h2>
-        <span>###</span>
+    </section>
+    <section>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 justify-around text-center w-full bg-gray-200 py-2 gap-2">
+        <div>
+          <h2 class="font-bold">Total Hours</h2>
+          <span>###</span>
+        </div>
+        <div>
+          <h2 class="font-bold">Total Parts</h2>
+          <span>###</span>
+        </div>
+        <div>
+          <h2 class="font-bold">Total Misc</h2>
+          <span>###</span>
+        </div>
+        <div>
+          <h2 class="font-bold">Mileage/Shipping</h2>
+          <span>###</span>
+        </div>
+        <div>
+          <h2 class="font-bold">Tax</h2>
+          <span>###</span>
+        </div>
+        <div>
+          <h2 class="font-bold">Total</h2>
+          <span>###</span>
+        </div>
       </div>
-      <div>
-        <h2 class="font-bold">Tax</h2>
-        <span>###</span>
+    </section>
+    <section>
+      <div class="flex justify-around w-full my-10">
+        <div>
+          <p><strong>Employee Signature:</strong> <%= @service_report.employee_signature %></p>
+        </div>
+        <div>
+          <p><strong>Customer Signature:</strong> <%= @service_report.customer_signature %></p>
+        </div>
       </div>
-      <div>
-        <h2 class="font-bold">Total</h2>
-        <span>###</span>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="flex justify-around w-full my-10">
-      <div>
-        <p><strong>Employee Signature:</strong> <%= @service_report.employee_signature %></p>
-      </div>
-      <div>
-        <p><strong>Customer Signature:</strong> <%= @service_report.customer_signature %></p>
-      </div>
-    </div>
-  </section>
-</div>
-
+    </section>
+  </div>
 </div>
