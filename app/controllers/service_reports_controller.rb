@@ -63,7 +63,7 @@ class ServiceReportsController < ApplicationController
   def destroy
     authorize @service_report
     return unless @service_report.discard
-    
+
     flash[:notice] = 'Service report deleted'
     redirect_to service_job_service_reports_path(@service_job)
   end
@@ -88,15 +88,15 @@ class ServiceReportsController < ApplicationController
 
   def filter_material_params(params)
     if params[:service_report_materials_attributes].present?
-    params[:service_report_materials_attributes] = params[:service_report_materials_attributes].select do |_, service_report_material_object|
-      quantity = service_report_material_object[:quantity].to_i
-      if service_report_material_object[:id].present?
-        true
-      else
-        quantity.positive?
+      params[:service_report_materials_attributes] = params[:service_report_materials_attributes].select do |_, service_report_material_object|
+        quantity = service_report_material_object[:quantity].to_i
+        if service_report_material_object[:id].present?
+          true
+        else
+          quantity.positive?
+        end
       end
     end
-  end
     params
   end
 
