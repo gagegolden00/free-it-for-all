@@ -1,6 +1,8 @@
-<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center">
+<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
   <h1 class="text-lg sm:text-xl font-medium text-white">Service Jobs</h1>
+  <% if policy(@service_job).new? %>
   <%= link_to "New Job", new_service_job_path, class: "w-36 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 dark:hover:text-gray-800 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md", data: { turbo: false } %>
+  <% end %>
 </div>
 <form class="flex flex-wrap items-center m-2 sm:m-4 border max-w-3/4" method="GET" action="<%= service_jobs_path %>">
   <label for="simple" class="sr-only">Search</label>
@@ -78,7 +80,9 @@
       </div>
       <div class="ml-auto">
         <%= link_to "View" , service_job_path(service_job), class: "ml-auto rounded-md block w-16 text-center ml-2 text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+        <% if policy(@service_job).edit? %>
         <%= link_to "Edit" , edit_service_job_path(service_job), class: "rounded-md block w-16 mt-2 text-center ml-2 text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+        <% end %>
       </div>
     </div>
   <% end %>
