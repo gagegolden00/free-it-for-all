@@ -1,6 +1,8 @@
-<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center">
+<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
   <h1 class="text-lg sm:text-xl font-medium text-white"> Weekly time sheet for: <%= content_tag(:span, @start_date.strftime(" %B %d, %Y"), class: 'underline') if @start_date %> - through - <%= content_tag(:span, @end_date.strftime(" %B %d, %Y"), class: 'underline') if @end_date %> </h1>
+  <% if current_user.admin? %>
   <%= link_to "New Job", new_service_job_path, class: "w-36 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 dark:hover:text-gray-800 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md", data: { turbo: false } %>
+  <% end %>
 </div>
 <div class="p-3">
   <section id="controls">
@@ -72,7 +74,7 @@
       <% @users_with_no_time_log_totals.each do |user| %>
         <div class="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500 rounded my-3">
           <div class="grid lg:grid-cols-7 grid-cols-2 rounded lg:min-h-20 p-2 ml-10 md:ml-0">
-            <div class="col-span-1 flex items-center md:pl-24 lg:justify-start lg:pl-10 lg:my-0 my-1">
+            <div class="col-span-1 flex items-center md:pl-24 lg:justify-start lg:pl-4 lg:my-0 my-1">
               <h3 class="pl-2 font-semibold"><%= user.name %></h3>
             </div>
             <div class="flex lg:hidden mt-3 pl-12 md:pl-40 lg:ml-0 mb-3 border-bottom-1 pt-2">
