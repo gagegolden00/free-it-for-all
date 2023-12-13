@@ -3,6 +3,8 @@ class TimeSheetsController < ApplicationController
   include TimeLogHelper
 
   def index
+    authorize :time_sheet
+
     @time_frame = params[:time_frame]
 
     case @time_frame
@@ -41,8 +43,10 @@ class TimeSheetsController < ApplicationController
       set_current_week
     end
 
-    @time_logs = User.find(params[:user_id]).time_logs.where(created_at: @start_date..@end_date)
     @user = User.find(params[:user_id])
+
+    @time_logs = policy_scope(@user.time_logs).where(created_at: @start_date..@end_date)
+    authorize @time_logs
   end
 
   private

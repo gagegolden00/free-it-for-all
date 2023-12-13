@@ -34,7 +34,7 @@ namespace :populate_db do
     )
 
     # Create 10 random admin users
-    10.times do
+    14.times do
       name = Faker::Name.name
       User.create!(
         role: 'admin',
@@ -53,7 +53,7 @@ namespace :populate_db do
     end
 
     # Create 10 random technician users
-    10.times do
+    14.times do
       name = Faker::Name.name
       User.create!(
         role: 'technician',

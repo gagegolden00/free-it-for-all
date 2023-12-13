@@ -1,8 +1,10 @@
 <div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center">
   <h1 class="text-lg sm:text-xl font-medium text-white">Time sheet: <%= @user.name %> for <%= Time.parse(@start_date).strftime("%B %d, %Y") if @start_date %> - through - <%= Time.parse(@end_date).strftime("%B %d, %Y") if @end_date %></h1>
-  <%= link_to "New Job", new_service_job_path, class: "w-36 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 dark:hover:text-gray-800 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md", data: { turbo: false } %>
+  <% if current_user.admin? %>
+    <%= link_to "New Job", new_service_job_path, class: "w-36 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 dark:hover:text-gray-800 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md", data: { turbo: false } %>
+  <% end %>
 </div>
-<section id="table-data" class="">
+<section id="table-data" class="p-4">
   <!-- Header Row -->
   <div class="mt-4 p-2 py-4 border hidden lg:visible lg:grid lg:grid-cols-10 items-center bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500 rounded my-3">
 

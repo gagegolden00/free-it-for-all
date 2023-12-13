@@ -29,6 +29,7 @@ class ServiceJobsController < ApplicationController
 
 
     def index
+      @service_job = ServiceJob.new
       service_job_search_scope = policy_scope(ServiceJob).search_by_job_number_or_customer_name(params[:service_job_search]).distinct
       @pagy, @service_jobs = if search_present_and_not_empty_and_no_sort_by?
                                pagy(service_job_search_scope.filter_by_status(get_status_filters).order(created_at: :asc))
