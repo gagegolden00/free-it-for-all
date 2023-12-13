@@ -11,12 +11,14 @@ class ServiceReportsController < ApplicationController
   def new
     @service_report = ServiceReport.new
     @service_report.build_time_log
+    authorize @service_report
   end
 
   def create
     time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
     filtered_params = filter_material_params(time_converted_params)
     @service_report = ServiceReport.create!(filtered_params)
+    authorize @service_report
     if @service_report.save
       flash[:notice] = 'Service report created'
       redirect_to service_job_service_report_path(@service_job, @service_report)
@@ -28,10 +30,13 @@ class ServiceReportsController < ApplicationController
   def show
     @service_report_materials = ServiceReport.materials_used(@service_report)
     @time_log = @service_report.time_log
+    @service_report_user = User.find(@service_report.user_id)
+    authorize @service_report
   end
 
   def index
     @service_reports = @service_job.service_reports.kept
+    authorize @service_reports
   end
 
   def edit
@@ -39,6 +44,7 @@ class ServiceReportsController < ApplicationController
     @time_log = @service_report.time_log
     @service_report.build_time_log unless @service_report.time_log
     @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id) if @service_report
+    authorize @service_report
   end
 
   def update
@@ -54,24 +60,25 @@ class ServiceReportsController < ApplicationController
         redirect_to service_job_service_report_path(@service_job, @service_report)
       else
         render :edit
-        return  # Add this line to exit the method early
+        return
       end
     end
 
     # handle signatures
     if params[:service_report][:employee_signature].present? && !params[:service_report][:employee_signature].blank?
       create_employee_signature
-      return  # Add this line to exit the method early
+      return
     end
 
     if params[:service_report][:customer_signature].present? && !params[:service_report][:customer_signature].blank?
       create_customer_signature
-      return  # Add this line to exit the method early
+      return
     end
   end
 
 
   def destroy
+    authorize @service_report
     return unless @service_report.discard
 
     flash[:notice] = 'Service report deleted'
@@ -138,10 +145,6 @@ class ServiceReportsController < ApplicationController
 
   def create_employee_signature
     if @service_report.update(service_report_signature_params)
-      # respond_to do |format|
-      #   format.html
-      #   format.turbo_stream { render turbo_stream: turbo_stream.replace("signature-landing", partial: "signature", locals: { signature_type: "employee_signature" } ) }
-      # end
       render :show
     else
       flash[:notice] = 'Signature failed'
