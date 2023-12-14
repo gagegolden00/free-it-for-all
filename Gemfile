@@ -72,7 +72,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  
+
 end
 gem "aws-sdk-rails", "~> 3.8"
 gem "aws-sdk-s3", "~> 1.134"
@@ -91,3 +91,9 @@ gem "view_component", "~> 3.6"
 gem "faker", "~> 3.2"
 
 gem "pry", "~> 0.14.2"
+
+gem "twilio-ruby", "~> 6.8"
+
+gem "sentry-ruby", "~> 5.14"
+
+gem "sentry-rails", "~> 5.14"

@@ -76,6 +76,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_194011) do
     t.index ["discarded_at"], name: "index_materials_on_discarded_at"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.timestamptz "read_at", precision: 6
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
@@ -161,8 +173,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_194011) do
     t.integer "mischarge"
     t.integer "total_charge"
     t.text "description"
-    t.string "employee_signature"
-    t.string "customer_signature"
+    t.text "employee_signature"
+    t.text "customer_signature"
     t.bigint "service_job_id"
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false

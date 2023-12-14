@@ -10,16 +10,23 @@
         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
       </svg>
     </div>
-    <input type="text" id="simple-search" name="customer_search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search customer list">
+    <input value="<%= params[:customer_search] if params[:customer_search] %>" type="text" id="simple-search" name="customer_search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search customer list">
   </div>
-  <div class="mt-4">
-    <%= check_box_tag 'sort_by', 'name asc', checked: params[:sort_by] == 'name asc', class: 'sort-checkbox', data: { customer_search: params[:customer_search] || "", page: @pagy.page } %>
-    <%= label_tag 'sort_by_name_asc', 'Name asc', class: 'ml-2' %>
-    <%= check_box_tag 'sort_by', 'name desc', checked: params[:sort_by] == 'name desc', class: 'sort-checkbox', data: { customer_search: params[:customer_search] || "", page: @pagy.page } %>
-    <%= label_tag 'sort_by_name_desc', 'Name desc', class: 'ml-2' %>
+  <div class="">
+    <%= select_tag 'sort_by',
+      options_for_select(
+        [
+          ['- Sort by', 'name asc'],
+          ['Name asc', 'name asc'],
+          ['Name desc', 'name desc']
+        ],
+        selected: params[:sort_by]
+      ),
+      onchange: 'this.form.submit()',
+      class: 'w-36 h-10 ml-4 hover:cursor-pointer block p-2 pl-6 pr-8 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
+    %>
   </div>
   <%= hidden_field_tag 'page', @pagy.page %>
-  <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Apply Filters</button>
 </form>
 <!-- TODO: something else with this -->
 <p style="color: green"><%= notice %></p>

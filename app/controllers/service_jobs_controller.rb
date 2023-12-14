@@ -29,6 +29,7 @@ class ServiceJobsController < ApplicationController
 
 
     def index
+      @service_job = ServiceJob.new
       service_job_search_scope = policy_scope(ServiceJob).search_by_job_number_or_customer_name(params[:service_job_search]).distinct
       @pagy, @service_jobs = if search_present_and_not_empty_and_no_sort_by?
                                pagy(service_job_search_scope.filter_by_status(get_status_filters).order(created_at: :asc))
@@ -140,17 +141,25 @@ class ServiceJobsController < ApplicationController
   end
 
   def get_status_filters
-    return unless params[:filter_by] && !params[:filter_by].empty?
+    case params[:filter_by]
 
-    status_filters = []
-    status_filters << 'Open' if params[:filter_by].include?('Open')
-    status_filters << 'Assigned' if params[:filter_by].include?('Assigned')
-    status_filters << 'In progress' if params[:filter_by].include?('In Progress')
-    status_filters << 'On hold' if params[:filter_by].include?('On Hold')
-    status_filters << 'Waiting on parts' if params[:filter_by].include?('Waiting on Parts')
-    status_filters << 'Completed' if params[:filter_by].include?('Completed')
-    status_filters
+    when 'Open'
+      'Open'
+    when 'Assigned'
+      'Assigned'
+    when 'In Progress'
+      'In progress'
+    when 'On Hold'
+      'On hold'
+    when 'Waiting on Parts'
+      'Waiting on parts'
+    when 'Completed'
+      'Completed'
+    else
+      [ 'Open', 'Assigned', 'In progress', 'On hold', 'Waiting on parts', 'Completed' ]
+    end
   end
+
 
   def service_job_index_params
     params.permit(:sort_by)

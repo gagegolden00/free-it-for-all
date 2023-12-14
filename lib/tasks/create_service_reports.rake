@@ -25,21 +25,12 @@ namespace :populate_db do
       [reg_time, over_time, double_time]
     end
 
-    88.times do
+    400.times do
       reg_time, double_time, over_time = random_minutes
 
       user_service_job = UserServiceJob.find(rand(1..UserServiceJob.count))
       service_job = ServiceJob.find(user_service_job.service_job_id)
       assigned_user_id = user_service_job.user_id
-
-      puts "######################"
-
-      puts assigned_user_id.class
-      puts assigned_user_id
-
-      #puts User.find(assigned_user_id).name.upcase
-
-      puts "######################"
 
       ServiceReport.create!(
         service_report_number: service_job.job_number + "-REPORT-#{service_job.service_reports.count + 1}",
@@ -63,22 +54,5 @@ namespace :populate_db do
         }
       )
     end
-
-    def update_timestamps
-      start_date = Time.new(2023, 1, 1, 9, 0, 0)
-      end_date = Time.new(2023, 12, 31, 21, 0, 0)
-      number_of_reports = ServiceReport.count
-      timestamps = (start_date..end_date).step((end_date - start_date) / number_of_reports).to_a
-
-      ServiceReport.all.each do |service_report|
-        timestamp = timestamps.shift
-        service_report.created_at = timestamp
-        service_report.time_log.created_at = timestamp
-
-      end
-    end
-
-    update_timestamps
-
   end
 end
