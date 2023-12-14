@@ -1,7 +1,6 @@
 namespace :populate_db do
   desc 'create purchase orders'
   task create_purchase_orders: :environment do
-
     400.times do
       service_report = ServiceReport.find(rand(1..ServiceReport.count))
       service_job = ServiceJob.find(service_report.service_job_id)
@@ -16,7 +15,5 @@ namespace :populate_db do
         service_report_id: service_report.id
       )
     end
-
   end
 end
-

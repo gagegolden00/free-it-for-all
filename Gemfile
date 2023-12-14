@@ -92,6 +92,8 @@ gem "faker", "~> 3.2"
 
 gem "pry", "~> 0.14.2"
 
+gem "twilio-ruby", "~> 6.8"
+
 gem "sentry-ruby", "~> 5.14"
 
 gem "sentry-rails", "~> 5.14"

@@ -1,9 +1,8 @@
 namespace :populate_db do
-  desc "Create materials"
+  desc 'Create materials'
   task create_materials: :environment do
-
     # We can set this up with a list of mech cool's initial materials and run this for them to "seed"
-    # for them initially. We should allow CRUD on materials.
+    # for them initially. 
     initial_materials = {
       chl_tube: rand(100..1_000_000),
       flue_tube: rand(100..1_000_000),
@@ -26,16 +25,13 @@ namespace :populate_db do
       ref_recovery: rand(100..1_000_000),
       ref_disposal: rand(100..1_000_000),
       electrical: rand(100..1_000_000)
-  }
-
+    }
 
     initial_materials.each do |key, value|
       Material.create!(
         name: key,
         price: value
-    )
-    
+      )
     end
-
   end
 end

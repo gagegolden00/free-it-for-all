@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     mount Lookbook::Engine, at: "/lookbook"
   end
 
-  # Authentication / Registration (may use custom registrations) / Password resets
-  devise_for :users
+  devise_for :users, skip: :registrations
+
+  resources :users
 
   root "pages#home"
 

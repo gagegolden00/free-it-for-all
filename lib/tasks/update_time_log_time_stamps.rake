@@ -3,10 +3,12 @@ namespace :populate_db do
   task update_time_log_time_stamps: :environment do
 
     def update_timestamps
-      start_date = Time.new(2023, 1, 1, 9, 0, 0)
-      end_date = Time.new(2023, 11, 20, 21, 0, 0)
+      start_date = Time.new(2023, 8, 1, 9, 0, 0)
+      end_date = Time.new(2023, 12, 13, 21, 0, 0)
       number_of_reports = ServiceReport.count
       timestamps = (start_date..end_date).step((end_date - start_date) / number_of_reports).to_a
+
+      puts "Timestamps are printed to the console so you can observe the time frame and get an idea of expected time sheets results"
 
       ServiceReport.all.each_with_index do |service_report, index|
         timestamp = Time.at(timestamps[index])
