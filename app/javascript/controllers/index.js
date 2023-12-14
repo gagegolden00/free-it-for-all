@@ -16,6 +16,9 @@ application.register("dropdown-toggle", DropdownToggleController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import SigPadController from "./sig_pad_controller"
+application.register("sig-pad", SigPadController)
+
 import SlimSelectController from "./slim_select_controller"
 application.register("slim-select", SlimSelectController)
 

@@ -40,8 +40,8 @@ namespace :populate_db do
         mischarge: rand(1...1_000_000_000),
         total_charge: rand(1..1_000_000_000),
         description: Faker::Lorem.paragraph(sentence_count: rand(1..20)),
-        employee_signature: Faker::Name.name,
-        customer_signature: Faker::Name.name,
+        employee_signature: nil,
+        customer_signature: nil,
         service_job_id: service_job.id,
         user_id: assigned_user_id,
         time_log_attributes: {

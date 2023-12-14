@@ -125,14 +125,22 @@
         </div>
       </div>
     </section>
-    <section>
-      <div class="flex justify-around w-full my-10">
-        <div>
-          <p><strong>Employee Signature:</strong> <%= @service_report.employee_signature %></p>
+    <section class="flex justify-center lg:justify-around flex-col w-full h-full mt-10 ">
+      <div class="">
+        <div id="signature-landing">
+          <% if @service_report.employee_signature.nil? %>
+            <%= render partial: "employee_signature_form" %>
+          <% else %>
+            <%= render partial: "signature", locals: {signature_type: "employee_signature"}%>
+          <% end %>
         </div>
-        <div>
-          <p><strong>Customer Signature:</strong> <%= @service_report.customer_signature %></p>
-        </div>
+      </div>
+      <div class="mt-10">
+        <% if @service_report.customer_signature.nil? %>
+          <%= render partial: "customer_signature_form" %>
+        <% else %>
+          <%= render partial: "signature", locals: {signature_type: "customer_signature"}%>
+        <% end %>
       </div>
     </section>
   </div>

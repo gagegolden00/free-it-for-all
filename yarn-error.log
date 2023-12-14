@@ -14,7 +14,7 @@ Platform:
   linux arm64
 
 Trace: 
-  Error: EEXIST: file already exists, symlink '../../../../mini-svg-data-uri/cli.js' -> '/app/node_modules/@tailwindcss/forms/node_modules/.bin/mini-svg-data-uri'
+  Error: EEXIST: file already exists, symlink '../../../../../../cssesc/bin/cssesc' -> '/app/node_modules/@tailwindcss/typography/node_modules/postcss-selector-parser/node_modules/.bin/cssesc'
 
 npm manifest: 
   {
@@ -28,6 +28,7 @@ npm manifest:
       "esbuild": "^0.19.2",
       "flowbite": "^1.8.1",
       "postcss": "^8.4.29",
+      "signature_pad": "^4.1.7",
       "slim-select": "^2.6.0",
       "stimulus-use": "^0.52.0",
       "tailwindcss": "^3.3.3"
@@ -775,6 +776,11 @@ Lockfile:
     integrity sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==
     dependencies:
       queue-microtask "^1.2.2"
+  
+  signature_pad@^4.1.7:
+    version "4.1.7"
+    resolved "https://registry.yarnpkg.com/signature_pad/-/signature_pad-4.1.7.tgz#b95e19bbd31527a85772958871d8b95da05b2bbf"
+    integrity sha512-2Vmybep25VlDnvdgtE3v09KGawS8mL10lRpSq1RmPpLcS4eH8I1YPQUzXsxwnmepcAgDHQ2jyzgS6XhjKsYYAQ==
   
   slim-select@^2.6.0:
     version "2.6.0"

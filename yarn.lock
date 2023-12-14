@@ -728,6 +728,11 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
+signature_pad@^4.1.7:
+  version "4.1.7"
+  resolved "https://registry.yarnpkg.com/signature_pad/-/signature_pad-4.1.7.tgz#b95e19bbd31527a85772958871d8b95da05b2bbf"
+  integrity sha512-2Vmybep25VlDnvdgtE3v09KGawS8mL10lRpSq1RmPpLcS4eH8I1YPQUzXsxwnmepcAgDHQ2jyzgS6XhjKsYYAQ==
+
 slim-select@^2.6.0:
   version "2.6.0"
   resolved "https://registry.npmjs.org/slim-select/-/slim-select-2.6.0.tgz"

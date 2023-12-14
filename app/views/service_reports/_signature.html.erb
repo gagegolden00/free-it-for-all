@@ -1,0 +1,8 @@
+<div class="flex flex-col border-2 w-full border-gray-200 rounded p-4 dark:bg-gray-800">
+  <div>
+    <h1 class="font-semibold text-xl mb-2"><%= signature_type.gsub("_", " ").capitalize %></h1>
+  </div>
+  <div class="h-40 w-full" data-controller="sig-pad">
+    <img src="<%= @service_report.public_send(signature_type) %>" alt="<%= signature_type %> Signature" class="h-full w-full rounded bg-white dark:bg-gray-800">
+  </div>
+</div>
