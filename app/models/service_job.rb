@@ -28,7 +28,7 @@ class ServiceJob < ApplicationRecord
 
                   }
 
-  scope :filter_by_status, ->(statuses) { where(status: statuses) if statuses.present? }
+  scope :filter_by_status, ->(status) { where(status: status) if status.present? }
 
   def active_users
     user_service_jobs.where(discarded_at: nil).map(&:user)
