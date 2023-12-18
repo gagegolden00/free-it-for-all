@@ -9,6 +9,7 @@ export default class extends Controller {
   static targets = ["canvas"]
 
   initialize() {
+    console.log("SigPadController initialized");
     this.canvas = this.canvasTarget;
     this.ctx = this.canvas.getContext("2d");
 
@@ -20,7 +21,7 @@ export default class extends Controller {
   }
 
   connect() {
-
+    console.log("Connecting to sig pad controller...");
     const resizeCanvas = () => {
       const ratio = Math.max(window.devicePixelRatio || 1, 1);
       this.canvas.width = this.canvas.offsetWidth * ratio;
@@ -30,7 +31,6 @@ export default class extends Controller {
     };
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
-
   }
 
   clearSignature() {
