@@ -1,0 +1,11 @@
+<div class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
+  <div class="bg-white dark:bg-gray-900 p-8 rounded shadow-md">
+    <h1 class="font-bold text-lg mb-4">Upload Image</h1>
+    <%= form_with(model: @service_job.images, url: service_job_images_path(@service_job), local: true, html: {multipart: true}) do |form| %>      <%= form.file_field :service_job_image, accept: ServiceJobImagesHelper.allowed_file_types, class: "block w-full p-2 mb-2 rounded" %>
+      <div class="flex justify-between mt-10">
+        <%= form.submit "Upload", class: "m-3 w-36 whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+        <%= button_tag "Close", type: "button", data: {action: "click->modal#toggleModalVisibility"}, class: "m-3 w-36 whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+      </div>
+    <% end %>
+  </div>
+</div>

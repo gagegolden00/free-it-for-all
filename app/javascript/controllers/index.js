@@ -16,6 +16,9 @@ application.register("dropdown-toggle", DropdownToggleController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
+
 import SlimSelectController from "./slim_select_controller"
 application.register("slim-select", SlimSelectController)
 
