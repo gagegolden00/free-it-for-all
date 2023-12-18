@@ -1,9 +1,9 @@
-class PointOfContactPolicy < ApplicationPolicy
-  attr_reader :user, :point_of_contact
+class WorkSitePolicy < ApplicationPolicy
+  attr_reader :user, :worksite
 
-  def initialize(user, point_of_contact)
+  def initialize(user, work_site)
     @user = user
-    @point_of_contact = point_of_contact
+    @work_site = work_site
   end
 
   def new?
@@ -11,7 +11,15 @@ class PointOfContactPolicy < ApplicationPolicy
   end
 
   def create?
-    new?
+    user.admin?
+  end
+
+  def index?
+    user.admin?
+  end
+
+  def show?
+    user.admin?
   end
 
   def edit?
@@ -19,8 +27,14 @@ class PointOfContactPolicy < ApplicationPolicy
   end
 
   def update?
-    edit?
+    user.admin?
   end
+
+  def destroy?
+    user.admin?
+  end
+
+
 
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!

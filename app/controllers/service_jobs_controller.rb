@@ -11,14 +11,26 @@ class ServiceJobsController < ApplicationController
   def new
     @service_job = ServiceJob.new
     authorize @service_job
-    @service_job.build_customer
-    @service_job.customer.build_point_of_contact
-    @service_job.build_work_site
+
+    @customer = @service_job.build_customer
+    authorize @customer
+
+    @point_of_contact = @service_job.customer.build_point_of_contact
+    authorize @point_of_contact
+
+    @work_site = @service_job.build_work_site
+    authorize @work_site
+
+    return @work_site, @point_of_contact
   end
 
   def create
     @customers = Customer.kept
+    authorize @customers
+
     @service_job = ServiceJob.new(permitted_params)
+    authorize @service_job
+
     if @service_job.save
       flash[:notice] = 'Service job created'
       redirect_to service_job_path(@service_job)
