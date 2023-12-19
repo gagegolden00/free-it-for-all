@@ -14,7 +14,7 @@ Platform:
   linux arm64
 
 Trace: 
-  Error: EEXIST: file already exists, symlink '../../../../../../cssesc/bin/cssesc' -> '/app/node_modules/@tailwindcss/typography/node_modules/postcss-selector-parser/node_modules/.bin/cssesc'
+  Error: EEXIST: file already exists, symlink '../../../../mini-svg-data-uri/cli.js' -> '/app/node_modules/@tailwindcss/forms/node_modules/.bin/mini-svg-data-uri'
 
 npm manifest: 
   {

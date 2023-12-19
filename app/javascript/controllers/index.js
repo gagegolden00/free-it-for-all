@@ -19,6 +19,9 @@ application.register("hello", HelloController)
 import SigPadController from "./sig_pad_controller"
 application.register("sig-pad", SigPadController)
 
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
+
 import SlimSelectController from "./slim_select_controller"
 application.register("slim-select", SlimSelectController)
 

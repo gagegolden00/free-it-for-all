@@ -7,12 +7,16 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
-    @customer.build_point_of_contact
+    @point_of_contact = @customer.build_point_of_contact
     authorize @customer
+    authorize @point_of_contact
+    @point_of_contact
   end
 
   def create
     @customer = Customer.new(customer_params)
+    @point_of_contact = @customer.point_of_contact
+    authorize @point_of_contact
     if @customer.save
       flash[:notice] = 'Customer created'
       redirect_to customer_path(@customer)
@@ -35,7 +39,6 @@ class CustomersController < ApplicationController
 
                         else
                           pagy(Customer.order(get_collection_order))
-
                         end
 
     authorize @customers
@@ -43,6 +46,7 @@ class CustomersController < ApplicationController
 
   def edit
     @customer.point_of_contact.nil? ? @point_of_contact = @customer.build_point_of_contact : @point_of_contact = @customer.point_of_contact
+    authorize @point_of_contact
   end
 
   def update
