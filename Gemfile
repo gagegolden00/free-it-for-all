@@ -74,18 +74,31 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
 gem "aws-sdk-rails", "~> 3.8"
+
 gem "aws-sdk-s3", "~> 1.134"
+
 gem "devise", "~> 4.9", ">= 4.9.2"
+
 gem "discard", "~> 1.3"
+
 gem "image_processing", "~> 1.12", ">= 1.12.2"
+
 gem "meta-tags", "~> 2.18"
+
 gem "noticed", "~> 1.6", ">= 1.6.3"
+
 gem "pagy", "~> 6.0", ">= 6.0.4"
+
 gem "paper_trail", "~> 15.0"
+
 gem "pg_search", "~> 2.3", ">= 2.3.6"
+
 gem "pundit", "~> 2.3", ">= 2.3.1"
+
 gem "sidekiq", "~> 7.1", ">= 7.1.4"
+
 gem "view_component", "~> 3.6"
 
 gem "faker", "~> 3.2"
@@ -97,3 +110,5 @@ gem "twilio-ruby", "~> 6.8"
 gem "sentry-ruby", "~> 5.14"
 
 gem "sentry-rails", "~> 5.14"
+
+gem "shrine", "~> 3.5"
