@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   get "time_sheets", to: 'time_sheets#index', as: :time_sheets
   get "time_sheet/:user_id", to: 'time_sheets#show', as: :time_sheet
 
+  get "schedule", to: 'schedule#index', as: :schedule
+
 end

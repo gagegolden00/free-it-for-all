@@ -14,7 +14,7 @@ Platform:
   linux arm64
 
 Trace: 
-  Error: EEXIST: file already exists, symlink '../../../../../../cssesc/bin/cssesc' -> '/app/node_modules/@tailwindcss/typography/node_modules/postcss-selector-parser/node_modules/.bin/cssesc'
+  Error: ENOENT: no such file or directory, lstat '/app/node_modules/@alloc/quick-lru/index.d.ts'
 
 npm manifest: 
   {
