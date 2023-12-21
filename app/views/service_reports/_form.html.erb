@@ -115,7 +115,7 @@
       <!-- -->
       <div>
         <%= service_report_field.label :work_description %>
-        <%= service_report_field.text_area :description %>
+        <%= service_report_field.text_area :description, class: "w-80"%>
       </div>
       <div class="grid grid-cols-1 gap-4">
         <div class="flex items-center">
@@ -142,34 +142,34 @@
           <% end %>
         <% end %>
       </div>
+    </div>
+    <div class="border border-black w-full h-14 flex justify-around items-center">
+      <div class="border border-black">
+        <h2>Total Hours</h2>
+        <span>###</span>
       </div>
-      <div class="border border-black w-full h-14 flex justify-around items-center">
-        <div class="border border-black">
-          <h2>Total Hours</h2>
-          <span>###</span>
-        </div>
-        <div class="border border-black">
-          <h2>Total Parts</h2>
-          <span>###</span>
-        </div>
-        <div class="border border-black">
-          <h2>Total Misc</h2>
-          <span>###</span>
-        </div>
-        <div class="border border-black">
-          <h2>Mileage/Shipping</h2>
-          <span>###</span>
-        </div>
-        <div class="border border-black">
-          <h2>Tax</h2>
-          <span>###</span>
-        </div>
-        <div class="border border-black">
-          <h2>Total</h2>
-          <span>###</span>
-        </div>
+      <div class="border border-black">
+        <h2>Total Parts</h2>
+        <span>###</span>
       </div>
-      <%= service_report_field.submit %>
-    </section>
-  <% end %>
+      <div class="border border-black">
+        <h2>Total Misc</h2>
+        <span>###</span>
+      </div>
+      <div class="border border-black">
+        <h2>Mileage/Shipping</h2>
+        <span>###</span>
+      </div>
+      <div class="border border-black">
+        <h2>Tax</h2>
+        <span>###</span>
+      </div>
+      <div class="border border-black">
+        <h2>Total</h2>
+        <span>###</span>
+      </div>
+    </div>
+    <%= service_report_field.submit %>
+  </section>
+<% end %>
 </div>
