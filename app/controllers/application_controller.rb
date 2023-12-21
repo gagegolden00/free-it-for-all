@@ -2,8 +2,7 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include Pagy::Backend
   before_action :authenticate_user!
-  # after_action :verify_authorized, unless: :skip_verify_authorized?
-  # need to implement policy for serivce job images
+  after_action :verify_authorized, unless: :skip_verify_authorized?
 
   private
 
