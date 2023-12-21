@@ -1,7 +1,6 @@
 namespace :populate_db do
   desc 'Create user service jobs'
   task create_user_service_jobs: :environment do
-
     allowed_time_inputs = [
       '00:00', '00:15', '00:30', '00:45',
       '01:00', '01:15', '01:30', '01:45',
@@ -29,38 +28,48 @@ namespace :populate_db do
       '23:00', '23:15', '23:30', '23:45'
     ]
 
-    until UserServiceJob.count == 10
+    temp_static_date_list = %w[
+      2023-12-25
+      2023-12-26
+      2023-12-27
+      2023-12-28
+      2023-12-29
+    ]
 
-      # time logic
-      start_time_string = allowed_time_inputs.sample
-      start_time = Time.parse(start_time_string)
+    # this alone does not account for having the same service job assigned to 2 techs at the same
+    # time. I dont beleive it would make a difference but this is a reminder
 
-      # Initialize end_time outside the loop
-      end_time = nil
+    temp_static_date_list.each do |date|
+      User.only_technicians.each do |user|
+        2.times do
+          start_time_string = allowed_time_inputs.sample
+          start_time = Time.parse(start_time_string)
+          end_time = start_time + rand(1..4).hours
 
-      loop do
-        end_time_string = allowed_time_inputs.sample
-        end_time = Time.parse(end_time_string)
-        break if end_time > start_time
+          available_service_jobs = ServiceJob.all.to_a - user.user_service_jobs.where(date:).pluck(:service_job_id)
+
+          if available_service_jobs.empty?
+            puts "no available service jobs for user_id: #{user.id}, date: #{date}"
+            break
+          end
+
+          service_job = available_service_jobs.sample
+
+          puts "checking: user_id: #{user.id}, service_job_id: #{service_job.id}, date: #{date}"
+
+          UserServiceJob.create!(
+            user_id: user.id,
+            service_job_id: service_job.id,
+            start_time:,
+            end_time:,
+            date:
+          )
+
+          puts "creating: user_id: #{user.id}, service_job_id: #{service_job.id}, date: #{date}"
+        rescue ActiveRecord::RecordNotUnique
+          retry
+        end
       end
-
-      # day logic not working | going to only generate a few for a day for now to move forward will return to this later
-      # current_date = Date.current
-      # start_date = current_date.beginning_of_month
-      # end_date = (current_date - 1.month).beginning_of_month
-      # random_day = rand(start_date..end_date)
-
-      # formatted_random_day = random_day&.strftime('%a, %d %b %Y')
-
-      # other attributes
-      user_id = User.only_technicians.sample.id
-      service_job_id = ServiceJob.all.sample.id
-
-      unless UserServiceJob.exists?(user_id:, service_job_id:)
-        UserServiceJob.create(user_id:, service_job_id:, start_time:, end_time:,
-                              date: "2023-12-20")
-      end
-
     end
   end
 end

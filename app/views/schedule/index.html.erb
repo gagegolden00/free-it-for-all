@@ -1,7 +1,13 @@
-<h1>Schedule</h1>
+<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
+  <h1 class="text-lg sm:text-xl font-medium text-white">Tech Schedule</h1>
+</div>
+<div class="border border-whiten p-2">
+  controls
+</div>
+
 <div class="overflow-x-scroll p-2 space-y-2" style="display:grid; grid-template-columns: 120px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;">
 
-  <div></div>
+  <div class="border">Technician</div>
 
   <div class="text-xs font-semibold" style="grid-column-start:2; grid-column-end:6">12am</div>
   <div class="text-xs font-semibold" style="grid-column-start:6; grid-column-end:10">1am</div>
@@ -28,26 +34,13 @@
   <div class="text-xs font-semibold" style="grid-column-start:90; grid-column-end:94">10pm</div>
   <div class="text-xs font-semibold" style="grid-column-start:94; grid-column-end:98">11pm</div>
 
-  <% @daily_tech_schedule_data.each do |data| %>
-    <!-- if the name is too long it takes 2 rows making the time blocks look bigger -->
-    <div class="" style="grid-column: 1">Luke Skywalker</div>
-    <div class="bg-red-500 text-white p-1 rounded" style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_time) %>">job name</div>
+<% @daily_tech_schedule_data.each do |data| %>
+    <div class="border" style="grid-column: 1"><%= data.name %></div>
+    <% data.user_service_job_ids.each_with_index do |usj_id, index| %>
+      <div class="bg-red-500 text-white p-1 rounded" style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_times[index]) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_times[index]) %>">
+        
+      </div>
+    <% end %>
   <% end %>
 
 </div>
-
-
-    for each service job they are assigned to in the time period make a div
-    in that div convert time to grid col value
-
-  <div class="">Luke Skywalker</div>
-  <div class="bg-green-500 text-white p-1 rounded" style="grid-column-start: 2;  grid-column-end: 98">Bossier High School</div>
-
-  <div>Han Solo</div>
-  <div class="bg-blue-500 text-white p-1 rounded" style="grid-column-start: 2; grid-column-end: 50;">Caddo Magnet</div>
-  <div class="bg-green-500 text-white p-1 rounded" style="grid-column-start: 40; grid-column-end: 98;">Bossier Middle School</div>
-
-  <div>Darth Vader</div>
-  <div class="bg-yellow-500 text-white p-1 rounded" style="grid-column-start: 2; grid-column-end: 50;">Texarkana Magnet</div>
-  <div class="bg-purple-500 text-white p-1 rounded" style="grid-column-start: 50; grid-column-end: 98;">Texarkana Middle School</div>
-
