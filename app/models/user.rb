@@ -51,8 +51,12 @@ class User < ApplicationRecord
     SQL
   }
 
-
-
+  scope :daily_schedule_for_techs_by_date, ->(selected_date) {
+      joins("LEFT OUTER JOIN user_service_jobs ON user_service_jobs.user_id = users.id AND user_service_jobs.date = '#{selected_date}'")
+        .joins("LEFT OUTER JOIN service_jobs ON service_jobs.id = user_service_jobs.service_job_id")
+        .select('users.id, users.name, user_service_jobs.id AS user_service_job_id, user_service_jobs.start_time, user_service_jobs.end_time, service_jobs.id AS service_job_id')
+        .where(discarded_at: nil)
+    }
 
   pg_search_scope :search_by_name,
                   against: [:name],
