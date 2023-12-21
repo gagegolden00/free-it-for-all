@@ -127,6 +127,7 @@ GEM
     coderay (1.1.3)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
+    content_disposition (1.0.0)
     crass (1.0.6)
     css_parser (1.16.0)
       addressable
@@ -146,6 +147,8 @@ GEM
       activerecord (>= 4.2, < 8)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    down (5.4.1)
+      addressable (~> 2.8)
     erubi (1.12.0)
     faker (3.2.1)
       i18n (>= 1.8.11, < 2)
@@ -316,6 +319,9 @@ GEM
       sentry-ruby (~> 5.14.0)
     sentry-ruby (5.14.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
+    shrine (3.5.0)
+      content_disposition (~> 1.0)
+      down (~> 5.1)
     sidekiq (7.1.4)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
@@ -398,6 +404,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-rails (~> 5.14)
   sentry-ruby (~> 5.14)
+  shrine (~> 3.5)
   sidekiq (~> 7.1, >= 7.1.4)
   sprockets-rails
   stimulus-rails
