@@ -5,11 +5,11 @@
   controls
 </div>
 
-<div class="overflow-x-scroll p-2 space-y-2" style="display:grid; grid-template-columns: 120px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;">
+<div class="overflow-x-scroll p-2 space-y-2 border" style="display:grid; grid-template-columns: 120px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;">
 
   <div class="border">Technician</div>
 
-  <div class="text-xs font-semibold" style="grid-column-start:2; grid-column-end:6">12am</div>
+  <div class="text-xs font-semibold border" style="grid-column-start:2; grid-column-end:6">12am</div>
   <div class="text-xs font-semibold" style="grid-column-start:6; grid-column-end:10">1am</div>
   <div class="text-xs font-semibold" style="grid-column-start:10; grid-column-end:14">2am</div>
   <div class="text-xs font-semibold" style="grid-column-start:14; grid-column-end:18">3am</div>
@@ -37,8 +37,8 @@
 <% @daily_tech_schedule_data.each do |data| %>
     <div class="border" style="grid-column: 1"><%= data.name %></div>
     <% data.user_service_job_ids.each_with_index do |usj_id, index| %>
-      <div class="bg-red-500 text-white p-1 rounded" style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_times[index]) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_times[index]) %>">
-        
+      <div class="bg-red-500 text-white p-1 rounded border" style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_times[index]) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_times[index]) %>">
+        usj <%= usj_id %>
       </div>
     <% end %>
   <% end %>
