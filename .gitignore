@@ -43,3 +43,6 @@
 # personal notes
 /notes.txt
 /yarn-error.log
+
+#uploaded shrine files
+public/uploads/
