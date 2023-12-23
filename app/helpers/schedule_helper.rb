@@ -7,4 +7,17 @@ module ScheduleHelper
       grid_col_start_value = ((hours * 4) + (minutes / 15) + 2).to_s
     end
   end
+
+  def self.color_list
+    [
+      'bg-gray-500',
+      'bg-red-500',
+      'bg-yellow-500',
+      'bg-green-500',
+      'bg-blue-500',
+      'bg-indigo-500',
+      'bg-purple-500',
+      'bg-pink-500',
+    ]
+  end
 end

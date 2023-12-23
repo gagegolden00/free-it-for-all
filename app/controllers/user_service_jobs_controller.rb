@@ -9,24 +9,24 @@ class UserServiceJobsController < ApplicationController
 
     if @existing_record && !@existing_record.discarded?
       flash[:notice] = "Technician is already assigned"
-      redirect_to service_job_path(params[:service_job_id])
+      redirect_to dynamic_redirect_after_user_service_job_creation_based_on_referer
 
     elsif @existing_record
       flash[:notice] = "Technician has been re-assigned"
       @existing_record.undiscard!
-      redirect_to service_job_path(params[:service_job_id])
+      redirect_to dynamic_redirect_after_user_service_job_creation_based_on_referer
       message = "You have been asigned to #{@service_job.job_number}. \n Log in or visit the link provided for details \n #{service_job_path(@service_job)}"
       UserAssignmentNotification.with(message: message).deliver_later(current_user)
 
     elsif @user_service_job.save
       flash[:notice] = "Technician has been assigned"
-      redirect_to service_job_path(params[:service_job_id])
+      redirect_to dynamic_redirect_after_user_service_job_creation_based_on_referer
       message = "You have been asigned to #{@service_job.job_number}. \n Log in or visit the link provided for details \n #{service_job_path(@service_job)}"
       UserAssignmentNotification.with(message: message).deliver_later(current_user)
 
     else
       flash[:notice] = "Technician could not be assigned"
-      redirect_to service_job_path(params[:service_job_id])
+      redirect_to dynamic_redirect_after_user_service_job_creation_based_on_referer
     end
   end
 
@@ -45,6 +45,18 @@ class UserServiceJobsController < ApplicationController
 
   def user_service_job_params
     params.permit(:service_job_id, :user_id, :date, :start_time, :end_time)
+  end
+
+  def dynamic_redirect_after_user_service_job_creation_based_on_referer
+    if request.referer.include?('schedule')
+      schedule_path
+    elsif request.referer.include?('service_job')
+      service_job_path(params[:service_job_id])
+    else
+      flash.clear
+      flash[:notice] = "Something went wrong"
+      '/'
+    end
   end
 
 end

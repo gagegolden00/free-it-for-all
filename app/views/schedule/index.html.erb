@@ -1,9 +1,24 @@
 <div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
-  <h1 class="text-lg sm:text-xl font-medium text-white">Tech Schedule</h1>
+  <h1 class="text-lg sm:text-xl font-medium text-white">Tech Schedule for <%= content_tag(:span,Date.parse(@selected_date).strftime('%B %d, %Y'), class: "underline") %>
+</h1>
+  <div class="ml-auto">
+    <% if current_user.admin? %>
+      <%= render partial: "shared/assign_tech_modal" %>
+    <% end %>
+  </div>
 </div>
+
 <div class="border border-whiten p-2">
-  controls
+  <div class="flex">
+    <div class="ml-auto">
+      <%= form_tag("/schedule", method: "get") do %>
+        <%= date_field_tag :selected_date, @selected_date, onchange: "this.form.submit()", class: "w-36 h-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block ps-2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+
 <div class="overflow-x-scroll p-2 space-y-2" style="display:grid; grid-template-columns: 180px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;">
   <div class="">Technician</div>
   <div class="text-xs font-semibold" style="grid-column-start:2; grid-column-end:6">12am</div>
@@ -31,22 +46,22 @@
   <div class="text-xs font-semibold" style="grid-column-start:90; grid-column-end:94">10pm</div>
   <div class="text-xs font-semibold" style="grid-column-start:94; grid-column-end:98">11pm</div>
 
+<% current_name = nil %>
+<%= total_colors = ScheduleHelper.color_list.length - 1 %>
+<% color_index  = 0 %>
 
-  <% current_name = nil %>
+<% @daily_tech_schedule_data.each do |data| %>
 
-  <% @daily_tech_schedule_data.each do |data| %>
-
-    <% if current_name != data.name %>
-      <div class="h-7" style="grid-column: 1"><%= data.name %></div>
-      <% current_name = data.name %>
-    <% end %>
-
-    <% unless ScheduleHelper.get_grid_col_value(data.start_time).nil? %>
-      <div class="bg-red-500 h-7 text-white p-1 rounded"
-    style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_time) %>"></div>
-    <% end %>
-
+  <% if current_name != data.name %>
+    <div class="h-7" style="grid-column: 1"><%= data.name %></div>
+    <% current_name = data.name %>
+    <% color_index = (color_index == total_colors) ? 0 : color_index + 1 %>
   <% end %>
 
+  <% unless ScheduleHelper.get_grid_col_value(data.start_time).nil? %>
+    <div class="<%= ScheduleHelper.color_list[color_index]  %> h-7 text-white p-1 rounded"
+        style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_time) %>"></div>
+  <% end %>
 
+<% end %>
 </div>
