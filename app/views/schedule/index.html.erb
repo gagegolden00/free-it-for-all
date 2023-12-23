@@ -46,22 +46,23 @@
   <div class="text-xs font-semibold" style="grid-column-start:90; grid-column-end:94">10pm</div>
   <div class="text-xs font-semibold" style="grid-column-start:94; grid-column-end:98">11pm</div>
 
-<% current_name = nil %>
-<%= total_colors = ScheduleHelper.color_list.length - 1 %>
-<% color_index  = 0 %>
+  <% current_name = nil %>
+  <% total_colors = ScheduleHelper.color_list.length - 1 %>
+  <% color_index  = 0 %>
 
-<% @daily_tech_schedule_data.each do |data| %>
+  <% @daily_tech_schedule_data.each do |data| %>
 
-  <% if current_name != data.name %>
-    <div class="h-7" style="grid-column: 1"><%= data.name %></div>
-    <% current_name = data.name %>
-    <% color_index = (color_index == total_colors) ? 0 : color_index + 1 %>
+    <% if current_name != data.name %>
+      <div class="h-7" style="grid-column: 1"><%= data.name %></div>
+      <% current_name = data.name %>
+      <% color_index = (color_index == total_colors) ? 0 : color_index + 1 %>
+    <% end %>
+
+    <% unless ScheduleHelper.get_grid_col_value(data.start_time).nil? %>
+      <div class="<%= ScheduleHelper.color_list[color_index]  %> h-7 text-white p-1 rounded"
+          style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_time) %>"></div>
+    <% end %>
+
   <% end %>
 
-  <% unless ScheduleHelper.get_grid_col_value(data.start_time).nil? %>
-    <div class="<%= ScheduleHelper.color_list[color_index]  %> h-7 text-white p-1 rounded"
-        style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_time) %>"></div>
-  <% end %>
-
-<% end %>
 </div>
