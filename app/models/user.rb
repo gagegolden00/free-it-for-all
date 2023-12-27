@@ -52,16 +52,14 @@ class User < ApplicationRecord
 
   scope :daily_schedule_for_techs_by_date, lambda { |selected_date|
   find_by_sql([<<-SQL, { selected_date: selected_date }])
-    SELECT users.*, user_service_jobs.*, service_jobs.*
+    SELECT users.*, user_service_jobs.*, service_jobs.*, user_service_jobs.id AS user_service_job_id
     FROM users
-    LEFT OUTER JOIN user_service_jobs ON users.id = user_service_jobs.user_id
+    LEFT OUTER JOIN user_service_jobs ON users.id = user_service_jobs.user_id AND user_service_jobs.date = :selected_date
     LEFT OUTER JOIN service_jobs ON user_service_jobs.service_job_id = service_jobs.id
-    WHERE user_service_jobs.date = :selected_date
-      AND users.role = 'technician'
+    WHERE users.role = 'technician'
     ORDER BY users.name ASC, user_service_jobs.start_time;
   SQL
 }
-
 
   pg_search_scope :search_by_name,
                   against: [:name],

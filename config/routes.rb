@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :purchase_orders
   end
 
-  resources :user_service_jobs, only: %i[create destroy]
+  resources :user_service_jobs, only: %i[create destroy update]
 
   get "time_sheets", to: 'time_sheets#index', as: :time_sheets
   get "time_sheet/:user_id", to: 'time_sheets#show', as: :time_sheet

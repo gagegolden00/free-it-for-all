@@ -1,13 +1,12 @@
 <div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
   <h1 class="text-lg sm:text-xl font-medium text-white">Tech Schedule for <%= content_tag(:span,Date.parse(@selected_date).strftime('%B %d, %Y'), class: "underline") %>
-</h1>
+  </h1>
   <div class="ml-auto">
     <% if current_user.admin? %>
       <%= render partial: "shared/assign_tech_modal" %>
     <% end %>
   </div>
 </div>
-
 <div class="border border-whiten p-2">
   <div class="flex">
     <div class="ml-auto">
@@ -17,8 +16,6 @@
     </div>
   </div>
 </div>
-
-
 <div class="overflow-x-scroll p-2 space-y-2" style="display:grid; grid-template-columns: 180px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;">
   <div class="">Technician</div>
   <div class="text-xs font-semibold" style="grid-column-start:2; grid-column-end:6">12am</div>
@@ -45,24 +42,25 @@
   <div class="text-xs font-semibold" style="grid-column-start:86; grid-column-end:90">9pm</div>
   <div class="text-xs font-semibold" style="grid-column-start:90; grid-column-end:94">10pm</div>
   <div class="text-xs font-semibold" style="grid-column-start:94; grid-column-end:98">11pm</div>
-
   <% current_name = nil %>
   <% total_colors = ScheduleHelper.color_list.length - 1 %>
   <% color_index  = 0 %>
-
   <% @daily_tech_schedule_data.each do |data| %>
-
     <% if current_name != data.name %>
       <div class="h-7" style="grid-column: 1"><%= data.name %></div>
       <% current_name = data.name %>
       <% color_index = (color_index == total_colors) ? 0 : color_index + 1 %>
     <% end %>
-
     <% unless ScheduleHelper.get_grid_col_value(data.start_time).nil? %>
       <div class="<%= ScheduleHelper.color_list[color_index]  %> h-7 text-white p-1 rounded"
-          style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_time) %>"></div>
+          style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_time) %>">
+        <%= link_to "#{data.job_number}", schedule_path(user_service_job_id: data.user_service_job_id, display_modal: "true"), data: {turbo_stream: true} %>
+      </div>
     <% end %>
-
   <% end %>
+
+  <turbo_frame id="scheduleDetials">
+
+  </turbo_frame>
 
 </div>
