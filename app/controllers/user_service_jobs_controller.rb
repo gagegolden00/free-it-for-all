@@ -54,6 +54,7 @@ class UserServiceJobsController < ApplicationController
 
   def update
     @user_service_job = UserServiceJob.find(params[:id])
+    authorize @user_service_job
     if @user_service_job.update!(update_user_service_job_params)
       flash[:notice] = "Schedule successfully updated"
       redirect_to schedule_path
