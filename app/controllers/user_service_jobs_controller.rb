@@ -16,7 +16,9 @@ class UserServiceJobsController < ApplicationController
       @existing_record.undiscard!
       redirect_to dynamic_redirect_after_user_service_job_creation_based_on_referer
       message = "You have been asigned to #{@service_job.job_number}. \n Log in or visit the link provided for details \n #{service_job_path(@service_job)}"
-      UserAssignmentNotification.with(message: message).deliver_later(current_user)
+      @notification = UserAssignmentNotification.with(message: message)
+      authorize @notification
+      @notification.deliver_later(current_user)
 
     elsif @user_service_job.save
       flash[:notice] = "Technician has been assigned"
@@ -24,6 +26,10 @@ class UserServiceJobsController < ApplicationController
       message = "You have been asigned to #{@service_job.job_number}. \n Log in or visit the link provided for details \n #{service_job_path(@service_job)}"
       UserAssignmentNotification.with(message: message).deliver_later(current_user)
 
+      message = "You have been asigned to #{@service_job.job_number}. \n Log in or visit the link provided for details \n #{service_job_path(@service_job)}"
+      @notification = UserAssignmentNotification.with(message: message).deliver_later(current_user)
+      authorize @notification
+      @notification
     else
       flash[:notice] = "Technician could not be assigned"
       redirect_to dynamic_redirect_after_user_service_job_creation_based_on_referer
@@ -33,12 +39,17 @@ class UserServiceJobsController < ApplicationController
   def destroy
     @user_service_job = UserServiceJob.find_by(user_id: params[:user_id], service_job_id: params[:id])
     @service_job = ServiceJob.find(params[:service_job_id])
+
     authorize @user_service_job
+
     return unless @user_service_job.discard
     flash[:notice] = "Technician has been unassigned"
     redirect_to service_job_path(params[:service_job_id])
+
     message = "You have been unasigned from #{@service_job.job_number}."
-    UserAssignmentNotification.with(message: message).deliver_later(current_user)
+    @notification = UserAssignmentNotification.with(message: message)
+    authorize @notification
+    @notification.deliver_later(current_user)
   end
 
   def update

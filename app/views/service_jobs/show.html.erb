@@ -5,6 +5,7 @@
   </div>
 
   <div class="flex flex-row flex-wrap gap-2 ml-auto">
+    <%= link_to "Images", service_job_images_path(@service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
     <%= link_to "Job Details", service_job_path(@service_job), class: "w-36 text-center text-gray-50 border-2 p-2 bg-white text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
     <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
   </div>

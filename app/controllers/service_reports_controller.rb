@@ -48,13 +48,16 @@ class ServiceReportsController < ApplicationController
   end
 
   def update
+    authorize @service_report
     @service_report_materials = ServiceReport.materials_used(@service_report)
 
     # this seems fragile/incomplete | check services and methods for error handling
     unless params[:service_report][:employee_signature].present? || params[:service_report][:customer_signature].present?
       @existing_materials_by_id = @service_report.service_report_materials.index_by(&:material_id) if @service_report
+
       time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
       filtered_params = filter_material_params(time_converted_params)
+
       if @service_report.update(filtered_params)
         flash[:notice] = 'Service report updated'
         redirect_to service_job_service_report_path(@service_job, @service_report)
@@ -64,7 +67,6 @@ class ServiceReportsController < ApplicationController
       end
     end
 
-    # handle signatures
     if params[:service_report][:employee_signature].present? && !params[:service_report][:employee_signature].blank?
       create_employee_signature
       return

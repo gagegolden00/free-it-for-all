@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :service_jobs do
     resources :service_reports
     resources :purchase_orders
+    resources :images, controller: 'service_job_images'
   end
 
   resources :user_service_jobs, only: %i[create destroy update]
