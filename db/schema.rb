@@ -54,8 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_153633) do
     t.string "type", null: false
     t.jsonb "params"
     t.timestamptz "read_at", precision: 6
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
