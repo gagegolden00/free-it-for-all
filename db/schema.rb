@@ -227,8 +227,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_194011) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.timestamptz "reset_password_sent_at", precision: 6
-    t.timestamptz "remember_created_at", precision: 6
+    t.timestamptz "reset_password_sent_at"
+    t.timestamptz "remember_created_at"
     t.timestamptz "created_at", null: false
     t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
