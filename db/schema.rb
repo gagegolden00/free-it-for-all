@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_194011) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_194011) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
-    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -82,8 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_194011) do
     t.string "type", null: false
     t.jsonb "params"
     t.timestamptz "read_at", precision: 6
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
