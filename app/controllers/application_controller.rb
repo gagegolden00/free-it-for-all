@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   include Pundit::Authorization
   include Pagy::Backend
   before_action :authenticate_user!
@@ -10,7 +9,4 @@ class ApplicationController < ActionController::Base
   def skip_verify_authorized?
     is_a?(DeviseController)
   end
-
-
-
 end

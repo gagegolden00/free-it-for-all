@@ -1,4 +1,5 @@
 class PurchaseOrdersController < ApplicationController
+  layout 'application_full'
 
   before_action :set_purchase_order_from_params, only: %i[show edit update destroy]
   before_action :set_service_job_from_params
