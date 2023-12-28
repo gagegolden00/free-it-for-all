@@ -17,7 +17,6 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true
 
-  # This makes sure discarded users cant login
   default_scope -> { kept }
 
   scope :only_admins, lambda {
@@ -56,7 +55,7 @@ class User < ApplicationRecord
     FROM users
     LEFT OUTER JOIN user_service_jobs ON users.id = user_service_jobs.user_id AND user_service_jobs.date = :selected_date
     LEFT OUTER JOIN service_jobs ON user_service_jobs.service_job_id = service_jobs.id
-    WHERE users.role = 'technician'
+    WHERE users.role = 'technician' AND user_service_jobs.discarded_at IS NULL
     ORDER BY users.name ASC, user_service_jobs.start_time;
   SQL
 }
