@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_20_153633) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_28_221029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -54,8 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_153633) do
     t.string "type", null: false
     t.jsonb "params"
     t.timestamptz "read_at", precision: 6
-    t.timestamptz "created_at", null: false
-    t.timestamptz "updated_at", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
@@ -191,7 +191,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_153633) do
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_user_service_jobs_on_discarded_at"
     t.index ["service_job_id"], name: "index_user_service_jobs_on_service_job_id"
-    t.index ["user_id", "service_job_id"], name: "index_user_service_jobs_on_user_id_and_service_job_id", unique: true
     t.index ["user_id"], name: "index_user_service_jobs_on_user_id"
   end
 
