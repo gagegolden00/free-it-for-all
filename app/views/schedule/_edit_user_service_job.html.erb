@@ -1,0 +1,16 @@
+<%= form_with(model: @user_service_job, url: user_service_job_path(@user_service_job), data: {turbo: false}) do |form| %>
+  <div>
+    <%= form.label :techs, class: "mt-3 block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= form.select :user_id, options_for_select(@technician_users.map { |tech| [tech.name, tech.id] }), {}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  %>
+    <%= form.label :date, class: "mt-3 block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= form.date_field :date, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+    <%= form.label :start_time, class: "mt-3 block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= form.time_field :start_time, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+    <%= form.label :end_time, class: "mt-3 block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= form.time_field :end_time, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+  </div>
+  <div class="mt-4 flex justify-end flex-col">
+    <%= form.submit "Update", class: "hover:cursor-pointer flex justify-center text-center items-center w-full inline-flex py-2.5 px-5 my-2 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+    <%= button_to "Unassign tech", user_service_job_path(@user_service_job, service_job_id: @service_job.id), method: :delete, data: { turbo: false }, class: "hover:cursor-pointer flex justify-center text-center items-center w-full inline-flex py-2.5 px-5 my-2 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
+  </div>
+<% end %>
