@@ -146,9 +146,9 @@ class ServiceJobsController < ApplicationController
     when 'job_number desc'
       'job_number desc'
     when 'created_at asc'
-      'created_at asc'
-    when 'created_at desc'
       'created_at desc'
+    when 'created_at desc'
+      'created_at asc'
     end
   end
 
