@@ -6,6 +6,7 @@ class PurchaseOrdersController < ApplicationController
 
   def new
     @purchase_order = PurchaseOrder.new
+    authorize @purchase_order
   end
 
   def create
