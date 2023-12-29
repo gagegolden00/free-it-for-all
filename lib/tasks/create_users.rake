@@ -38,7 +38,7 @@ namespace :populate_db do
       name = Faker::Name.name
       User.create!(
         role: 'admin',
-        name: name + " - admin",
+        name: name,
         home_phone: Faker::PhoneNumber.phone_number,
         work_phone: Faker::PhoneNumber.phone_number,
         carrier: Faker::Name.name,
@@ -57,7 +57,7 @@ namespace :populate_db do
       name = Faker::Name.name
       User.create!(
         role: 'technician',
-        name: name + " - technician",
+        name: name,
         home_phone: Faker::PhoneNumber.phone_number,
         work_phone: Faker::PhoneNumber.phone_number,
         carrier: Faker::Name.name,

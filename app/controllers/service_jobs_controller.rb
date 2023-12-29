@@ -59,10 +59,9 @@ class ServiceJobsController < ApplicationController
       authorize @service_jobs
     end
 
-
   def show
     @technician_users = User.only_technicians
-    @active_users = @service_job.active_users
+    @active_users = UserServiceJob.active_users_for_service_job(@service_job.id)
   end
 
   def edit
@@ -171,7 +170,6 @@ class ServiceJobsController < ApplicationController
       [ 'Open', 'Assigned', 'In progress', 'On hold', 'Waiting on parts', 'Completed' ]
     end
   end
-
 
   def service_job_index_params
     params.permit(:sort_by)
