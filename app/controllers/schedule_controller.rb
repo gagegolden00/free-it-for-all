@@ -19,7 +19,6 @@ class ScheduleController < ApplicationController
       return
     end
 
-
   end
 
   private
@@ -39,7 +38,7 @@ class ScheduleController < ApplicationController
   def hide_service_job_detials
     respond_to do |format|
       format.html
-      format.turbo_stream { render turbo_stream: turbo_stream.replace('defaultModal', partial: 'blank_partial') }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('scheduleDetailsModal', partial: 'blank_partial') }
     end
   end
 
