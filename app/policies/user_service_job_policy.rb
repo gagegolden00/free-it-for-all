@@ -14,4 +14,8 @@ class UserServiceJobPolicy < ApplicationPolicy
     user.admin?
   end
 
+  def update?
+    user.admin?
+  end
+
 end

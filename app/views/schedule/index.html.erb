@@ -1,0 +1,66 @@
+<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
+  <h1 class="text-lg sm:text-xl font-medium text-white">Tech Schedule for <%= content_tag(:span,Date.parse(@selected_date).strftime('%B %d, %Y'), class: "underline") %>
+  </h1>
+  <div class="ml-auto">
+    <% if current_user.admin? %>
+      <%= render partial: "shared/assign_tech_modal" %>
+    <% end %>
+  </div>
+</div>
+<div class="p-2">
+  <div class="flex">
+    <div class="ml-auto mr-1">
+      <%= form_tag("/schedule", method: "get") do %>
+        <%= date_field_tag :selected_date, @selected_date, onchange: "this.form.submit()", class: "w-36 h-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block ps-2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="overflow-x-scroll p-2 space-y-2" style="display:grid; grid-template-columns: 180px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;">
+  <div class="">Technician</div>
+  <div class="text-xs font-semibold" style="grid-column-start:2; grid-column-end:6">12am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:6; grid-column-end:10">1am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:10; grid-column-end:14">2am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:14; grid-column-end:18">3am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:18; grid-column-end:22">4am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:22; grid-column-end:26">5am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:26; grid-column-end:30">6am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:30; grid-column-end:34">7am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:34; grid-column-end:38">8am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:38; grid-column-end:42">9am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:42; grid-column-end:46">10am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:46; grid-column-end:50">11am</div>
+  <div class="text-xs font-semibold" style="grid-column-start:50; grid-column-end:54">12pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:54; grid-column-end:58">1pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:58; grid-column-end:62">2pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:62; grid-column-end:66">3pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:66; grid-column-end:70">4pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:70; grid-column-end:74">5pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:74; grid-column-end:78">6pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:78; grid-column-end:82">7pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:82; grid-column-end:86">8pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:86; grid-column-end:90">9pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:90; grid-column-end:94">10pm</div>
+  <div class="text-xs font-semibold" style="grid-column-start:94; grid-column-end:98">11pm</div>
+  <% current_name = nil %>
+  <% total_colors = ScheduleHelper.color_list.length - 1 %>
+  <% color_index  = 0 %>
+  <% @daily_tech_schedule_data.each do |data| %>
+    <% if current_name != data.name %>
+      <div class="h-7" style="grid-column: 1"><%= data.name %></div>
+      <% current_name = data.name %>
+      <% color_index = (color_index == total_colors) ? 0 : color_index + 1 %>
+    <% end %>
+    <% unless ScheduleHelper.get_grid_col_value(data.start_time).nil? %>
+      <div class="<%= ScheduleHelper.color_list[color_index]  %> h-7 text-white p-1 rounded"
+          style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_time) %>">
+        <%= link_to "#{data.job_number}", schedule_path(user_service_job_id: data.user_service_job_id, display_modal: "true"), data: {turbo_stream: true} %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <turbo_frame id="scheduleDetials">
+
+  </turbo_frame>
+
+</div>

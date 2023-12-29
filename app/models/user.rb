@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   has_many :user_service_jobs
   has_many :service_jobs, through: :user_service_jobs
   has_many :service_reports, through: :service_jobs
@@ -18,18 +17,17 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true
 
-  # This makes sure discarded users cant login
   default_scope -> { kept }
 
-  scope :only_admins, -> {
+  scope :only_admins, lambda {
     where(role: 'admin')
   }
 
-  scope :only_technicians, -> {
+  scope :only_technicians, lambda {
     where(role: 'technician')
   }
 
-  scope :all_with_time_log_totals_in_time_period, ->(start_date, end_date, order) {
+  scope :all_with_time_log_totals_in_time_period, lambda { |start_date, end_date, order|
     find_by_sql([<<-SQL, start_date, end_date])
       SELECT
         users.id AS user_id,
@@ -51,13 +49,20 @@ class User < ApplicationRecord
     SQL
   }
 
-
-
+  scope :daily_schedule_for_techs_by_date, lambda { |selected_date|
+  find_by_sql([<<-SQL, { selected_date: selected_date }])
+    SELECT users.*, user_service_jobs.*, service_jobs.*, user_service_jobs.id AS user_service_job_id
+    FROM users
+    LEFT OUTER JOIN user_service_jobs ON users.id = user_service_jobs.user_id AND user_service_jobs.date = :selected_date
+    LEFT OUTER JOIN service_jobs ON user_service_jobs.service_job_id = service_jobs.id
+    WHERE users.role = 'technician' AND user_service_jobs.discarded_at IS NULL
+    ORDER BY users.name ASC, user_service_jobs.start_time;
+  SQL
+}
 
   pg_search_scope :search_by_name,
                   against: [:name],
                   using: {
                     tsearch: { prefix: true, dictionary: 'english' }
                   }
-
 end
