@@ -54,7 +54,7 @@
     <% unless ScheduleHelper.get_grid_col_value(data.start_time).nil? %>
       <div class="<%= ScheduleHelper.color_list[color_index]  %> h-7 text-white p-1 rounded"
           style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_time) %>">
-        <%= link_to "#{data.job_number}", schedule_path(user_service_job_id: data.user_service_job_id, display_modal: "true"), data: {turbo_stream: true} %>
+        <%= link_to "#{data.customer_name}", schedule_path(user_service_job_id: data.user_service_job_id, display_modal: "true"), data: {turbo_stream: true} %>
       </div>
     <% end %>
   <% end %>
