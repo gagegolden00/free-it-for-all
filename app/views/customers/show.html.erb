@@ -32,45 +32,51 @@
   </div>
 </section>
 
-<div class="w-full flex justify-between mt-20 pl-4 pr-4">
-  <div class="">
-    <label class=" text-sm font-semibold text-center">Customer's service job list</label>
-  </div>
-
-  <div class="w-40 flex">
-  <%= form_with(path: customer_path(@customer), method: 'get') do %>
-    <div class="relative w-full sm:w-auto rounded overflow-visible h-9 text-center items-center flex justify-center">
-      <%= select_tag 'filter_by',
-      options_for_select(
-        [["All statuses", ''],
-        *ServiceJobStatusListHelper.service_job_statuses],
-        selected: params[:filter_by],
-      ),
-      onchange: 'this.form.submit()',
-      class: 'hover:cursor-pointer block w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-    %>
+  <div class="w-full flex justify-between mt-20 pl-4 pr-4">
+    <div class="">
+      <label class=" text-sm font-semibold text-center">Customer's service job list</label>
     </div>
-  <% end %>
+
+    <div class="w-40 flex">
+    <%= form_with(path: customer_path(@customer), method: 'get') do %>
+      <div class="relative w-full sm:w-auto rounded overflow-visible h-9 text-center items-center flex justify-center">
+        <%= select_tag 'filter_by',
+        options_for_select(
+          [["All statuses", ''],
+          *ServiceJobStatusListHelper.service_job_statuses],
+          selected: params[:filter_by],
+        ),
+        onchange: 'this.form.submit()',
+        class: 'hover:cursor-pointer block w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
+      %>
+      </div>
+    <% end %>
+    </div>
   </div>
-</div>
 
 <section id="customer-service-job-list">
   <div class="border rounded-md border-gray-300 dark:border-gray-600 m-4">
     <% unless @customer_service_jobs.empty? %>
-      <div class="grid grid-cols-5 gap-4 p-2">
-        <div class="col-span-1 px-4 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Job number</div>
-        <div class="col-span-1 px-4 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Status</div>
-        <div class="col-span-1 px-4 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Description</div>
-        <div class="col-span-1 px-4 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Work site</div>
+      <div class="grid grid-cols-5 p-2">
+        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Job number</div>
+        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Status</div>
+        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Client name</div>
+        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Work site</div>
+        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600"></div>
         <% @customer_service_jobs.each do |service_job| %>
-          <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.job_number  %></div>
-          <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.status.capitalize.gsub("_", " ") %></div>
-          <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.description %></div>
+          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.job_number  %></div>
+          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.status.capitalize.gsub("_", " ") %></div>
+          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.customer.name %></div>
           <% unless service_job.work_site.nil? %>
-            <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.work_site.name  %></div>
+            <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.work_site.name  %></div>
           <% else %>
-            <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600"></div>
+            <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600"></div>
           <% end %>
+          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm">
+            <%= link_to "View Job", service_job_path(service_job.id), class: "inline-flex py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
+
+          </div>
+
         <% end %>
       </div>
     <% end %>
