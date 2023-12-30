@@ -9,14 +9,12 @@ class CustomersController < ApplicationController
     @customer = Customer.new
     @point_of_contact = @customer.build_point_of_contact
     authorize @customer
-    authorize @point_of_contact
-    @point_of_contact
   end
 
   def create
     @customer = Customer.new(customer_params)
     @point_of_contact = @customer.point_of_contact
-    authorize @point_of_contact
+    authorize @customer
     if @customer.save
       flash[:notice] = 'Customer created'
       redirect_to customer_path(@customer)
