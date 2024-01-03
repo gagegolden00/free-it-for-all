@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   layout 'application_full'
+  include ServiceJobStatusListHelper
 
   before_action :set_customer_from_params, only: %i[show edit update destroy]
   before_action :set_all_regions, only: %i[edit update new create]
@@ -25,7 +26,13 @@ class CustomersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    if params[:filter_by].present?
+      @customer_service_jobs = @customer.service_jobs.includes(:work_site).where(status: get_status_filters)
+    else
+      @customer_service_jobs = @customer.service_jobs.includes(:work_site)
+    end
+  end
 
   def index
     @pagy, @customers = if search_present_and_not_empty_and_no_sort_by?
@@ -103,6 +110,25 @@ class CustomersController < ApplicationController
       'name asc'
     when 'name desc'
       'name desc'
+    end
+  end
+
+  def get_status_filters
+    case params[:filter_by]
+    when 'Open'
+      'Open'
+    when 'Assigned'
+      'Assigned'
+    when 'In Progress'
+      'In progress'
+    when 'On Hold'
+      'On hold'
+    when 'Waiting on Parts'
+      'Waiting on parts'
+    when 'Completed'
+      'Completed'
+    else
+      [ 'Open', 'Assigned', 'In progress', 'On hold', 'Waiting on parts', 'Completed' ]
     end
   end
 
