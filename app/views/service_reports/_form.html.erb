@@ -1,5 +1,5 @@
 <div class="border-0">
-  <%= form_with(model: @service_report, url: path, turbo: false) do |service_report_field| %>
+  <%= form_with(model: @service_report, url: path, data: {turbo: false}) do |service_report_field| %>
     <section id="first-section" class="px-2 md:px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
       <div>
         <p><strong>Customer Name:</strong> <%= @service_job.customer.name %></p>
