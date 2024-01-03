@@ -34,7 +34,7 @@ class UserServiceJobsController < ApplicationController
     if request.referer.include?('schedule')
       schedule_path
     elsif request.referer.include?('service_job')
-      service_job_path(params[:user_service_job][:service_job_id])
+      service_job_path(params[:service_job_id])
     else
       flash.clear
       flash[:notice] = "Something went wrong"
