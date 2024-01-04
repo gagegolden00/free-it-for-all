@@ -16,8 +16,6 @@ class UserServiceJob < ApplicationRecord
   private
 
   def start_time_before_end_time
-    puts start_time
-    puts end_time
     return if start_time && end_time && !start_time.after?(end_time)
     errors.add(:base, 'The start time must be before the end time for any given day')
   end
