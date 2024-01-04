@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://unpkg.com/slim-select@latest/dist/slimselect.css" />
 <link rel="stylesheet" href="/assets/slim_select_override.css">
 <section class="flex flex-col p-2 sm:p-4 border m-2 md:m-4 lg:mx-auto rounded-md bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500 max-w-3xl">
-  <%= form_with model: @service_job, url: path, data: {turbo: false}, clsss: "flex-flex-col" do |service_job_field| %>
+  <%= form_with model: @service_job, url: path, data: {turbo: false}, class: "flex-flex-col" do |service_job_field| %>
     <div class="flex flex-col justify-center gap-6">
       <div id="serviceJobFields" class="flex flex-col gap-2">
         <p class="font-semibold text-lg mt-1 mb-2">Job Information</p>
@@ -9,7 +9,7 @@
         <%= service_job_field.label :job_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.text_field :job_number, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :status, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-        <%= service_job_field.select :status, required: true, options_for_select(ServiceJobStatusListHelper.service_job_statuses), {}, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        <%= service_job_field.select :status, options_for_select(ServiceJobStatusListHelper.service_job_statuses), {}, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :description, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.text_area :description, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :contract_amount, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
