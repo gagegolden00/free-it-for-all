@@ -1,5 +1,5 @@
 <div class="border-0">
-  <%= form_with(model: @service_report, url: path, turbo: false) do |service_report_field| %>
+  <%= form_with(model: @service_report, url: path, data: {turbo: false}) do |service_report_field| %>
     <section id="first-section" class="px-2 md:px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
       <div>
         <p><strong>Customer Name:</strong> <%= @service_job.customer.name %></p>
@@ -169,7 +169,7 @@
         <span>###</span>
       </div>
     </div>
-    <%= service_report_field.submit class: "rounded-md block m-4 text-center mx-auto text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+    <%= service_report_field.submit data: {turbo: false, disable_with: false}, class: "rounded-md block m-4 text-center mx-auto text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 hover:cursor-pointer" %>
   </section>
 <% end %>
 </div>
