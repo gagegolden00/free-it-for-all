@@ -1,5 +1,5 @@
 <div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
-  <h1 class="text-lg sm:text-xl font-medium text-white">Tech Schedule for <%= content_tag(:span,Date.parse(@selected_date).strftime('%B %d, %Y'), class: "underline") %>
+  <h1 class="text-lg sm:text-xl font-medium text-white">Tech Schedule for <%= content_tag(:span, Date.parse(@selected_date).strftime('%B %d, %Y'), class: "underline") %>
   </h1>
   <div class="ml-auto">
     <% if current_user.admin? %>
@@ -7,6 +7,39 @@
     <% end %>
   </div>
 </div>
+
+<% if @user_service_job_errors.present? %>
+  <div
+    id="alert-user-service-job-errors"
+    data-controller="alert-component"
+    class="flex items-center justify-center w-full p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+    role="alert"
+  >
+    <svg class="flex-shrink-0 inline w-4 h-4 mr-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+    </svg>
+    <div class="w-full">
+      <span class="font-medium">
+        <%= I18n.t("errors.messages.not_saved",
+          count: @user_service_job_errors.count,
+          resource: 'User Service Job')
+        %>
+      </span>
+      <ul class="mt-1.5 ml-4 list-disc list-inside">
+        <% @user_service_job_errors.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <button type="button" class="-mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-user-service-job-errors" aria-label="Close">
+      <span class="sr-only">Dismiss</span>
+      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+      </svg>
+    </button>
+  </div>
+<% end %>
+
 <div class="p-2">
   <div class="flex">
     <div class="ml-auto mr-1">
@@ -58,9 +91,6 @@
       </div>
     <% end %>
   <% end %>
-
   <turbo_frame id="scheduleDetials">
-
   </turbo_frame>
-
 </div>
