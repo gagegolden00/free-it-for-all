@@ -17,7 +17,7 @@ class ServiceReportsController < ApplicationController
   def create
     time_converted_params = ServiceReportTimeConverterService.call(service_report_params)
     filtered_params = filter_material_params(time_converted_params)
-    @service_report = ServiceReport.create!(filtered_params)
+    @service_report = ServiceReport.new(filtered_params)
     authorize @service_report
     if @service_report.save
       flash[:notice] = 'Service report created'
@@ -77,7 +77,6 @@ class ServiceReportsController < ApplicationController
       return
     end
   end
-
 
   def destroy
     authorize @service_report
