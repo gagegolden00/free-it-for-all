@@ -7,9 +7,9 @@
         <p class="font-semibold text-lg mt-1 mb-2">Job Information</p>
 
         <%= service_job_field.label :job_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-        <%= service_job_field.text_field :job_number, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        <%= service_job_field.text_field :job_number, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :status, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-        <%= service_job_field.select :status, options_for_select(ServiceJobStatusListHelper.service_job_statuses), {}, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        <%= service_job_field.select :status, required: true, options_for_select(ServiceJobStatusListHelper.service_job_statuses), {}, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :description, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.text_area :description, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :contract_amount, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
@@ -39,7 +39,7 @@
         <p class="font-semibold text-lg mt-1 mb-2">Customer Information</p>
         <%= service_job_field.fields_for :customer do |customer_field|%>
           <%= customer_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= customer_field.text_field :name, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+          <%= customer_field.text_field :name,required: true,class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
           <%= customer_field.label :phone_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= customer_field.telephone_field :phone_number, type: 'tel', class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
           <%= customer_field.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
@@ -57,7 +57,7 @@
             <p class="font-semibold text-lg mt-1 mb-2">Point of Contact Information</p>
             <%= customer_field.fields_for :point_of_contact do |point_of_contact_field| %>
               <%= point_of_contact_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-              <%= point_of_contact_field.text_field :name, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+              <%= point_of_contact_field.text_field :name, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
 
               <%= point_of_contact_field.label :phone_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
               <%= point_of_contact_field.telephone_field :phone_number, type: 'tel', class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
@@ -81,7 +81,7 @@
         <p class="font-semibold text-lg mt-1 mb-2">Work Site Information</p>
         <%= service_job_field.fields_for :work_site do |work_site_field| %>
           <%= work_site_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= work_site_field.text_field :name, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+          <%= work_site_field.text_field :name, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
 
           <%= work_site_field.label :address, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= work_site_field.text_field :address, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
