@@ -105,7 +105,7 @@
         <% end %>
       </div>
     </section>
-    <section id="third-section" class="border border-green-400 my-4">
+    <section id="third-section" class="my-4 mx-2 md:mx-4 grid grid-cols-2 gap-2 md:gap-4">
       <!-- these fields are not on the service report form but are attributes defined in the mock db -->
       <!-- the real question is if we're doing all of the calculations or are they calculating and then inputting? -->
       <%= service_report_field.label :mischarge, class: "hidden" %>
@@ -114,10 +114,11 @@
       <%= service_report_field.text_field :total_charge, class: "hidden" %>
       <!-- -->
       <div>
-        <%= service_report_field.label :work_description %>
-        <%= service_report_field.text_area :description, class: "w-80"%>
+        <%= service_report_field.submit data: {turbo: false, disable_with: false}, class: "rounded-md block m-4 text-center mx-auto text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 hover:cursor-pointer" %>
+        <%= service_report_field.label :work_description, class: "font-bold mb-2" %><br />
+        <%= service_report_field.text_area :description, class: "w-full border-2 rounded-md bg-white dark:bg-gray-800 p-2 md:p-4"%>
       </div>
-      <div class="grid grid-cols-1 gap-4">
+      <div class="grid grid-cols-1 gap-4 items-start">
         <div class="flex items-center">
           <div class="w-1/5">QTY</div>
           <div class="w-2/5">Description</div>
@@ -143,33 +144,32 @@
         <% end %>
       </div>
     </div>
-    <div class="border border-black w-full h-14 flex justify-around items-center">
-      <div class="border border-black">
-        <h2>Total Hours</h2>
+    <div class="mx-2 md:mx-4 py-2 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 justify-around text-center bg-gray-200 gap-2">
+      <div>
+        <h2 class="font-bold">Total Hours</h2>
         <span>###</span>
       </div>
-      <div class="border border-black">
-        <h2>Total Parts</h2>
+      <div>
+        <h2 class="font-bold">Total Parts</h2>
         <span>###</span>
       </div>
-      <div class="border border-black">
-        <h2>Total Misc</h2>
+      <div>
+        <h2 class="font-bold">Total Misc</h2>
         <span>###</span>
       </div>
-      <div class="border border-black">
-        <h2>Mileage/Shipping</h2>
+      <div>
+        <h2 class="font-bold">Mileage/Shipping</h2>
         <span>###</span>
       </div>
-      <div class="border border-black">
-        <h2>Tax</h2>
+      <div>
+        <h2 class="font-bold">Tax</h2>
         <span>###</span>
       </div>
-      <div class="border border-black">
-        <h2>Total</h2>
+      <div>
+        <h2 class="font-bold">Total</h2>
         <span>###</span>
       </div>
     </div>
-    <%= service_report_field.submit %>
   </section>
 <% end %>
 </div>
