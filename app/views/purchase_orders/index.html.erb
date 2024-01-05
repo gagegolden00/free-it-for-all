@@ -10,7 +10,11 @@
     <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
   </div>
 </div>
-<div class="grid grid-cols-3 gap-4">
+<div class="flex flex-wrap p-2 sm:p-4">
+  <!-- TODO need to fix this path helper and label -->
+  <%= link_to "New Purchase Order", new_service_job_purchase_order_path(service_job_id: @service_job), class: "whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4">
   <% @purchase_orders.each do |purchase_order| %>
     <div class="border border-gray-300 rounded-md p-4">
       <p><strong>Purchase Order Number:</strong> <%= purchase_order.purchase_order_number %></p>
@@ -19,7 +23,6 @@
       <p><strong>Description:</strong> <%= purchase_order.description %></p>
       <p><strong>Price:</strong> <%= format_price(purchase_order.price) %></p>
       <p><strong>Total Price:</strong> <%= format_price(purchase_order.total_price) %></p>
-      <p><strong>Service Report ID:</strong> <%= purchase_order.service_report_id %></p>
       <p><%= link_to 'View purchase order', service_job_purchase_order_path(@service_job, purchase_order, service_report_id: @service_report) %></p>
     </div>
   <% end %>
