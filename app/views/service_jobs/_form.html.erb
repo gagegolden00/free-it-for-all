@@ -2,28 +2,25 @@
 <link rel="stylesheet" href="/assets/slim_select_override.css">
 <section class="flex flex-col p-2 sm:p-4 border m-2 md:m-4 lg:mx-auto rounded-md bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500 max-w-3xl">
   <%= form_with model: @service_job, url: path, data: {turbo: false}, class: "flex-flex-col" do |service_job_field| %>
-    <div class="flex flex-col justify-center gap-6">
-      <div id="serviceJobFields" class="flex flex-col gap-2">
-        <p class="font-semibold text-lg mt-1 mb-2">Job Information</p>
-
+    <div class="flex flex-col justify-center">
+      <div id="serviceJobFields" class="flex flex-col">
+        <p class="font-semibold text-lg">Job Information</p>
         <%= service_job_field.label :job_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-        <%= service_job_field.text_field :job_number, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        <%= service_job_field.text_field :job_number,  class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :status, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-        <%= service_job_field.select :status, options_for_select(ServiceJobStatusListHelper.service_job_statuses), {}, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        <%= service_job_field.select :status, options_for_select(ServiceJobStatusListHelper.service_job_statuses), {},  class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :description, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.text_area :description, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :contract_amount, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.number_field :contract_amount, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :work_type, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.text_field :work_type, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-
-        <fieldset id="customerSelect" class="flex flex-col mb-4">
+        <fieldset id="customerSelect" class="flex flex-col">
           <%= service_job_field.label :select_customer, class: "block text-sm font-medium text-gray-900 dark:text-white mb-2" %>
           <%= service_job_field.select :customer_id,
           options_for_select(@customers.map { |customer| [customer.name, customer.id] }), {}, id: "selectElement", data: { controller: "slim-select" } %>
         </fieldset>
-
-        <div data-controller="toggle-hidden change-text" class="mt-2">
+        <div data-controller="toggle-hidden change-text" class="">
           <button
             data-action="click->toggle-hidden#toggleVisibility click->toggle-hidden#toggleDisabled click->change-text#toggleNewServiceJobCustomerButtonText"
             data-target-id="customerFields customerSelect"
@@ -33,13 +30,12 @@
           </button>
         </div>
       </div>
-
       <fieldset id="customerFields" class="flex flex-col hidden gap-2" disabled="true">
         <!-- new customer -->
-        <p class="font-semibold text-lg mt-1 mb-2">Customer Information</p>
+        <p class="font-semibold text-lg">Customer Information</p>
         <%= service_job_field.fields_for :customer do |customer_field|%>
           <%= customer_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= customer_field.text_field :name,required: true,class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+          <%= customer_field.text_field :name,class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
           <%= customer_field.label :phone_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= customer_field.telephone_field :phone_number, type: 'tel', class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
           <%= customer_field.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
@@ -53,58 +49,60 @@
           <%= customer_field.label :zip_code , class: "block text-sm font-medium text-gray-900 dark:text-white"%>
           <%= customer_field.text_field :zip_code, autocomplete: 'postal-code', maxlength: "5", class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
 
-          <div id="pointOfContactFields" class="flex flex-col gap-2">
-            <p class="font-semibold text-lg mt-1 mb-2">Point of Contact Information</p>
-            <%= customer_field.fields_for :point_of_contact do |point_of_contact_field| %>
-              <%= point_of_contact_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-              <%= point_of_contact_field.text_field :name, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-
-              <%= point_of_contact_field.label :phone_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-              <%= point_of_contact_field.telephone_field :phone_number, type: 'tel', class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-
-              <%= point_of_contact_field.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-              <%= point_of_contact_field.email_field :email, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-            <% end %>
+          <div data-controller="toggle-hidden change-text" class="">
+            <button
+            data-action="click->toggle-hidden#toggleVisibility click->toggle-hidden#toggleDisabled"
+              data-target-id="pointOfContactFields"
+              type="button"
+              class="rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+              Add new point of contact
+            </button>
           </div>
-        <% end %>
-      </fieldset>
-      <div data-controller="toggle-hidden">
-        <button
+        </div>
+
+        <fieldset id="pointOfContactFields" class="flex flex-col hidden" disabled="true">
+          <p class="font-semibold text-lg mt-1 mb-2">Point of Contact Information</p>
+          <%= customer_field.fields_for :point_of_contact do |point_of_contact_field| %>
+            <%= point_of_contact_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+            <%= point_of_contact_field.text_field :name,  class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+            <%= point_of_contact_field.label :phone_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+            <%= point_of_contact_field.telephone_field :phone_number, type: 'tel', class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+            <%= point_of_contact_field.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+            <%= point_of_contact_field.email_field :email, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+          <% end %>
+        </fieldset>
+      <% end %>
+    </fieldset>
+    <div data-controller="toggle-hidden">
+      <button
           data-action="click->toggle-hidden#toggleVisibility click->toggle-hidden#toggleDisabled"
-          data-target-id="workSiteFields"
-          type="button" class="rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-          Add new work site
-        </button>
-      </div>
-
-      <fieldset id="workSiteFields" class="flex flex-col hidden gap-2" disabled="true">
-        <p class="font-semibold text-lg mt-1 mb-2">Work Site Information</p>
-        <%= service_job_field.fields_for :work_site do |work_site_field| %>
-          <%= work_site_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= work_site_field.text_field :name, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-
-          <%= work_site_field.label :address, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= work_site_field.text_field :address, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-
-          <%= work_site_field.label :city, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= work_site_field.text_field :city, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-
-          <%= work_site_field.label :state, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= work_site_field.select :state, options_for_select(us_states), {}, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-
-          <%= work_site_field.label :zip_code, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= work_site_field.text_field :zip_code, autocomplete: 'postal-code', maxlength: "5", class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"  %>
-
-          <%= work_site_field.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= work_site_field.email_field :email, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-
-          <%= work_site_field.label :phone_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= work_site_field.telephone_field :phone_number, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-        <% end %>
-      </fieldset>
-      <div>
-        <%= service_job_field.submit class: "rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
-      </div>
+        data-target-id="workSiteFields"
+        type="button" class="rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+        Add new work site
+      </button>
     </div>
-  <% end %>
+    <fieldset id="workSiteFields" class="flex flex-col hidden" disabled="true">
+      <p class="font-semibold text-lg mt-1 mb-2">Work Site Information</p>
+      <%= service_job_field.fields_for :work_site do |work_site_field| %>
+        <%= work_site_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= work_site_field.text_field :name,  class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        <%= work_site_field.label :address, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= work_site_field.text_field :address, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        <%= work_site_field.label :city, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= work_site_field.text_field :city, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        <%= work_site_field.label :state, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= work_site_field.select :state, options_for_select(us_states), {}, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        <%= work_site_field.label :zip_code, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= work_site_field.text_field :zip_code, autocomplete: 'postal-code', maxlength: "5", class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"  %>
+        <%= work_site_field.label :email, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= work_site_field.email_field :email, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+        <%= work_site_field.label :phone_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= work_site_field.telephone_field :phone_number, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+      <% end %>
+    </fieldset>
+    <div>
+      <%= service_job_field.submit class: "rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
+    </div>
+  </div>
+<% end %>
 </section>
