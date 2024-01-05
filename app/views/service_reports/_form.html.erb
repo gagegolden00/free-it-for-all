@@ -114,8 +114,8 @@
       <%= service_report_field.text_field :total_charge, class: "hidden" %>
       <!-- -->
       <div>
-        <%= service_report_field.label :work_description %>
-        <%= service_report_field.text_area :description, required: true, class: "w-80"%>
+        <%= service_report_field.label :work_description, class: "font-bold mb-2" %>
+        <%= service_report_field.text_area :description, required: true, class: "w-full border-2 rounded-md bg-white dark:bg-gray-800 p-2 md:p-4" %>
       </div>
       <div class="grid grid-cols-1 gap-4 items-start">
         <div class="flex items-center">
@@ -169,6 +169,6 @@
         <span>###</span>
       </div>
     </div>
-    <%= service_report_field.submit %>
+    <%= service_report_field.submit class: "rounded-md block m-4 text-center mx-auto text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 hover:cursor-pointer" %>
   <% end %>
 </div>
