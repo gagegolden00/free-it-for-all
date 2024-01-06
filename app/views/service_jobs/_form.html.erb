@@ -4,7 +4,7 @@
   <%= form_with model: @service_job, url: path, data: {turbo: false}, class: "flex-flex-col" do |service_job_field| %>
     <div class="flex flex-col justify-center">
       <div id="serviceJobFields" class="flex flex-col">
-        <p class="font-semibold text-lg">Job Information</p>
+        <p class="font-semibold text-lg mb-4">Job Information</p>
         <%= service_job_field.label :job_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.text_field :job_number, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :status, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
@@ -20,7 +20,7 @@
           <%= service_job_field.select :customer_id,
           options_for_select(@customers.map { |customer| [customer.name, customer.id] }), {}, id: "selectElement", data: { controller: "slim-select" } %>
         </fieldset>
-        <div data-controller="toggle-hidden change-text" class="">
+        <div data-controller="toggle-hidden change-text" class="mt-4">
           <button
             data-action="click->toggle-hidden#toggleVisibility click->toggle-hidden#toggleDisabled click->change-text#toggleNewServiceJobCustomerButtonText"
             data-target-id="customerFields customerSelect"
@@ -32,7 +32,7 @@
       </div>
       <fieldset id="customerFields" class="flex flex-col hidden gap-2" disabled="true">
         <!-- new customer -->
-        <p class="font-semibold text-lg">Customer Information</p>
+        <p class="font-semibold text-lg mt-2">Customer Information</p>
         <%= service_job_field.fields_for :customer do |customer_field|%>
           <%= customer_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
           <%= customer_field.text_field :name, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
@@ -61,7 +61,7 @@
         </div>
 
         <fieldset id="pointOfContactFields" class="flex flex-col hidden" disabled="true">
-          <p class="font-semibold text-lg mt-1 mb-2">Point of Contact Information</p>
+          <p class="font-semibold text-lg mt-2 mb-2">Point of Contact Information</p>
           <%= customer_field.fields_for :point_of_contact do |point_of_contact_field| %>
             <%= point_of_contact_field.label :name, required: true, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
             <%= point_of_contact_field.text_field :name,  class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
@@ -77,12 +77,12 @@
       <button
           data-action="click->toggle-hidden#toggleVisibility click->toggle-hidden#toggleDisabled"
         data-target-id="workSiteFields"
-        type="button" class="rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+        type="button" class="rounded-md mt-4 block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
         Add new work site
       </button>
     </div>
     <fieldset id="workSiteFields" class="flex flex-col hidden" disabled="true">
-      <p class="font-semibold text-lg mt-1 mb-2">Work Site Information</p>
+      <p class="font-semibold text-lg mt-2 mb-2">Work Site Information</p>
       <%= service_job_field.fields_for :work_site do |work_site_field| %>
         <%= work_site_field.label :name, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= work_site_field.text_field :name, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
@@ -101,7 +101,7 @@
       <% end %>
     </fieldset>
     <div>
-      <%= service_job_field.submit class: "rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
+      <%= service_job_field.submit class: "mt-8 rounded-md block text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
     </div>
   </div>
 <% end %>
