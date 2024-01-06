@@ -7,17 +7,10 @@
     <%= button_to "Delete Job", service_job_path(@service_job), method: :delete, class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"%>
   </div>
 </div>
+
 <% if @service_job %>
   <%= render(AlertComponent::Errors.new(@service_job)) %>
 <% end %>
-<% if @customer %>
-  <%= render(AlertComponent::Errors.new(@customer)) %>
-<% end %>
-<% if @point_of_contact %>
-  <%= render(AlertComponent::Errors.new(@point_of_contact)) %>
-<% end %>
-<% if @work_site %>
-  <%= render(AlertComponent::Errors.new(@work_site)) %>
-<% end %>
+
 <%= render partial: 'form', locals: { path: service_job_path } %>
 <%= render partial: "delete_modal" %>

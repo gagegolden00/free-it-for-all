@@ -17,17 +17,15 @@ class ServiceJobsController < ApplicationController
   def create
     @service_job = ServiceJob.new(permitted_params)
     authorize @service_job
-    @customers = Customer.kept
-    @service_job_persistance = ServiceJobPersistanceService.call(params, permitted_params, @service_job)
-    @serivce_job = @service_job_persistance.payload
-    if @service_job_persistance.success?
+    if @service_job.save
       flash[:notice] = 'Service job successfully created'
       redirect_to service_job_path(@service_job)
     else
+      build_child_records
       render :new
     end
-
   end
+
 
   def index
     @service_job = ServiceJob.new
@@ -61,9 +59,8 @@ class ServiceJobsController < ApplicationController
 
   def update
     @service_job.update(permitted_params)
-    @service_job_persistance = ServiceJobPersistanceService.call(params, permitted_params, @service_job)
-    @service_job = @service_job_persistance.payload
-    if @service_job_persistance.success?
+
+    if @service_job.update
       flash[:notice] = 'Service job successfully updated'
       redirect_to service_job_path(@service_job)
     else
@@ -165,9 +162,9 @@ class ServiceJobsController < ApplicationController
   end
 
   def build_child_records
-    @service_job.build_customer
-    @service_job.customer.build_point_of_contact
-    @service_job.build_work_site
+    @service_job.build_customer unless @service_job.customer
+    @service_job.customer.build_point_of_contact unless @service_job.customer.point_of_contact
+    @service_job.build_work_site unless @service_job.work_site
   end
 
 end
