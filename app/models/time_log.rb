@@ -19,7 +19,7 @@ class TimeLog < ApplicationRecord
 
   def at_least_one_time_present
     if regular_minutes.blank? && overtime_minutes.blank? && double_time_minutes.blank? || (regular_minutes + overtime_minutes + double_time_minutes == 0)
-      errors.add(:base, "Failed to create service report without a valid time entry.")
+      errors.add(:base, " error: must have at least one valid time entry")
     end
   end
 
