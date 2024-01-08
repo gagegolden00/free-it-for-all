@@ -54,6 +54,7 @@ class ServiceJobsController < ApplicationController
   def show
     @technician_users = User.only_technicians
     @active_users = UserServiceJob.active_users_for_service_job(@service_job.id)
+    @work_site = @service_job.work_site
   end
 
   def edit
