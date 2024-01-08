@@ -31,7 +31,9 @@ class PurchaseOrdersController < ApplicationController
     authorize @purchase_orders
   end
 
-  def edit;end
+  def edit
+    authorize @purchase_order
+  end
 
   def update
     authorize @purchase_order

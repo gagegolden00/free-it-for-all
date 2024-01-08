@@ -11,32 +11,25 @@ class ServiceJobsController < ApplicationController
   def new
     @service_job = ServiceJob.new
     authorize @service_job
-
-    @customer = @service_job.build_customer
-    authorize @customer
-
-    @point_of_contact = @service_job.customer.build_point_of_contact
-    authorize @point_of_contact
-
-    @work_site = @service_job.build_work_site
-    authorize @work_site
-
-    return @work_site, @point_of_contact
+    build_child_records
   end
 
   def create
+<<<<<<< HEAD
     @customers = Customer.kept
     authorize @customers
 
     @formatted_service_job_contract_amount = CurrencyInputFormatService.call(params[:service_job][:contract_amount])
     params[:service_job][:contract_amount] = @formatted_service_job_contract_amount.payload
+=======
+>>>>>>> main
     @service_job = ServiceJob.new(permitted_params)
     authorize @service_job
-
     if @service_job.save
-      flash[:notice] = 'Service job created'
+      flash[:notice] = 'Service job successfully created'
       redirect_to service_job_path(@service_job)
     else
+      build_child_records
       render :new
     end
   end
@@ -46,20 +39,20 @@ class ServiceJobsController < ApplicationController
       @service_job = ServiceJob.new
       service_job_search_scope = policy_scope(ServiceJob).search_by_job_number_or_customer_name(params[:service_job_search]).distinct
       @pagy, @service_jobs = if search_present_and_not_empty_and_no_sort_by?
-                               pagy(service_job_search_scope.filter_by_status(get_status_filters).order(created_at: :asc))
+                               pagy(service_job_search_scope.filter_by_status(get_status_filters).order(created_at: :desc))
 
-                             elsif search_present_and_not_empty? && sort_by_present_and_not_empty?
-                               pagy(service_job_search_scope.filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
+                           elsif search_present_and_not_empty? && sort_by_present_and_not_empty?
+                             pagy(service_job_search_scope.filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
 
-                             elsif no_search_and_sort_by_present_and_not_empty?
-                               pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
+                           elsif no_search_and_sort_by_present_and_not_empty?
+                             pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
 
                              else
-                               pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).order(created_at: :asc))
+                               pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).order(created_at: :desc))
                              end
 
-      authorize @service_jobs
-    end
+    authorize @service_jobs
+  end
 
   def show
     @technician_users = User.only_technicians
@@ -73,9 +66,12 @@ class ServiceJobsController < ApplicationController
   end
 
   def update
+    
     @formatted_service_job_contract_amount = CurrencyInputFormatService.call(params[:service_job][:contract_amount])
     params[:service_job][:contract_amount] = @formatted_service_job_contract_amount.payload
+
     if @service_job.update(permitted_params)
+      flash[:notice] = 'Service job successfully updated'
       redirect_to service_job_path(@service_job)
     else
       render :edit
@@ -171,11 +167,15 @@ class ServiceJobsController < ApplicationController
     when 'Completed'
       'Completed'
     else
-      [ 'Open', 'Assigned', 'In progress', 'On hold', 'Waiting on parts', 'Completed' ]
+      ['Open', 'Assigned', 'In progress', 'On hold', 'Waiting on parts', 'Completed']
     end
   end
 
-  def service_job_index_params
-    params.permit(:sort_by)
+  def build_child_records
+    @service_job.build_customer unless @service_job.customer
+    @service_job.customer.build_point_of_contact unless @service_job.customer.point_of_contact
+    @service_job.build_work_site unless @service_job.work_site
   end
+
 end
+

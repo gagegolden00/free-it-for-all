@@ -9,9 +9,10 @@ class ServiceJob < ApplicationRecord
   has_many :users, through: :user_service_jobs
   has_many :purchase_orders, through: :service_reports
   has_many :service_job_images
+  has_one :point_of_contact, through: :customer
 
-  accepts_nested_attributes_for :customer, reject_if: :name_and_customer_id_blank?
-  accepts_nested_attributes_for :work_site, reject_if: :name_blank?
+  accepts_nested_attributes_for :customer
+  accepts_nested_attributes_for :work_site
 
   validates :job_number, presence: true, uniqueness: true
 
@@ -36,11 +37,4 @@ class ServiceJob < ApplicationRecord
 
   private
 
-  def name_and_customer_id_blank?(attributes)
-    attributes['name'].blank? && attributes['customer_id'].blank?
-  end
-
-  def name_blank?(attributes)
-    attributes['name'].blank?
-  end
 end
