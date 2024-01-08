@@ -7,6 +7,6 @@ class PurchaseOrder < ApplicationRecord
   validates :service_report_id, presence: true
 
   def calculate_total_price
-    self.total_price = price * quantity
+    price && quantity ? self.total_price = price * quantity : self.total_price = price
   end
 end
