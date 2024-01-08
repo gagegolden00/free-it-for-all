@@ -18,11 +18,20 @@ class CurrencyInputFormatService < ApplicationService
   def format_currency_input
     return unless @currency_input
 
-    if @currency_input.include?('.')
-      @currency_output = @currency_input.sub('.', '')
+    if @currency_input =~ /\.\d{2}\z/
+      @currency_output = @currency_input.delete('.')
+
+    elsif @currency_input =~ /\.\d\z/
+      @currency_output = @currency_input.delete('.') + '0'
+
+    elsif !@currency_input.include?('.')
+      @currency_output = @currency_input + '00'
+
     else
-      @currency_output = @currency_input += '00'
+      @currency_output = nil
     end
   end
+
+
 end
 
