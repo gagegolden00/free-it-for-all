@@ -26,14 +26,6 @@
     <div class="text-gray-900 dark:text-gray-50"><%= @service_job.customer.name %></div>
   </div>
   <div>
-    <label class="text-gray-400 text-sm font-semibold">Site</label>
-    <% if @service_job.work_site %>
-      <div class="text-gray-900 dark:text-gray-50"><%= @service_job.work_site.name %></div>
-    <% else %>
-      <div class="text-gray-900 dark:text-gray-50">n/a</div>
-    <% end %>
-  </div>
-  <div>
     <label class="text-gray-400 text-sm font-semibold">Customer PO</label>
     <div class="text-gray-900 dark:text-gray-50">Customer PO</div>
   </div>
@@ -55,6 +47,47 @@
 <div class="p-2 md:p-4">
   <label class="text-gray-400 text-sm font-semibold ">Description</label>
   <div class="text-gray-900 dark:text-gray-50"><%= @service_job.description %></div>
+  <!-- work site info -->
+  <h1 class="mt-10 mb-4 text-gray-400 text-sm font-semibold"> Work site details </h1>
+  <% if @work_site  %>
+  <div></div>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4">
+    <div class="flex flex-col">
+      <label class="text-gray-400 text-sm font-semibold">Site name</label>
+      <% if @work_site.name %>
+        <p class="text-gray-900 dark:text-gray-50"><%= @work_site.name %></p>
+      <% else %>
+        <p class="text-gray-900 dark:text-gray-50">n/a</p>
+      <% end %>
+    </div>
+    <div class="flex flex-col">
+      <label class="text-gray-400 text-sm font-semibold">Location</label>
+      <% if @work_site && @work_site.address %>
+        <p class="text-gray-900 dark:text-gray-50"><%= @work_site.address %></p>
+        <p class="text-gray-900 dark:text-gray-50"><%= "#{@work_site.city}, #{@work_site.state}" %></p>
+        <p class="text-gray-900 dark:text-gray-50"><%= @work_site.zip_code %></p>
+      <% else %>
+        <p class="text-gray-900 dark:text-gray-50">n/a</p>
+      <% end %>
+    </div>
+    <div class="flex flex-col">
+      <label class="text-gray-400 text-sm font-semibold">Email</label>
+      <% if @work_site.email %>
+        <p class="text-gray-900 dark:text-gray-50"><%= @work_site.email %></p>
+      <% else %>
+        <p class="text-gray-900 dark:text-gray-50">n/a</p>
+      <% end %>
+    </div>
+    <div class="flex flex-col">
+      <label class="text-gray-400 text-sm font-semibold">Phone number</label>
+      <% if @work_site.phone_number %>
+        <p class="text-gray-900 dark:text-gray-50"><%= @work_site.phone_number%></p>
+      <% else %>
+        <p class="text-gray-900 dark:text-gray-50">n/a</p>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
   <div>
     <div class="mt-10 mb-2">
       <label class="text-gray-400 text-sm font-semibold t-10 mb-2 text-center">Service job assigned to:</label>
