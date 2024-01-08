@@ -40,7 +40,7 @@ class UserServiceJobsController < ApplicationController
       session[:user_service_job_errors] = @user_service_job.errors.full_messages if any_errors == 'true'
       schedule_path(@user_service_job)
     elsif request.referer.include?('service_job')
-      service_job_path(params[:service_job_id])
+      service_job_path(params[:user_service_job][:service_job_id])
     else
       flash.clear
       flash[:notice] = 'Something went wrong'
