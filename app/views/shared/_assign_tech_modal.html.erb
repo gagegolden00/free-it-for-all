@@ -26,7 +26,7 @@
         <div>
           <% if current_page?(:schedule) %>
             <%= form.label :service_job, class: "block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
-            <%= form.select :service_job_id, options_for_select(@service_jobs.map { |job| [job.job_number, job.id] }), {}, id: "selectElement", data: { controller: "slim-select" }  %>
+            <%= form.select :service_job_id, options_for_select(@service_jobs.map { |job| ["#{job.job_number} - #{job.customer.name}", job.id] }), {}, id: "selectElement", data: { controller: "slim-select" }  %>
           <% else %>
             <%= form.hidden_field :service_job_id, value: params[:id] %>
           <% end %>
