@@ -35,11 +35,11 @@
                 </div>
                 <div class="mb-4 flex flex-col">
                   <p class="font-semibold mb-1">Date</p>
-                  <p class="ml-1"><%= @user_service_job.date %></p>
+                  <p class="ml-1"><%= @user_service_job.date.strftime("%B %d, %Y") %></p>
                 </div>
                 <div class="mb-4 flex flex-col">
                   <p class="font-semibold mb-1">Time</p>
-                  <p class="ml-1"><%= @user_service_job.start_time %> - <%= @user_service_job.end_time %></p>
+                  <p class="ml-1"><%= @user_service_job.start_time.strftime('%l:%M %p') %> - <%= @user_service_job.end_time.strftime('%l:%M %p') %></p>
                 </div>
                 <div class="mb-4 flex flex-col">
                   <p class="font-semibold mb-1">Customer</p>
