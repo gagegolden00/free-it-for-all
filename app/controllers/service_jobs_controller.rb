@@ -15,6 +15,11 @@ class ServiceJobsController < ApplicationController
   end
 
   def create
+    @customers = Customer.kept
+    authorize @customers
+
+    @formatted_service_job_contract_amount = CurrencyInputFormatService.call(params[:service_job][:contract_amount])
+    params[:service_job][:contract_amount] = @formatted_service_job_contract_amount.payload
     @service_job = ServiceJob.new(permitted_params)
     authorize @service_job
     if @service_job.save
@@ -58,9 +63,11 @@ class ServiceJobsController < ApplicationController
   end
 
   def update
-    @service_job.update(permitted_params)
 
-    if @service_job.update
+    @formatted_service_job_contract_amount = CurrencyInputFormatService.call(params[:service_job][:contract_amount])
+    params[:service_job][:contract_amount] = @formatted_service_job_contract_amount.payload
+
+    if @service_job.update(permitted_params)
       flash[:notice] = 'Service job successfully updated'
       redirect_to service_job_path(@service_job)
     else
