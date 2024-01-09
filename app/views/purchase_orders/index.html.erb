@@ -22,8 +22,8 @@
       <p><%= purchase_order.created_at.strftime("%B %d, %Y") %></p>
       <!--p><strong>Quantity:</strong> <%= purchase_order.quantity %></p-->
       <p><strong>Description:</strong> <%= purchase_order.description %></p>
-      <!--p><strong>Price:</strong> <%= format_price(purchase_order.price) %></p-->
-      <p><strong>Total Price:</strong> <%= format_price(purchase_order.total_price) %></p>
+      <!--p><strong>Price:</strong> $ <%= format_price(purchase_order.price) %></p-->
+      <p><strong>Total Price:</strong> $ <%= format_price(purchase_order.total_price) %></p>
       <br />
       <p><%= link_to 'View purchase order', service_job_purchase_order_path(@service_job, purchase_order, service_report_id: @service_report), class: "mt-10 underline" %></p>
     </div>
