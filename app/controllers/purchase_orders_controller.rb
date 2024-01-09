@@ -10,9 +10,12 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def create
+    @formatted_purchase_order_price = CurrencyInputFormatService.call(params[:purchase_order][:price])
+    params[:purchase_order][:price] = @formatted_purchase_order_price.payload
     @purchase_order = PurchaseOrder.new(purchase_order_params)
     @purchase_order.purchase_order_number = @service_job.job_number + "-PO-#{@service_job.purchase_orders.count + 1}"
     authorize @purchase_order
+
     if @purchase_order.save
       flash[:notice] = "Purchase order created"
       redirect_to service_job_purchase_orders_path(@service_job)
@@ -36,6 +39,9 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def update
+    @formatted_service_job_contract_amount = CurrencyInputFormatService.call(params[:purchase_order][:price])
+    params[:purchase_order][:price] = @formatted_service_job_contract_amount.payload
+
     authorize @purchase_order
     if @purchase_order.update(purchase_order_params)
       flash[:notice] = "Purchase order updated"
