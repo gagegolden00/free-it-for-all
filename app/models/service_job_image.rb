@@ -1,4 +1,6 @@
 class ServiceJobImage < ApplicationRecord
-  belongs_to :service_job
   include ImageUploader::Attachment(:image)
+  belongs_to :service_job
+
+  validates :image_data, presence: true
 end

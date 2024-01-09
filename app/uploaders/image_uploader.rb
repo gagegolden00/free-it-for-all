@@ -2,7 +2,7 @@ class ImageUploader < Shrine
 
   Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
-    { thumbnail: magick.resize_to_limit!(200, 200) }
+    { thumbnail: magick.resize_to_limit!(350, 300) }
   end
 
   Attacher.promote_block do

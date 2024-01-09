@@ -8,10 +8,13 @@ class ServiceJobImagesController < ApplicationController
     @service_job_image = ServiceJobImage.new(service_job_image_params)
     authorize @service_job_image
 
-    if @service_job_image.save!
+    @service_job_images = @service_job.service_job_images
+
+    if @service_job_image.save
       redirect_to service_job_images_path(@service_job), notice: 'Image was successfully uploaded.'
     else
-      redirect_to service_job_images_path(@service_job), alert: 'Failed to upload image.'
+      render :index
+      @service_job_image
     end
 
   end

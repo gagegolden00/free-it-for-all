@@ -1,3 +1,4 @@
+<%= render AlertComponent::Errors.new(@service_job_image) %>
 <div data-controller="modal">
   <div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row flex-wrap items-center gap-2">
     <div class="flex flex-row">
@@ -12,17 +13,20 @@
     </div>
   </div>
   <%= button_tag "Upload image", type: "button", data: { action: 'click->modal#toggleModalVisibility'}, class: "m-3 mt-4 w-36 whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
-  <section class="grid grid-cols-3 justify-center mt-10 border">
-    <% @service_job_images.each do |image| %>
-      <div class="border-4 border-red-500 h-[200px] w-[200px] flex items-center justify-center">
-        <% if image.image_url(:thumbnail)%>
-          <%= image_tag image.image_url(:thumbnail) %>
-          <%= image.description %>
-        <% end %>
-      </div>
-    <% end %>
+  <section class="grid grid-cols-3 justify-center mt-10">
+      <% @service_job_images.each do |image| %>
+        <div class="border-4 border-red-500 h-[200px] w-[200px] flex items-center justify-center">
+          <% if image.image_url(:thumbnail)%>
+            <%= image_tag image.image_url(:thumbnail) %>
+            <%= image.description %>
+          <% end %>
+        </div>
+      <% end %>
   </section>
   <div data-modal-target="modalContainer" class="hidden">
     <%= render partial: 'new_service_job_image_upload' %>
   </div>
 </div>
+
+
+
