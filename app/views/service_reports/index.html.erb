@@ -32,7 +32,7 @@
         <li class="flex flex-col w-full rounded-md border bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 p-2 md:p-4">
           <!--strong>Report ID:</strong> <%= report.id %> <br /-->
           <h2 class="font-semibold text-gray-500"> <%= report.service_report_number %> </h2>
-          <p>01/01/2023</p>
+          <p><%= report.created_at.strftime("%B %d, %Y") %></p>
           <p>$400.00</p>
           <%= link_to "View service report", service_job_service_report_path(@service_job, id: report.id), class: "mt-10 underline" %>
         </li>
