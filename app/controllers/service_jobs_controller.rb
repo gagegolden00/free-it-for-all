@@ -65,7 +65,7 @@ class ServiceJobsController < ApplicationController
   end
 
   def update
-    if params[:status_update] == 'false'
+    if params[:status_update] != 'true'
       @formatted_service_job_contract_amount = CurrencyInputFormatService.call(params[:service_job][:contract_amount])
       params[:service_job][:contract_amount] = @formatted_service_job_contract_amount.payload
       if @service_job.update(permitted_params)
