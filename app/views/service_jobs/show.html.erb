@@ -11,8 +11,24 @@
   </div>
 </div>
 <div class="flex justify-end pr-2.5">
+  <div class="flex justify-center items-center pr-2.5">
+    <%= form_for @service_job, url: service_job_path(@service_job), method: :patch do  %>
+      <%= hidden_field_tag 'status_update', 'true' %>
+      <%= select_tag 'status',
+        options_for_select(
+          [['Update status', ''],
+          *ServiceJobStatusListHelper.service_job_statuses],
+          selected: params[:filter_by],
+        ),
+        onchange: 'this.form.submit()',
+        class: 'hover:cursor-pointer block w-full p-2 pl-2 pr-8 h-11 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
+      %>
+    <% end %>
+  </div>
   <% if current_user.admin? %>
-    <%= link_to "Edit Job", edit_service_job_path(@service_job), class: "inline-flex py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+    <div>
+      <%= link_to "Edit Job", edit_service_job_path(@service_job), class: "inline-flex py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+    </div>
   <% else %>
     <div class="mt-20"></div>
   <% end %>
@@ -21,6 +37,10 @@
   <% end %>
 </div>
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4 p-2 md:p-4">
+  <div>
+    <label class="text-gray-400 text-sm font-semibold">Status</label>
+    <div class="text-gray-900 dark:text-gray-50"><%= @service_job.status.gsub('_', ' ').capitalize %></div>
+  </div>
   <div>
     <label class="text-gray-400 text-sm font-semibold">Customer</label>
     <div class="text-gray-900 dark:text-gray-50"><%= @service_job.customer.name %></div>
