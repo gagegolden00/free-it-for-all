@@ -3,11 +3,11 @@ namespace :populate_db do
   task create_regions: :environment do
 
     Region.create!(
-      name: 'North America',
+      name: 'North',
       manager: Faker::Name.name
     )
     Region.create!(
-      name: 'South America',
+      name: 'South',
       manager: Faker::Name.name
     )
   end
