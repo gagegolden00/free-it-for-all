@@ -51,32 +51,6 @@
     <% end %>
   </div>
 </div>
-<!--section id="customer-service-job-list">
-  <div class="border rounded-md border-gray-300 dark:border-gray-600 m-4">
-    <% unless @customer_service_jobs.empty? %>
-      <div class="grid grid-cols-5 p-2">
-        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Job number</div>
-        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Status</div>
-        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Client name</div>
-        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Work site</div>
-        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600"></div>
-        <% @customer_service_jobs.each do |service_job| %>
-          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.job_number  %></div>
-          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.status.capitalize.gsub("_", " ") %></div>
-          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.customer.name %></div>
-          <% unless service_job.work_site.nil? %>
-            <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.work_site.name  %></div>
-          <% else %>
-            <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600"></div>
-          <% end %>
-          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm">
-            <%= link_to "View Job", service_job_path(service_job.id), class: "inline-flex py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</section-->
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2 md:m-4">
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
