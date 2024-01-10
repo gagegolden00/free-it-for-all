@@ -31,12 +31,11 @@ class ServiceJobsController < ApplicationController
     end
   end
 
-
-    def index
-      @service_job = ServiceJob.new
-      service_job_search_scope = policy_scope(ServiceJob).search_by_job_number_or_customer_name(params[:service_job_search]).distinct
-      @pagy, @service_jobs = if search_present_and_not_empty_and_no_sort_by?
-                               pagy(service_job_search_scope.filter_by_status(get_status_filters).order(created_at: :desc))
+  def index
+    @service_job = ServiceJob.new
+    service_job_search_scope = policy_scope(ServiceJob).search_by_job_number_or_customer_name(params[:service_job_search]).distinct
+    @pagy, @service_jobs = if search_present_and_not_empty_and_no_sort_by?
+                             pagy(service_job_search_scope.filter_by_status(get_status_filters).order(created_at: :desc))
 
                            elsif search_present_and_not_empty? && sort_by_present_and_not_empty?
                              pagy(service_job_search_scope.filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
@@ -44,9 +43,9 @@ class ServiceJobsController < ApplicationController
                            elsif no_search_and_sort_by_present_and_not_empty?
                              pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).reorder(nil).order(get_sorting_order))
 
-                             else
-                               pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).order(created_at: :desc))
-                             end
+                           else
+                             pagy(policy_scope(ServiceJob).filter_by_status(get_status_filters).order(created_at: :desc))
+                           end
 
     authorize @service_jobs
   end
@@ -64,15 +63,20 @@ class ServiceJobsController < ApplicationController
   end
 
   def update
-
-    @formatted_service_job_contract_amount = CurrencyInputFormatService.call(params[:service_job][:contract_amount])
-    params[:service_job][:contract_amount] = @formatted_service_job_contract_amount.payload
-
-    if @service_job.update(permitted_params)
+    if params[:status_update] == 'false'
+      @formatted_service_job_contract_amount = CurrencyInputFormatService.call(params[:service_job][:contract_amount])
+      params[:service_job][:contract_amount] = @formatted_service_job_contract_amount.payload
+      if @service_job.update(permitted_params)
+        flash[:notice] = 'Service job successfully updated'
+        redirect_to service_job_path(@service_job)
+      else
+        render :edit
+      end
+    elsif params[:status_update] == 'true'
+      UpdateServiceJobStatusService.call(@service_job, params)
       flash[:notice] = 'Service job successfully updated'
       redirect_to service_job_path(@service_job)
-    else
-      render :edit
+
     end
   end
 
@@ -174,6 +178,4 @@ class ServiceJobsController < ApplicationController
     @service_job.customer.build_point_of_contact unless @service_job.customer.point_of_contact
     @service_job.build_work_site unless @service_job.work_site
   end
-
 end
-
