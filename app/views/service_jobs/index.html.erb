@@ -59,7 +59,7 @@
           <%= service_job.customer.name %>
         </p>
         <p class="w-52">
-          <%= service_job.customer.region&.name %>
+          Region: <%= service_job.customer.region&.name %>
         </p>
         <p class="w-52">
           <% if service_job.work_site %>
@@ -68,10 +68,12 @@
             Worksite n/a
           <% end %>
         </p>
+      </div>
+      <div>
         <!--p>
           <%= service_job.created_at.strftime("%B %d, %Y") %>
         </p-->
-        <p class="mt-2">
+        <p class="">
           Status: <%= service_job.status.gsub("_", " ").capitalize %>
         </p>
       </div>

@@ -2,7 +2,7 @@
   <h1 class="text-lg sm:text-xl font-medium text-white"> Weekly Time Sheet</h1>
   <%= link_to "New Job", new_service_job_path, class: "invisible w-36 text-center ml-auto text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 dark:hover:text-gray-800 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md", data: { turbo: false } %>
 </div>
-<div class="p-3">
+<div class="p-2 md:p-4">
   <section id="controls">
     <div class="flex gap-6 sm:flex-wrap md:flex-row mt-auto">
       <p class="items-end mt-3 text-gray-700 dark:text-gray-200"><%= content_tag(:span, Time.parse(@start_date).strftime("%B %d, %Y"), class: 'underline') if @start_date %> - <%= content_tag(:span, Time.parse(@end_date).strftime("%B %d, %Y"), class: 'underline') if @end_date %></p>
@@ -39,7 +39,7 @@
   <section id="time-sheet" class="grid grid-cols-1 rounded mt-2">
     <div class="rounded dark:bg-gray-900">
       <% @users_with_time_log_totals.each do |user| %>
-        <div class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded my-3 text-sm">
+        <div class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded my-2 text-sm">
           <div class="grid lg:grid-cols-7 grid-cols-2 rounded lg:min-h-20 p-2 ">
             <div class="col-span-1 flex items-center lg:justify-start  lg:my-0 my-1">
               <h3 class="pl-2 font-semibold"><%= user.name %></h3>
