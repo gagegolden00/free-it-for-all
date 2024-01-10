@@ -31,6 +31,9 @@
 <!-- TODO: something else with this -->
 <p style="color: green"><%= notice %></p>
 <div id="customers">
+  <% if @customers.empty? %>
+    <div class="text-center pt-10 text-gray-400">No customers</div>
+  <% end %>
   <% @customers.each do |customer| %>
     <div class="flex flex-row border rounded m-2 sm:mx-4 p-3 text-sm bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500">
       <div>
