@@ -27,8 +27,9 @@ class ServiceReportPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    user.admin? || user.technician?
   end
+
 
   def destroy?
     user.admin?
@@ -40,4 +41,5 @@ class ServiceReportPolicy < ApplicationPolicy
     #   scope.all
     # end
   end
+  
 end
