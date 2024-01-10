@@ -17,7 +17,7 @@
   <div class="relative w-full sm:w-auto sm:ml-2 rounded overflow-visible h-9">
     <%= select_tag 'filter_by',
       options_for_select(
-        [['- Status', ''],
+        [['Status', ''],
         *ServiceJobStatusListHelper.service_job_statuses],
         selected: params[:filter_by],
       ),
@@ -29,7 +29,7 @@
     <%= select_tag 'sort_by',
       options_for_select(
         [
-          ['- Sort by', 'created_at asc'],
+          ['Sort by', 'created_at asc'],
           ['Job number asc', 'job_number asc'],
           ['Job number desc', 'job_number desc'],
           ['Newest', 'created_at asc'],
