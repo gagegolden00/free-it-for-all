@@ -7,7 +7,6 @@
     <% end %>
   </div>
 </div>
-
 <% if @user_service_job_errors.present? %>
   <div
     id="alert-user-service-job-errors"
@@ -39,7 +38,6 @@
     </button>
   </div>
 <% end %>
-
 <div class="p-2">
   <div class="flex">
     <div class="ml-auto mr-1">
@@ -50,7 +48,7 @@
   </div>
 </div>
 <div class="overflow-x-scroll p-2 space-y-2" style="display:grid; grid-template-columns: 180px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;">
-  <div class="">Technician</div>
+  <div class="">&nbsp;</div>
   <div class="text-xs font-semibold" style="grid-column-start:2; grid-column-end:6">12am</div>
   <div class="text-xs font-semibold" style="grid-column-start:6; grid-column-end:10">1am</div>
   <div class="text-xs font-semibold" style="grid-column-start:10; grid-column-end:14">2am</div>
@@ -85,9 +83,9 @@
       <% color_index = (color_index == total_colors) ? 0 : color_index + 1 %>
     <% end %>
     <% unless ScheduleHelper.get_grid_col_value(data.start_time).nil? %>
-      <div class="<%= ScheduleHelper.color_list[color_index]  %> h-7 text-white p-1 rounded"
+      <div class="<%= ScheduleHelper.color_list[color_index]  %> h-7 text-white italic p-1 rounded shadow text-sm whitespace-nowrap text-ellipsis overflow-hidden"
           style="grid-column-start: <%= ScheduleHelper.get_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_grid_col_value(data.end_time) %>">
-        <%= link_to "#{data.customer_name}", schedule_path(user_service_job_id: data.user_service_job_id, display_modal: "true"), data: {turbo_stream: true} %>
+        <%= link_to "#{data.customer_name}", schedule_path(user_service_job_id: data.user_service_job_id, display_modal: "true"), data: {turbo_stream: true}, title: "#{data.customer_name}"%>
       </div>
     <% end %>
   <% end %>

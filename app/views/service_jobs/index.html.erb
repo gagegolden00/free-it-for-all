@@ -65,10 +65,10 @@
             Worksite n/a
           <% end %>
         </p>
-        <p>
+        <!--p>
           <%= service_job.created_at.strftime("%B %d, %Y") %>
-        </p>
-        <p>
+        </p-->
+        <p class="mt-2">
           Status: <%= service_job.status.gsub("_", " ").capitalize %>
         </p>
       </div>

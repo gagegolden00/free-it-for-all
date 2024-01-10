@@ -23,7 +23,7 @@
         selected: params[:sort_by]
       ),
       onchange: 'this.form.submit()',
-      class: 'w-36 h-10 ml-4 hover:cursor-pointer block p-2 pl-6 pr-8 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
+      class: 'w-36 h-10 ml-4 hover:cursor-pointer block p-2 pl-2 pr-8 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
     %>
   </div>
   <%= hidden_field_tag 'page', @pagy.page %>
