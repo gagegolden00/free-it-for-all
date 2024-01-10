@@ -10,6 +10,7 @@ class ServiceJobsController < ApplicationController
 
   def new
     @service_job = ServiceJob.new
+    @statuses = ServiceJobStatusListHelper.service_job_statuses
     authorize @service_job
     build_child_records
   end
@@ -61,6 +62,7 @@ class ServiceJobsController < ApplicationController
     @service_job.build_customer
     @service_job.customer.build_point_of_contact
     @service_job.build_work_site
+    @statuses = ServiceJobStatusListHelper.service_job_statuses
   end
 
   def update
@@ -156,11 +158,11 @@ class ServiceJobsController < ApplicationController
       'Open'
     when 'Assigned'
       'Assigned'
-    when 'In Progress'
+    when 'In progress'
       'In progress'
-    when 'On Hold'
+    when 'On hold'
       'On hold'
-    when 'Waiting on Parts'
+    when 'Waiting on parts'
       'Waiting on parts'
     when 'Completed'
       'Completed'
