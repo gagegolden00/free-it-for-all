@@ -8,7 +8,7 @@
   <label for="simple" class="sr-only">Search</label>
   <div class="relative w-full sm:w-auto flex-grow">
     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-      <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <svg aria-hidden="true" class="w-5 h-5 text-gray-400 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
       </svg>
     </div>
@@ -17,7 +17,7 @@
   <div class="relative w-full sm:w-auto sm:ml-2 rounded overflow-visible h-9">
     <%= select_tag 'filter_by',
       options_for_select(
-        [['- Status', ''],
+        [['Status', ''],
         *ServiceJobStatusListHelper.service_job_statuses],
         selected: params[:filter_by],
       ),
@@ -29,7 +29,7 @@
     <%= select_tag 'sort_by',
       options_for_select(
         [
-          ['- Sort by', 'created_at asc'],
+          ['Sort by', 'created_at asc'],
           ['Job number asc', 'job_number asc'],
           ['Job number desc', 'job_number desc'],
           ['Newest', 'created_at asc'],
@@ -45,6 +45,9 @@
 </form>
 <p style="color: green"><%= notice %></p>
 <div id="service_jobs">
+  <% if @service_jobs.empty? %>
+    <div class="text-center pt-10 text-gray-400">No service jobs</div>
+  <% end %>
   <% @service_jobs.each do |service_job| %>
     <div class="border rounded m-2 sm:mx-4 p-3 text-sm flex flex-row flex-wrap justify-between space-x-3 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500">
       <div>
@@ -65,10 +68,10 @@
             Worksite n/a
           <% end %>
         </p>
-        <p>
+        <!--p>
           <%= service_job.created_at.strftime("%B %d, %Y") %>
-        </p>
-        <p>
+        </p-->
+        <p class="mt-2">
           Status: <%= service_job.status.gsub("_", " ").capitalize %>
         </p>
       </div>
