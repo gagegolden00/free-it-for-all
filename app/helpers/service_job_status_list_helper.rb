@@ -3,9 +3,9 @@ module ServiceJobStatusListHelper
     [
       "Open",
       "Assigned",
-      "In Progress",
-      "On Hold",
-      "Waiting on Parts",
+      "In progress",
+      "On hold",
+      "Waiting on parts",
       "Completed"
     ]
   end
