@@ -49,8 +49,8 @@
     <div class="text-center pt-10 text-gray-400">No service jobs</div>
   <% end %>
   <% @service_jobs.each do |service_job| %>
-    <div class="border rounded m-2 sm:mx-4 p-3 text-sm flex flex-row flex-wrap justify-between space-x-3 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500">
-      <div>
+    <div class="border rounded m-2 sm:mx-4 p-3 text-sm flex flex-row flex-wrap bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500 gap-4 md:gap-10 lg:gap-20">
+      <div class="border-0 border-red-500">
         <p class="w-52 font-semibold">
           <%= link_to service_job.job_number , service_job_path(service_job) %>
         </p>
@@ -69,15 +69,15 @@
           <% end %>
         </p>
       </div>
-      <div>
-        <!--p>
-          <%= service_job.created_at.strftime("%B %d, %Y") %>
-        </p-->
+      <div class="border-0 border-green-500">
+        <p>
+          Created: <%= service_job.created_at.strftime("%B %d, %Y") %>
+        </p>
         <p class="">
           Status: <%= service_job.status.gsub("_", " ").capitalize %>
         </p>
       </div>
-      <div class="ml-auto">
+      <div class="ml-auto border-0 border-blue-500">
         <%= link_to "View" , service_job_path(service_job), class: "ml-auto rounded-md block w-16 text-center ml-2 text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
         <% if policy(@service_job).edit? %>
           <%= link_to "Edit" , edit_service_job_path(service_job), class: "rounded-md block w-16 mt-2 text-center ml-2 text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>

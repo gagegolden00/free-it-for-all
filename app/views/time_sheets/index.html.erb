@@ -36,7 +36,7 @@
       </div>
     </div>
   </section>
-  <section id="time-sheet" class="grid grid-cols-1 rounded mt-2">
+  <section id="time-sheet" class="flex flex-col gap-2 rounded mt-2">
     <div class="rounded dark:bg-gray-900">
       <% @users_with_time_log_totals.each do |user| %>
         <div class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded my-2 text-sm">
@@ -62,7 +62,7 @@
             <div class="col-span-1 flex lg:items-center md:pl-24 lg:justify-start lg:pl-10 lg:my-0 my-1">
               <p class="pl-2 lg:pl-0">Total hours: <%= get_total_hours(user.total_regular_minutes + user.total_overtime_minutes + user.total_double_time_minutes) || "0" %>:<%= "%02d" % (get_total_minutes(user.total_regular_minutes + user.total_overtime_minutes + user.total_double_time_minutes) || 0) %></p>
             </div>
-            <div class="lg:flex hidden lg:visible lg:items-center lg:justify-center">
+            <div class="lg:flex hidden lg:visible lg:items-center lg:justify-end">
               <%= link_to "View", time_sheet_path(user.user_id, start_date: params[:start_date], end_date: params[:end_date]), class: "rounded-md block w-16 h-8 flex justify-center items-center text-center text-gray-500 border-2 p-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
             </div>
           </div>
