@@ -47,7 +47,7 @@
   </div>
   <div>
     <label class="text-gray-400 text-sm font-semibold">Customer PO</label>
-    <div class="text-gray-900 dark:text-gray-50">Customer PO</div>
+    <div class="text-gray-900 dark:text-gray-50">##########</div>
   </div>
   <% if current_user.admin? %>
     <div>
@@ -61,7 +61,7 @@
   </div>
   <div>
     <label class="text-gray-400 text-sm font-semibold">Region</label>
-    <div class="text-gray-900 dark:text-gray-50">Region Name</div>
+    <div class="text-gray-900 dark:text-gray-50"><%= @service_job.customer.region.name %></div>
   </div>
 </div>
 <div class="p-2 md:p-4">
