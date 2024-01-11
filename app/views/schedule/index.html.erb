@@ -38,7 +38,7 @@
   </div>
 <% end %>
 <div class="p-2 md:p-4">
-  <div class="flex">
+  <div class="flex flex-row">
     <p class="items-end mt-3 text-gray-600 dark:text-gray-200"><%= content_tag(:span, Date.parse(@selected_date).strftime('%B %d, %Y'), class: "underline") %></p>
     <div class="ml-auto">
       <%= form_tag("/schedule", method: "get") do %>
