@@ -45,8 +45,12 @@ class TimeSheetsController < ApplicationController
 
     @user = User.find(params[:user_id])
 
-    @time_logs = policy_scope(@user.time_logs).where(created_at: @start_date..@end_date)
+    @time_logs = TimeLog.joins(:service_report)
+    .select('time_logs.*, service_reports.*')
+    .where(user_id: @user.id, service_reports: { discarded_at: nil }, created_at: @start_date..@end_date)
+
     authorize @time_logs
+
   end
 
   private

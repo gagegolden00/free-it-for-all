@@ -64,8 +64,8 @@
             <div class="border p-2 text-sm rounded-md bg-white dark:bg-gray-800">
               <p><strong>Name:</strong> <%= material.name %></p>
               <p><strong>Quantity:</strong> <%= material.quantity %></p>
-              <p class="<%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><strong>Price:</strong> <%= format_price(material.price) %></p>
-              <p class="<%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><strong>Pre-Tax Total:</strong> <%= format_price(material.pre_tax_total) %></p>
+              <p class="<%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><strong>Price:</strong> $<%= format_price(material.price) %></p>
+              <p class="<%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><strong>Pre-Tax Total:</strong> $<%= format_price(material.pre_tax_total) %></p>
             </div>
           </div>
         <% end %>
@@ -98,8 +98,8 @@
                   <%= po.description %>
                 </div>
               </div>
-              <div class="w-1/5 pl-2 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><%= format_price(po.price) %></div>
-              <div class="w-1/5 pl-2 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><%= format_price(po.total_price) %></div>
+              <div class="w-1/5 pl-2 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>"> $<%= format_price(po.price) %></div>
+              <div class="w-1/5 pl-2 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>"> $<%= format_price(po.total_price) %></div>
             </div>
           <% end %>
         <% end %>

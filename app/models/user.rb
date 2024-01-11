@@ -39,6 +39,8 @@ class User < ApplicationRecord
       FROM
         users
       LEFT OUTER JOIN
+        ( SELECT time_logs.* FROM time_logs
+          INNER JOIN service_reports ON service_reports.id = time_logs.service_report_id AND service_reports.discarded_at IS NULL)
         time_logs ON time_logs.user_id = users.id AND time_logs.created_at BETWEEN ? AND ?
       WHERE
         users.discarded_at IS NULL
@@ -50,7 +52,7 @@ class User < ApplicationRecord
   }
 
   scope :daily_schedule_for_techs_by_date, lambda { |selected_date|
-  find_by_sql([<<-SQL, { selected_date: selected_date }])
+                                             find_by_sql([<<-SQL, { selected_date: }])
     SELECT users.*, user_service_jobs.*, service_jobs.*, user_service_jobs.id AS user_service_job_id, customers.name AS customer_name
     FROM users
     LEFT OUTER JOIN user_service_jobs ON users.id = user_service_jobs.user_id AND user_service_jobs.date = :selected_date
@@ -58,8 +60,8 @@ class User < ApplicationRecord
     LEFT OUTER JOIN customers ON service_jobs.customer_id = customers.id
     WHERE users.role = 'technician' AND user_service_jobs.discarded_at IS NULL
     ORDER BY users.name ASC, user_service_jobs.start_time;
-  SQL
-}
+                                             SQL
+                                           }
 
   pg_search_scope :search_by_name,
                   against: [:name],
