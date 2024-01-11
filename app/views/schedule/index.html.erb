@@ -47,8 +47,8 @@
     </div>
   </div>
 </div>
-<div class="overflow-x-scroll bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-500 rounded mx-2 md:mx-4" style="display:grid; grid-template-columns: 160px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;">
-  <div class="text-xs font-semibold bg-gray-500 border-r border-gray-300 dark:border-gray-700">&nbsp;</div>
+<div class="overflow-x-scroll bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded mx-2 md:mx-4" style="display:grid; grid-template-columns: 160px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px 10px;">
+  <div class="text-xs font-semibold bg-gray-300  dark:bg-gray-500 border-r border-gray-300 dark:border-gray-500">&nbsp;</div>
   <div class="text-xs pl-1 font-semibold border-l border-b bg-gray-200 dark:bg-gray-900 border-gray-300 dark:border-gray-600" style="grid-column-start:2; grid-column-end:6">12am</div>
   <div class="text-xs pl-1 font-semibold border-l border-b bg-gray-200 dark:bg-gray-900 border-gray-300 dark:border-gray-600" style="grid-column-start:6; grid-column-end:10">1am</div>
   <div class="text-xs pl-1 font-semibold border-l border-b bg-gray-200 dark:bg-gray-900 border-gray-300 dark:border-gray-600" style="grid-column-start:10; grid-column-end:14">2am</div>
@@ -78,7 +78,7 @@
   <% color_index  = 0 %>
   <% @daily_tech_schedule_data.each do |data| %>
     <% if current_name != data.name %>
-      <div class="p-2 text-sm font font-semibold bg-gray-100 dark:bg-gray-800 border-r border-t border-gray-300 dark:border-gray-800" style="grid-column: 1"><%= data.name %></div>
+      <div class="p-2 text-sm font font-semibold bg-gray-100 dark:bg-gray-900 border-r border-t border-gray-300 dark:border-gray-600" style="grid-column: 1"><%= data.name %></div>
       <% current_name = data.name %>
       <% color_index = (color_index == total_colors) ? 0 : color_index + 1 %>
     <% end %>

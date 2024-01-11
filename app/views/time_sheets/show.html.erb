@@ -5,11 +5,11 @@
   <% end %>
 </div>
 <div class="m-2 md:mx-4">
-  <%= Time.parse(@start_date).strftime("%B %d, %Y") if @start_date %> - <%= Time.parse(@end_date).strftime("%B %d, %Y") if @end_date %> for <%= @user.name %>
+  <p class="items-end mt-7 text-gray-700 dark:text-gray-200"><span class="underline"><%= Time.parse(@start_date).strftime("%B %d, %Y") if @start_date %> - <%= Time.parse(@end_date).strftime("%B %d, %Y") if @end_date %></span> for <strong><%= @user.name %></strong></p>
 </div>
 <section id="table-data" class="m-2 md:m-4">
   <!-- Header Row -->
-  <div class="mt-4 p-2 py-4 border hidden lg:visible lg:grid lg:grid-cols-10 items-center bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500 rounded my-3">
+  <div class="text-sm mt-4 p-2 border hidden lg:visible lg:grid lg:grid-cols-10 items-center bg-gray-200 dark:bg-gray-800 border-gray-300 dark:border-gray-500 rounded my-3">
     <div class="lg:col-span-1">
       <strong>Date</strong>
     </div>
