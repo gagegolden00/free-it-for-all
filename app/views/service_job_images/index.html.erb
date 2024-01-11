@@ -11,7 +11,7 @@
       <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
     </div>
   </div>
-  <%= button_tag "Upload image", type: "button", data: { action: 'click->modal#toggleModalVisibility'}, class: "m-3 mt-4 w-36 whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+  <%= button_tag "Upload image", type: "button", data: { action: 'click->modal#toggleModalVisibility'}, class: "m-2 md:mr-4 mt-4 w-36 whitespace-nowrap ml-auto text-sm font-medium rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
   <section class="grid grid-cols-3 justify-center mt-10 border">
     <% @service_job_images.each do |image| %>
       <%= image_tag image.image_url %>

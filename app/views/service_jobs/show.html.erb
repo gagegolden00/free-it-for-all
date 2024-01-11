@@ -10,8 +10,8 @@
     <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
   </div>
 </div>
-<div class="flex justify-end pr-2.5">
-  <div class="flex justify-center items-center pr-2.5">
+<div class="flex justify-end pr-2 md:pr-4">
+  <div class="flex justify-center items-center p-2">
     <%= form_for @service_job, url: service_job_path(@service_job), method: :patch do  %>
       <%= hidden_field_tag 'status_update', 'true' %>
       <%= select_tag 'status',
@@ -21,13 +21,13 @@
           selected: params[:filter_by],
         ),
         onchange: 'this.form.submit()',
-        class: 'hover:cursor-pointer block w-full p-2 pl-2 pr-8 h-11 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
+        class: 'hover:cursor-pointer block w-full p-2 pl-4 pr-8 h-11 text-sm text-gray-900 border-2 border-gray-200 rounded-md bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
       %>
     <% end %>
   </div>
   <% if current_user.admin? %>
     <div>
-      <%= link_to "Edit Job", edit_service_job_path(@service_job), class: "inline-flex py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+      <%= link_to "Edit Job", edit_service_job_path(@service_job), class: "inline-flex py-2.5 px-5 my-5 text-sm text-gray-500 focus:outline-none rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
     </div>
   <% else %>
     <div class="mt-20"></div>
