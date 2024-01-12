@@ -7,31 +7,31 @@ class UserPolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin?
+    false
   end
 
   def create?
-    new?
+    false
   end
 
   def index?
-    user.admin?
+    false
   end
 
   def show?
-    user.admin? || (user.technician? && record == user)
+    false
   end
 
   def edit?
-    user.admin? || (user.technician? && record == user)
+    false
   end
 
   def update?
-    edit?
+    false
   end
 
   def destroy?
-    user.admin?
+    false
   end
 
   class Scope < Scope
