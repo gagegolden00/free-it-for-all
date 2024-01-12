@@ -140,12 +140,12 @@
           <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= link_to user_path(user_assignment.user_id) do %>
-                <p class="hover:text-gray-500"><%= user_assignment.name %></p>
+                <p class="hover:text-primary-600"><%= user_assignment.name %></p>
               <% end %>
             </th>
             <td class="px-6 py-4">
               <%= link_to schedule_path(selected_date: user_assignment.date.strftime('%Y-%m-%d') )do %>
-                <p class="hover:text-white"><%= user_assignment.date.strftime('%B %e, %Y') %></p>
+                <p class="hover:text-primary-600"><%= user_assignment.date.strftime('%B %e, %Y') %></p>
               <% end %>
               </a>
             </td>
