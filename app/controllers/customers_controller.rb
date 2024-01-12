@@ -1,12 +1,14 @@
 class CustomersController < ApplicationController
   layout 'application_full'
   include ServiceJobStatusListHelper
+  include StateListHelper
 
   before_action :set_customer_from_params, only: %i[show edit update destroy]
   before_action :set_all_regions, only: %i[edit update new create]
   before_action :authorize_access_in_customers_controller, only: %i[show edit update destroy]
 
   def new
+    @states = us_states
     @customer = Customer.new
     @point_of_contact = @customer.build_point_of_contact
     authorize @customer
@@ -50,6 +52,7 @@ class CustomersController < ApplicationController
   end
 
   def edit
+    @states = us_states
     @customer.point_of_contact.nil? ? @point_of_contact = @customer.build_point_of_contact : @point_of_contact = @customer.point_of_contact
     authorize @point_of_contact
   end

@@ -5,10 +5,10 @@
     <div class="flex flex-col justify-center">
       <div id="serviceJobFields" class="flex flex-col">
         <p class="font-semibold text-lg mb-4">Job Information</p>
+        <%= service_job_field.hidden_field :status, value: @service_job.status.present? ? @service_job.status : 'Open'%>
+        <%= service_job_field.hidden_field :status_update, value: 'false' %>
         <%= service_job_field.label :job_number, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.text_field :job_number, required: true, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-        <%= service_job_field.label :status, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
-        <%= service_job_field.select :status, options_for_select(ServiceJobStatusListHelper.service_job_statuses), {},  class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :description, class: "block text-sm font-medium text-gray-900 dark:text-white" %>
         <%= service_job_field.text_area :description, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
         <%= service_job_field.label :contract_amount, class: "block text-sm font-medium text-gray-900 dark:text-white" %>

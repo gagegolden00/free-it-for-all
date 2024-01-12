@@ -1,23 +1,68 @@
+<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
+  <h1 class="text-lg sm:text-xl font-medium text-white">Home</h1>
+</div>
 
-  <div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
-    <h1 class="text-lg sm:text-xl font-medium text-white">Home</h1>
-  </div>
+<div class="px-2 sm:px-4">
 
-<form class="flex items-center m-2 sm:m-4">
-    <label for="simple-search" class="sr-only">Search</label>
-    <div class="relative w-full">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-        </svg>
-        </div>
-        <input type="text" id="simple-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search job list" required="">
-    </div>
-</form>
+	<!-- This is just for fun -->
 
-  <div class="px-2 sm:px-4">
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Iceland&display=swap");
 
-  I am Mech Cool!
+  svg {
+    font-family: "Iceland", sans-serif;
+    width: 100%;
+    height: auto;
+  }
 
-  </div>
+  svg text {
+    font-size: 200px; /* Adjusted font size for normal screens */
+    animation: stroke 5s infinite alternate;
+    stroke-width: 2;
+    stroke: #365FA0;
+  }
+
+  @media screen and (max-width: 480px) {
+    svg text {
+      font-size: 60px; /* Adjusted font size for smaller screens */
+    }
+  }
+
+  @keyframes stroke {
+    0% {
+      fill: rgba(72, 138, 204, 0);
+      stroke: rgba(54, 95, 160, 1);
+      stroke-dashoffset: 25%;
+      stroke-dasharray: 0 50%;
+      stroke-width: 2;
+    }
+
+    70% {
+      fill: rgba(72, 138, 204, 0);
+      stroke: rgba(54, 95, 160, 1);
+    }
+
+    80% {
+      fill: rgba(72, 138, 204, 0);
+      stroke: rgba(54, 95, 160, 1);
+      stroke-width: 3;
+    }
+
+    100% {
+      fill: rgba(72, 138, 204, 1);
+      stroke: rgba(54, 95, 160, 0);
+      stroke-dashoffset: -25%;
+      stroke-dasharray: 50% 0;
+      stroke-width: 0;
+    }
+  }
+</style>
+
+<div class="wrapper">
+  <svg>
+    <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+      I am Mechcool
+    </text>
+  </svg>
+</div>
 

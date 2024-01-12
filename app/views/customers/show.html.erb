@@ -8,7 +8,7 @@
   </div>
 </div>
 <section id="customer-info">
-  <div class="m-2 bg-white dark:bg-gray-800 sm:m-4 border rounded-md p-2 sm:p-4 flex flex-wrap justify-between text-sm gap-4 border-gray-300 dark:border-gray-500">
+  <div class="m-2 bg-white dark:bg-gray-800 sm:m-4 border rounded-md p-2 sm:p-4 pb-6 sm:pb-10 flex flex-wrap justify-between text-sm gap-4 border-gray-300 dark:border-gray-500">
     <div>
       <h1 class="font-semibold">Customer</h1>
       <p><%= @customer.name %></p>
@@ -31,13 +31,11 @@
     </div>
   </div>
 </section>
-
-  <div class="w-full flex justify-between mt-20 pl-4 pr-4">
-    <div class="">
-      <label class=" text-sm font-semibold text-center">Customer's service job list</label>
-    </div>
-
-    <div class="w-40 flex">
+<div class="w-full flex justify-between mt-10 pl-4 pr-4">
+  <div class="">
+    <label class=" text-sm font-semibold text-center">Customer's service job list</label>
+  </div>
+  <div class="w-40 flex">
     <%= form_with(path: customer_path(@customer), method: 'get') do %>
       <div class="relative w-full sm:w-auto rounded overflow-visible h-9 text-center items-center flex justify-center">
         <%= select_tag 'filter_by',
@@ -51,34 +49,51 @@
       %>
       </div>
     <% end %>
-    </div>
   </div>
-
-<section id="customer-service-job-list">
-  <div class="border rounded-md border-gray-300 dark:border-gray-600 m-4">
-    <% unless @customer_service_jobs.empty? %>
-      <div class="grid grid-cols-5 p-2">
-        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Job number</div>
-        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Status</div>
-        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Client name</div>
-        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600">Work site</div>
-        <div class="col-span-1 px-2 py-2 font-semibold text-sm text-center border-b border-gray-300 dark:border-gray-600"></div>
-        <% @customer_service_jobs.each do |service_job| %>
-          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.job_number  %></div>
-          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.status.capitalize.gsub("_", " ") %></div>
-          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.customer.name %></div>
-          <% unless service_job.work_site.nil? %>
-            <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm"><%= service_job.work_site.name  %></div>
-          <% else %>
-            <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600"></div>
-          <% end %>
-          <div class="col-span-1 px-2 py-2 border-b border-gray-300 dark:border-gray-600 items-center justify-center flex text-sm">
-            <%= link_to "View Job", service_job_path(service_job.id), class: "inline-flex py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"%>
-
-          </div>
-
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</section>
+</div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2 md:m-4">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          Job Number
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Status
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Client
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Work Site
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Action
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customer_service_jobs.each do |service_job| %>
+        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <%= service_job.job_number  %>
+          </th>
+          <td class="px-6 py-4">
+            <%= service_job.status.capitalize.gsub("_", " ") %>
+          </td>
+          <td class="px-6 py-4">
+            <%= service_job.customer.name %>
+          </td>
+          <td class="px-6 py-4">
+            <% unless service_job.work_site.nil? %>
+              <%= service_job.work_site.name  %>
+            <% end %>
+          </td>
+          <td class="px-6 py-4">
+            <%= link_to "View Job", service_job_path(service_job.id), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline"%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

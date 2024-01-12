@@ -10,9 +10,25 @@
     <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
   </div>
 </div>
-<div class="flex justify-end pr-2.5">
+<div class="flex justify-end pr-2 md:pr-4">
+  <div class="flex justify-center items-center p-2">
+    <%= form_for @service_job, url: service_job_path(@service_job), method: :patch do  %>
+      <%= hidden_field_tag 'status_update', 'true' %>
+      <%= select_tag 'status',
+        options_for_select(
+          [['Update status', ''],
+          *ServiceJobStatusListHelper.service_job_statuses],
+          selected: params[:filter_by],
+        ),
+        onchange: 'this.form.submit()',
+        class: 'hover:cursor-pointer block w-full p-2 pl-4 pr-8 h-11 text-sm text-gray-900 border-2 border-gray-200 rounded-md bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-gray-400 text-gray-400 dark:focus:ring-primary-500 dark:focus:border-primary-500'
+      %>
+    <% end %>
+  </div>
   <% if current_user.admin? %>
-    <%= link_to "Edit Job", edit_service_job_path(@service_job), class: "inline-flex py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+    <div>
+      <%= link_to "Edit Job", edit_service_job_path(@service_job), class: "bg-white inline-flex py-2.5 px-5 my-5 text-sm text-gray-500 focus:outline-none rounded-md border-2 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+    </div>
   <% else %>
     <div class="mt-20"></div>
   <% end %>
@@ -22,12 +38,16 @@
 </div>
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4 p-2 md:p-4">
   <div>
+    <label class="text-gray-400 text-sm font-semibold">Status</label>
+    <div class="text-gray-900 dark:text-gray-50"><%= @service_job.status.gsub('_', ' ').capitalize %></div>
+  </div>
+  <div>
     <label class="text-gray-400 text-sm font-semibold">Customer</label>
     <div class="text-gray-900 dark:text-gray-50"><%= @service_job.customer.name %></div>
   </div>
   <div>
     <label class="text-gray-400 text-sm font-semibold">Customer PO</label>
-    <div class="text-gray-900 dark:text-gray-50">Customer PO</div>
+    <div class="text-gray-900 dark:text-gray-50">##########</div>
   </div>
   <% if current_user.admin? %>
     <div>
@@ -41,7 +61,7 @@
   </div>
   <div>
     <label class="text-gray-400 text-sm font-semibold">Region</label>
-    <div class="text-gray-900 dark:text-gray-50">Region Name</div>
+    <div class="text-gray-900 dark:text-gray-50"><%= @service_job.customer.region.name %></div>
   </div>
 </div>
 <div class="p-2 md:p-4">
@@ -50,75 +70,127 @@
   <!-- work site info -->
   <h1 class="mt-10 mb-4 text-gray-400 text-sm font-semibold"> Work site details </h1>
   <% if @work_site  %>
-  <div></div>
-  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4">
-    <div class="flex flex-col">
-      <label class="text-gray-400 text-sm font-semibold">Site name</label>
-      <% if @work_site.name %>
-        <p class="text-gray-900 dark:text-gray-50"><%= @work_site.name %></p>
-      <% else %>
-        <p class="text-gray-900 dark:text-gray-50">n/a</p>
-      <% end %>
+    <div></div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4">
+      <div class="flex flex-col">
+        <label class="text-gray-400 text-sm font-semibold">Site name</label>
+        <% if @work_site.name %>
+          <p class="text-gray-900 dark:text-gray-50"><%= @work_site.name %></p>
+        <% else %>
+          <p class="text-gray-900 dark:text-gray-50">n/a</p>
+        <% end %>
+      </div>
+      <div class="flex flex-col">
+        <label class="text-gray-400 text-sm font-semibold">Location</label>
+        <% if @work_site && @work_site.address %>
+          <p class="text-gray-900 dark:text-gray-50"><%= @work_site.address %></p>
+          <p class="text-gray-900 dark:text-gray-50"><%= "#{@work_site.city}, #{@work_site.state}" %></p>
+          <p class="text-gray-900 dark:text-gray-50"><%= @work_site.zip_code %></p>
+        <% else %>
+          <p class="text-gray-900 dark:text-gray-50">n/a</p>
+        <% end %>
+      </div>
+      <div class="flex flex-col">
+        <label class="text-gray-400 text-sm font-semibold">Email</label>
+        <% if @work_site.email %>
+          <p class="text-gray-900 dark:text-gray-50"><%= @work_site.email %></p>
+        <% else %>
+          <p class="text-gray-900 dark:text-gray-50">n/a</p>
+        <% end %>
+      </div>
+      <div class="flex flex-col">
+        <label class="text-gray-400 text-sm font-semibold">Phone number</label>
+        <% if @work_site.phone_number %>
+          <p class="text-gray-900 dark:text-gray-50"><%= @work_site.phone_number%></p>
+        <% else %>
+          <p class="text-gray-900 dark:text-gray-50">n/a</p>
+        <% end %>
+      </div>
     </div>
-    <div class="flex flex-col">
-      <label class="text-gray-400 text-sm font-semibold">Location</label>
-      <% if @work_site && @work_site.address %>
-        <p class="text-gray-900 dark:text-gray-50"><%= @work_site.address %></p>
-        <p class="text-gray-900 dark:text-gray-50"><%= "#{@work_site.city}, #{@work_site.state}" %></p>
-        <p class="text-gray-900 dark:text-gray-50"><%= @work_site.zip_code %></p>
-      <% else %>
-        <p class="text-gray-900 dark:text-gray-50">n/a</p>
-      <% end %>
-    </div>
-    <div class="flex flex-col">
-      <label class="text-gray-400 text-sm font-semibold">Email</label>
-      <% if @work_site.email %>
-        <p class="text-gray-900 dark:text-gray-50"><%= @work_site.email %></p>
-      <% else %>
-        <p class="text-gray-900 dark:text-gray-50">n/a</p>
-      <% end %>
-    </div>
-    <div class="flex flex-col">
-      <label class="text-gray-400 text-sm font-semibold">Phone number</label>
-      <% if @work_site.phone_number %>
-        <p class="text-gray-900 dark:text-gray-50"><%= @work_site.phone_number%></p>
-      <% else %>
-        <p class="text-gray-900 dark:text-gray-50">n/a</p>
-      <% end %>
-    </div>
-  </div>
   <% end %>
-  <div>
-    <div class="mt-10 mb-2">
-      <label class="text-gray-400 text-sm font-semibold t-10 mb-2 text-center">Service job assigned to:</label>
-    </div>
-    <div class="border rounded-md border-gray-300 dark:border-gray-600">
-      <% unless @active_users.empty? %>
-        <div class="grid grid-cols-5 gap-4 p-2">
-          <div class="col-span-1 px-4 py-2 font-semibold text-center border-b border-gray-300 dark:border-gray-600">Name</div>
-          <div class="col-span-1 px-4 py-2 font-semibold text-center border-b border-gray-300 dark:border-gray-600">Date</div>
-          <div class="col-span-1 px-4 py-2 font-semibold text-center border-b border-gray-300 dark:border-gray-600">Start Time</div>
-          <div class="col-span-1 px-4 py-2 font-semibold text-center border-b border-gray-300 dark:border-gray-600">End Time</div>
+  <!--div-->
+  <div class="mt-10 mb-2">
+    <label class="text-gray-400 text-sm font-semibold t-10 mb-2 text-center">Service job assigned to:</label>
+  </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            Name
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Date
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Start Time
+          </th>
+          <th scope="col" class="px-6 py-3">
+            End Time
+          </th>
           <% if current_user.admin? %>
-            <div class="col-span-1 px-4 py-2 font-semibold text-center border-b border-gray-300 dark:border-gray-600">Unassign</div>
-          <% else %>
-            <div class="col-span-1 px-4 py-2"></div>
+            <th scope="col" class="px-6 py-3">
+              Unassign
+            </th>
           <% end %>
-          <% @active_users.each do |user_assignment| %>
-            <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-center"><%= user_assignment.name %></div>
-            <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-center"><%= user_assignment.date.strftime('%B %e, %Y') %></div>
-            <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-center"><%= user_assignment.start_time.strftime('%I:%M %p') %></div>
-            <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-center"><%= user_assignment.end_time.strftime('%I:%M %p') %></div>
+        </tr>
+      </thead>
+      <tbody>
+        <% @active_users.each do |user_assignment| %>
+          <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <%= user_assignment.name %>
+            </th>
+            <td class="px-6 py-4">
+              <%= user_assignment.date.strftime('%B %e, %Y') %>
+            </td>
+            <td class="px-6 py-4">
+              <%= user_assignment.start_time.strftime('%I:%M %p') %>
+            </td>
+            <td class="px-6 py-4">
+              <%= user_assignment.end_time.strftime('%I:%M %p') %>
+            </td>
             <% if current_user.admin? %>
-              <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 flex items-center justify-center">
+              <td class="px-6 py-4">
                 <%= button_to user_service_job_path(user_assignment.user_service_job_id, service_job_id: user_assignment.service_job_id), method: :delete, class: "text-red-500" do %>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>
                 <% end %>
-              <% else %>
-                <div class="col-span-1 px-4 py-2"></div>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br >
+  <br >
+  <!--div class="border rounded-md border-gray-300 dark:border-gray-600">
+    <% unless @active_users.empty? %>
+      <div class="grid grid-cols-5 gap-4 p-2">
+        <div class="col-span-1 px-4 py-2 font-semibold text-center border-b border-gray-300 dark:border-gray-600">Name</div>
+        <div class="col-span-1 px-4 py-2 font-semibold text-center border-b border-gray-300 dark:border-gray-600">Date</div>
+        <div class="col-span-1 px-4 py-2 font-semibold text-center border-b border-gray-300 dark:border-gray-600">Start Time</div>
+        <div class="col-span-1 px-4 py-2 font-semibold text-center border-b border-gray-300 dark:border-gray-600">End Time</div>
+        <% if current_user.admin? %>
+          <div class="col-span-1 px-4 py-2 font-semibold text-center border-b border-gray-300 dark:border-gray-600">Unassign</div>
+        <% else %>
+          <div class="col-span-1 px-4 py-2"></div>
+        <% end %>
+        <% @active_users.each do |user_assignment| %>
+          <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-center"><%= user_assignment.name %></div>
+          <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-center"><%= user_assignment.date.strftime('%B %e, %Y') %></div>
+          <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-center"><%= user_assignment.start_time.strftime('%I:%M %p') %></div>
+          <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-center"><%= user_assignment.end_time.strftime('%I:%M %p') %></div>
+          <% if current_user.admin? %>
+            <div class="col-span-1 px-4 py-2 border-b border-gray-300 dark:border-gray-600 flex items-center justify-center">
+              <%= button_to user_service_job_path(user_assignment.user_service_job_id, service_job_id: user_assignment.service_job_id), method: :delete, class: "text-red-500" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>
               <% end %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+            <% else %>
+              <div class="col-span-1 px-4 py-2"></div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div-->
