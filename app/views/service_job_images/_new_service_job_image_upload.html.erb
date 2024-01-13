@@ -5,11 +5,11 @@
       <%= form.hidden_field :service_job_id, value: @service_job.id %>
       <%= form.hidden_field :image, value: @service_job_image.cached_image_data, id: nil %>
       <%= form.file_field :image, class: "block w-full p-2 mb-2 rounded" %>
-      <%= form.label :image_description, class: "dark-text-white"%>
-      <%= form.text_field :description, class: "rounded dark:text-black w-full mt-2" %>
-      <div class="flex justify-between mt-6 w-full">
-        <%= form.submit "Upload", class: "w-36 whitespace-nowrap rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
-        <%= button_tag "Close", type: "button", data: {action: "click->modal#toggleModalVisibility"}, class: " w-36 whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+      <%= form.text_field :description, class: "rounded" %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <div class="flex justify-between mt-10">
+        <%= form.submit "Upload", class: "m-3 w-36 whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+        <%= button_tag "Close", type: "button", data: {action: "click->modal#toggleModalVisibility"}, class: "m-3 w-36 whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
       </div>
     <% end %>
   </div>

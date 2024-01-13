@@ -1,0 +1,17 @@
+<div class="flex items-center justify-center h-full">
+  <section class="border-2 rounded p-2 h-full w-full md:w-5/6 flex flex-col items-center justify-start">
+    <div class="border-4 h-full w-full flex items-center justify-center">
+      <% if @service_job_image.image_url %>
+        <%= image_tag @service_job_image.image_url, class: "max-w-full max-h-full" %>
+      <% end %>
+    </div>
+    <div class="flex flex-col items-start mt-2 w-full overflow-y-scroll">
+      <p><%= @service_job_image.user.name %></p>
+      <p class="pt-1 pb-3"><%= @service_job_image.created_at.strftime("%B %d, %Y") %></p>
+      <p class="pb-.5">Description</p>
+      <p><%= @service_job_image.description %></p>
+    </div>
+  </section>
+</div>
+
+
