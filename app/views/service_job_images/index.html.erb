@@ -16,8 +16,8 @@
   <section class="grid grid-cols-3 justify-center mt-10">
       <% @service_job_images.each do |image| %>
         <div class="border-4 border-red-500 flex items-center justify-center">
-          <% if image.image_url%>
-            <%= image_tag image.image_url%>
+          <% if image.image_url(:thumbnail)%>
+            <%= image_tag image.image_url(:thumbnail)%>
             <%= image.description %>
           <% end %>
         </div>
