@@ -18,7 +18,12 @@
         <fieldset id="customerSelect" class="flex flex-col">
           <%= service_job_field.label :select_customer, class: "block text-sm font-medium text-gray-900 dark:text-white mb-2" %>
           <%= service_job_field.select :customer_id,
-          options_for_select(@customers.map { |customer| [customer.name, customer.id] }), {}, id: "selectElement", data: { controller: "slim-select" } %>
+            options_for_select(@customers.map { |customer| [customer.name, customer.id] },
+            selected: @customer.try(:id)),
+            {},
+            id: "selectElement",
+            data: { controller: "slim-select" }
+          %>
         </fieldset>
         <div data-controller="toggle-hidden change-text" class="mt-4">
           <button
@@ -48,7 +53,6 @@
           <%= customer_field.select :state, options_for_select(us_states), {}, class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
           <%= customer_field.label :zip_code , class: "block text-sm font-medium text-gray-900 dark:text-white"%>
           <%= customer_field.text_field :zip_code, autocomplete: 'postal-code', maxlength: "5", class: "mb-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
-
           <div data-controller="toggle-hidden change-text" class="">
             <button
             data-action="click->toggle-hidden#toggleVisibility click->toggle-hidden#toggleDisabled"
@@ -59,7 +63,6 @@
             </button>
           </div>
         </div>
-
         <fieldset id="pointOfContactFields" class="flex flex-col hidden" disabled="true">
           <p class="font-semibold text-lg mt-2 mb-2">Point of Contact Information</p>
           <%= customer_field.fields_for :point_of_contact do |point_of_contact_field| %>
