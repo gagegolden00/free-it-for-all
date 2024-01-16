@@ -5,8 +5,14 @@ class ScheduleController < ApplicationController
   def index
     @current_date = Time.now
     @service_jobs = ServiceJob.kept.order(job_number: 'desc')
-    @selected_date = params[:selected_date] || @current_date.strftime('%Y-%m-%d')
-    @technician_users = User.only_technicians
+    @selected_date = if params[:service_job] && params[:service_job][:date].present?
+      params[:service_job][:date]
+    elsif params[:selected_date].present?
+      params[:selected_date]
+    else
+      @current_date.strftime('%Y-%m-%d')
+    end
+@technician_users = User.only_technicians
     @user_service_job_errors = session[:user_service_job_errors] if session[:user_service_job_errors].present?
     @user_serivce_job_errors.nil? || @user_service_job_errors.empty ? session.delete(:user_service_job_errors) : nil
 
