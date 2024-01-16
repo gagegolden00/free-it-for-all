@@ -50,6 +50,11 @@ export default class extends Controller {
     if (this.hasDrawn) {
       this.submitButtonTarget.disabled = false;
       this.submitButtonTarget.classList.remove('dark:bg-gray-800');
+      this.submitButtonTarget.classList.add('dark:bg-gray-700');
+      this.submitButtonTarget.classList.remove('bg-white');
+      this.submitButtonTarget.classList.add('bg-primary-600');
+      this.submitButtonTarget.classList.add('text-white');
+
     }
   }
 
