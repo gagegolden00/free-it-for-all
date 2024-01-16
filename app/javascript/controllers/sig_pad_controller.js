@@ -86,7 +86,11 @@ export default class extends Controller {
     const ctx = this.canvasTarget.getContext("2d");
     ctx.clearRect(0, 0, this.canvasTarget.width, this.canvasTarget.height);
     this.submitButtonTarget.disabled = true;
-    this.submitButtonTarget.classList.add("dark:bg-gray-800");
+    this.submitButtonTarget.classList.add('dark:bg-gray-800');
+    this.submitButtonTarget.classList.remove('dark:bg-gray-700');
+    this.submitButtonTarget.classList.add('bg-white');
+    this.submitButtonTarget.classList.remove('bg-primary-600');
+    this.submitButtonTarget.classList.remove('text-white');
   }
 
   toggleEmployeeSigPadVisibility() {
