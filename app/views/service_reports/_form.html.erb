@@ -95,7 +95,6 @@
             <% existing_material = @existing_materials_by_id[material.id] if @existing_materials_by_id %>
             <%= service_report_field.fields_for :service_report_materials, existing_material || @service_report.service_report_materials.build do |service_report_material_field| %>
               <%= service_report_material_field.label material.name, class: "font-bold" %><br />
-              <%= service_report_material_field.label material.price %>
               <%= service_report_material_field.hidden_field :material_id, value: material.id %><br />
               <%= service_report_material_field.number_field :quantity, min: 0, max: 10000, maxlength: 5, class: "rounded dark:bg-gray-900", value: existing_material&.quantity || 0 %>
             <% end %>

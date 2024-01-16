@@ -31,7 +31,7 @@ class ServiceJobPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    user.admin? || user.technician? 
   end
 
   def destroy?
