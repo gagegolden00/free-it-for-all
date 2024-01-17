@@ -11,7 +11,7 @@ class ServiceJobsController < ApplicationController
   def new
     @service_job = ServiceJob.new
     @statuses = ServiceJobStatusListHelper.service_job_statuses
-    @customer = Customer.find(params[:customer_id])
+    @customer = Customer.find(params[:customer_id]) if params[:customer_id].present?
     authorize @service_job
     build_child_records
   end
