@@ -1,17 +1,22 @@
-<div class="flex items-center justify-center h-full">
-  <section class="border-2 rounded p-2 h-full w-full md:w-5/6 flex flex-col items-center justify-start">
-    <div class="border-4 h-full w-full flex items-center justify-center">
+<div class="flex items-center justify-center h-screen border border-red-500 p-10">
+  <section class="border-2 rounded flex flex-col items-center justify-start w-screen h-full">
+    <div class="border-4 flex items-center justify-center">
       <% if @service_job_image.image_url %>
-        <%= image_tag @service_job_image.image_url, class: "max-w-full max-h-full" %>
+        <%= image_tag @service_job_image.image_url, class: "" %>
       <% end %>
     </div>
-    <div class="flex flex-col items-start mt-2 w-full overflow-y-scroll">
-      <p><%= @service_job_image.user.name %></p>
-      <p class="pt-1 pb-3"><%= @service_job_image.created_at.strftime("%B %d, %Y") %></p>
+    <div class="flex flex-col items-start mt-2">
+      <p>Uploaded by:</p>
+      <p class="border rounded"><%= @service_job_image.user.name %></p>
+      <p> Date Uploaded: </p>
+      <p class="pt-1 pb-3 border rounded"><%= @service_job_image.created_at.strftime("%B %d, %Y") %></p>
+      <div class="border rounded">
       <p class="pb-.5">Description</p>
       <p><%= @service_job_image.description %></p>
+      </div>
     </div>
   </section>
 </div>
+
 
 
