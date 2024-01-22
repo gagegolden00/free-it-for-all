@@ -8,14 +8,6 @@ class ScheduleController < ApplicationController
 
     @service_jobs = ServiceJob.kept.includes(:customer).order(job_number: 'desc')
 
-    @selected_date = if params[:service_job] && params[:service_job][:date].present?
-                       params[:service_job][:date]
-                     elsif params[:selected_date].present?
-                       params[:selected_date]
-                     else
-                       @current_date.strftime('%Y-%m-%d')
-                     end
-
     @technician_users = User.only_technicians
     @user_service_job_errors = session[:user_service_job_errors] if session[:user_service_job_errors].present?
 
@@ -29,6 +21,28 @@ class ScheduleController < ApplicationController
     elsif params[:display_modal].present? && params[:display_modal] == 'false'
       hide_service_job_detials
     end
+
+
+    @selected_date =
+    if params[:service_job] && params[:service_job][:date].present?
+      params[:service_job][:date]
+    elsif params[:selected_date].present?
+      params[:selected_date]
+    elsif session[:selected_date].present?
+      session[:selected_date]
+    else
+      @current_date.strftime('%Y-%m-%d')
+    end
+
+
+
+
+
+
+
+
+
+
   end
 
   private
