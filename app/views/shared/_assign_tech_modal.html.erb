@@ -30,6 +30,7 @@
           <% else %>
             <%= form.hidden_field :service_job_id, value: params[:id] %>
           <% end %>
+          <%= form.hidden_field :selected_date, value: (@selected_date if @selected_date.present?) %>
           <%= form.label :techs, class: "mt-3 block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
           <%= form.select :user_id, options_for_select(@technician_users.map { |tech| [tech.name, tech.id] }), {}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  %>
           <%= form.label :date, class: "mt-3 block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>

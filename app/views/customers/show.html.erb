@@ -4,6 +4,7 @@
     <h1 class="text-lg sm:text-xl font-medium text-white"><%= @customer.name %></h1>
   </div>
   <div class="flex flex-row gap-2 ml-auto">
+    <%= link_to "New service job", new_service_job_path(customer_id: @customer.id), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
     <%= link_to "Edit Customer", edit_customer_path(@customer), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
   </div>
 </div>

@@ -32,13 +32,16 @@ class UserServiceJobsController < ApplicationController
   private
 
   def user_service_job_params
+    params.permit(:selected_date)
     params.require(:user_service_job).permit(:service_job_id, :user_id, :date, :start_time, :end_time)
   end
 
   def dynamic_redirect_after_user_service_job_creation_based_on_referer(any_errors: nil)
     if request.referer.include?('schedule')
       session[:user_service_job_errors] = @user_service_job.errors.full_messages if any_errors == 'true'
-      schedule_path(@user_service_job)
+      @selected_date = params[:user_service_job][:date]
+
+      schedule_path(@user_service_job, selected_date: @selected_date)
     elsif request.referer.include?('service_job')
 
       unless params[:user_service_job].nil?
@@ -69,4 +72,5 @@ class UserServiceJobsController < ApplicationController
     authorize @notification
     @notification.deliver_later(current_user)
   end
+
 end

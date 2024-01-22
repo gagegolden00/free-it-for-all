@@ -32,8 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.string "state"
     t.integer "zip_code"
     t.bigint "region_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_customers_on_discarded_at"
     t.index ["region_id"], name: "index_customers_on_region_id"
@@ -42,8 +42,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
   create_table "materials", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_materials_on_discarded_at"
   end
@@ -53,9 +53,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.bigint "recipient_id", null: false
     t.string "type", null: false
     t.jsonb "params"
-    t.timestamptz "read_at", precision: 6
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "read_at"
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
@@ -64,8 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.text "content"
     t.string "searchable_type"
     t.bigint "searchable_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
@@ -74,8 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.string "phone_number"
     t.string "email"
     t.bigint "customer_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["customer_id"], name: "index_point_of_contacts_on_customer_id"
     t.index ["discarded_at"], name: "index_point_of_contacts_on_discarded_at"
@@ -91,8 +91,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.text "notes"
     t.text "internal_notes"
     t.bigint "service_report_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_purchase_orders_on_discarded_at"
     t.index ["service_report_id"], name: "index_purchase_orders_on_service_report_id"
@@ -101,8 +101,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
   create_table "regions", force: :cascade do |t|
     t.string "name", null: false
     t.string "manager", null: false
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_regions_on_discarded_at"
   end
@@ -111,8 +111,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.text "image_data"
     t.text "description"
     t.bigint "service_job_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.bigint "user_id"
     t.index ["service_job_id"], name: "index_service_job_images_on_service_job_id"
@@ -127,8 +127,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.string "work_type"
     t.bigint "customer_id"
     t.bigint "work_site_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["customer_id"], name: "index_service_jobs_on_customer_id"
     t.index ["discarded_at"], name: "index_service_jobs_on_discarded_at"
@@ -140,8 +140,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.bigint "material_id", null: false
     t.integer "quantity", null: false
     t.integer "pre_tax_total"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_service_report_materials_on_discarded_at"
     t.index ["material_id"], name: "index_service_report_materials_on_material_id"
@@ -160,8 +160,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.text "employee_signature"
     t.text "customer_signature"
     t.bigint "service_job_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.bigint "user_id"
     t.index ["discarded_at"], name: "index_service_reports_on_discarded_at"
@@ -175,8 +175,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.integer "mileage"
     t.text "remarks"
     t.bigint "service_report_id"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.bigint "user_id"
     t.index ["service_report_id"], name: "index_time_logs_on_service_report_id"
@@ -188,8 +188,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.date "date"
     t.time "start_time"
     t.time "end_time"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_user_service_jobs_on_discarded_at"
     t.index ["service_job_id"], name: "index_user_service_jobs_on_service_job_id"
@@ -210,10 +210,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.timestamptz "reset_password_sent_at", precision: 6
-    t.timestamptz "remember_created_at", precision: 6
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "reset_password_sent_at"
+    t.timestamptz "remember_created_at"
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -228,8 +228,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
     t.integer "zip_code"
     t.string "email"
     t.string "phone_number"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
+    t.timestamptz "created_at", null: false
+    t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
     t.index ["discarded_at"], name: "index_work_sites_on_discarded_at"
   end
