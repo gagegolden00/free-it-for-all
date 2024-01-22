@@ -39,7 +39,7 @@ class UserServiceJobsController < ApplicationController
   def dynamic_redirect_after_user_service_job_creation_based_on_referer(any_errors: nil)
     if request.referer.include?('schedule')
       session[:user_service_job_errors] = @user_service_job.errors.full_messages if any_errors == 'true'
-      @selected_date = params[:user_service_job][:date]
+      @selected_date = params[:user_service_job][:date] if params[:user_service_job].present?  && params[:user_service_job][:date].present? 
 
       schedule_path(@user_service_job, selected_date: @selected_date)
     elsif request.referer.include?('service_job')
