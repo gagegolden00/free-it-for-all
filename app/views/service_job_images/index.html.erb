@@ -17,8 +17,8 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
   <% @service_job_images.each do |image| %>
     <%= link_to service_job_image_path(service_job_id: image.service_job_id, id: image.id) do %>
-      <section class="border-2 rounded p-2 h-full w-5/6 mx-auto flex flex-col items-center justify-start md:w-full">
-        <div class="border-4 h-3/4 w-full flex items-center justify-center">
+      <section class="border-2 dark:border-gray-600 rounded p-2 h-full w-5/6 mx-auto flex flex-col items-center justify-start md:w-full">
+        <div class="border-4 dark:border-gray-600 h-3/4 w-full flex items-center justify-center">
           <% if image.image_url(:thumbnail) %>
             <%= image_tag image.image_url(:thumbnail), class: "max-w-full max-h-full" %>
           <% end %>
