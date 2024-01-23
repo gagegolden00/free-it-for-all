@@ -15,18 +15,6 @@
               data: { "time-sheets-target": 'timeFrameSelect' },
               class: 'w-36 h-10 hover:cursor-pointer block text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
               %>
-            <!-- %= select_tag 'sort_by',
-              options_for_select(
-                [
-                  ['- Sort by', 'name asc'],
-                  ['Name asc', 'name asc'],
-                  ['Name desc', 'name desc']
-                ],
-                selected: params[:sort_by]
-              ),
-              onchange: 'this.form.submit()',
-              class: 'w-36 h-10 ml-4 hover:cursor-pointer block p-2 pl-6 pr-8 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-            %-->
           </div>
           <div data-time-sheets-target="datepickers" class="flex flex-row hidden gap-4 mt-4" data-time-sheet-target="datepickers">
             <%= date_field_tag :start_date, @start_date ? @start_date : nil, class: "w-36 h-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block ps-2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "Select date start" %>
@@ -38,8 +26,8 @@
   </section>
   <section id="time-sheet" class="flex flex-col gap-2 rounded mt-2">
     <div class="rounded dark:bg-gray-900">
-      <% @users_with_time_log_totals.each do |user| %>
-        <div class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded my-2 text-sm">
+      <% @users_with_time_log_totals.each_with_index do |user, index| %>
+        <div class="<%= index.even? ? 'bg-gray-100' : 'bg-gray-200' %>  <%= index.even? ? 'dark:bg-gray-700' : 'dark:bg-gray-800' %> border border-gray-300 dark:border-gray-500 rounded my-2 text-sm">
           <div class="grid lg:grid-cols-7 grid-cols-2 rounded lg:min-h-20 p-2 ">
             <div class="col-span-1 flex items-center lg:justify-start  lg:my-0 my-1">
               <h3 class="pl-2 font-semibold"><%= user.name %></h3>
