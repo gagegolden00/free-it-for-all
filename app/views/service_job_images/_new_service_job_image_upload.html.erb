@@ -1,11 +1,12 @@
 <div class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
   <div class="bg-white dark:bg-gray-900 p-8 rounded shadow-md">
     <h1 class="font-bold text-lg mb-4">Upload Image</h1>
-    <%= form_with(model: @service_job_image, url: service_job_images_path(service_job_id: @service_job) ) do |form| %>
+    <%= form_with(model: @service_job_image, url: service_job_images_path(service_job_id: @service_job), data: {turbo: false}) do |form| %>
       <%= form.hidden_field :service_job_id, value: @service_job.id %>
       <%= form.hidden_field :image, value: @service_job_image.cached_image_data, id: nil %>
       <%= form.file_field :image, class: "block w-full p-2 mb-2 rounded" %>
       <%= form.text_field :description, class: "rounded" %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
       <div class="flex justify-between mt-10">
         <%= form.submit "Upload", class: "m-3 w-36 whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
         <%= button_tag "Close", type: "button", data: {action: "click->modal#toggleModalVisibility"}, class: "m-3 w-36 whitespace-nowrap ml-auto rounded-md block text-center text-gray-500 border-2 p-2 px-4 border-gray-200 hover:bg-primary-600 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>

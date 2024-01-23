@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :service_reports, through: :service_jobs
   has_many :time_logs
   has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :service_job_images
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

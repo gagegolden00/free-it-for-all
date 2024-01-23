@@ -112,3 +112,5 @@ gem "sentry-ruby", "~> 5.14"
 gem "sentry-rails", "~> 5.14"
 
 gem "shrine", "~> 3.5"
+
+gem "mini_magick", "~> 4.12"
