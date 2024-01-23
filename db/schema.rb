@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_28_221029) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_13_021235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "intarray"
@@ -114,7 +114,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_221029) do
     t.timestamptz "created_at", null: false
     t.timestamptz "updated_at", null: false
     t.timestamptz "discarded_at"
+    t.bigint "user_id"
     t.index ["service_job_id"], name: "index_service_job_images_on_service_job_id"
+    t.index ["user_id"], name: "index_service_job_images_on_user_id"
   end
 
   create_table "service_jobs", force: :cascade do |t|
@@ -233,6 +235,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_221029) do
   end
 
   add_foreign_key "purchase_orders", "service_reports"
+  add_foreign_key "service_job_images", "users"
   add_foreign_key "service_jobs", "customers"
   add_foreign_key "service_report_materials", "materials"
   add_foreign_key "service_report_materials", "service_reports"
