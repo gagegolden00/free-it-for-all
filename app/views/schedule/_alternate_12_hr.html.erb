@@ -73,21 +73,22 @@
   <% current_name = nil %>
   <% total_colors = ScheduleHelper.color_list.length - 1 %>
   <% color_index  = 0 %>
-
   <% @daily_tech_schedule_data.each do |data| %>
     <% if current_name != data.name %>
       <div class="p-2 z-50 text-sm font font-semibold bg-gray-100 dark:bg-gray-900 border-r border-t border-gray-300 dark:border-gray-600" style="grid-column: 1">
         <%= data.name %>
       </div>
       <div>
-      <% current_name = data.name %>
-      <% color_index = (color_index == total_colors) ? 0 : color_index + 1 %>
+        <% current_name = data.name %>
+        <% color_index = (color_index == total_colors) ? 0 : color_index + 1 %>
       </div>
     <% end %>
-
     <% unless ScheduleHelper.get_12_hr_grid_col_value(data.start_time).nil? %>
       <div class="<%= ScheduleHelper.color_list[color_index]  %> text-white italic flex items-center p-1 mt-1 -mr-0.5 rounded-sm shadow-md text-sm whitespace-nowrap text-ellipsis overflow-hidden"
           style="grid-column-start: <%= ScheduleHelper.get_12_hr_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_12_hr_grid_col_value(data.end_time) %>">
+        <% if data.start_time.hour < 7 %>
+          <%= link_to 'View 24 hour schedule', "#", class: "font-bold mr-20" %>
+        <% end %>
         <%= link_to schedule_path(user_service_job_id: data.user_service_job_id, display_modal: "true", user_id: data.user_id), data: {turbo_stream: true}, title: "#{data.customer_name}" do %>
           <span class=""><%= data.customer_name %></span>
           <span class=" pl-6"><%= data.start_time.strftime('%l:%M %p') %> - <%= data.end_time.strftime('%l:%M %p') %></span>
