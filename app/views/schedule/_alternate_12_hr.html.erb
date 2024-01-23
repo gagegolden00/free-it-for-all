@@ -84,7 +84,7 @@
       </div>
     <% end %>
     <% unless ScheduleHelper.get_12_hr_grid_col_value(data.start_time).nil? %>
-      <div class="<%= ScheduleHelper.color_list[color_index]  %> text-white italic flex items-center p-1 mt-1 -mr-0.5 rounded-sm shadow-md text-sm whitespace-nowrap text-ellipsis overflow-hidden"
+      <div class="<%= ScheduleHelper.color_list[color_index]  %> text-white italic flex items-center p-1 m-1 rounded-sm shadow-md text-sm whitespace-nowrap text-ellipsis overflow-hidden"
           style="grid-column-start: <%= ScheduleHelper.get_12_hr_grid_col_value(data.start_time) %>; grid-column-end: <%= ScheduleHelper.get_12_hr_grid_col_value(data.end_time) %>">
         <% if data.start_time.hour < 7 %>
           <%= link_to 'View 24 hour schedule', "#", class: "font-bold mr-20" %>
