@@ -4,7 +4,8 @@ module ScheduleHelper
     unless time.nil?
       hours = time.strftime('%H').to_i
       minutes = time.strftime('%M').to_i
-      grid_col_start_value = ((hours * 4) + (minutes / 15) + 4).to_s
+      grid_col_start_value = ((hours * 4) + (minutes / 15)).to_i + 2
+      grid_col_start_value.to_s
     end
   end
 
