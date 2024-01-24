@@ -1,5 +1,44 @@
-<%= render partial: '24_hour_view' %>
-
-<%= render partial: 'alternate_12_hr' %>
-
-
+<div class="bg-primary-600 dark:bg-primary-800 p-2 sm:p-3 shadow-md flex flex-row items-center h-16">
+  <h1 class="text-lg sm:text-xl font-medium text-white">Daily Tech Schedule</h1>
+  <div class="ml-auto">
+    <%= link_to "12 hour view", schedule_path(schedule_view_type: '12_hour'), data: { turbo_frame: 'alternateView', turbo_stream: true }, class: "bg-white inline-flex ml-2 py-0.5 lg:py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none rounded-md border-2 border-gray-200 hover:bg-primary-500 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"  %>
+    <%= link_to "24 hour view", schedule_path(schedule_view_type: '24_hour'), data: { turbo_frame: 'alternateView', turbo_stream: true  }, class: "bg-white inline-flex ml-2 py-0.5 lg:py-2.5 px-5 my-5 text-sm font-medium text-gray-500 focus:outline-none rounded-md border-2 border-gray-200 hover:bg-primary-500 hover:border-primary-600 hover:shadow-md hover:text-gray-50 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+    <% if current_user.admin? %>
+      <%= render partial: "assign_tech_modal" %>
+    <% end %>
+  </div>
+</div>
+<% if @user_service_job_errors.present? %>
+  <div
+    id="alert-user-service-job-errors"
+    data-controller="alert-component"
+    class="flex items-center justify-center w-full p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+    role="alert"
+  >
+    <svg class="flex-shrink-0 inline w-4 h-4 mr-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+    </svg>
+    <div class="w-full">
+      <span class="font-medium">
+        <%= I18n.t("errors.messages.not_saved",
+          count: @user_service_job_errors.count,
+          resource: 'User Service Job')
+        %>
+      </span>
+      <ul class="mt-1.5 ml-4 list-disc list-inside">
+        <% @user_service_job_errors.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <button type="button" class="-mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-user-service-job-errors" aria-label="Close">
+      <span class="sr-only">Dismiss</span>
+      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+      </svg>
+    </button>
+  </div>
+<% end %>
+<turbo_frame id="alternateView">
+  <%= render partial: '12_hour_view' %> <!-- Default to 12-hour view -->
+</turbo_frame>
