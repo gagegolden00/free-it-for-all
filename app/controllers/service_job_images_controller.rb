@@ -9,12 +9,12 @@ class ServiceJobImagesController < ApplicationController
     authorize @service_job_image
 
     @service_job_images = @service_job.service_job_images
+    @service_job_image.user = current_user
 
     if @service_job_image.save
       redirect_to service_job_images_path(@service_job), notice: 'Image was successfully uploaded.'
     else
-      render :index
-      @service_job_image
+      redirect_to service_job_images_path(@service_job), alert: @service_job_image.errors.full_messages
     end
 
   end
