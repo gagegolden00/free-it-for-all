@@ -391,6 +391,7 @@ DEPENDENCIES
   jsbundling-rails
   lookbook (~> 2.1)
   meta-tags (~> 2.18)
+  mini_magick (~> 4.12)
   noticed (~> 1.6, >= 1.6.3)
   pagy (~> 6.0, >= 6.0.4)
   paper_trail (~> 15.0)

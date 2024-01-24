@@ -63,13 +63,13 @@
         <p><strong>Mileage:</strong> <%= @time_log&.mileage || "0"%></p>
       </div>
     </section>
-    <hr class="w-full my-4 border-gray-200 dark:border-gray-700">
+    <hr class="w-full my-4 border-gray-700 dark:border-gray-700">
     <section id="second-section" class="">
       <h2 class="w-full font-bold mb-2">Materials Used</h2>
       <div class="flex flex-wrap gap-2">
         <% @service_report_materials.each do |material| %>
-          <div class="">
-            <div class="border p-2 text-sm rounded-md bg-white dark:bg-gray-800">
+          <div class="mx-auto md:mx-0">
+            <div class="border w-40 items-center p-2 mx-auto text-sm rounded-md bg-white dark:bg-gray-800 dark:border-gray-700">
               <p><strong>Name:</strong> <%= material.name %></p>
               <p><strong>Quantity:</strong> <%= material.quantity %></p>
               <p class="<%= params[:customer_view] == 'false' ? '' : 'hidden' %>"><strong>Price:</strong> $<%= format_price(material.price) %></p>
@@ -81,28 +81,30 @@
     </section>
     <hr class="w-full my-4 border-gray-200 dark:border-gray-700">
     <section id="third-section" class="grid grid-cols-1 md:grid-cols-2 justify-between gap-2 md:gap-4 items-start mb-4">
-      <div class="">
+      <div class="mb-4">
         <h2 class="font-bold mb-2">Work Description</h2>
-        <div class="border-2 rounded-md bg-white dark:bg-gray-800 p-2 md:p-4">
+        <div class="border rounded-md bg-white dark:bg-gray-800 dark:border-gray-700  p-2 md:p-4">
           <p><%= @service_report.description %></p>
         </div>
       </div>
-      <div class="grid grid-cols-1 gap-4">
+      <div class="grid grid-cols-1 gap-4 my-4">
         <div class="flex items-center">
           <div class="w-1/5">QTY</div>
           <div class="w-2/5">Description</div>
           <div class="w-1/5 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>">Unit Price</div>
           <div class="w-1/5 <%= params[:customer_view] == 'false' ? '' : 'hidden' %>">Total Cost</div>
         </div>
+        <hr class="w-full border-gray-200 dark:border-gray-700">
         <% if @purchase_orders %>
           <% @purchase_orders.each do |po| %>
-            <div class="flex items-center border-t">
+            <div class="flex items-center">
+
               <div class="w-1/5 pl-2"><%= po.quantity %></div>
               <div class="w-2/5 relative">
                 <div class="truncate w-full" title="<%= po.description %>">
                   <%= po.description %>
                 </div>
-                <div class="hidden group-hover:block absolute bg-white p-2 border rounded-md shadow-md">
+                <div class="hidden group-hover:block absolute bg-white p-2 borde rounded-md shadow-md">
                   <%= po.description %>
                 </div>
               </div>
@@ -114,7 +116,7 @@
       </div>
     </section>
     <section>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 justify-around text-center w-full bg-gray-200 py-2 gap-2">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 justify-around text-center w-full dark:bg-gray-800 border rounded dark:border-gray-700 py-2 gap-2">
         <div>
           <h2 class="font-bold">Total Hours</h2>
           <span>###</span>
