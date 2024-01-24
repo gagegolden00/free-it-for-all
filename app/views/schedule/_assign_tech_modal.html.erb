@@ -22,7 +22,7 @@
         </button>
       </div>
       <!-- Modal body -->
-      <%= form_with(model: @user_service_job, url: user_service_jobs_path,  scope: 'user_service_job', class: "gap-4 mb-4" ) do |form| %>
+      <%= form_with(model: @user_service_job, url: user_service_jobs_path,  scope: 'user_service_job', class: "gap-4 mb-4", data: {turbo: false} ) do |form| %>
         <div>
           <%= form.label :service_job, class: "block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
           <%= form.select :service_job_id, options_for_select(@service_jobs.map { |job| ["#{job.job_number} - #{job.customer.name}", job.id] }), {}, id: "selectElement", data: { controller: "slim-select" }  %>
@@ -30,7 +30,7 @@
           <%= form.label :techs, class: "mt-3 block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
           <%= form.select :user_id, options_for_select(@technician_users.map { |tech| [tech.name, tech.id] }), {}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  %>
           <%= form.label :date, class: "mt-3 block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= form.date_field :date, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+          <%= form.date_field :date, required: true, value: @selected_date, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
           <%= form.label :start_time, class: "mt-3 block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
           <%= form.time_field :start_time, step: "900", required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
           <%= form.label :end_time, class: "mt-3 block mb-1 text-sm font-medium text-gray-900 dark:text-white" %>
