@@ -10,10 +10,10 @@
       </div>
     </div>
     <div class="flex flex-row flex-wrap gap-2 ml-auto">
-      <%= link_to "Job Details", service_job_path(@service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
-      <%= link_to "Purchase orders", service_job_purchase_orders_path(@service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
-      <%= link_to "Images", service_job_images_path(@service_job), class: "w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
-      <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "w-36 text-center text-gray-50 border-2 p-2 bg-white text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md over:text-primary-600" %>
+      <%= link_to "Job Details", service_job_path(@service_job), class: "print:hidden w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
+      <%= link_to "Purchase orders", service_job_purchase_orders_path(@service_job), class: "print:hidden w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md" %>
+      <%= link_to "Images", service_job_images_path(@service_job), class: "print:hidden w-36 text-center text-gray-50 border-2 p-2 hover:bg-white hover:text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md"  %>
+      <%= link_to "Reports", service_job_service_reports_path(service_job_id: @service_job), class: "print:hidden  w-36 text-center text-gray-50 border-2 p-2 bg-white text-primary-600 border-white rounded-md text-sm font-medium hover:font-strong hover:shadow-md over:text-primary-600" %>
     </div>
   </div>
   <div class="p-2 md:p-4">
@@ -115,7 +115,7 @@
         <% end %>
       </div>
     </section>
-    <section>
+    <section style="page-break-before: always;">
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 justify-around text-center w-full dark:bg-gray-800 border rounded dark:border-gray-700 py-2 gap-2">
         <div>
           <h2 class="font-bold">Total Hours</h2>
