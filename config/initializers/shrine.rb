@@ -15,3 +15,4 @@ Shrine.plugin :validation
 Shrine.plugin :validation_helpers
 Shrine.plugin :derivatives
 Shrine.plugin :backgrounding
+Shrine.plugin :processing

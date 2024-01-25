@@ -6,7 +6,7 @@ class ImageUploader < Shrine
   end
 
   Attacher.promote_block do
-    PromoteJob.perform_later(self.class.name, record.class.name, record.id, name, file_data)
+    PromoteJob.perform_now(self.class.name, record.class.name, record.id, name, file_data)
   end
-  
+
 end
