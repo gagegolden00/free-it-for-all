@@ -16,7 +16,7 @@ module ScheduleHelper
       grid_col_value = ((hours * 4) + (minutes / 15)).to_i - 26
 
       if grid_col_value < 2
-        grid_col_value = 3
+        grid_col_value = 2
       elsif grid_col_value > 54
         grid_col_value = 54
       end
