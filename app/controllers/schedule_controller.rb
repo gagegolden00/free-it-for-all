@@ -80,7 +80,8 @@ class ScheduleController < ApplicationController
     end
 
     def rescue_unknown_request_format_exception
-      redirect_to schedule_path, flash: flash[:notice] = 'User successfully assigned, and a notification has been sent to the technician.'
+      redirect_to schedule_path, notice: 'User successfully assigned, and a notification has been sent to the technician.'
     end
+
 
 end
