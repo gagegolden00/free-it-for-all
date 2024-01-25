@@ -1,12 +1,31 @@
 module ScheduleHelper
 
-  def self.get_grid_col_value(time)
+  def self.get_24_hr_grid_col_value(time)
     unless time.nil?
       hours = time.strftime('%H').to_i
       minutes = time.strftime('%M').to_i
-      grid_col_start_value = ((hours * 4) + (minutes / 15) + 2).to_s
+      grid_col_value = ((hours * 4) + (minutes / 15)).to_i + 2
+      grid_col_value.to_s
     end
   end
+
+  def self.get_12_hr_grid_col_value(time)
+    unless time.nil?
+      hours = time.strftime('%H').to_i
+      minutes = time.strftime('%M').to_i
+      grid_col_value = ((hours * 4) + (minutes / 15)).to_i - 26
+
+      if grid_col_value < 2
+        grid_col_value = 2
+      elsif grid_col_value > 54
+        grid_col_value = 54
+      end
+      grid_col_value.to_s
+    end
+  end
+
+
+
 
   def self.color_list
     [
