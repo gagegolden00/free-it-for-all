@@ -2,6 +2,8 @@ class ScheduleController < ApplicationController
   layout 'application_full'
   include ScheduleHelper
 
+  rescue_from ActionController::UnknownFormat, with: :rescue_unknown_request_format_exception
+
   def index
     params[:schedule_view_type] ||= '24_hour'
     @current_date = Time.now
@@ -65,7 +67,6 @@ class ScheduleController < ApplicationController
 
     def alternate_12_24_hour_views
       schedule_view_type = params[:schedule_view_type] || '24_hour'
-
       respond_to do |format|
         format.html
         format.turbo_stream do
@@ -77,4 +78,9 @@ class ScheduleController < ApplicationController
         end
       end
     end
+
+    def rescue_unknown_request_format_exception
+      redirect_to schedule_path, flash: flash[:notice] = 'User successfully assigned, and a notification has been sent to the technician.'
+    end
+
 end
