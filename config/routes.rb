@@ -9,25 +9,9 @@ Rails.application.routes.draw do
     mount Sidekiq::Web, at: "/sidekiq"
   end
 
-  devise_for :users, skip: :registrations
+  devise_for :users
 
-  resources :users
+  root "pages#show"
 
-  root "pages#home"
-
-  resources :customers
-
-  resources :service_jobs do
-    resources :service_reports
-    resources :purchase_orders
-    resources :images, controller: 'service_job_images'
-  end
-
-  resources :user_service_jobs, only: %i[create destroy update]
-
-  get "time_sheets", to: 'time_sheets#index', as: :time_sheets
-  get "time_sheet/:user_id", to: 'time_sheets#show', as: :time_sheet
-
-  get "schedule", to: 'schedule#index', as: :schedule
-
+  resources :ipv4_quizzes
 end
