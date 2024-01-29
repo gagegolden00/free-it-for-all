@@ -342,3 +342,29 @@ Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 1544)
   
 ActionController::RoutingError (No route matches [GET] "/assets/home_page_image.jpg"):
   
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/" for 172.18.0.1 at 2024-01-29 14:09:36 +0000
+[Tracing] Starting <http.server> transaction </>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PagesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/show.html.erb within layouts/application
+  Rendered pages/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 157)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 1710)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.0ms | Allocations: 2876)
+
+
+[Transport] Sending envelope with items [transaction, client_report] a37464781c214317a506e1cd35b43d37 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes" for 172.18.0.1 at 2024-01-29 14:10:25 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/index.html.erb within layouts/application
+  Rendered ipv4_quizzes/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 257)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 1531)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 2273)
+
+
+[Transport] Sending envelope with items [transaction, client_report] aa882bbcff3f42079aa1a7b3c0cf8d5a to Sentry
