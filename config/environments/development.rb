@@ -70,6 +70,6 @@ Rails.application.configure do
 
   config.hosts += [
     'app',
-    'app.mechcool.test'
+    'app.free_it_for_all.test'
   ]
 end

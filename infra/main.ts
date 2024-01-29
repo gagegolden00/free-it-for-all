@@ -63,9 +63,9 @@ class WebAppStack extends TerraformStack {
   }
 }
 
-const organization = "mech-cool";
+const organization = "free-it-for-all";
 const domainNames: { [key: string]: string } = {
-  production: "app.mechcool.rubyshore.com",
+  production: "app.free_it_for_all.rubyshore.com",
 };
 
 const app = new App();

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-profile=mech-cool
+profile=free-it-for-all
 cluster=
 task_definition=
 file=./run-task.json

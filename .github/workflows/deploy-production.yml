@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  ECR_REPOSITORY: mech-cool/web-app-production
+  ECR_REPOSITORY: free-it-for-all/web-app-production
   ECS_CLUSTER: web-app-production
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://app.mechcool.rubyshore.com
+      url: https://app.free-it-for-all.com
 
     steps:
       - name: Checkout

@@ -4,7 +4,7 @@
   }
 }
 
-app.mechcool.test {
+app.free_it_for_all.test {
   reverse_proxy * app:3000
   import tls_internal
 }
