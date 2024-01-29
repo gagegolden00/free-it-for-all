@@ -189,7 +189,7 @@ export class EcsConstruct extends Construct {
           image: `${repo.repositoryUrl}:release`,
           portMappings: [
             {
-              containerPort: 3000,
+              containerPort: "3000",
               protocol: "tcp",
             },
           ],

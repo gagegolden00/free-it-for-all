@@ -33,8 +33,8 @@ export class SecurityGroupConstruct extends Construct {
         },
         {
           protocol: "TCP",
-          fromPort: 443,
-          toPort: 443,
+          fromPort: 3000,
+          toPort: 3000,
           cidrBlocks: ["0.0.0.0/0"],
           ipv6CidrBlocks: ["::/0"],
         },

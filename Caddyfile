@@ -5,6 +5,6 @@
 }
 
 app.free_it_for_all.test {
-  reverse_proxy * app:3000
+  reverse_proxy * app:443
   import tls_internal
 }

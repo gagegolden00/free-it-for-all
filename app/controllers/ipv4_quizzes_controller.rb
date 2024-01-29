@@ -2,11 +2,10 @@ class Ipv4QuizzesController < ApplicationController
   def new; end
 
   def create
-
     @quiz = Ipv4Quiz.new(permitted_params)
     @quiz.user = current_user
 
-    if @quiz.save!
+    if @quiz.save
       redirect_to edit_ipv4_quiz_path(@quiz)
     else
       redirect_to new_ipv4_quiz_path
