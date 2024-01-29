@@ -10892,6 +10892,16 @@
   application.debug = false;
   window.Stimulus = application;
 
+  // app/javascript/controllers/ipv4_quiz_controller.js
+  var ipv4_quiz_controller_default = class extends Controller {
+    connect() {
+      console.log("Connecting to ipv4 quiz controller...");
+    }
+  };
+
+  // app/javascript/controllers/index.js
+  application.register("ipv4-quiz", ipv4_quiz_controller_default);
+
   // app/javascript/application.js
   var import_flowbite_turbo = __toESM(require_flowbite_turbo());
 })();
