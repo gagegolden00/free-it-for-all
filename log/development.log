@@ -16,3 +16,103 @@ Shutting down background worker
 Killing session flusher
 Sentry HTTP Transport will connect to https://o59326.ingest.sentry.io
 Initializing the background worker with 4 threads
+Sentry HTTP Transport will connect to https://o59326.ingest.sentry.io
+Initializing the background worker with 4 threads
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(867852457941885045)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(867852457941885045)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamptz(6) NOT NULL, "updated_at" timestamptz(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6209005573857744420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateIpv4Quizzes (20240129162708)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "ipv4_quizzes" ("id" bigserial primary key, "quiz_type" character varying DEFAULT 'ipv4_quiz', "question_count" integer NOT NULL, "correct_count" integer, "incorrect_count" integer, "user_id" bigint, "created_at" timestamptz(6) NOT NULL, "updated_at" timestamptz(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_ipv4_quizzes_on_user_id" ON "ipv4_quizzes" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20240129162708"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeviseToUsers (20240129171203)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamptz(6), "remember_created_at" timestamptz(6))[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20240129171203"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2024-01-29 20:09:40.950786"], ["updated_at", "2024-01-29 20:09:40.950786"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6209005573857744420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Shutting down background worker
+Killing session flusher
+Sentry HTTP Transport will connect to https://o59326.ingest.sentry.io
+Initializing the background worker with 4 threads
+Started GET "/ipv4_quizzes/2/edit" for 172.18.0.1 at 2024-01-29 20:09:48 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/2/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 373)
+  Rendered layout layouts/application.html.erb (Duration: 203.6ms | Allocations: 24870)
+Completed 200 OK in 231ms (Views: 206.1ms | ActiveRecord: 2.9ms | Allocations: 42711)
+
+
+[Transport] Sending envelope with items [transaction] 93671c82f7ee4106bec0fc7b324bb802 to Sentry
+Started GET "/ipv4_quizzes/2/edit" for 172.18.0.1 at 2024-01-29 20:09:52 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/2/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 0.1ms | Allocations: 14)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 1878)
+Completed 200 OK in 10ms (Views: 5.0ms | ActiveRecord: 0.6ms | Allocations: 3782)
+
+
+[Transport] Sending envelope with items [transaction] d5ddd33136904848a86982c7a1f0a9db to Sentry
+Started GET "/ipv4_quizzes/2/edit" for 172.18.0.1 at 2024-01-29 20:09:53 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/2/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 0.1ms | Allocations: 14)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 1878)
+Completed 200 OK in 9ms (Views: 4.4ms | ActiveRecord: 0.5ms | Allocations: 3756)
+
+
+[Transport] Sending envelope with items [transaction] acc0aad4acf849afaf5f9513238d4487 to Sentry
+Started GET "/ipv4_quizzes/new" for 172.18.0.1 at 2024-01-29 20:09:55 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/new>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:4:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/new.html.erb within layouts/application
+  Rendered ipv4_quizzes/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 127)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 1999)
+Completed 200 OK in 10ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 3435)
+
+
+[Transport] Sending envelope with items [transaction] 2f0bd4c2de074303ab32a8d9deaaddde to Sentry
