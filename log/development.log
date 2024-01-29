@@ -229,3 +229,5 @@ Shutting down background worker
 Killing session flusher
 Shutting down background worker
 Killing session flusher
+Sentry HTTP Transport will connect to https://o59326.ingest.sentry.io
+Initializing the background worker with 4 threads
