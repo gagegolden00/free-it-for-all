@@ -42,7 +42,7 @@ To run specs:
 
 To see system specs run in the browser:
 
-Visit: http://localhost:7900
+Visit: http://0.0.0.0:7900
 password: `secret`
 and run:
 
