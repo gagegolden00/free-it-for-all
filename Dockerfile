@@ -50,6 +50,6 @@ COPY --from=assets /usr/local/bundle /usr/local/bundle
 COPY --from=assets /app/public /app/public
 COPY . .
 
-EXPOSE 3000
+EXPOSE 443
 
 CMD ["rails", "s"]

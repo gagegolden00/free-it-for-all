@@ -189,7 +189,7 @@ export class EcsConstruct extends Construct {
           image: `${repo.repositoryUrl}:release`,
           portMappings: [
             {
-              containerPort: 3000,
+              containerPort: "443",
               protocol: "tcp",
             },
           ],
@@ -227,7 +227,7 @@ export class EcsConstruct extends Construct {
       },
       loadBalancer: [
         {
-          containerPort: 3000,
+          containerPort: 443,
           containerName: "container",
           targetGroupArn: lbTargetGroup.arn,
         },

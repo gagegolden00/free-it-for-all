@@ -60,8 +60,8 @@ export class SecurityGroupConstruct extends Construct {
       ingress: [
         {
           protocol: "TCP",
-          fromPort: 3000,
-          toPort: 3000,
+          fromPort: 443,
+          toPort: 443,
           securityGroups: [this.lbSecurityGroup.id],
         },
       ],
