@@ -51,13 +51,13 @@ export class CloudfrontConstruct extends Construct {
           customOriginConfig: {
             originProtocolPolicy: "http-only",
             httpPort: 80,
-            httpsPort: 443,
+            httpsPort: 3000,
             originSslProtocols: ["TLSv1.2"],
           },
           customHeader: [
             {
               name: "X-Forwarded-Port",
-              value: "443",
+              value: "3000",
             },
             {
               name: "X-Forwarded-Ssl",

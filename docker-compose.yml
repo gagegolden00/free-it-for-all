@@ -37,7 +37,7 @@ services:
     image: caddy:2
     ports:
       - 80:80
-      - 443:443
+      - 3000:3000
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_config:/config
@@ -70,7 +70,7 @@ services:
     <<: [*service, *app]
     command: bash -c "bundle install && rails db:prepare && rails s"
     ports:
-      - "443:443"
+      - "3000:3000"
 
   job:
     <<: [*service, *app]
