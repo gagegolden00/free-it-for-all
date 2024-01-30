@@ -5,8 +5,8 @@ class Ipv4QuizzesController < ApplicationController
   end
 
   def create
-    authorize current_user
     @quiz = Ipv4Quiz.new(permitted_params)
+    authorize @quiz
     @quiz.user = current_user
 
     if @quiz.save
