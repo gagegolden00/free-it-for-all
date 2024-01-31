@@ -1,78 +1,50 @@
 <section class="bg-white dark:bg-gray-900">
-  <!--
-      1) randomly generate 4 octets
-      2) build form to take 4 inputs
-      3) leave hidden fields for correct/ wrong
-      4) capture submission with stimulus
-      5) calculate correct/wrong and update value in form
-      6) proceed with submission
-
-    -->
   <div class="py-8 px-4 mx-auto max-w-screen-xl text-center sm:py-16 lg:px-6">
-    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">asdf</h2>
-    <p class="text-gray-500 sm:text-xl dark:text-gray-400">asdffdsa</p>
-
-    <div class="mt-8 lg:mt-12 space-y-8 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-12 md:space-y-0">
-      <%= form_with do |form| %>
-        <div class="border">
-          <h3 class="mb-2 text-xl font-bold dark:text-white">1st octet</h3>
-          <p><%= rand(0..255)%></p>
-          <%= form.text_field :field1, maxlength: 8, pattern: "[01]{1,8}", title: "Please enter a maximum of 8 characters containing only 0s and 1s" %>
-        </div>
-        <div class="border">
-          <h3 class="mb-2 text-xl font-bold dark:text-white">2ed octet</h3>
-          <p><%= rand(0..255)%></p>
-          <%= form.text_field :field2, maxlength: 8, pattern: "[01]{1,8}", title: "Please enter a maximum of 8 characters containing only 0s and 1s" %>
-        </div>
-        <div class="border">
-          <h3 class="mb-2 text-xl font-bold dark:text-white">3rd octet</h3>
-          <p><%= rand(0..255)%></p>
-          <%= form.text_field :field3, maxlength: 8, pattern: "[01]{1,8}", title: "Please enter a maximum of 8 characters containing only 0s and 1s" %>
-        </div>
-        <div class="border">
-          <h3 class="mb-2 text-xl font-bold dark:text-white">4th octet</h3>
-          <p><%= rand(0..255)%></p>
-          <%= form.text_field :field4, maxlength: 8, pattern: "[01]{1,8}", title: "Please enter a maximum of 8 characters containing only 0s and 1s" %>
-        </div>
-        <%= form.submit "Submit", class: "border p-2 w-32 rounded hover:cursor-pointer"%>
+    <article class="grid grid-cols-3">
+      <div class="col-start-1 col-span-3">
+        <h2 class="mb-4 text-xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Ipv4 Binary Quiz</h2>
       </div>
-    <% end %>
+      <div class="col-start-1 col-span-1">
+        <strong class="text-gray-900 sm:text-xl dark:text-gray-400">Quiz number:</strong>
+        <p class="text-gray-900 sm:text-xl dark:text-gray-400"><%= @quiz_number %></p>
+      </div>
+      <div class="col-start-2 col-span-1">
+        <strong class="text-gray-900 sm:text-xl dark:text-gray-400">Your IPv4:</strong>
+        <p class="text-gray-900 sm:text-xl dark:text-gray-400"><%= @random_ipv4_address %></p>
+      </div>
+      <div class="col-start-3 col-span-1">
+        <strong class="text-gray-900 sm:text-xl dark:text-gray-400">Attempts:</strong>
+        <p class="text-gray-900 sm:text-xl dark:text-gray-400"><%= @attempts%> / <%= @question_count %></p>
+      </div>
+    </article>
+    <article class="flex w-full">
+      <%= form_with class: "w-full" do |form|%>
+        <div class="flex justify-center flex-wrap mb-6 mt-10">
+          <div class="">
+            <h3 class="lg:text-xl font-bold dark:text-white">1st octet</h3>
+            <%= form.text_field :field1, maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2"  %>
+          </div>
+          <div class="">
+            <h3 class="lg:text-xl font-bold dark:text-white">2ed octet</h3>
+            <%= form.text_field :field2, maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2"  %>
+          </div>
+          <div class="">
+            <h3 class="lg:text-xl font-bold dark:text-white">3rd octet</h3>
+            <%= form.text_field :field3, maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2"  %>
+          </div>
+          <div class="">
+            <h3 class="lg:text-xl font-bold dark:text-white">4th octet</h3>
+            <%= form.text_field :field4, maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2"  %>
+          </div>
+        </div>
+        <div class="">
+          <%= form.submit "Submit", class: "border p-2 w-32 rounded hover:cursor-pointer"%>
+          <%= form.hidden_field :correct %>
+          <%= form.hidden_field :incorrect %>
+        </div>
+      <% end %>
+    </article>
   </div>
 </section>
 
-
-<section class="bg-white dark:bg-gray-900"  data-controller="ipv4-quiz" >
-  <div class="py-8 px-4 mx-auto max-w-screen-xl text-center sm:py-16 lg:px-6" >
-    <div class="mt-8 lg:mt-12 space-y-8 md:grid md:grid-cols-2 lg:grid-cols-8 md:gap-12 md:space-y-0">
-      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
-        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="128" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
-      </div>
-      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
-        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="64" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
-      </div>
-      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
-        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="32" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
-      </div>
-      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
-        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="16" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
-      </div>
-      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
-        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="8" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
-      </div>
-      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
-        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="4" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
-      </div>
-      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
-        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="2" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
-      </div>
-      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
-        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="1" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
-      </div>
-    </div>
-    <div class="border border-black rounded p-20">
-      <span id="totalBitValue">
-        0
-      </span>
-    </div>
-  </div>
-</section>
+  <%= render partial: "shared/ipv4_quiz_helper_tool"%>

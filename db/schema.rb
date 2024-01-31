@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_171203) do
 
   create_table "ipv4_quizzes", force: :cascade do |t|
     t.string "quiz_type", default: "ipv4_quiz"
+    t.integer "quiz_number", null: false
     t.integer "question_count", null: false
     t.integer "correct_count"
     t.integer "incorrect_count"

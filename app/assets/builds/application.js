@@ -10917,8 +10917,6 @@
       }
     }
     toggleButtonContent() {
-      console.log(this.bitButtonTarget.textContent.trim());
-      console.log(this.bitButtonTarget.dataset.value1);
       if (this.bitButtonTarget.textContent.trim() === "0") {
         this.bitButtonTarget.textContent = this.bitButtonTarget.dataset.value1;
       } else if (this.bitButtonTarget.textContent.trim() === this.bitButtonTarget.dataset.value1) {

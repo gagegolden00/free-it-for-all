@@ -8,7 +8,7 @@ class Ipv4QuizzesController < ApplicationController
     @quiz = Ipv4Quiz.new(permitted_params)
     authorize @quiz
     @quiz.user = current_user
-
+    @quiz.quiz_number = @quiz.user.ipv4_quizzes.count + 1
     if @quiz.save
       redirect_to edit_ipv4_quiz_path(@quiz)
     else
@@ -19,6 +19,12 @@ class Ipv4QuizzesController < ApplicationController
 
   def edit
     @quiz = Ipv4Quiz.find(params[:id])
+    @quiz_number = @quiz.quiz_number
+    @question_count = @quiz.question_count
+    @quiz_correct_count = @quiz.correct_count || 0
+    @quiz_incorrect_count = @quiz.incorrect_count || 0
+    @attempts = @quiz_correct_count + @quiz_incorrect_count
+    @random_ipv4_address = "#{rand(0..155)}.#{rand(0..155)}.#{rand(0..155)}.#{rand(0..155)}"
     authorize @quiz
   end
 
