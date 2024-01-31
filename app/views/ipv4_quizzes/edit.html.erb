@@ -1,74 +1,78 @@
 <section class="bg-white dark:bg-gray-900">
+  <!--
+      1) randomly generate 4 octets
+      2) build form to take 4 inputs
+      3) leave hidden fields for correct/ wrong
+      4) capture submission with stimulus
+      5) calculate correct/wrong and update value in form
+      6) proceed with submission
+
+    -->
   <div class="py-8 px-4 mx-auto max-w-screen-xl text-center sm:py-16 lg:px-6">
-    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">The most trusted cryptocurrency platform</h2>
-    <p class="text-gray-500 sm:text-xl dark:text-gray-400">Here are a few reasons why you should choose Flowbite</p>
+    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">asdf</h2>
+    <p class="text-gray-500 sm:text-xl dark:text-gray-400">asdffdsa</p>
+
     <div class="mt-8 lg:mt-12 space-y-8 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-12 md:space-y-0">
-      <div class="border">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">1st octet</h3>
+      <%= form_with do |form| %>
+        <div class="border">
+          <h3 class="mb-2 text-xl font-bold dark:text-white">1st octet</h3>
+          <p><%= rand(0..255)%></p>
+          <%= form.text_field :field1, maxlength: 8, pattern: "[01]{1,8}", title: "Please enter a maximum of 8 characters containing only 0s and 1s" %>
+        </div>
+        <div class="border">
+          <h3 class="mb-2 text-xl font-bold dark:text-white">2ed octet</h3>
+          <p><%= rand(0..255)%></p>
+          <%= form.text_field :field2, maxlength: 8, pattern: "[01]{1,8}", title: "Please enter a maximum of 8 characters containing only 0s and 1s" %>
+        </div>
+        <div class="border">
+          <h3 class="mb-2 text-xl font-bold dark:text-white">3rd octet</h3>
+          <p><%= rand(0..255)%></p>
+          <%= form.text_field :field3, maxlength: 8, pattern: "[01]{1,8}", title: "Please enter a maximum of 8 characters containing only 0s and 1s" %>
+        </div>
+        <div class="border">
+          <h3 class="mb-2 text-xl font-bold dark:text-white">4th octet</h3>
+          <p><%= rand(0..255)%></p>
+          <%= form.text_field :field4, maxlength: 8, pattern: "[01]{1,8}", title: "Please enter a maximum of 8 characters containing only 0s and 1s" %>
+        </div>
+        <%= form.submit "Submit", class: "border p-2 w-32 rounded hover:cursor-pointer"%>
       </div>
-      <div class="border">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">2ed octet</h3>
-      </div>
-      <div class="border">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">3rd octet</h3>
-      </div>
-      <div class="border">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">4th octet</h3>
-      </div>
-    </div>
+    <% end %>
   </div>
 </section>
-
 
 
 <section class="bg-white dark:bg-gray-900"  data-controller="ipv4-quiz" >
   <div class="py-8 px-4 mx-auto max-w-screen-xl text-center sm:py-16 lg:px-6" >
     <div class="mt-8 lg:mt-12 space-y-8 md:grid md:grid-cols-2 lg:grid-cols-8 md:gap-12 md:space-y-0">
-
-
-      <div class="border bg-lime-400" data-controller="ipv4-quiz">
-        <h3 class="mb-2 text-xl font-bold dark:text-white" data-ipv4-quiz-target="displayBitValue">0</h3>
-        <button data-action="click->ipv4-quiz#addBitValue" data-ipv4-quiz-target="bitButton" data-value1="128" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black">click me!</button>
+      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
+        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="128" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
       </div>
-
-
-      <div class="border bg-lime-400" data-controller="ipv4-quiz">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">64</h3>
-        <button data-action="click->ipv4-quiz#addBitValue" data-ipv4-quiz-target="bitButton" data-value1="64" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black">click me!</button>
+      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
+        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="64" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
       </div>
-      <div class="border bg-lime-400" data-controller="ipv4-quiz">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">32</h3>
-        <button data-action="click->ipv4-quiz#addBitValue" data-ipv4-quiz-target="bitButton" data-value1="32" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black">click me!</button>
+      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
+        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="32" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
       </div>
-      <div class="border bg-lime-400" data-controller="ipv4-quiz">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">16</h3>
-        <button data-action="click->ipv4-quiz#addBitValue" data-ipv4-quiz-target="bitButton" data-value1="16" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black">click me!</button>
+      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
+        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="16" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
       </div>
-      <div class="border bg-lime-400" data-controller="ipv4-quiz">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">8</h3>
-        <button data-action="click->ipv4-quiz#addBitValue" data-ipv4-quiz-target="bitButton" data-value1="8" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black">click me!</button>
+      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
+        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="8" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
       </div>
-      <div class="border bg-lime-400" data-controller="ipv4-quiz">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">4</h3>
-        <button data-action="click->ipv4-quiz#addBitValue" data-ipv4-quiz-target="bitButton" data-value1="4" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black">click me!</button>
+      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
+        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="4" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
       </div>
-      <div class="border bg-lime-400" data-controller="ipv4-quiz">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">2</h3>
-        <button data-action="click->ipv4-quiz#addBitValue" data-ipv4-quiz-target="bitButton" data-value1="2" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black">click me!</button>
+      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
+        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="2" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
       </div>
-      <div class="border bg-lime-400" data-controller="ipv4-quiz">
-        <h3 class="mb-2 text-xl font-bold dark:text-white">1</h3>
-        <button data-action="click->ipv4-quiz#addBitValue" data-ipv4-quiz-target="bitButton" data-value1="1" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black">click me!</button>
+      <div class="border rounded bg-lime-400" data-controller="ipv4-quiz">
+        <button data-action="click->ipv4-quiz#updateBitValue" data-ipv4-quiz-target="bitButton" data-value1="1" data-value2="add" type="button" name="button" class="border p-2 rounded border-black text-black h-full w-full">0</button>
       </div>
     </div>
-
-
     <div class="border border-black rounded p-20">
       <span id="totalBitValue">
         0
       </span>
     </div>
-
-
   </div>
 </section>
