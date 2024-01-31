@@ -1158,3 +1158,2315 @@ Completed 200 OK in 89ms (Views: 77.1ms | ActiveRecord: 2.7ms | Allocations: 238
 
 [Transport] Sending envelope with items [transaction, client_report] d787850c990343129bab065c2158e55f to Sentry
 [Transport] Sending envelope with items [sessions]  to Sentry
+Sentry HTTP Transport will connect to https://o59326.ingest.sentry.io
+Initializing the background worker with 4 threads
+Sentry HTTP Transport will connect to https://o59326.ingest.sentry.io
+Initializing the background worker with 4 threads
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(867852457941885045)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(867852457941885045)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6209005573857744420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(6209005573857744420)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Shutting down background worker
+Killing session flusher
+Sentry HTTP Transport will connect to https://o59326.ingest.sentry.io
+Initializing the background worker with 4 threads
+Started GET "/" for 172.18.0.1 at 2024-01-30 21:59:39 +0000
+[Tracing] Starting <http.server> transaction </>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/show.html.erb within layouts/application
+  Rendered pages/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 345)
+  Rendered layout layouts/application.html.erb (Duration: 308.0ms | Allocations: 27456)
+Completed 200 OK in 318ms (Views: 310.8ms | ActiveRecord: 0.0ms | Allocations: 30868)
+
+
+[Transport] Sending envelope with items [transaction] 26b92d736a9a465bab3c99940398d919 to Sentry
+Started GET "/" for 172.18.0.1 at 2024-01-30 21:59:55 +0000
+[Tracing] Starting <http.server> transaction </>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PagesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/show.html.erb within layouts/application
+  Rendered pages/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 14)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 1972)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms | Allocations: 2274)
+
+
+[Transport] Sending envelope with items [transaction] 7b0fa39c15184051a9d964f96c1fcf29 to Sentry
+Started GET "/ipv4_quizzes" for 172.18.0.1 at 2024-01-30 21:59:58 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/index.html.erb within layouts/application
+  Rendered ipv4_quizzes/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 227)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 2176)
+Completed 200 OK in 13ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 4433)
+
+
+[Transport] Sending envelope with items [transaction] 412f672b9e1b44f7ae804a855dbce816 to Sentry
+Started GET "/ipv4_quizzes/new" for 172.18.0.1 at 2024-01-30 21:59:59 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/new>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#new as HTML
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 3.4ms | Allocations: 6236)
+
+
+  
+Pundit::NotAuthorizedError (not allowed to new? this Ipv4Quiz):
+  
+app/controllers/ipv4_quizzes_controller.rb:4:in `new'
+[Transport] Sending envelope with items [event] 7e44cfee57c14d89aa45bda3dbf174fa to Sentry
+[Transport] Sending envelope with items [transaction] edb6f5935b804129b4c2966d8b2257cc to Sentry
+Started GET "/ipv4_quizzes" for 172.18.0.1 at 2024-01-30 22:00:08 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/index.html.erb within layouts/application
+  Rendered ipv4_quizzes/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 63)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1935)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 2505)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 2d4d54861bbd44188bcdc7068dfc2521 to Sentry
+Started GET "/users/sign_in" for 172.18.0.1 at 2024-01-30 22:00:10 +0000
+[Tracing] Starting <http.server> transaction </users/sign_in>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 722)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 8.4ms | Allocations: 3640)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 5569)
+Completed 200 OK in 20ms (Views: 12.4ms | ActiveRecord: 1.6ms | Allocations: 10848)
+
+
+[Transport] Sending envelope with items [transaction] 62fd5a35658b41718bc66723e3ab6166 to Sentry
+Started POST "/users/sign_in" for 172.18.0.1 at 2024-01-30 22:00:20 +0000
+[Tracing] Starting <http.server> transaction </users/sign_in>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"user1@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "user1@email.com"], ["LIMIT", 1]]
+Redirected to http://10.10.10.62:3000/
+Completed 303 See Other in 223ms (ActiveRecord: 0.5ms | Allocations: 5704)
+
+
+[Transport] Sending envelope with items [transaction] 01ab8dea0ff1441c9594ffb67e37b035 to Sentry
+Started GET "/" for 172.18.0.1 at 2024-01-30 22:00:20 +0000
+[Tracing] Starting <http.server> transaction </>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PagesController#show as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/show.html.erb within layouts/application
+  Rendered pages/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 14)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 2069)
+Completed 200 OK in 3ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 2417)
+
+
+[Transport] Sending envelope with items [transaction] 5dfa27134afe4c3bab8e27f5b1aab9b5 to Sentry
+Started GET "/ipv4_quizzes" for 172.18.0.1 at 2024-01-30 22:00:23 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:36:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/index.html.erb within layouts/application
+  Rendered ipv4_quizzes/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 63)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 1924)
+Completed 200 OK in 8ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 3278)
+
+
+[Transport] Sending envelope with items [transaction] 91a11dab3f30415daca74ede8d287560 to Sentry
+Started GET "/ipv4_quizzes/new" for 172.18.0.1 at 2024-01-30 22:00:24 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/new>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:4:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/new.html.erb within layouts/application
+  Rendered ipv4_quizzes/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 127)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 1998)
+Completed 200 OK in 9ms (Views: 5.3ms | ActiveRecord: 0.3ms | Allocations: 3359)
+
+
+[Transport] Sending envelope with items [transaction] 56c4e29c28ae4dd7ad6000c9ee7aa374 to Sentry
+Started POST "/ipv4_quizzes" for 172.18.0.1 at 2024-01-30 22:00:28 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#create as TURBO_STREAM
+  Parameters: {"ipv4_quiz"=>{"question_count"=>"5"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/ipv4_quizzes_controller.rb:12:in `create'
+  [1m[36mIpv4Quiz Create (0.8ms)[0m  [1m[32mINSERT INTO "ipv4_quizzes" ("quiz_type", "question_count", "correct_count", "incorrect_count", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["quiz_type", "ipv4_quiz"], ["question_count", 5], ["correct_count", nil], ["incorrect_count", nil], ["user_id", 1], ["created_at", "2024-01-30 22:00:28.254033"], ["updated_at", "2024-01-30 22:00:28.254033"]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/ipv4_quizzes_controller.rb:12:in `create'
+Redirected to http://10.10.10.62:3000/ipv4_quizzes/8/edit
+Completed 302 Found in 14ms (ActiveRecord: 1.9ms | Allocations: 6049)
+
+
+[Transport] Sending envelope with items [transaction] d82c78419138475bb19551bb6f28b9fd to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:00:28 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as TURBO_STREAM
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 3626)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 5479)
+Completed 200 OK in 7ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 8180)
+
+
+[Transport] Sending envelope with items [transaction] 0660149203bd4e51b707b84d4566ad56 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:04:21 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 3594)
+  Rendered layout layouts/application.html.erb (Duration: 78.3ms | Allocations: 18738)
+Completed 200 OK in 91ms (Views: 79.7ms | ActiveRecord: 2.6ms | Allocations: 27249)
+
+
+[Transport] Sending envelope with items [transaction, client_report] b81da4a504c34a62a838c027c5740dea to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:05:07 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 78.2ms | Allocations: 17330)
+Completed 200 OK in 84ms (Views: 78.9ms | ActiveRecord: 0.6ms | Allocations: 19234)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 93814efe20994d7f90c566df4665f45c to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:08:49 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 85.9ms | Allocations: 18528)
+Completed 200 OK in 91ms (Views: 86.6ms | ActiveRecord: 0.6ms | Allocations: 20395)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 9911d23871744d19b201cddbb6b30446 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:08:58 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 85.2ms | Allocations: 17351)
+Completed 200 OK in 91ms (Views: 85.9ms | ActiveRecord: 0.6ms | Allocations: 19233)
+
+
+[Transport] Sending envelope with items [transaction] 1e4dec64617942b6854f1c9f7c5a2cec to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:09:24 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 75.2ms | Allocations: 17333)
+Completed 200 OK in 80ms (Views: 75.9ms | ActiveRecord: 0.5ms | Allocations: 19209)
+
+
+[Transport] Sending envelope with items [transaction, client_report] fb56f343602542cd8d3e584541a028d5 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:09:55 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 80.3ms | Allocations: 17351)
+Completed 200 OK in 86ms (Views: 80.9ms | ActiveRecord: 0.5ms | Allocations: 19230)
+
+
+[Transport] Sending envelope with items [transaction, client_report] b75b17b353ba41abb0913a2cd09cf780 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:12:31 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 78.0ms | Allocations: 17339)
+Completed 200 OK in 85ms (Views: 78.8ms | ActiveRecord: 0.5ms | Allocations: 19212)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 5411dbcfa15e4503946626d1209fea70 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:17:45 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 109.2ms | Allocations: 17341)
+Completed 200 OK in 131ms (Views: 109.8ms | ActiveRecord: 4.0ms | Allocations: 22411)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 4ad52c921a524322b7753e793da2a354 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:18:02 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 78.8ms | Allocations: 17347)
+Completed 200 OK in 84ms (Views: 79.4ms | ActiveRecord: 0.6ms | Allocations: 19241)
+
+
+[Transport] Sending envelope with items [transaction] 34d2db52d79e44bda565c4a03db6d655 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:20:28 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 78.4ms | Allocations: 17326)
+Completed 200 OK in 84ms (Views: 79.0ms | ActiveRecord: 0.6ms | Allocations: 19190)
+
+
+[Transport] Sending envelope with items [transaction, client_report] c3be5a76dd3e4242936ffc3aabdcf658 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:20:41 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 78.1ms | Allocations: 17344)
+Completed 200 OK in 84ms (Views: 78.7ms | ActiveRecord: 0.6ms | Allocations: 19199)
+
+
+[Transport] Sending envelope with items [transaction] 61344c45e52445978efef9b35a2f0a71 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:20:59 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 4602)
+Completed 200 OK in 17ms (Views: 11.7ms | ActiveRecord: 0.6ms | Allocations: 6467)
+
+
+[Transport] Sending envelope with items [transaction, client_report] fc488d82ef2d4a178d318ba02732cee7 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:21:15 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 80.9ms | Allocations: 17330)
+Completed 200 OK in 89ms (Views: 81.6ms | ActiveRecord: 0.6ms | Allocations: 19206)
+
+
+[Transport] Sending envelope with items [transaction] 52e51bd88f824b4082a2cdfee9c9db10 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:21:33 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 78.1ms | Allocations: 17356)
+Completed 200 OK in 83ms (Views: 78.7ms | ActiveRecord: 0.4ms | Allocations: 19220)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 1cb08ba4489d4f7982c75965c32e6a8d to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:21:47 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 78.0ms | Allocations: 17353)
+Completed 200 OK in 84ms (Views: 78.7ms | ActiveRecord: 0.7ms | Allocations: 19229)
+
+
+[Transport] Sending envelope with items [transaction] e845377bdb874dd489d1cff9a25545ce to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:21:56 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 80.6ms | Allocations: 17345)
+Completed 200 OK in 86ms (Views: 81.3ms | ActiveRecord: 0.5ms | Allocations: 19218)
+
+
+[Transport] Sending envelope with items [transaction] 5d1e641ed24c4a04ba5e29080b92da90 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:23:45 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 79.4ms | Allocations: 17344)
+Completed 200 OK in 86ms (Views: 80.2ms | ActiveRecord: 0.5ms | Allocations: 19220)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 3a136f59e8fa409ba9a999bb3acfb80f to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:25:10 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 4549)
+Completed 200 OK in 11ms (Views: 5.8ms | ActiveRecord: 0.5ms | Allocations: 6441)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 9595af66fbdb4efdb6d113f2e812d03b to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:26:07 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 75.5ms | Allocations: 17335)
+Completed 200 OK in 81ms (Views: 76.2ms | ActiveRecord: 0.4ms | Allocations: 19211)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 9f2662c12a844601836bfac6f1855f9a to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:26:37 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 141.2ms | Allocations: 17342)
+Completed 200 OK in 145ms (Views: 141.7ms | ActiveRecord: 0.4ms | Allocations: 19203)
+
+
+[Transport] Sending envelope with items [transaction, client_report] c1ae7c6ef62d48d5824fe91131963171 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:27:09 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.0ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 4547)
+Completed 200 OK in 12ms (Views: 6.2ms | ActiveRecord: 0.4ms | Allocations: 6438)
+
+
+[Transport] Sending envelope with items [transaction, client_report] eb0e4478629c454d9de1cea82122fad1 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:27:55 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 79.7ms | Allocations: 17327)
+Completed 200 OK in 85ms (Views: 80.4ms | ActiveRecord: 0.5ms | Allocations: 19227)
+
+
+[Transport] Sending envelope with items [transaction, client_report] ef34cbea86994c5aa9a7dcbb8dec480f to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:28:15 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 4605)
+Completed 200 OK in 14ms (Views: 10.4ms | ActiveRecord: 0.4ms | Allocations: 6482)
+
+
+[Transport] Sending envelope with items [transaction] 6c9b486a25fe426d8564b5bf79f67589 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:29:49 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 75.7ms | Allocations: 17356)
+Completed 200 OK in 83ms (Views: 76.4ms | ActiveRecord: 0.6ms | Allocations: 19232)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 2c5a76385c554127a53dc3e6d4826979 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:29:57 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 4555)
+Completed 200 OK in 11ms (Views: 6.0ms | ActiveRecord: 0.5ms | Allocations: 6423)
+
+
+[Transport] Sending envelope with items [transaction] 3975aca23a294df5b1853ed043b50853 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:30:07 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 77.7ms | Allocations: 17332)
+Completed 200 OK in 82ms (Views: 78.3ms | ActiveRecord: 0.5ms | Allocations: 19232)
+
+
+[Transport] Sending envelope with items [transaction] e6506b3b1c9b48feadd235949f56f0d0 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:31:12 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 78.0ms | Allocations: 17339)
+Completed 200 OK in 84ms (Views: 78.7ms | ActiveRecord: 0.5ms | Allocations: 19197)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 1bbe9cf3ceac4398981da5d1ff966593 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:33:11 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 81.7ms | Allocations: 17342)
+Completed 200 OK in 88ms (Views: 82.4ms | ActiveRecord: 0.5ms | Allocations: 19230)
+
+
+[Transport] Sending envelope with items [transaction, client_report] ffa295c2172c490c8c85977c61a8b6af to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:35:25 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 77.3ms | Allocations: 17352)
+Completed 200 OK in 82ms (Views: 77.9ms | ActiveRecord: 0.4ms | Allocations: 19210)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 077bdd8f1c4b46b78f022543b09bced4 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:35:39 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2696)
+  Rendered layout layouts/application.html.erb (Duration: 76.8ms | Allocations: 17338)
+Completed 200 OK in 82ms (Views: 77.4ms | ActiveRecord: 0.4ms | Allocations: 19238)
+
+
+[Transport] Sending envelope with items [transaction] fcce0eeb56e14333b9d8e6bdc50650ed to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:36:31 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 77.8ms | Allocations: 17344)
+Completed 200 OK in 83ms (Views: 78.5ms | ActiveRecord: 0.5ms | Allocations: 19208)
+
+
+[Transport] Sending envelope with items [transaction, client_report] ed07c31592aa4b92a11420a63d65bcc0 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:38:36 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 78.4ms | Allocations: 17355)
+Completed 200 OK in 84ms (Views: 79.0ms | ActiveRecord: 0.4ms | Allocations: 19255)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 4b7c10ff844f4b409eeab3206588c3d1 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:39:07 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 4598)
+Completed 200 OK in 18ms (Views: 12.7ms | ActiveRecord: 0.5ms | Allocations: 6484)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 2a367566bfef4c42b5d60bceac440323 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:39:22 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 4595)
+Completed 200 OK in 15ms (Views: 11.3ms | ActiveRecord: 0.4ms | Allocations: 6490)
+
+
+[Transport] Sending envelope with items [transaction] 20c348ae240e4cb7994810697acc0d62 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:40:03 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 79.5ms | Allocations: 17353)
+Completed 200 OK in 85ms (Views: 80.2ms | ActiveRecord: 0.5ms | Allocations: 19229)
+
+
+[Transport] Sending envelope with items [transaction, client_report] bdcde60afc0b4482aeaf51bc370e0221 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:40:14 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 76.8ms | Allocations: 17351)
+Completed 200 OK in 82ms (Views: 77.4ms | ActiveRecord: 0.4ms | Allocations: 19212)
+
+
+[Transport] Sending envelope with items [transaction] 2b94d6c01e734ab08bf5beb0875440af to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:40:31 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 77.2ms | Allocations: 17322)
+Completed 200 OK in 82ms (Views: 77.9ms | ActiveRecord: 0.4ms | Allocations: 19210)
+
+
+[Transport] Sending envelope with items [transaction] e386fc34ba1e48128c50a333634c1168 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:40:43 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 77.8ms | Allocations: 17349)
+Completed 200 OK in 83ms (Views: 78.5ms | ActiveRecord: 0.5ms | Allocations: 19223)
+
+
+[Transport] Sending envelope with items [transaction, client_report] cad493c35ec449ad8c6b843297843ec5 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:41:22 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 77.8ms | Allocations: 17355)
+Completed 200 OK in 83ms (Views: 78.5ms | ActiveRecord: 0.5ms | Allocations: 19246)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 9cecf0a5b38f444182cd7fbed96ebe52 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:43:11 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 4555)
+Completed 200 OK in 11ms (Views: 6.1ms | ActiveRecord: 0.5ms | Allocations: 6441)
+
+
+[Transport] Sending envelope with items [transaction, client_report] a060598093af4a17b76c9e7bcafb4357 to Sentry
+Started GET "/" for 172.18.0.1 at 2024-01-30 22:43:33 +0000
+[Tracing] Starting <http.server> transaction </>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PagesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/show.html.erb within layouts/application
+  Rendered pages/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 156)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2327)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms | Allocations: 3061)
+
+
+[Transport] Sending envelope with items [transaction] 1bd27630925d442bbb76ff8797622709 to Sentry
+Started GET "/users/sign_in" for 172.18.0.1 at 2024-01-30 22:43:36 +0000
+[Tracing] Starting <http.server> transaction </users/sign_in>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 1862)
+
+
+[Transport] Sending envelope with items [transaction] 87bc51396c8149bf93ee2ea6e5ba0000 to Sentry
+Started GET "/" for 172.18.0.1 at 2024-01-30 22:43:36 +0000
+[Tracing] Starting <http.server> transaction </>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PagesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/show.html.erb within layouts/application
+  Rendered pages/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 14)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 2065)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 2365)
+
+
+[Transport] Sending envelope with items [transaction] 05277d20b60947088e9d20248d48370e to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes" for 172.18.0.1 at 2024-01-30 22:43:40 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:36:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/index.html.erb within layouts/application
+  Rendered ipv4_quizzes/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 197)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2058)
+Completed 200 OK in 12ms (Views: 6.6ms | ActiveRecord: 0.3ms | Allocations: 3534)
+
+
+[Transport] Sending envelope with items [transaction] 51acafba933140e092ab0b4c3231dc4b to Sentry
+Started GET "/ipv4_quizzes/new" for 172.18.0.1 at 2024-01-30 22:43:41 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/new>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:4:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/new.html.erb within layouts/application
+  Rendered ipv4_quizzes/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 128)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2009)
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 0.2ms | Allocations: 3395)
+
+
+[Transport] Sending envelope with items [transaction] 04004de062a546f899c6ebd50572787e to Sentry
+Started POST "/ipv4_quizzes" for 172.18.0.1 at 2024-01-30 22:43:43 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#create as TURBO_STREAM
+  Parameters: {"ipv4_quiz"=>{"question_count"=>"1"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/ipv4_quizzes_controller.rb:12:in `create'
+  [1m[36mIpv4Quiz Create (1.3ms)[0m  [1m[32mINSERT INTO "ipv4_quizzes" ("quiz_type", "question_count", "correct_count", "incorrect_count", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["quiz_type", "ipv4_quiz"], ["question_count", 1], ["correct_count", nil], ["incorrect_count", nil], ["user_id", 1], ["created_at", "2024-01-30 22:43:43.554099"], ["updated_at", "2024-01-30 22:43:43.554099"]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/ipv4_quizzes_controller.rb:12:in `create'
+Redirected to http://localhost:3000/ipv4_quizzes/9/edit
+Completed 302 Found in 14ms (ActiveRecord: 3.7ms | Allocations: 3997)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 9b2e022f97214336a2ec7b16934ce19f to Sentry
+Started GET "/ipv4_quizzes/9/edit" for 172.18.0.1 at 2024-01-30 22:43:43 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/9/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as TURBO_STREAM
+  Parameters: {"id"=>"9"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2693)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 4556)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 6490)
+
+
+[Transport] Sending envelope with items [transaction] 6a103f053a9b456dbf952d7e8363e664 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:44:48 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 4549)
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 0.5ms | Allocations: 6447)
+
+
+[Transport] Sending envelope with items [transaction, client_report] b55ecd102e6f4138a19c3b9df885f033 to Sentry
+Started GET "/ipv4_quizzes/9/edit" for 172.18.0.1 at 2024-01-30 22:45:03 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/9/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 4555)
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 0.4ms | Allocations: 6444)
+
+
+[Transport] Sending envelope with items [transaction] 9cca7fc832ac427585f6dcff80822171 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:46:46 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 78.5ms | Allocations: 17358)
+Completed 200 OK in 86ms (Views: 79.3ms | ActiveRecord: 0.5ms | Allocations: 19225)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 051c2db0625a4d1793147909a0814a55 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:47:29 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 82.7ms | Allocations: 17339)
+Completed 200 OK in 88ms (Views: 83.3ms | ActiveRecord: 0.4ms | Allocations: 19206)
+
+
+[Transport] Sending envelope with items [transaction, client_report] bca07141e4b0439fad7ec64574be1822 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/9/edit" for 172.18.0.1 at 2024-01-30 22:47:56 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/9/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 4547)
+Completed 200 OK in 14ms (Views: 7.1ms | ActiveRecord: 0.6ms | Allocations: 6429)
+
+
+[Transport] Sending envelope with items [transaction] 1e22dc5771c24bedb2ff4fd63a5ee1bf to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:49:38 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 80.4ms | Allocations: 17339)
+Completed 200 OK in 89ms (Views: 81.3ms | ActiveRecord: 0.6ms | Allocations: 19218)
+
+
+[Transport] Sending envelope with items [transaction, client_report] b8173fec11e34217ad72432d4ea9ba88 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:50:46 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 78.7ms | Allocations: 17318)
+Completed 200 OK in 84ms (Views: 79.3ms | ActiveRecord: 0.5ms | Allocations: 19209)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 5c360d7f3a5d444888ed4cb197770dbd to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:51:07 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 4602)
+Completed 200 OK in 16ms (Views: 10.6ms | ActiveRecord: 0.5ms | Allocations: 6467)
+
+
+[Transport] Sending envelope with items [transaction] 6891e7797aeb4cb0bd1e0266b561d5ba to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/9/edit" for 172.18.0.1 at 2024-01-30 22:52:24 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/9/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 4547)
+Completed 200 OK in 12ms (Views: 6.8ms | ActiveRecord: 0.5ms | Allocations: 6435)
+
+
+[Transport] Sending envelope with items [transaction, client_report] e4141c636b134301a22bcc163f48aee9 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:53:49 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 4548)
+Completed 200 OK in 13ms (Views: 8.1ms | ActiveRecord: 0.5ms | Allocations: 6409)
+
+
+[Transport] Sending envelope with items [transaction, client_report] eed3fdce940c4dd1933b0bf45c84ab70 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/9/edit" for 172.18.0.1 at 2024-01-30 22:55:06 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/9/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 4547)
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.3ms | Allocations: 6429)
+
+
+[Transport] Sending envelope with items [transaction, client_report] a79a556475b54b679152e8748da012bc to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:56:01 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 4547)
+Completed 200 OK in 11ms (Views: 5.8ms | ActiveRecord: 0.4ms | Allocations: 6423)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 50c81851622d40968e04ecb70767720f to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:57:02 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 4547)
+Completed 200 OK in 9ms (Views: 4.9ms | ActiveRecord: 0.5ms | Allocations: 6411)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 3a0ebd27a668451bb08379f003f7b52d to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:57:16 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 4558)
+Completed 200 OK in 10ms (Views: 5.4ms | ActiveRecord: 0.4ms | Allocations: 6438)
+
+
+[Transport] Sending envelope with items [transaction] fae21da88e244e27828c8a70b0a77de7 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:57:42 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 4557)
+Completed 200 OK in 12ms (Views: 7.1ms | ActiveRecord: 0.4ms | Allocations: 6431)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 15b7daeb415542599f40e409f24b992e to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:57:43 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 4551)
+Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 0.4ms | Allocations: 6421)
+
+
+[Transport] Sending envelope with items [transaction] da17273ddf5246ad99510165f68195f2 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:57:44 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 4547)
+Completed 200 OK in 11ms (Views: 6.7ms | ActiveRecord: 0.4ms | Allocations: 6418)
+
+
+[Transport] Sending envelope with items [transaction] 8208341ab8964ae482a18c9781c8bc4e to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:57:46 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 4555)
+Completed 200 OK in 11ms (Views: 6.6ms | ActiveRecord: 0.4ms | Allocations: 6411)
+
+
+[Transport] Sending envelope with items [transaction] b8d2eec4252f4ad6a21dc603dec19877 to Sentry
+Started GET "/ipv4_quizzes/8/edit" for 172.18.0.1 at 2024-01-30 22:58:31 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/8/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 4547)
+Completed 200 OK in 10ms (Views: 5.7ms | ActiveRecord: 0.4ms | Allocations: 6423)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 3f4e27a53d574266ae671f4ca8a3f33f to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/" for 172.18.0.1 at 2024-01-30 22:58:42 +0000
+[Tracing] Starting <http.server> transaction </>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by PagesController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/show.html.erb within layouts/application
+  Rendered pages/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 14)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 2073)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 2371)
+
+
+[Transport] Sending envelope with items [transaction] 135c9349a6664266a690916ee9504c26 to Sentry
+Started GET "/ipv4_quizzes" for 172.18.0.1 at 2024-01-30 22:58:48 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:36:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/index.html.erb within layouts/application
+  Rendered ipv4_quizzes/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 63)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 1924)
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 0.2ms | Allocations: 3252)
+
+
+[Transport] Sending envelope with items [transaction] ab213a9553684bf1a5ee3198cfd926f3 to Sentry
+Started GET "/ipv4_quizzes/new" for 172.18.0.1 at 2024-01-30 22:58:49 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/new>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:4:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/new.html.erb within layouts/application
+  Rendered ipv4_quizzes/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 14)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 1885)
+Completed 200 OK in 9ms (Views: 5.2ms | ActiveRecord: 0.2ms | Allocations: 3196)
+
+
+[Transport] Sending envelope with items [transaction] 8db837b434e34799874acf1c4fda249d to Sentry
+Started POST "/ipv4_quizzes" for 172.18.0.1 at 2024-01-30 22:58:51 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#create as TURBO_STREAM
+  Parameters: {"ipv4_quiz"=>{"question_count"=>"1"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/ipv4_quizzes_controller.rb:12:in `create'
+  [1m[36mIpv4Quiz Create (1.2ms)[0m  [1m[32mINSERT INTO "ipv4_quizzes" ("quiz_type", "question_count", "correct_count", "incorrect_count", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["quiz_type", "ipv4_quiz"], ["question_count", 1], ["correct_count", nil], ["incorrect_count", nil], ["user_id", 1], ["created_at", "2024-01-30 22:58:51.167045"], ["updated_at", "2024-01-30 22:58:51.167045"]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/ipv4_quizzes_controller.rb:12:in `create'
+Redirected to http://10.10.10.62:3000/ipv4_quizzes/10/edit
+Completed 302 Found in 13ms (ActiveRecord: 3.4ms | Allocations: 3258)
+
+
+[Transport] Sending envelope with items [transaction] 4575b83cc3e74d72a5cd17c18086d284 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 22:58:51 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as TURBO_STREAM
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 4547)
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 6431)
+
+
+[Transport] Sending envelope with items [transaction] 98481440b52b4a88aed7d2dcd44087bf to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:00:10 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 4547)
+Completed 200 OK in 12ms (Views: 5.6ms | ActiveRecord: 0.5ms | Allocations: 6423)
+
+
+[Transport] Sending envelope with items [transaction, client_report] bbda9705ade244e884dbbf688b6c97d9 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:00:19 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 4558)
+Completed 200 OK in 15ms (Views: 6.7ms | ActiveRecord: 0.5ms | Allocations: 6417)
+
+
+[Transport] Sending envelope with items [transaction] 53b32ddb6f6d4167869bf0711073fd97 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:00:20 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 4551)
+Completed 200 OK in 10ms (Views: 5.7ms | ActiveRecord: 0.5ms | Allocations: 6430)
+
+
+[Transport] Sending envelope with items [transaction] 3d2b4f17d88740fd99784c7790b18df5 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:00:20 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2693)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 4554)
+Completed 200 OK in 11ms (Views: 6.3ms | ActiveRecord: 0.4ms | Allocations: 6443)
+
+
+[Transport] Sending envelope with items [transaction] 445f496c43414508aecb097a4a30e0e0 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:00:20 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 4555)
+Completed 200 OK in 9ms (Views: 4.6ms | ActiveRecord: 0.5ms | Allocations: 6443)
+
+
+[Transport] Sending envelope with items [transaction] cf9b4cd91c664ef9987c8e13c71b0711 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:00:21 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 4548)
+Completed 200 OK in 11ms (Views: 6.0ms | ActiveRecord: 0.4ms | Allocations: 6425)
+
+
+[Transport] Sending envelope with items [transaction] c2c9127af5cd403283d0f1e0b37865c5 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:00:21 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 4547)
+Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 0.4ms | Allocations: 6433)
+
+
+[Transport] Sending envelope with items [transaction] ca565efc9ccf487ea491a3af885d8943 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:00:21 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2692)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 4545)
+Completed 200 OK in 11ms (Views: 6.0ms | ActiveRecord: 0.4ms | Allocations: 6418)
+
+
+[Transport] Sending envelope with items [transaction] 04ceb8fb153245a09b38cec4eebf6da7 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:00:50 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 80.6ms | Allocations: 17345)
+Completed 200 OK in 88ms (Views: 81.3ms | ActiveRecord: 0.5ms | Allocations: 19224)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 5c26e0a1d716403788c6f4069c2235e5 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:01:19 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 79.4ms | Allocations: 17344)
+Completed 200 OK in 85ms (Views: 80.1ms | ActiveRecord: 0.5ms | Allocations: 19214)
+
+
+[Transport] Sending envelope with items [transaction] e549e580037b47228af222986a100544 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:01:34 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 4558)
+Completed 200 OK in 11ms (Views: 6.4ms | ActiveRecord: 0.4ms | Allocations: 6429)
+
+
+[Transport] Sending envelope with items [transaction, client_report] ed795958ec1a4bf79f44c952b79ca4a7 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:03:06 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 78.6ms | Allocations: 17340)
+Completed 200 OK in 86ms (Views: 79.4ms | ActiveRecord: 0.5ms | Allocations: 19225)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 863b58475e3943e99d380b5638638277 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:04:25 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 81.4ms | Allocations: 17330)
+Completed 200 OK in 88ms (Views: 82.1ms | ActiveRecord: 0.5ms | Allocations: 19197)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 905f8af44b7d41c3a320342cd06440f4 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:06:36 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 85.1ms | Allocations: 17301)
+Completed 200 OK in 94ms (Views: 86.0ms | ActiveRecord: 0.6ms | Allocations: 19171)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 0538c6eb1c47425aa5d7dde20b3f74d0 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:06:53 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 82.0ms | Allocations: 17336)
+Completed 200 OK in 88ms (Views: 82.7ms | ActiveRecord: 0.4ms | Allocations: 19206)
+
+
+[Transport] Sending envelope with items [transaction] 1186490b6ff94e66ba42427d4ee82ccd to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:06:58 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 4558)
+Completed 200 OK in 12ms (Views: 5.9ms | ActiveRecord: 0.5ms | Allocations: 6453)
+
+
+[Transport] Sending envelope with items [transaction] 44fe2f68ab93468d8f210aefd4af59d0 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:07:24 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 80.2ms | Allocations: 17330)
+Completed 200 OK in 86ms (Views: 81.0ms | ActiveRecord: 0.6ms | Allocations: 19206)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 2ef7e65159064bc9b67b417a42fb0e98 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:07:37 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 4557)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 0.5ms | Allocations: 6436)
+
+
+[Transport] Sending envelope with items [transaction] 2b0fa1c4861940f1b1bffe057655e9af to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:07:44 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 4594)
+Completed 200 OK in 17ms (Views: 11.7ms | ActiveRecord: 0.5ms | Allocations: 6459)
+
+
+[Transport] Sending envelope with items [transaction] 8606142de78f453c86a518c9996e802f to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:13:26 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 9.9ms | Allocations: 3601)
+  Rendered layout layouts/application.html.erb (Duration: 94.4ms | Allocations: 18668)
+Completed 200 OK in 123ms (Views: 96.8ms | ActiveRecord: 5.8ms | Allocations: 27262)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 73aba0337b5642638fc49e2851b73b5f to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:15:21 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 78.6ms | Allocations: 17301)
+Completed 200 OK in 88ms (Views: 79.5ms | ActiveRecord: 0.5ms | Allocations: 19159)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 06f4ff0f36a94671855049ade4d1d999 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:15:44 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 79.5ms | Allocations: 17309)
+Completed 200 OK in 85ms (Views: 80.1ms | ActiveRecord: 0.4ms | Allocations: 19191)
+
+
+[Transport] Sending envelope with items [transaction] 94fc28c62f554acc9753bb150a750128 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:18:09 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.6ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 79.6ms | Allocations: 17303)
+Completed 200 OK in 93ms (Views: 80.6ms | ActiveRecord: 0.8ms | Allocations: 19164)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 1a7d64b40e19491bae2316593662d8fc to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:18:30 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 4547)
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 0.4ms | Allocations: 6420)
+
+
+[Transport] Sending envelope with items [transaction] 308023f0b5194f5aad3a5dd07173f913 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:18:43 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 4558)
+Completed 200 OK in 12ms (Views: 7.4ms | ActiveRecord: 0.5ms | Allocations: 6426)
+
+
+[Transport] Sending envelope with items [transaction, client_report] d995bac493f841d6b382b4cf23536d18 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:19:21 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 79.4ms | Allocations: 17345)
+Completed 200 OK in 86ms (Views: 81.1ms | ActiveRecord: 0.6ms | Allocations: 19212)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 4fce071e37d8436b980ebd8c503d15ab to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:19:59 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.5ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.3ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 4555)
+Completed 200 OK in 13ms (Views: 7.0ms | ActiveRecord: 0.6ms | Allocations: 6422)
+
+
+[Transport] Sending envelope with items [transaction, client_report] c3d2577d182e4d36be90f553bf493eb5 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:20:07 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 4555)
+Completed 200 OK in 11ms (Views: 6.3ms | ActiveRecord: 0.5ms | Allocations: 6422)
+
+
+[Transport] Sending envelope with items [transaction] bf3de5757b2249c3a67c959e9156e8d9 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:20:11 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 4548)
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 0.5ms | Allocations: 6440)
+
+
+[Transport] Sending envelope with items [transaction] dce08c33bb574f94a769a361ab935d3a to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:21:10 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 83.3ms | Allocations: 17307)
+Completed 200 OK in 90ms (Views: 84.2ms | ActiveRecord: 0.4ms | Allocations: 19162)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 7f92a55c9d1e4143801e7e726b4ab796 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:33:20 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 83.6ms | Allocations: 17310)
+Completed 200 OK in 110ms (Views: 84.8ms | ActiveRecord: 4.7ms | Allocations: 22378)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 6c93a0d3999345eab72eb8926cb9e815 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:33:44 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 84.6ms | Allocations: 17330)
+Completed 200 OK in 91ms (Views: 85.2ms | ActiveRecord: 0.6ms | Allocations: 19215)
+
+
+[Transport] Sending envelope with items [transaction] 7d5cbf2a2f8141208940c10453fcf100 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:34:05 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 83.9ms | Allocations: 17328)
+Completed 200 OK in 89ms (Views: 84.6ms | ActiveRecord: 0.5ms | Allocations: 19201)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 6cf886af1b4845a397e489199e2206d3 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:39:38 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.7ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 82.3ms | Allocations: 17318)
+Completed 200 OK in 90ms (Views: 83.0ms | ActiveRecord: 1.0ms | Allocations: 19203)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 92faa3dff81c42e2a32f6a5bce2855d5 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:40:27 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 90.8ms | Allocations: 17304)
+Completed 200 OK in 96ms (Views: 91.6ms | ActiveRecord: 0.7ms | Allocations: 19181)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 998832f5ee2f4d34b46d2f80a9102d17 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:42:23 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.4ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 78.4ms | Allocations: 17330)
+Completed 200 OK in 84ms (Views: 79.1ms | ActiveRecord: 0.6ms | Allocations: 19215)
+
+
+[Transport] Sending envelope with items [transaction, client_report] e7f9f35f057f4889baf11291587fc414 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:45:35 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.0ms | Allocations: 2695)
+  Rendered layout layouts/application.html.erb (Duration: 79.2ms | Allocations: 17331)
+Completed 200 OK in 87ms (Views: 80.0ms | ActiveRecord: 0.6ms | Allocations: 19222)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 31f3a6aa1209473c9bbb562c9a9ab620 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:46:08 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 88.6ms | Allocations: 17333)
+Completed 200 OK in 95ms (Views: 89.4ms | ActiveRecord: 0.5ms | Allocations: 19200)
+
+
+[Transport] Sending envelope with items [transaction, client_report] a97c5411184b4a35a91ef67e0406b827 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:47:18 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.3ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.3ms | Allocations: 2696)
+  Rendered layout layouts/application.html.erb (Duration: 81.8ms | Allocations: 17324)
+Completed 200 OK in 87ms (Views: 82.4ms | ActiveRecord: 0.4ms | Allocations: 19191)
+
+
+[Transport] Sending envelope with items [transaction, client_report] da39deb4b2bb49c89df2d9ce183f4a16 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:48:47 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.9ms | Allocations: 3599)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 5913)
+Completed 200 OK in 24ms (Views: 7.2ms | ActiveRecord: 6.4ms | Allocations: 14523)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 8a5aea7835534c1282c879ef5cea2ad8 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:49:21 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 3599)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 5903)
+Completed 200 OK in 17ms (Views: 5.9ms | ActiveRecord: 2.6ms | Allocations: 14325)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 66568a3982d24a5d8229328ea53d3334 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:50:06 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 3604)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 7056)
+Completed 200 OK in 25ms (Views: 13.7ms | ActiveRecord: 2.4ms | Allocations: 15468)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 4ca0bd4a286b4a1c8703d0d7c0a59013 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:50:31 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 3614)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 7085)
+Completed 200 OK in 27ms (Views: 17.2ms | ActiveRecord: 2.2ms | Allocations: 15536)
+
+
+[Transport] Sending envelope with items [transaction] 6965ff6f12fa4004a4407a3956675cd8 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:50:42 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 2.2ms | Allocations: 3616)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 5920)
+Completed 200 OK in 18ms (Views: 7.6ms | ActiveRecord: 2.3ms | Allocations: 14361)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 8096a3e7f9a84d1a9fe967d1c2d194e1 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:51:36 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 3626)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 5940)
+Completed 200 OK in 17ms (Views: 6.0ms | ActiveRecord: 2.3ms | Allocations: 14407)
+
+
+[Transport] Sending envelope with items [transaction, client_report] ab9765faf01547b8a9189d574ce4ff69 to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:52:05 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.2ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2694)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 4549)
+Completed 200 OK in 9ms (Views: 5.0ms | ActiveRecord: 0.4ms | Allocations: 6431)
+
+
+[Transport] Sending envelope with items [transaction] 225bfcebcc2d470e88ad7dcd570457fc to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:52:24 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 3766)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 6077)
+Completed 200 OK in 16ms (Views: 6.0ms | ActiveRecord: 2.3ms | Allocations: 14507)
+
+
+[Transport] Sending envelope with items [transaction, client_report] af2943722e914c4b9e0ce463440b383a to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:52:53 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 3728)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 6031)
+Completed 200 OK in 19ms (Views: 6.7ms | ActiveRecord: 2.5ms | Allocations: 14457)
+
+
+[Transport] Sending envelope with items [transaction] b152446fa4bf42deaa8e725cdce2ec80 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:53:01 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 3738)
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 7200)
+Completed 200 OK in 27ms (Views: 16.5ms | ActiveRecord: 2.3ms | Allocations: 15678)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 69c344dd71724a6284cfd58adbeeffee to Sentry
+Started POST "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:53:03 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [POST] "/ipv4_quizzes/10/edit"):
+  
+[Transport] Sending envelope with items [transaction] 3d862463b314416baccca5838715b4e1 to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:53:03 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2759)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 4622)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 6488)
+
+
+[Transport] Sending envelope with items [transaction] dad1f98dde7645999a50be65c381c93d to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:53:30 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 3739)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 6043)
+Completed 200 OK in 17ms (Views: 5.8ms | ActiveRecord: 2.4ms | Allocations: 14535)
+
+
+[Transport] Sending envelope with items [transaction] a079c5143a974a819c7e16574692381e to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
+Started GET "/ipv4_quizzes/10/edit" for 172.18.0.1 at 2024-01-30 23:57:47 +0000
+[Tracing] Starting <http.server> transaction </ipv4_quizzes/10/edit>
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Ipv4QuizzesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mIpv4Quiz Load (0.1ms)[0m  [1m[34mSELECT "ipv4_quizzes".* FROM "ipv4_quizzes" WHERE "ipv4_quizzes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:21:in `edit'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ipv4_quizzes_controller.rb:22:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering ipv4_quizzes/edit.html.erb within layouts/application
+  Rendered ipv4_quizzes/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 3750)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 7205)
+Completed 200 OK in 29ms (Views: 17.5ms | ActiveRecord: 2.6ms | Allocations: 15641)
+
+
+[Transport] Sending envelope with items [transaction, client_report] f5a7ee04f15944208388b46cc7b2444e to Sentry
+[Transport] Sending envelope with items [sessions]  to Sentry
