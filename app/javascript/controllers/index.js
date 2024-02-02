@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import Ipv4QuizAnswerCheckController from "./ipv4_quiz_answer_check_controller"
+application.register("ipv4-quiz-answer-check", Ipv4QuizAnswerCheckController)
+
 import Ipv4QuizController from "./ipv4_quiz_controller"
 application.register("ipv4-quiz", Ipv4QuizController)
