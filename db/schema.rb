@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_29_171203) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_02_170603) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,11 +18,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_171203) do
     t.string "quiz_type", default: "ipv4_quiz"
     t.integer "quiz_number", null: false
     t.integer "question_count", null: false
-    t.integer "correct_count"
-    t.integer "incorrect_count"
+    t.integer "attempts", default: 0, null: false
     t.bigint "user_id"
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
+    t.boolean "updateable", default: true
     t.index ["user_id"], name: "index_ipv4_quizzes_on_user_id"
   end
 

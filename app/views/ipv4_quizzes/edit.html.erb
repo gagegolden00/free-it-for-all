@@ -1,50 +1,50 @@
-<section class="bg-white dark:bg-gray-900">
+<section class=" dark:bg-gray-900" data-controller="ipv4-quiz-answer-check">
   <div class="py-8 px-4 mx-auto max-w-screen-xl text-center sm:py-16 lg:px-6">
     <article class="grid grid-cols-3">
       <div class="col-start-1 col-span-3">
         <h2 class="mb-4 text-xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Ipv4 Binary Quiz</h2>
       </div>
       <div class="col-start-1 col-span-1">
-        <strong class="text-gray-900 sm:text-xl dark:text-gray-400">Quiz number:</strong>
-        <p class="text-gray-900 sm:text-xl dark:text-gray-400"><%= @quiz_number %></p>
+        <strong class="text-secondary sm:text-xl dark:text-gray-400">Quiz number:</strong>
+        <p class="text-secondary  sm:text-xl dark:text-gray-400"><%= @quiz_number %></p>
       </div>
       <div class="col-start-2 col-span-1">
-        <strong class="text-gray-900 sm:text-xl dark:text-gray-400">Your IPv4:</strong>
-        <p class="text-gray-900 sm:text-xl dark:text-gray-400"><%= @random_ipv4_address %></p>
+        <strong class="text-secondary sm:text-xl dark:text-gray-400">Your IPv4:</strong>
+        <p class="text-secondary  sm:text-xl dark:text-gray-400" data-ipv4-quiz-answer-check-target="currentIpv4">255.255.255.255</p>
       </div>
       <div class="col-start-3 col-span-1">
-        <strong class="text-gray-900 sm:text-xl dark:text-gray-400">Attempts:</strong>
-        <p class="text-gray-900 sm:text-xl dark:text-gray-400"><%= @attempts%> / <%= @question_count %></p>
+        <strong class="text-secondary  sm:text-xl dark:text-gray-400">Attempts:</strong>
+        <p class="text-secondary  sm:text-xl dark:text-gray-400"><%= @attempts%> / <%= @question_count %></p>
       </div>
     </article>
     <article class="flex w-full">
-      <%= form_with class: "w-full" do |form|%>
+      <%= form_with(model: @quiz, class: "w-full", data: {ipv4_quiz_answer_check_target: "form"}) do |form|%>
         <div class="flex justify-center flex-wrap mb-6 mt-10">
           <div class="">
-            <h3 class="lg:text-xl font-bold dark:text-white">1st octet</h3>
-            <%= form.text_field :field1, maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2"  %>
+            <h3 class="lg:text-xl font-bold text-secondary">1st octet</h3>
+            <%= form.text_field "octets[octet1]", maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2 bg-secondary", data: {ipv4_quiz_answer_check_target: 'octet1'} %>
           </div>
           <div class="">
-            <h3 class="lg:text-xl font-bold dark:text-white">2ed octet</h3>
-            <%= form.text_field :field2, maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2"  %>
+            <h3 class="lg:text-xl font-bold text-secondary">2ed octet</h3>
+            <%= form.text_field "octets[octet2]", maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2 bg-secondary", data: {ipv4_quiz_answer_check_target: 'octet2'}  %>
           </div>
           <div class="">
-            <h3 class="lg:text-xl font-bold dark:text-white">3rd octet</h3>
-            <%= form.text_field :field3, maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2"  %>
+            <h3 class="lg:text-xl font-bold text-secondary">3rd octet</h3>
+            <%= form.text_field "octets[octet3]", maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2 bg-secondary", data: {ipv4_quiz_answer_check_target: 'octet3'}  %>
           </div>
           <div class="">
-            <h3 class="lg:text-xl font-bold dark:text-white">4th octet</h3>
-            <%= form.text_field :field4, maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2"  %>
+            <h3 class="lg:text-xl font-bold text-secondary">4th octet</h3>
+            <%= form.text_field "octets[octet4]", maxlength: 8, pattern: "[01]{1,8}", class: "w-30 lg:w-60 rounded m-2 bg-secondary", data: {ipv4_quiz_answer_check_target: 'octet4'}  %>
           </div>
         </div>
         <div class="">
-          <%= form.submit "Submit", class: "border p-2 w-32 rounded hover:cursor-pointer"%>
-          <%= form.hidden_field :correct %>
-          <%= form.hidden_field :incorrect %>
+          <%= form.hidden_field :ip_to_check, value: @random_ipv4_address %>
+          <%= form.submit "Submit", class: "border bg-primary-600 text-secondary hover:text-teal-500 rounded p-2 w-32 rounded hover:cursor-pointer"%>
         </div>
       <% end %>
     </article>
   </div>
+    <%= render partial: "shared/ipv4_quiz_helper_tool"%>
 </section>
 
-  <%= render partial: "shared/ipv4_quiz_helper_tool"%>
+

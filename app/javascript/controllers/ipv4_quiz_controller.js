@@ -22,9 +22,9 @@ export default class extends Controller {
 
     if (parentDiv.classList.contains("bg-lime-400")) {
       parentDiv.classList.remove("bg-lime-400");
-      parentDiv.classList.add("bg-red-200");
-    } else if (parentDiv.classList.contains("bg-red-200")) {
-      parentDiv.classList.remove("bg-red-200");
+      parentDiv.classList.add("bg-red-300");
+    } else if (parentDiv.classList.contains("bg-red-300")) {
+      parentDiv.classList.remove("bg-red-300");
       parentDiv.classList.add("bg-lime-400");
     }
   }

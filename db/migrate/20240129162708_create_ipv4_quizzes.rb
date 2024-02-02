@@ -4,8 +4,7 @@ class CreateIpv4Quizzes < ActiveRecord::Migration[7.0]
       t.string :quiz_type, default: 'ipv4_quiz'
       t.integer :quiz_number, null: false
       t.integer :question_count, null: false
-      t.integer :correct_count
-      t.integer :incorrect_count
+      t.integer :attempts, null: false, default: 0
       t.references :user
 
       t.timestamps

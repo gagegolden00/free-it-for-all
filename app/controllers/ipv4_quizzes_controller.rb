@@ -21,16 +21,27 @@ class Ipv4QuizzesController < ApplicationController
     @quiz = Ipv4Quiz.find(params[:id])
     @quiz_number = @quiz.quiz_number
     @question_count = @quiz.question_count
-    @quiz_correct_count = @quiz.correct_count || 0
-    @quiz_incorrect_count = @quiz.incorrect_count || 0
-    @attempts = @quiz_correct_count + @quiz_incorrect_count
+    @attempts = @quiz.attempts
     @random_ipv4_address = "#{rand(0..155)}.#{rand(0..155)}.#{rand(0..155)}.#{rand(0..155)}"
     authorize @quiz
   end
 
   def update
+
+
     @quiz = Ipv4Quiz.find(params[:id])
     authorize @quiz
+
+    @quiz = Ipv4QuizUpdateService.new(permitted_params: permitted_params, quiz: @quiz).call
+
+    return unless @quiz.updateable == true
+
+    if @quiz.payload.save
+      redirect_to edit_ipv4_quiz_path(@quiz.payload), notice: "Quiz successfully updated"
+    else
+      flash.notice = "Couldn't update"
+      render :edit
+    end
   end
 
   def show
@@ -47,11 +58,10 @@ class Ipv4QuizzesController < ApplicationController
     authorize @quiz
   end
 
-
   private
 
   def permitted_params
-    params.require(:ipv4_quiz).permit(:question_count)
+    params.require(:ipv4_quiz).permit(:question_count, octets: {})
   end
 
 end
