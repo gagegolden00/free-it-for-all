@@ -3404,3 +3404,7 @@ Completed 204 No Content in 4ms (ActiveRecord: 0.3ms | Allocations: 2084)
 [Transport] Sending envelope with items [sessions]  to Sentry
 Shutting down background worker
 Killing session flusher
+Sentry HTTP Transport will connect to https://o59326.ingest.sentry.io
+Initializing the background worker with 8 threads
+Shutting down background worker
+Killing session flusher

@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   root "pages#show"
 
   resources :ipv4_quizzes
+  resources :port_quizzes
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_02_170603) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_02_173127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_02_170603) do
     t.timestamptz "updated_at", precision: 6, null: false
     t.boolean "updateable", default: true
     t.index ["user_id"], name: "index_ipv4_quizzes_on_user_id"
+  end
+
+  create_table "port_quizzes", force: :cascade do |t|
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
